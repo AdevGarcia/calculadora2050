@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+    app:
+        container_name: app
+        restart: always
+        build: .
+        volumes:
+            - api-data:/api
+        # ports:
+        #   - "8000:8000"
+        depends_on:
+            - db
+        networks:
+            - db_network
+            - web_network
+        command: ./start.sh
+    
+    nginx:
+        container_name: nginx
+        restart: always
+        build: ./nginx
+        ports:
+            - "80:80"
+        depends_on:
+            - app
+        networks:
+            - web_network
+
+    db:
+        container_name: db
+        restart: always
+        image: postgres:11.2
+        volumes:
+            - app-db-data:/var/lib/postgresql/data/pgdata
+        env_file:
+            - .env
+        environment:
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        networks:
+            - db_network
+    
+    pgadmin:
+        image: dpage/pgadmin4
+        networks:
+            - db_network
+            - web_network
+        ports:
+          - "5050:5050"
+        depends_on:
+            - db
+        env_file:
+            - .env
+        volumes:
+            - pgadmin-data:/var/lib/pgadmin
+
+networks:
+    db_network:
+        driver: bridge
+    web_network:
+        driver: bridge
+
+volumes:
+    app-db-data:
+    api-data:
+    pgadmin-data:

@@ -1,0 +1,9 @@
+.git
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+notebooks/
+app/alembic/
+app.sqlite
+venv/
