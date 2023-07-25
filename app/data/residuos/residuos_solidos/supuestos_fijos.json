@@ -1,0 +1,425 @@
+{
+    "rellenos_sanitarios_con_captacion_aprovechamiento": [
+        {
+            "topic": "rellenos_sanitarios_con_captacion_aprovechamiento",
+            "tipo": "sin_captacion",
+            "y2018": 0.0909,
+            "y2020": 0.0909,
+            "y2025": 0.0909,
+            "y2030": 0.0909,
+            "y2035": 0.0909,
+            "y2040": 0.0909,
+            "y2045": 0.0909,
+            "y2050": 0.0909,
+            "unidad": "%"
+        },
+        {
+            "topic": "rellenos_sanitarios_con_captacion_aprovechamiento",
+            "tipo": "quema_biogas_en_antorcha",
+            "y2018": 0.7727,
+            "y2020": 0.7727,
+            "y2025": 0.7727,
+            "y2030": 0.7727,
+            "y2035": 0.7727,
+            "y2040": 0.7727,
+            "y2045": 0.7727,
+            "y2050": 0.7727,
+            "unidad": "%"
+        },
+        {
+            "topic": "rellenos_sanitarios_con_captacion_aprovechamiento",
+            "tipo": "aprovechamiento_energetico_del_biogas",
+            "y2018": 0.1364,
+            "y2020": 0.1364,
+            "y2025": 0.1364,
+            "y2030": 0.1364,
+            "y2035": 0.1364,
+            "y2040": 0.1364,
+            "y2045": 0.1364,
+            "y2050": 0.1364,
+            "unidad": "%"
+        }
+    ],
+    "distribucion_de_los_residuos_por_zona_climatica": [
+        {
+            "topic": "distribucion_de_los_residuos_por_zona_climatica",
+            "tipo": "1._excesivamente_humedo",
+            "value": 0.1,
+            "unidad": "%"
+        },
+        {
+            "topic": "distribucion_de_los_residuos_por_zona_climatica",
+            "tipo": "2._humedo",
+            "value": 0.57,
+            "unidad": "%"
+        },
+        {
+            "topic": "distribucion_de_los_residuos_por_zona_climatica",
+            "tipo": "3._moderadamente_humedo",
+            "value": 0.24,
+            "unidad": "%"
+        },
+        {
+            "topic": "distribucion_de_los_residuos_por_zona_climatica",
+            "tipo": "4._moderadamente_seco",
+            "value": 0.09,
+            "unidad": "%"
+        }
+    ],
+    "caracterizacion_por_tipo_de_residuos_generados": [
+        {
+            "topic": "caracterizacion_por_tipo_de_residuos_generados",
+            "tipo": "materia_organica_comida",
+            "y2018": 0.614563591022444,
+            "y2020": 0.6160873733481211,
+            "y2025": 0.6199652849395662,
+            "y2030": 0.6239440422768827,
+            "y2035": 0.6280276309490077,
+            "y2040": 0.6322202493712913,
+            "y2045": 0.6365263231836017,
+            "y2050": 0.6409505208333335,
+            "unidad": "%"
+        },
+        {
+            "topic": "caracterizacion_por_tipo_de_residuos_generados",
+            "tipo": "papel",
+            "y2018": 0.0999501246882793,
+            "y2020": 0.09918479112230641,
+            "y2025": 0.09723707466911216,
+            "y2030": 0.0952387075206048,
+            "y2035": 0.09318768787840297,
+            "y2040": 0.09108190705011847,
+            "y2045": 0.08891914221777714,
+            "y2050": 0.0866970486111111,
+            "unidad": "%"
+        },
+        {
+            "topic": "caracterizacion_por_tipo_de_residuos_generados",
+            "tipo": "madera",
+            "y2018": 0.007581047381546135,
+            "y2020": 0.008308739214617366,
+            "y2025": 0.010160660284257321,
+            "y2030": 0.01206074087408226,
+            "y2035": 0.014010884327155124,
+            "y2040": 0.016013095623131197,
+            "y2045": 0.018069488254163643,
+            "y2050": 0.02018229166666667,
+            "unidad": "%"
+        },
+        {
+            "topic": "caracterizacion_por_tipo_de_residuos_generados",
+            "tipo": "textiles",
+            "y2018": 0.0171571072319202,
+            "y2020": 0.018860712696831275,
+            "y2025": 0.023196260673929117,
+            "y2030": 0.02764455530839751,
+            "y2035": 0.03221005253267415,
+            "y2040": 0.03689744622147707,
+            "y2045": 0.04171168428904491,
+            "y2050": 0.04665798611111112,
+            "unidad": "%"
+        },
+        {
+            "topic": "caracterizacion_por_tipo_de_residuos_generados",
+            "tipo": "residuos_solidos_metales,_vidrio,_plasticos,_goma_y_otros_inorganicos",
+            "y2018": 0.26074812967581046,
+            "y2020": 0.2575583836181239,
+            "y2025": 0.24944071943313545,
+            "y2030": 0.2411119540200326,
+            "y2035": 0.2325637443127599,
+            "y2040": 0.22378730173398192,
+            "y2045": 0.2147733620554127,
+            "y2050": 0.20551215277777776,
+            "unidad": "%"
+        }
+    ],
+    "generacion_de_metano_por_tipologia_de_residuo": [
+        {
+            "topic": "generacion_de_metano_por_tipologia_de_residuo",
+            "tipo": "potencial_electrico",
+            "value": 4.85,
+            "unidad": "kWh/m3"
+        },
+        {
+            "topic": "generacion_de_metano_por_tipologia_de_residuo",
+            "tipo": "eficiencia_del_motor_generador",
+            "value": 0.42,
+            "unidad": "%"
+        },
+        {
+            "topic": "generacion_de_metano_por_tipologia_de_residuo",
+            "tipo": "metano_en_el_biogas",
+            "value": 0.5,
+            "unidad": "CH4"
+        }
+    ],
+    "datos_de_la_generacion_energetica_mediante_incineracion": [
+        {
+            "topic": "datos_de_la_generacion_energetica_mediante_incineracion",
+            "tipo": "capacidad_de_generacion",
+            "value": 750.0,
+            "unidad": "KwH/ton RSU"
+        },
+        {
+            "topic": "datos_de_la_generacion_energetica_mediante_incineracion",
+            "tipo": "potencial_electrico",
+            "value": 0.0485,
+            "unidad": "kWh/m3"
+        },
+        {
+            "topic": "datos_de_la_generacion_energetica_mediante_incineracion",
+            "tipo": "eficiencia_del_motor_generador",
+            "value": 0.42,
+            "unidad": "%"
+        }
+    ],
+    "consumo_energetico_medio_por_tratamiento": [
+        {
+            "topic": "consumo_energetico_medio_por_tratamiento",
+            "tipo": "relleno_sanitario_controlados",
+            "value": 0.0,
+            "unidad": "kWh/tn residuos"
+        },
+        {
+            "topic": "consumo_energetico_medio_por_tratamiento",
+            "tipo": "celda_de_contingencia",
+            "value": 0.0,
+            "unidad": "kWh/tn residuos"
+        },
+        {
+            "topic": "consumo_energetico_medio_por_tratamiento",
+            "tipo": "planta_de_tratamiento:",
+            "value": 0.0,
+            "unidad": "kWh/tn residuos"
+        },
+        {
+            "topic": "consumo_energetico_medio_por_tratamiento",
+            "tipo": "tratamiento_mecanico_biologico_tmbcompostaje",
+            "value": 0.0,
+            "unidad": "kWh/tn residuos"
+        },
+        {
+            "topic": "consumo_energetico_medio_por_tratamiento",
+            "tipo": "combustibles_derivados_de_residuos_cdm",
+            "value": 0.0,
+            "unidad": "kWh/tn residuos"
+        },
+        {
+            "topic": "consumo_energetico_medio_por_tratamiento",
+            "tipo": "incineracion",
+            "value": 0.0,
+            "unidad": "kWh/tn residuos"
+        },
+        {
+            "topic": "consumo_energetico_medio_por_tratamiento",
+            "tipo": "reciclado",
+            "value": 0.0,
+            "unidad": "kWh/tn residuos"
+        }
+    ],
+    "datos_para_la_estimacion_de_las_emisiones_de_incineracion": [
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "materia_organica_comida",
+            "value": 0.4,
+            "unidad": "Materia_seca"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "papel",
+            "value": 0.9,
+            "unidad": "Materia_seca"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "madera",
+            "value": 0.85,
+            "unidad": "Materia_seca"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "textiles",
+            "value": 0.8,
+            "unidad": "Materia_seca"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "residuos_solidos_metales,_vidrio,_plasticos,_goma_y_otros_inorganicos",
+            "value": 1.0,
+            "unidad": "Materia_seca"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "materia_organica_comida",
+            "value": 0.38,
+            "unidad": "Carbono_total"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "papel",
+            "value": 0.46,
+            "unidad": "Carbono_total"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "madera",
+            "value": 0.5,
+            "unidad": "Carbono_total"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "textiles",
+            "value": 0.5,
+            "unidad": "Carbono_total"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "residuos_solidos_metales,_vidrio,_plasticos,_goma_y_otros_inorganicos",
+            "value": 0.39,
+            "unidad": "Carbono_total"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "materia_organica_comida",
+            "value": 0.0,
+            "unidad": "Fraccion_de_carbono_fosil"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "papel",
+            "value": 0.01,
+            "unidad": "Fraccion_de_carbono_fosil"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "madera",
+            "value": 0.0,
+            "unidad": "Fraccion_de_carbono_fosil"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "textiles",
+            "value": 0.2,
+            "unidad": "Fraccion_de_carbono_fosil"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "residuos_solidos_metales,_vidrio,_plasticos,_goma_y_otros_inorganicos",
+            "value": 1.0,
+            "unidad": "Fraccion_de_carbono_fosil"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "materia_organica_comida",
+            "value": 1.0,
+            "unidad": "Factor_de_oxidacion"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "papel",
+            "value": 1.0,
+            "unidad": "Factor_de_oxidacion"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "madera",
+            "value": 1.0,
+            "unidad": "Factor_de_oxidacion"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "textiles",
+            "value": 1.0,
+            "unidad": "Factor_de_oxidacion"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "residuos_solidos_metales,_vidrio,_plasticos,_goma_y_otros_inorganicos",
+            "value": 1.0,
+            "unidad": "Factor_de_oxidacion"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "materia_organica_comida",
+            "value": 0.0,
+            "unidad": "FE_CO2_t_t_residuos"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "papel",
+            "value": 0.01518,
+            "unidad": "FE_CO2_t_t_residuos"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "madera",
+            "value": 0.0,
+            "unidad": "FE_CO2_t_t_residuos"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "textiles",
+            "value": 0.2933333333333334,
+            "unidad": "FE_CO2_t_t_residuos"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "emisiones_de_co2",
+            "tipo": "residuos_solidos_metales,_vidrio,_plasticos,_goma_y_otros_inorganicos",
+            "value": 1.43,
+            "unidad": "FE_CO2_t_t_residuos"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "factor_de_emision_del_ch4_para_incineracion",
+            "tipo": "CH4",
+            "value": 0.2,
+            "unidad": "kg_Gg"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "factor_de_emision_del_ch4_para_incineracion",
+            "tipo": "CH4",
+            "value": 2.0000000000000002e-07,
+            "unidad": "t_CH4_t_residuos"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "factor_de_emision_del_ch4_para_incineracion",
+            "tipo": "N2O",
+            "value": 47.0,
+            "unidad": "g_N2O_t_residuos"
+        },
+        {
+            "topic": "datos_para_la_estimacion_de_las_emisiones_de_incineracion",
+            "bloque": "factor_de_emision_del_ch4_para_incineracion",
+            "tipo": "N2O",
+            "value": 4.7e-08,
+            "unidad": "t_N2O_t_residuos"
+        }
+    ]
+}

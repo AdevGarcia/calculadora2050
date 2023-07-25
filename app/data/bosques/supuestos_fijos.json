@@ -1,0 +1,1037 @@
+{
+    "area_anual_deforestada_puntual": [
+        {
+            "topic": "area_anual_deforestada_puntual",
+            "tipo": "amazonia",
+            "y2018": 124490.53309481,
+            "y2020": 136581.3225951722,
+            "y2025": 142137.5628482588,
+            "y2030": 112493.61806936626,
+            "y2035": 108801.37146661928,
+            "y2040": 101415.58319437968,
+            "y2045": 94029.79492214009,
+            "y2050": 86644.00664990049,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_anual_deforestada_puntual",
+            "tipo": "andina",
+            "y2018": 31858.709069433156,
+            "y2020": 36188.54269121893,
+            "y2025": 47250.59249160883,
+            "y2030": 56340.64927513327,
+            "y2035": 68033.64765382842,
+            "y2040": 79356.18575744775,
+            "y2045": 90678.72386106709,
+            "y2050": 102001.26196468642,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_anual_deforestada_puntual",
+            "tipo": "caribe",
+            "y2018": 13095.140460696479,
+            "y2020": 13707.020993337483,
+            "y2025": 14454.35968778681,
+            "y2030": 13929.980092620022,
+            "y2035": 14398.262472019269,
+            "y2040": 14725.265527734397,
+            "y2045": 15052.268583449522,
+            "y2050": 15379.27163916465,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_anual_deforestada_puntual",
+            "tipo": "pacifico",
+            "y2018": 11279.615173118156,
+            "y2020": 11808.425103026522,
+            "y2025": 11286.789814523454,
+            "y2030": 8702.772846464115,
+            "y2035": 7582.768871737423,
+            "y2040": 6254.401152994826,
+            "y2045": 4926.033434252228,
+            "y2050": 3597.665715509631,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_anual_deforestada_puntual",
+            "tipo": "orinoquia",
+            "y2018": 8410.751048346337,
+            "y2020": 9241.800612096733,
+            "y2025": 11487.425723898008,
+            "y2030": 13848.243392473576,
+            "y2035": 16398.029946916497,
+            "y2040": 18920.921750601647,
+            "y2045": 21443.813554286797,
+            "y2050": 23966.705357971947,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_anual_deforestada_puntual",
+            "tipo": "nacional",
+            "y2018": 189134.74884640414,
+            "y2020": 207527.11199485188,
+            "y2025": 226616.73056607592,
+            "y2030": 205315.26367605725,
+            "y2035": 215214.08041112087,
+            "y2040": 220672.3573831583,
+            "y2045": 226130.63435519574,
+            "y2050": 231588.91132723313,
+            "unidad": "ha"
+        }
+    ],
+    "deforestacion_observada_no_acumulada": [
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "amazonia",
+            "valor": 144019.45755648,
+            "unidad": "ha"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "andina",
+            "valor": 36629.36107008,
+            "unidad": "ha"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "caribe",
+            "valor": 15665.496453120002,
+            "unidad": "ha"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "pacifico",
+            "valor": 9855.762370560002,
+            "unidad": "ha"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "orinoquia",
+            "valor": 13382.05845504,
+            "unidad": "ha"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "nacional",
+            "valor": 219552.13590527998,
+            "unidad": "ha"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "amazonia",
+            "valor": 0.6559692847561884,
+            "unidad": "%"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "andina",
+            "valor": 0.16683673296570786,
+            "unidad": "%"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "caribe",
+            "valor": 0.07135205671548771,
+            "unidad": "%"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "pacifico",
+            "valor": 0.04489030512011057,
+            "unidad": "%"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "orinoquia",
+            "valor": 0.06095162044250546,
+            "unidad": "%"
+        },
+        {
+            "topic": "deforestacion_observada_no_acumulada",
+            "fuente": "nacional",
+            "valor": 1.0,
+            "unidad": "%"
+        }
+    ],
+    "contenidos_de_carbono_por_zonas_naturales": [
+        {
+            "topic": "contenidos_de_carbono_por_zonas_naturales",
+            "tipo": "amazonia",
+            "value": 148.0,
+            "unidad": "tC_ha_incluye_biomasa_aerea_y_subterranea"
+        },
+        {
+            "topic": "contenidos_de_carbono_por_zonas_naturales",
+            "tipo": "andina",
+            "value": 89.0,
+            "unidad": "tC_ha_incluye_biomasa_aerea_y_subterranea"
+        },
+        {
+            "topic": "contenidos_de_carbono_por_zonas_naturales",
+            "tipo": "caribe",
+            "value": 75.0,
+            "unidad": "tC_ha_incluye_biomasa_aerea_y_subterranea"
+        },
+        {
+            "topic": "contenidos_de_carbono_por_zonas_naturales",
+            "tipo": "pacifico",
+            "value": 81.0,
+            "unidad": "tC_ha_incluye_biomasa_aerea_y_subterranea"
+        },
+        {
+            "topic": "contenidos_de_carbono_por_zonas_naturales",
+            "tipo": "orinoquia",
+            "value": 50.0,
+            "unidad": "tC_ha_incluye_biomasa_aerea_y_subterranea"
+        }
+    ],
+    "factor_de_conversion_de_biomasa_por_deforestacion": [
+        {
+            "topic": "factor_de_conversion_de_biomasa_por_deforestacion",
+            "tipo": "factor_de_conversion_de_biomasa_tc_a_tco2",
+            "value": 3.67,
+            "unidad": "tCO2_tC"
+        }
+    ],
+    "area_para_la_reforestacion_comercial": [
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "acacia_mangium",
+            "y2018": 100.0,
+            "y2020": 2232.0,
+            "y2025": 7850.0,
+            "y2030": 7850.0,
+            "y2035": 7850.0,
+            "y2040": 7850.0,
+            "y2045": 7850.0,
+            "y2050": 7850.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "bombacopsis_quinata",
+            "y2018": 0.0,
+            "y2020": 1.0,
+            "y2025": 5.0,
+            "y2030": 5.0,
+            "y2035": 5.0,
+            "y2040": 5.0,
+            "y2045": 5.0,
+            "y2050": 5.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "cariniana_pyriformis",
+            "y2018": 6.0,
+            "y2020": 8.0,
+            "y2025": 30.0,
+            "y2030": 30.0,
+            "y2035": 30.0,
+            "y2040": 30.0,
+            "y2045": 30.0,
+            "y2050": 30.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "cedrela_odorata",
+            "y2018": 0.0,
+            "y2020": 4.0,
+            "y2025": 15.0,
+            "y2030": 15.0,
+            "y2035": 15.0,
+            "y2040": 15.0,
+            "y2045": 15.0,
+            "y2050": 15.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "cordia_alliodora",
+            "y2018": 0.0,
+            "y2020": 5.0,
+            "y2025": 20.0,
+            "y2030": 20.0,
+            "y2035": 20.0,
+            "y2040": 20.0,
+            "y2045": 20.0,
+            "y2050": 20.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "crecimiento_lento",
+            "y2018": 245.0,
+            "y2020": 2017.0,
+            "y2025": 7385.0,
+            "y2030": 7385.0,
+            "y2035": 7385.0,
+            "y2040": 7385.0,
+            "y2045": 7385.0,
+            "y2050": 7385.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "crecimiento_medio",
+            "y2018": 0.0,
+            "y2020": 22.0,
+            "y2025": 80.0,
+            "y2030": 80.0,
+            "y2035": 80.0,
+            "y2040": 80.0,
+            "y2045": 80.0,
+            "y2050": 80.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "crecimiento_rapido",
+            "y2018": 73.0,
+            "y2020": 1214.0,
+            "y2025": 4445.0,
+            "y2030": 4445.0,
+            "y2035": 4445.0,
+            "y2040": 4445.0,
+            "y2045": 4445.0,
+            "y2050": 4445.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "cupressus_sp.",
+            "y2018": 5.0,
+            "y2020": 33.0,
+            "y2025": 120.0,
+            "y2030": 120.0,
+            "y2035": 120.0,
+            "y2040": 120.0,
+            "y2045": 120.0,
+            "y2050": 120.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "eucalyptus_globulus",
+            "y2018": 0.0,
+            "y2020": 44.0,
+            "y2025": 160.0,
+            "y2030": 160.0,
+            "y2035": 160.0,
+            "y2040": 160.0,
+            "y2045": 160.0,
+            "y2050": 160.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "eucalyptus_grandis",
+            "y2018": 18.0,
+            "y2020": 1816.0,
+            "y2025": 6650.0,
+            "y2030": 6650.0,
+            "y2035": 6650.0,
+            "y2040": 6650.0,
+            "y2045": 6650.0,
+            "y2050": 6650.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "eucalyptus_pellita",
+            "y2018": 434.0,
+            "y2020": 4239.0,
+            "y2025": 15520.0,
+            "y2030": 15520.0,
+            "y2035": 15520.0,
+            "y2040": 15520.0,
+            "y2045": 15520.0,
+            "y2050": 15520.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "eucalyptus_tereticornis",
+            "y2018": 0.0,
+            "y2020": 113.0,
+            "y2025": 415.0,
+            "y2030": 415.0,
+            "y2035": 415.0,
+            "y2040": 415.0,
+            "y2045": 415.0,
+            "y2050": 415.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "gmelina_arborea",
+            "y2018": 0.0,
+            "y2020": 1028.0,
+            "y2025": 3765.0,
+            "y2030": 3765.0,
+            "y2035": 3765.0,
+            "y2040": 3765.0,
+            "y2045": 3765.0,
+            "y2050": 3765.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "pinus_caribaea",
+            "y2018": 231.0,
+            "y2020": 1647.0,
+            "y2025": 6030.0,
+            "y2030": 6030.0,
+            "y2035": 6030.0,
+            "y2040": 6030.0,
+            "y2045": 6030.0,
+            "y2050": 6030.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "pinus_oocarpa",
+            "y2018": 0.0,
+            "y2020": 41.0,
+            "y2025": 150.0,
+            "y2030": 150.0,
+            "y2035": 150.0,
+            "y2040": 150.0,
+            "y2045": 150.0,
+            "y2050": 150.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "pinus_patula",
+            "y2018": 50.0,
+            "y2020": 618.0,
+            "y2025": 2265.0,
+            "y2030": 2265.0,
+            "y2035": 2265.0,
+            "y2040": 2265.0,
+            "y2045": 2265.0,
+            "y2050": 2265.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "quercus_humboldtii",
+            "y2018": 0.0,
+            "y2020": 4.0,
+            "y2025": 15.0,
+            "y2030": 15.0,
+            "y2035": 15.0,
+            "y2040": 15.0,
+            "y2045": 15.0,
+            "y2050": 15.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "tabebuia_rosea",
+            "y2018": 0.0,
+            "y2020": 12.0,
+            "y2025": 45.0,
+            "y2030": 45.0,
+            "y2035": 45.0,
+            "y2040": 45.0,
+            "y2045": 45.0,
+            "y2050": 45.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "tectona_grandis",
+            "y2018": 0.0,
+            "y2020": 819.0,
+            "y2025": 3000.0,
+            "y2030": 3000.0,
+            "y2035": 3000.0,
+            "y2040": 3000.0,
+            "y2045": 3000.0,
+            "y2050": 3000.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "ha_acumuladas_para_el_periodo",
+            "tipo": "total_area",
+            "y2018": 1162.0,
+            "y2020": 15917.0,
+            "y2025": 57965.0,
+            "y2030": 57965.0,
+            "y2035": 57965.0,
+            "y2040": 57965.0,
+            "y2045": 57965.0,
+            "y2050": 57965.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "acacia_mangium",
+            "y2018": 0.08605851979345955,
+            "y2020": 0.14022742979204625,
+            "y2025": 0.13542655050461486,
+            "y2030": 0.13542655050461486,
+            "y2035": 0.13542655050461486,
+            "y2040": 0.13542655050461486,
+            "y2045": 0.13542655050461486,
+            "y2050": 0.13542655050461486,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "bombacopsis_quinata",
+            "y2018": 0.0,
+            "y2020": 6.282590940503864e-05,
+            "y2025": 8.625894936599672e-05,
+            "y2030": 8.625894936599672e-05,
+            "y2035": 8.625894936599672e-05,
+            "y2040": 8.625894936599672e-05,
+            "y2045": 8.625894936599672e-05,
+            "y2050": 8.625894936599672e-05,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "cariniana_pyriformis",
+            "y2018": 0.0051635111876075735,
+            "y2020": 0.0005026072752403091,
+            "y2025": 0.0005175536961959803,
+            "y2030": 0.0005175536961959803,
+            "y2035": 0.0005175536961959803,
+            "y2040": 0.0005175536961959803,
+            "y2045": 0.0005175536961959803,
+            "y2050": 0.0005175536961959803,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "cedrela_odorata",
+            "y2018": 0.0,
+            "y2020": 0.00025130363762015457,
+            "y2025": 0.00025877684809799017,
+            "y2030": 0.00025877684809799017,
+            "y2035": 0.00025877684809799017,
+            "y2040": 0.00025877684809799017,
+            "y2045": 0.00025877684809799017,
+            "y2050": 0.00025877684809799017,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "cordia_alliodora",
+            "y2018": 0.0,
+            "y2020": 0.00031412954702519317,
+            "y2025": 0.0003450357974639869,
+            "y2030": 0.0003450357974639869,
+            "y2035": 0.0003450357974639869,
+            "y2040": 0.0003450357974639869,
+            "y2045": 0.0003450357974639869,
+            "y2050": 0.0003450357974639869,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "crecimiento_lento",
+            "y2018": 0.21084337349397592,
+            "y2020": 0.12671985926996293,
+            "y2025": 0.12740446821357715,
+            "y2030": 0.12740446821357715,
+            "y2035": 0.12740446821357715,
+            "y2040": 0.12740446821357715,
+            "y2045": 0.12740446821357715,
+            "y2050": 0.12740446821357715,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "crecimiento_medio",
+            "y2018": 0.0,
+            "y2020": 0.00138217000691085,
+            "y2025": 0.0013801431898559475,
+            "y2030": 0.0013801431898559475,
+            "y2035": 0.0013801431898559475,
+            "y2040": 0.0013801431898559475,
+            "y2045": 0.0013801431898559475,
+            "y2050": 0.0013801431898559475,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "crecimiento_rapido",
+            "y2018": 0.06282271944922548,
+            "y2020": 0.0762706540177169,
+            "y2025": 0.07668420598637109,
+            "y2030": 0.07668420598637109,
+            "y2035": 0.07668420598637109,
+            "y2040": 0.07668420598637109,
+            "y2045": 0.07668420598637109,
+            "y2050": 0.07668420598637109,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "cupressus_sp.",
+            "y2018": 0.004302925989672977,
+            "y2020": 0.002073255010366275,
+            "y2025": 0.0020702147847839214,
+            "y2030": 0.0020702147847839214,
+            "y2035": 0.0020702147847839214,
+            "y2040": 0.0020702147847839214,
+            "y2045": 0.0020702147847839214,
+            "y2050": 0.0020702147847839214,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "eucalyptus_globulus",
+            "y2018": 0.0,
+            "y2020": 0.0027643400138217,
+            "y2025": 0.002760286379711895,
+            "y2030": 0.002760286379711895,
+            "y2035": 0.002760286379711895,
+            "y2040": 0.002760286379711895,
+            "y2045": 0.002760286379711895,
+            "y2050": 0.002760286379711895,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "eucalyptus_grandis",
+            "y2018": 0.01549053356282272,
+            "y2020": 0.11409185147955017,
+            "y2025": 0.11472440265677564,
+            "y2030": 0.11472440265677564,
+            "y2035": 0.11472440265677564,
+            "y2040": 0.11472440265677564,
+            "y2045": 0.11472440265677564,
+            "y2050": 0.11472440265677564,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "eucalyptus_pellita",
+            "y2018": 0.37349397590361444,
+            "y2020": 0.2663190299679588,
+            "y2025": 0.2677477788320538,
+            "y2030": 0.2677477788320538,
+            "y2035": 0.2677477788320538,
+            "y2040": 0.2677477788320538,
+            "y2045": 0.2677477788320538,
+            "y2050": 0.2677477788320538,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "eucalyptus_tereticornis",
+            "y2018": 0.0,
+            "y2020": 0.007099327762769366,
+            "y2025": 0.007159492797377728,
+            "y2030": 0.007159492797377728,
+            "y2035": 0.007159492797377728,
+            "y2040": 0.007159492797377728,
+            "y2045": 0.007159492797377728,
+            "y2050": 0.007159492797377728,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "gmelina_arborea",
+            "y2018": 0.0,
+            "y2020": 0.06458503486837971,
+            "y2025": 0.06495298887259553,
+            "y2030": 0.06495298887259553,
+            "y2035": 0.06495298887259553,
+            "y2040": 0.06495298887259553,
+            "y2045": 0.06495298887259553,
+            "y2050": 0.06495298887259553,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "pinus_caribaea",
+            "y2018": 0.19879518072289157,
+            "y2020": 0.10347427279009863,
+            "y2025": 0.10402829293539205,
+            "y2030": 0.10402829293539205,
+            "y2035": 0.10402829293539205,
+            "y2040": 0.10402829293539205,
+            "y2045": 0.10402829293539205,
+            "y2050": 0.10402829293539205,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "pinus_oocarpa",
+            "y2018": 0.0,
+            "y2020": 0.0025758622856065843,
+            "y2025": 0.0025877684809799016,
+            "y2030": 0.0025877684809799016,
+            "y2035": 0.0025877684809799016,
+            "y2040": 0.0025877684809799016,
+            "y2045": 0.0025877684809799016,
+            "y2050": 0.0025877684809799016,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "pinus_patula",
+            "y2018": 0.043029259896729774,
+            "y2020": 0.03882641201231388,
+            "y2025": 0.039075304062796516,
+            "y2030": 0.039075304062796516,
+            "y2035": 0.039075304062796516,
+            "y2040": 0.039075304062796516,
+            "y2045": 0.039075304062796516,
+            "y2050": 0.039075304062796516,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "quercus_humboldtii",
+            "y2018": 0.0,
+            "y2020": 0.00025130363762015457,
+            "y2025": 0.00025877684809799017,
+            "y2030": 0.00025877684809799017,
+            "y2035": 0.00025877684809799017,
+            "y2040": 0.00025877684809799017,
+            "y2045": 0.00025877684809799017,
+            "y2050": 0.00025877684809799017,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "tabebuia_rosea",
+            "y2018": 0.0,
+            "y2020": 0.0007539109128604636,
+            "y2025": 0.0007763305442939705,
+            "y2030": 0.0007763305442939705,
+            "y2035": 0.0007763305442939705,
+            "y2040": 0.0007763305442939705,
+            "y2045": 0.0007763305442939705,
+            "y2050": 0.0007763305442939705,
+            "unidad": "%"
+        },
+        {
+            "topic": "area_para_la_reforestacion_comercial",
+            "bloque": "superficie_acumulada_para_el_periodo",
+            "tipo": "tectona_grandis",
+            "y2018": 0.0,
+            "y2020": 0.05145441980272664,
+            "y2025": 0.051755369619598035,
+            "y2030": 0.051755369619598035,
+            "y2035": 0.051755369619598035,
+            "y2040": 0.051755369619598035,
+            "y2045": 0.051755369619598035,
+            "y2050": 0.051755369619598035,
+            "unidad": "%"
+        }
+    ],
+    "biomasa_aerea_+_subterranea_reforestacion_comercial": [
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "acacia_mangium",
+            "valor": 15.63,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "bombacopsis_quinata",
+            "valor": 7.699999999999999,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "cariniana_pyriformis",
+            "valor": 6.08,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "cedrela_odorata",
+            "valor": 16.58,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "cordia_alliodora",
+            "valor": 16.15,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "crecimiento_lento",
+            "valor": 5.6899999999999995,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "crecimiento_medio",
+            "valor": 13.120000000000001,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "crecimiento_rapido",
+            "valor": 22.439999999999998,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "cupressus_sp.",
+            "valor": 5.6899999999999995,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "eucalyptus_globulus",
+            "valor": 30.4,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "eucalyptus_grandis",
+            "valor": 44.3,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "eucalyptus_pellita",
+            "valor": 30.32,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "eucalyptus_tereticornis",
+            "valor": 20.81,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "gmelina_arborea",
+            "valor": 12.57,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "pinus_caribaea",
+            "valor": 11.27,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "pinus_oocarpa",
+            "valor": 17.58,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "pinus_patula",
+            "valor": 11.54,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "quercus_humboldtii",
+            "valor": 5.6899999999999995,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "tabebuia_rosea",
+            "valor": 12.79,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "tectona_grandis",
+            "valor": 12.33,
+            "unidad": "tonc_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "acacia_mangium",
+            "valor": 57.362100000000005,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "bombacopsis_quinata",
+            "valor": 28.258999999999997,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "cariniana_pyriformis",
+            "valor": 22.3136,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "cedrela_odorata",
+            "valor": 60.84859999999999,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "cordia_alliodora",
+            "valor": 59.27049999999999,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "crecimiento_lento",
+            "valor": 20.882299999999997,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "crecimiento_medio",
+            "valor": 48.150400000000005,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "crecimiento_rapido",
+            "valor": 82.35479999999998,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "cupressus_sp.",
+            "valor": 20.882299999999997,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "eucalyptus_globulus",
+            "valor": 111.568,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "eucalyptus_grandis",
+            "valor": 162.581,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "eucalyptus_pellita",
+            "valor": 111.2744,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "eucalyptus_tereticornis",
+            "valor": 76.3727,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "gmelina_arborea",
+            "valor": 46.1319,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "pinus_caribaea",
+            "valor": 41.3609,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "pinus_oocarpa",
+            "valor": 64.51859999999999,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "pinus_patula",
+            "valor": 42.3518,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "quercus_humboldtii",
+            "valor": 20.882299999999997,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "tabebuia_rosea",
+            "valor": 46.939299999999996,
+            "unidad": "tonco2_ha"
+        },
+        {
+            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "fuente": "tectona_grandis",
+            "valor": 45.2511,
+            "unidad": "tonco2_ha"
+        }
+    ],
+    "descuentos_aplicables_a_reforestacion_comercial": [
+        {
+            "topic": "descuentos_aplicables_a_reforestacion_comercial",
+            "fuente": "tasa_de_descuento_por_cada_5_anos",
+            "valor": 0.2,
+            "tipo": "manejo_y_aprovechamiento",
+            "unidad": "%"
+        },
+        {
+            "topic": "descuentos_aplicables_a_reforestacion_comercial",
+            "fuente": "tasa_de_descuento_por_cada_5_anos",
+            "valor": 0.3,
+            "tipo": "permanencia",
+            "unidad": "%"
+        },
+        {
+            "topic": "descuentos_aplicables_a_reforestacion_comercial",
+            "fuente": "tasa_de_descuento_por_cada_5_anos",
+            "valor": 0.5,
+            "tipo": "total_descuentos",
+            "unidad": "%"
+        }
+    ]
+}

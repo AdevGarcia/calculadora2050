@@ -1,0 +1,26 @@
+
+
+# supuestos_trayectoria.json
+ 'cantidad_de_residuos_generada_anual',
+ 'tipo_de_gestion',
+ 'capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios',
+ 'capacidad_instalada_para_los_sistemas_de_incineracion'
+
+# supuestos_fijos.json
+ 'rellenos_sanitarios_con_captacion_aprovechamiento',
+ 'distribucion_de_los_residuos_por_zona_climatica',
+ 'caracterizacion_por_tipo_de_residuos_generados',
+ 'generacion_de_metano_por_tipologia_de_residuo',
+ 'datos_de_la_generacion_energetica_mediante_incineracion',
+ 'consumo_energetico_medio_por_tratamiento',
+ 'datos_para_la_estimacion_de_las_emisiones_de_incineracion'
+
+# salida_energia_consumida.json
+['salida_energia_consumida']
+
+# salida_energia_producida.json
+['salida_energia_producida']
+
+# emisiones.json
+['emisiones_de_gases_de_efecto_invernadero_residuos',
+ 'emisiones_de_gases_de_efecto_invernadero_energia']
