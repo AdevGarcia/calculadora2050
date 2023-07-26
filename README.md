@@ -3,7 +3,9 @@
 
 
 ### Operacion en segundo plano
-nohup ./prestart.sh > logs.out 2> logs.err < /dev/null &
+cp .env.sample .env
+./install.sh
+nohup ./start_dev.sh > logs.out 2> logs.err < /dev/null &
 
 
 
