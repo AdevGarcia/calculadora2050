@@ -37,8 +37,7 @@ def create_ST(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
@@ -84,8 +83,8 @@ def read_ST_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'trayectoria' : trayectoria}
 
     match module:
@@ -96,7 +95,6 @@ def read_ST_module(
                 topic='practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies',
                 **filter
                 )
-            result = jsonable_encoder(rd)
                 
         case schemas.ST_name.mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado:
             rd = downloader(
@@ -105,7 +103,6 @@ def read_ST_module(
                 topic='mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado',
                 **filter
                 )
-            result = jsonable_encoder(rd)
         
         case schemas.ST_name.produccion_de_estiercol_para_bioenergia:
             rd = downloader(
@@ -114,15 +111,14 @@ def read_ST_module(
                 topic='produccion_de_estiercol_para_bioenergia',
                 **filter
                 )
-            result = jsonable_encoder(rd)
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
@@ -130,8 +126,7 @@ def delete_ST(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.GANA_ST_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies)
     prune(db=db, model=models.GANA_ST_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado)
@@ -149,8 +144,7 @@ def create_SF(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
@@ -159,7 +153,7 @@ def create_SF(
         match key:
             case 'uso_actual_de_la_tierra_sector_agropecuario_en_colombia':
                 loader(db=db, model=models.GANA_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia, obj_in=jdata[key], 
-                       filters=['topic', 'tipo', 'fuente'])
+                       filters=['topic', 'tipo', 'fuente', 'unidad'])
                     
             case 'hato_ganadero_colombiano':
                 loader(db=db, model=models.GANA_SF_hato_ganadero_colombiano, obj_in=jdata[key], 
@@ -167,7 +161,7 @@ def create_SF(
                 
             case 'factor_de_emision_de_metano_ch4_por_genero':
                 loader(db=db, model=models.GANA_SF_factor_de_emision_de_metano_ch4_por_genero, obj_in=jdata[key], 
-                       filters=['topic', 'fuente'])
+                       filters=['topic', 'fuente', 'unidad'])
                 
             case 'areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos':
                 loader(db=db, model=models.GANA_SF_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos, obj_in=jdata[key], 
@@ -175,7 +169,7 @@ def create_SF(
             
             case 'factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones':
                 loader(db=db, model=models.GANA_SF_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones, obj_in=jdata[key], 
-                       filters=['topic', 'fuente'])
+                       filters=['topic', 'fuente', 'unidad'])
             
             case 'potencial_energetico_del_estiercol':
                 loader(db=db, model=models.GANA_SF_potencial_energetico_del_estiercol, obj_in=jdata[key], 
@@ -206,8 +200,7 @@ def read_SF(
     limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
     
     d = {
         'uso_actual_de_la_tierra_sector_agropecuario_en_colombia'                                : models.GANA_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia,
@@ -222,12 +215,11 @@ def read_SF(
         }
     
     rd = downloader_batch(db=db, **d)
-    result = jsonable_encoder(rd)
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
@@ -235,8 +227,7 @@ def delete_SF(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.GANA_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia)
     prune(db=db, model=models.GANA_SF_hato_ganadero_colombiano)
@@ -257,31 +248,27 @@ def delete_SF(
 
 @router.post(
         path='/salidas', 
-        response_model=schemas.GANA_SALIDAS, 
+        response_model=schemas.SALIDAS, 
         status_code=status.HTTP_201_CREATED)
 def create_salidas(
-    data: schemas.GANA_SALIDAS, 
+    data: schemas.SALIDAS, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
-
     loader(
         db=db, 
         model=models.GANA_SALIDAS, 
         obj_in=jdata['salidas'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_3']
     )
-    
     return jdata
 
 
-@router.get('/salidas/{module}')
+@router.get('/salidas')
 def read_salidas_module(
-    module: schemas.Salidas_name,
     medida_1: schemas.Trayectoria,
     medida_2: schemas.Trayectoria,
     medida_3: schemas.Trayectoria,
@@ -290,27 +277,21 @@ def read_salidas_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
 
-    match module:
-        case schemas.Salidas_name.salidas:
-            rd = downloader(
-                db=db, 
-                model=models.GANA_SALIDAS,
-                topic='salidas',
-                **filter
-                )
-            result = jsonable_encoder(rd)
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+        db=db, 
+        model=models.GANA_SALIDAS,
+        topic='produccion_de_estiercol_para_bioenergia',
+        **filter
+        )
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
@@ -318,8 +299,7 @@ def delete_Salidas(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.GANA_SALIDAS)
 
@@ -331,29 +311,26 @@ def delete_Salidas(
 
 @router.post(
         path='/emisiones', 
-        response_model=schemas.GANA_EMISIONES, 
+        response_model=schemas.EMISIONES, 
         status_code=status.HTTP_201_CREATED)
 def create_emisiones(
-    data: schemas.GANA_EMISIONES, 
+    data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
-
     loader(
         db=db, 
         model=models.GANA_EMISIONES, 
         obj_in=jdata['emisiones'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_3']
     )
-    
     return jdata
 
 
-@router.get('/emisiones')
+@router.get('/emisiones/{module}')
 def read_Emisiones_module(
     module: schemas.Emisiones_name,
     medida_1: schemas.Trayectoria,
@@ -364,27 +341,50 @@ def read_Emisiones_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
 
     match module:
-        case schemas.Emisiones_name.emisiones:
+        case schemas.Emisiones_name.emisiones_de_hato_ganadero:
             rd = downloader(
                 db=db, 
-                model=models.EMISIONES,
-                topic='emisiones',
+                model=models.GANA_EMISIONES,
+                topic='emisiones_de_hato_ganadero',
                 **filter
                 )
-            result = jsonable_encoder(rd)
+        
+        case schemas.Emisiones_name.practicas_sostenibles_en_suelos_ganaderos:
+            rd = downloader(
+                db=db, 
+                model=models.GANA_EMISIONES,
+                topic='practicas_sostenibles_en_suelos_ganaderos',
+                **filter
+                )
+        
+        case schemas.Emisiones_name.mejores_practicas_pecuarias:
+            rd = downloader(
+                db=db, 
+                model=models.GANA_EMISIONES,
+                topic='mejores_practicas_pecuarias',
+                **filter
+                )
+        
+        case schemas.Emisiones_name.manejo_de_estiercol:
+            rd = downloader(
+                db=db, 
+                model=models.GANA_EMISIONES,
+                topic='manejo_de_estiercol',
+                **filter
+                )
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
@@ -392,9 +392,8 @@ def delete_Emisiones(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.GANA_EMISIONES)
 
-    return {'msg': 'Deleted SC successfully'}
+    return {'msg': 'Deleted successfully'}

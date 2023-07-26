@@ -204,7 +204,7 @@ class SUPUESTOS_FIJOS(BaseModel):
 
 class Salidas_name(str, Enum):
     salida_cultivos         = 'salida_cultivos'
-    salidas_biocombustibles = 'salidas_biocombustibles'
+    salida_biocombustibles  = 'salida_biocombustibles'
     
 
 class _AGRO_SALIDAS_cultivos(BaseModel):
@@ -258,7 +258,7 @@ class _AGRO_SALIDAS_biocombustibles(BaseModel):
 class AGRO_SALIDAS_biocombustibles(BaseModel):
     """Salidas_biocombustibles"""
 
-    salidas_biocombustibles : list[_AGRO_SALIDAS_biocombustibles]
+    salida_biocombustibles : list[_AGRO_SALIDAS_biocombustibles]
 
     class Config:
         orm_mode : True
@@ -269,7 +269,7 @@ class SALIDAS(BaseModel):
     """
     
     salida_cultivos         : list[_AGRO_SALIDAS_cultivos]
-    salidas_biocombustibles : list[_AGRO_SALIDAS_biocombustibles]
+    salida_biocombustibles  : list[_AGRO_SALIDAS_biocombustibles]
 
     class Config:
         orm_mode : True
@@ -280,7 +280,10 @@ class SALIDAS(BaseModel):
 ####################################################################################
 
 class Emisiones_name(str, Enum):
-    emisiones = 'emisiones'
+    # emisiones = 'emisiones'
+    emisiones_cultivo_biocombustibles = 'emisiones_cultivo_biocombustibles',
+    implementacion_de_mejores_practicas_agricolas = 'implementacion_de_mejores_practicas_agricolas',
+    emisiones_a_industria = 'emisiones_a_industria'
 
 
 class AGRO_EMISIONES(BaseModel):

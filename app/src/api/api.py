@@ -5,9 +5,9 @@ from fastapi import APIRouter
 from modules.excel import download_excel
 
 # Agricultura
-# from modules.agricultura import endpoints as agricultura
-# # Bosques
-# from modules.bosques import endpoints as bosques
+from modules.agricultura import endpoints as agricultura
+# Bosques
+from modules.bosques import endpoints as bosques
 # # Edificaciones
 # from modules.edificaciones.comercial_servicio.acondicionamiento_espacios_comerciales import endpoints as acec  # noqa
 # from modules.edificaciones.comercial_servicio.usos_termicos_equipamiento import endpoints as uste  # noqa
@@ -22,13 +22,13 @@ from modules.excel import download_excel
 # from modules.energia.bioenergia import endpoints as bioenergia  # noqa
 # from modules.energia.combustibles_fosiles import endpoints as fosiles  # noqa
 # from modules.energia.importaciones_exportaciones import endpoints as enie  # noqa
-# # Ganaderia
-# from modules.ganaderia import endpoints as ganaderia  # noqa
+# Ganaderia
+from modules.ganaderia import endpoints as ganaderia  # noqa
 # Industria
 from modules.industria import endpoints as industria  # noqa
-# # Residuos
-# from modules.residuos.aguas_residuales import endpoints as aguas  # noqa
-# from modules.residuos.residuos_solidos import endpoints as solidos  # noqa
+# Residuos
+from modules.residuos.aguas_residuales import endpoints as aguas  # noqa
+from modules.residuos.residuos_solidos import endpoints as solidos  # noqa
 # # Transporte
 # from modules.transporte.internacional.aviacion import endpoints as aviacion  # noqa
 # from modules.transporte.internacional.navegacion import endpoints as navegacion  # noqa
@@ -70,19 +70,19 @@ api_router.include_router(download_excel.router, prefix="/download", tags=["Down
 ### Modules of sectors ###
 
 # Agricultura
-# api_router.include_router(
-#     router=agricultura.router, 
-#     prefix="/agricultura", 
-#     tags=["Agricultura"]
-# )
+api_router.include_router(
+    router=agricultura.router, 
+    prefix="/agricultura", 
+    tags=["Agricultura"]
+)
 
 
 # Bosques
-# api_router.include_router(
-#     router=bosques.router, 
-#     prefix="/bosques", 
-#     tags=["Bosques"]
-# )
+api_router.include_router(
+    router=bosques.router, 
+    prefix="/bosques", 
+    tags=["Bosques"]
+)
 
 
 # Edificaciones
@@ -154,11 +154,11 @@ api_router.include_router(download_excel.router, prefix="/download", tags=["Down
 
 
 # Ganaderia
-# api_router.include_router(
-#     router=ganaderia.router, 
-#     prefix="/ganaderia", 
-#     tags=["Ganaderia"]
-# )
+api_router.include_router(
+    router=ganaderia.router, 
+    prefix="/ganaderia", 
+    tags=["Ganaderia"]
+)
 
 
 # Industria
@@ -170,16 +170,16 @@ api_router.include_router(
 
 
 # Residuos
-# api_router.include_router(
-#     router=solidos.router, 
-#     prefix="/residuos/residuos_solidos", 
-#     tags=["Residuos Solidos"]
-# )
-# api_router.include_router(
-#     router=aguas.router, 
-#     prefix="/residuos/aguas_residuales", 
-#     tags=["Residuos Aguas"]
-# )
+api_router.include_router(
+    router=solidos.router, 
+    prefix="/residuos/residuos_solidos", 
+    tags=["Residuos Solidos"]
+)
+api_router.include_router(
+    router=aguas.router, 
+    prefix="/residuos/aguas_residuales", 
+    tags=["Residuos Aguas"]
+)
 
 
 # Transporte

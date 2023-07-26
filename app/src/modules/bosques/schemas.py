@@ -203,7 +203,7 @@ class BOSQ_SALIDAS(BaseModel):
 class SALIDAS(BaseModel):
     """Salidas"""
     
-    total_areas_reforestadas : list[BOSQ_SALIDAS]
+    salidas : list[BOSQ_SALIDAS]
 
     class Config:
         orm_mode : True

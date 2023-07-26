@@ -743,4 +743,4 @@ def delete_Emisiones(
     prune(db=db, model=models.INDU_emisiones_por_el_consumo_de_bagazo_y_otros)
     prune(db=db, model=models.INDU_emisiones_sao)
 
-    return {'msg': 'Deleted SC successfully'}
+    return {'msg': 'Deleted successfully'}

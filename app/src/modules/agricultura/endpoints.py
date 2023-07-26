@@ -37,8 +37,7 @@ def create_ST(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
@@ -76,8 +75,8 @@ def read_ST_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'trayectoria' : trayectoria}
 
     match module:
@@ -88,7 +87,6 @@ def read_ST_module(
                 topic='mejores_practicas_agricolas_superficie_de_implementacion',
                 **filter
                 )
-            result = jsonable_encoder(rd)
                 
         case schemas.ST_name.tierra_dedicada_para_biocombustibles_superficie_de_implementacion:
             rd = downloader(
@@ -97,15 +95,14 @@ def read_ST_module(
                 topic='tierra_dedicada_para_biocombustibles_superficie_de_implementacion',
                 **filter
                 )
-            result = jsonable_encoder(rd)
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
@@ -113,8 +110,7 @@ def delete_ST(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion)
     prune(db=db, model=models.AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion)
@@ -131,8 +127,7 @@ def create_SF(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
@@ -141,7 +136,7 @@ def create_SF(
         match key:
             case 'factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo':
                 loader(db=db, model=models.AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                       filters=['topic', 'tipo', 'unidad'])
                     
             case 'produccion_biocombustibles':
                 loader(db=db, model=models.AGRO_SF_produccion_biocombustibles, obj_in=jdata[key], 
@@ -157,7 +152,7 @@ def create_SF(
             
             case 'uso_actual_de_la_tierra_sector_agropecuario_en_colombia':
                 loader(db=db, model=models.AGRO_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia, obj_in=jdata[key], 
-                       filters=['topic', 'tipo', 'fuente'])
+                       filters=['topic', 'tipo', 'fuente', 'unidad'])
             
             case 'tasas_de_crecimiento_del_pib_sectorial_de_agricultura':
                 loader(db=db, model=models.AGRO_SF_tasas_de_crecimiento_del_pib_sectorial_de_agricultura, obj_in=jdata[key], 
@@ -188,8 +183,7 @@ def read_SF(
     limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
     
     d = {
         'factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo' : models.AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo,
@@ -204,12 +198,11 @@ def read_SF(
         }
     
     rd = downloader_batch(db=db, **d)
-    result = jsonable_encoder(rd)
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
@@ -217,8 +210,7 @@ def delete_SF(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo)
     prune(db=db, model=models.AGRO_SF_produccion_biocombustibles)
@@ -238,26 +230,23 @@ def delete_SF(
 ####################################################################################
 
 @router.post(
-        path='/salidas/salida_cultivos', 
+        path='/salidas/salidas_cultivos', 
         response_model=schemas.AGRO_SALIDAS_cultivos, 
         status_code=status.HTTP_201_CREATED)
-def create_salida_cultivos(
+def create_salidas_cultivos(
     data: schemas.AGRO_SALIDAS_cultivos, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
-
     loader(
         db=db, 
         model=models.AGRO_SALIDAS_cultivos, 
         obj_in=jdata['salida_cultivos'], 
         filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2', 'medida_3']
     )
-    
     return jdata
 
 
@@ -270,18 +259,15 @@ def create_salidas_biocombustibles(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
-
     loader(
         db=db, 
         model=models.AGRO_SALIDAS_biocombustibles, 
-        obj_in=jdata['salidas_biocombustibles'], 
+        obj_in=jdata['salida_biocombustibles'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_3']
     )
-    
     return jdata
 
 
@@ -296,8 +282,8 @@ def read_salidas_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
 
     match module:
@@ -305,27 +291,25 @@ def read_salidas_module(
             rd = downloader(
                 db=db, 
                 model=models.AGRO_SALIDAS_cultivos,
-                topic='salida_cultivos',
+                topic='cultivos',
                 **filter
                 )
-            result = jsonable_encoder(rd)
                 
-        case schemas.Salidas_name.salidas_biocombustibles:
+        case schemas.Salidas_name.salida_biocombustibles:
             rd = downloader(
                 db=db, 
                 model=models.AGRO_SALIDAS_biocombustibles,
-                topic='salidas_biocombustibles',
+                topic='biocombustibles',
                 **filter
                 )
-            result = jsonable_encoder(rd)
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
@@ -333,8 +317,7 @@ def delete_Salidas(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.AGRO_SALIDAS_cultivos)
     prune(db=db, model=models.AGRO_SALIDAS_biocombustibles)
@@ -347,25 +330,22 @@ def delete_Salidas(
 
 @router.post(
         path='/emisiones', 
-        response_model=schemas.AGRO_EMISIONES, 
+        response_model=schemas.EMISIONES, 
         status_code=status.HTTP_201_CREATED)
 def create_emisiones(
-    data: schemas.AGRO_EMISIONES, 
+    data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
-
     loader(
         db=db, 
         model=models.AGRO_EMISIONES, 
         obj_in=jdata['emisiones'], 
         filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2', 'medida_3']
     )
-    
     return jdata
 
 
@@ -380,27 +360,42 @@ def read_Emisiones_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
 
     match module:
-        case schemas.Emisiones_name.emisiones:
+        case schemas.Emisiones_name.emisiones_cultivo_biocombustibles:
             rd = downloader(
                 db=db, 
-                model=models.EMISIONES,
-                topic='emisiones',
+                model=models.AGRO_EMISIONES,
+                topic='emisiones_cultivo_biocombustibles',
                 **filter
                 )
-            result = jsonable_encoder(rd)
+        
+        case schemas.Emisiones_name.implementacion_de_mejores_practicas_agricolas:
+            rd = downloader(
+                db=db, 
+                model=models.AGRO_EMISIONES,
+                topic='implementacion_de_mejores_practicas_agricolas',
+                **filter
+                )
+            
+        case schemas.Emisiones_name.emisiones_a_industria:
+            rd = downloader(
+                db=db, 
+                model=models.AGRO_EMISIONES,
+                topic='emisiones_a_industria',
+                **filter
+                )
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
@@ -408,9 +403,8 @@ def delete_Emisiones(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.AGRO_EMISIONES)
 
-    return {'msg': 'Deleted SC successfully'}
+    return {'msg': 'Deleted successfully'}

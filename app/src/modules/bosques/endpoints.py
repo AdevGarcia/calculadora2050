@@ -37,8 +37,7 @@ def create_ST(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
@@ -76,8 +75,8 @@ def read_ST_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'trayectoria' : trayectoria}
 
     match module:
@@ -88,7 +87,6 @@ def read_ST_module(
                 topic='escenarios_de_deforestacion',
                 **filter
                 )
-            result = jsonable_encoder(rd)
                 
         case schemas.ST_name.desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales:
             rd = downloader(
@@ -97,15 +95,14 @@ def read_ST_module(
                 topic='desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales',
                 **filter
                 )
-            result = jsonable_encoder(rd)
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
@@ -113,8 +110,7 @@ def delete_ST(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.BOSQ_ST_escenarios_de_deforestacion)
     prune(db=db, model=models.BOSQ_ST_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales)
@@ -131,8 +127,7 @@ def create_SF(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
@@ -145,7 +140,7 @@ def create_SF(
                     
             case 'deforestacion_observada_no_acumulada':
                 loader(db=db, model=models.BOSQ_SF_deforestacion_observada_no_acumulada, obj_in=jdata[key], 
-                       filters=['topic', 'fuente'])
+                       filters=['topic', 'fuente', 'unidad'])
                 
             case 'contenidos_de_carbono_por_zonas_naturales':
                 loader(db=db, model=models.BOSQ_SF_contenidos_de_carbono_por_zonas_naturales, obj_in=jdata[key], 
@@ -161,7 +156,7 @@ def create_SF(
             
             case 'biomasa_aerea_subterranea_reforestacion_comercial':
                 loader(db=db, model=models.BOSQ_SF_biomasa_aerea_subterranea_reforestacion_comercial, obj_in=jdata[key], 
-                       filters=['topic', 'fuente'])
+                       filters=['topic', 'fuente', 'unidad'])
                 
             case 'descuentos_aplicables_a_reforestacion_comercial':
                 loader(db=db, model=models.BOSQ_SF_descuentos_aplicables_a_reforestacion_comercial, obj_in=jdata[key], 
@@ -180,8 +175,7 @@ def read_SF(
     limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
     
     d = {
         'area_anual_deforestada_puntual'                    : models.BOSQ_SF_area_anual_deforestada_puntual,
@@ -194,12 +188,11 @@ def read_SF(
         }
     
     rd = downloader_batch(db=db, **d)
-    result = jsonable_encoder(rd)
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
@@ -207,8 +200,7 @@ def delete_SF(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.BOSQ_SF_area_anual_deforestada_puntual)
     prune(db=db, model=models.BOSQ_SF_deforestacion_observada_no_acumulada)
@@ -226,32 +218,28 @@ def delete_SF(
 ####################################################################################
 
 @router.post(
-        path='/salidas/total_areas_reforestadas', 
-        response_model=schemas.BOSQ_SALIDAS, 
+        path='/salidas', 
+        response_model=schemas.SALIDAS, 
         status_code=status.HTTP_201_CREATED)
 def create_total_areas_reforestadas(
-    data: schemas.BOSQ_SALIDAS, 
+    data: schemas.SALIDAS, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
-
     loader(
         db=db, 
         model=models.BOSQ_SALIDAS, 
-        obj_in=jdata['total_areas_reforestadas'], 
+        obj_in=jdata['salidas'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2']
     )
-    
     return jdata
 
 
-@router.get('/salidas/{module}')
+@router.get('/salidas')
 def read_salidas_module(
-    module: schemas.Salidas_name,
     medida_1: schemas.Trayectoria,
     medida_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
@@ -259,27 +247,21 @@ def read_salidas_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
 
-    match module:
-        case schemas.Salidas_name.total_areas_reforestadas:
-            rd = downloader(
-                db=db, 
-                model=models.BOSQ_SALIDAS,
-                topic='total_areas_reforestadas',
-                **filter
-                )
-            result = jsonable_encoder(rd)
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+        db=db, 
+        model=models.BOSQ_SALIDAS,
+        topic='total_areas_reforestadas',
+        **filter
+        )
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
@@ -287,8 +269,7 @@ def delete_Salidas(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.BOSQ_SALIDAS)
 
@@ -300,31 +281,28 @@ def delete_Salidas(
 
 @router.post(
         path='/emisiones', 
-        response_model=schemas.BOSQ_EMISIONES, 
+        response_model=schemas.EMISIONES, 
         status_code=status.HTTP_201_CREATED)
 def create_emisiones(
-    data: schemas.BOSQ_EMISIONES, 
+    data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
-
     loader(
         db=db, 
         model=models.BOSQ_EMISIONES, 
         obj_in=jdata['emisiones'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2']
     )
-    
     return jdata
 
 
 @router.get('/emisiones')
 def read_emisiones_module(
-    module: schemas.Emisiones_name,
+    # module: schemas.Emisiones_name,
     medida_1: schemas.Trayectoria,
     medida_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
@@ -332,27 +310,21 @@ def read_emisiones_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
 
-    match module:
-        case schemas.Emisiones_name.emisiones:
-            rd = downloader(
-                db=db, 
-                model=models.EMISIONES,
-                topic='emisiones',
-                **filter
-                )
-            result = jsonable_encoder(rd)
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+        db=db, 
+        model=models.BOSQ_EMISIONES,
+        topic='total_emisiones',
+        **filter
+        )
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
@@ -360,9 +332,8 @@ def delete_Emisiones(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.BOSQ_EMISIONES)
 
-    return {'msg': 'Deleted SC successfully'}
+    return {'msg': 'Deleted successfully'}

@@ -769,243 +769,243 @@
             "unidad": "%"
         }
     ],
-    "biomasa_aerea_+_subterranea_reforestacion_comercial": [
+    "biomasa_aerea_subterranea_reforestacion_comercial": [
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "acacia_mangium",
             "valor": 15.63,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "bombacopsis_quinata",
             "valor": 7.699999999999999,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "cariniana_pyriformis",
             "valor": 6.08,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "cedrela_odorata",
             "valor": 16.58,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "cordia_alliodora",
             "valor": 16.15,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "crecimiento_lento",
             "valor": 5.6899999999999995,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "crecimiento_medio",
             "valor": 13.120000000000001,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "crecimiento_rapido",
             "valor": 22.439999999999998,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "cupressus_sp.",
             "valor": 5.6899999999999995,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "eucalyptus_globulus",
             "valor": 30.4,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "eucalyptus_grandis",
             "valor": 44.3,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "eucalyptus_pellita",
             "valor": 30.32,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "eucalyptus_tereticornis",
             "valor": 20.81,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "gmelina_arborea",
             "valor": 12.57,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "pinus_caribaea",
             "valor": 11.27,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "pinus_oocarpa",
             "valor": 17.58,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "pinus_patula",
             "valor": 11.54,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "quercus_humboldtii",
             "valor": 5.6899999999999995,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "tabebuia_rosea",
             "valor": 12.79,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "tectona_grandis",
             "valor": 12.33,
             "unidad": "tonc_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "acacia_mangium",
             "valor": 57.362100000000005,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "bombacopsis_quinata",
             "valor": 28.258999999999997,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "cariniana_pyriformis",
             "valor": 22.3136,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "cedrela_odorata",
             "valor": 60.84859999999999,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "cordia_alliodora",
             "valor": 59.27049999999999,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "crecimiento_lento",
             "valor": 20.882299999999997,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "crecimiento_medio",
             "valor": 48.150400000000005,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "crecimiento_rapido",
             "valor": 82.35479999999998,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "cupressus_sp.",
             "valor": 20.882299999999997,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "eucalyptus_globulus",
             "valor": 111.568,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "eucalyptus_grandis",
             "valor": 162.581,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "eucalyptus_pellita",
             "valor": 111.2744,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "eucalyptus_tereticornis",
             "valor": 76.3727,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "gmelina_arborea",
             "valor": 46.1319,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "pinus_caribaea",
             "valor": 41.3609,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "pinus_oocarpa",
             "valor": 64.51859999999999,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "pinus_patula",
             "valor": 42.3518,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "quercus_humboldtii",
             "valor": 20.882299999999997,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "tabebuia_rosea",
             "valor": 46.939299999999996,
             "unidad": "tonco2_ha"
         },
         {
-            "topic": "biomasa_aerea_+_subterranea_reforestacion_comercial",
+            "topic": "biomasa_aerea_subterranea_reforestacion_comercial",
             "fuente": "tectona_grandis",
             "valor": 45.2511,
             "unidad": "tonco2_ha"

@@ -263,7 +263,10 @@ class SALIDAS(BaseModel):
 ####################################################################################
 
 class Emisiones_name(str, Enum):
-    emisiones = 'emisiones'
+    emisiones_de_hato_ganadero = 'emisiones_de_hato_ganadero'
+    practicas_sostenibles_en_suelos_ganaderos = 'practicas_sostenibles_en_suelos_ganaderos'
+    mejores_practicas_pecuarias = 'mejores_practicas_pecuarias'
+    manejo_de_estiercol = 'manejo_de_estiercol'
 
 
 class GANA_EMISIONES(BaseModel):

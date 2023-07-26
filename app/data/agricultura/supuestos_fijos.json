@@ -1,1 +1,557 @@
-{"factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo": [{"topic": "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo", "tipo": "palma_de_aceite", "value": 3.57, "unidad": "t/ha"}, {"topic": "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo", "tipo": "cana_de_azucar", "value": 1.65, "unidad": "Mlt/ha"}, {"topic": "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo", "tipo": "palma_de_aceite", "value": 1.1666666666666666e-05, "unidad": "TWh/ha"}, {"topic": "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo", "tipo": "cana_de_azucar", "value": 5.892464979033843e-05, "unidad": "TWh/Mlt"}], "produccion_biocombustibles": [{"topic": "produccion_biocombustibles", "tipo": "produccion_biodiesel", "value": 4.0, "unidad": "twh"}, {"topic": "produccion_biocombustibles", "tipo": "produccion_bioetanol", "value": 2.0, "unidad": "twh"}], "porcentaje_del_cultivo_usado_para_biocombustibles": [{"topic": "porcentaje_del_cultivo_usado_para_biocombustibles", "tipo": "palma_de_aceite", "value": 30.0, "unidad": "%"}, {"topic": "porcentaje_del_cultivo_usado_para_biocombustibles", "tipo": "cana_de_azucar", "value": 30.0, "unidad": "%"}], "factor_de_emision_de_cultivo_usado_para_biocombustibles": [{"topic": "factor_de_emision_de_cultivo_usado_para_biocombustibles", "tipo": "palma_de_aceite", "value": 12.2, "unidad": "tco2_ha"}, {"topic": "factor_de_emision_de_cultivo_usado_para_biocombustibles", "tipo": "cana_de_azucar", "value": 12.2, "unidad": "tco2_ha"}], "uso_actual_de_la_tierra_sector_agropecuario_en_colombia": [{"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "agricultura", "valor": 22.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "ganaderia", "valor": 15.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "bosques", "valor": 48.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "otros", "valor": 29.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "total", "valor": 114.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "agricultura", "valor": 0.19298245614035087, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "ganaderia", "valor": 0.13157894736842105, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "bosques", "valor": 0.42105263157894735, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "otros", "valor": 0.2543859649122807, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_potencial", "fuente": "total", "valor": 1.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "agricultura", "valor": 5.3, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "ganaderia", "valor": 34.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "bosques", "valor": 0.4, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "otros", "valor": 29.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "total", "valor": 68.69999999999999, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "agricultura", "valor": 0.07714701601164484, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "ganaderia", "valor": 0.49490538573508014, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "bosques", "valor": 0.005822416302765649, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "otros", "valor": 0.4221251819505095, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "uso_actual", "fuente": "total", "valor": 1.0000000000000002, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "diferencia", "fuente": "agricultura", "valor": 16.7, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "diferencia", "fuente": "ganaderia", "valor": -19.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "diferencia", "fuente": "bosques", "valor": 47.6, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "diferencia", "fuente": "otros", "valor": 0.0, "unidad": "%"}, {"topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia", "tipo": "diferencia", "fuente": "total", "valor": 45.30000000000001, "unidad": "%"}], "tasas_de_crecimiento_del_pib_sectorial_de_agricultura": [{"topic": "tasas_de_crecimiento_del_pib_sectorial_de_agricultura", "tipo": "pib_sectorial_agricola", "y2018": 0.03971994280461, "y2020": 0.038434611003676296, "y2025": 0.03839147734160103, "y2030": 0.03809905041520184, "y2035": 0.03502675044681534, "y2040": 0.03502675044681534, "y2045": 0.03502675044681534, "y2050": 0.03502675044681534, "unidad": "%"}], "areas_de_implementacion_de_mejores_practicas_agricolas": [{"topic": "areas_de_implementacion_de_mejores_practicas_agricolas", "tipo": "sistemas_agroforestales", "y2018": 10000.0, "y2020": 10800.0, "y2025": 11600.0, "y2030": 12400.0, "y2035": 13200.0, "y2040": 14000.0, "y2045": 14800.0, "y2050": 15600.0, "unidad": "ha"}, {"topic": "areas_de_implementacion_de_mejores_practicas_agricolas", "tipo": "uso_eficiente_de_fertilizantes", "y2018": 17600.0, "y2020": 19008.0, "y2025": 20416.0, "y2030": 21824.0, "y2035": 23232.0, "y2040": 24640.0, "y2045": 26048.0, "y2050": 27456.0, "unidad": "ha"}, {"topic": "areas_de_implementacion_de_mejores_practicas_agricolas", "tipo": "uso_de_biodigestores", "y2018": 12000.0, "y2020": 12960.0, "y2025": 13919.999999999998, "y2030": 14880.0, "y2035": 15840.0, "y2040": 16800.0, "y2045": 17760.0, "y2050": 18720.0, "unidad": "ha"}, {"topic": "areas_de_implementacion_de_mejores_practicas_agricolas", "tipo": "plantaciones_de_mango_y_aguacate", "y2018": 51331.0, "y2020": 55437.48, "y2025": 59543.96, "y2030": 63650.44, "y2035": 67756.92, "y2040": 71863.4, "y2045": 75969.88, "y2050": 80076.36, "unidad": "ha"}], "factor_de_produccion_biomasa_por_cultivo": [{"topic": "factor_de_produccion_biomasa_por_cultivo", "tipo": "palma_de_aceite", "value": 9.34793765961238, "unidad": "tresiduos_ha"}, {"topic": "factor_de_produccion_biomasa_por_cultivo", "tipo": "cana_de_azucar", "value": 117.58, "unidad": "tresiduos_ha"}, {"topic": "factor_de_produccion_biomasa_por_cultivo", "tipo": "cana_panelera", "value": 40.1092820427074, "unidad": "tresiduos_ha"}, {"topic": "factor_de_produccion_biomasa_por_cultivo", "tipo": "cafe", "value": 0.634244227022735, "unidad": "tresiduos_ha"}, {"topic": "factor_de_produccion_biomasa_por_cultivo", "tipo": "maiz", "value": 2.74161576036764, "unidad": "tresiduos_ha"}, {"topic": "factor_de_produccion_biomasa_por_cultivo", "tipo": "arroz", "value": 5.29000551464625, "unidad": "tresiduos_ha"}, {"topic": "factor_de_produccion_biomasa_por_cultivo", "tipo": "banano", "value": 129.01, "unidad": "tresiduos_ha"}, {"topic": "factor_de_produccion_biomasa_por_cultivo", "tipo": "platano", "value": 15.81, "unidad": "tresiduos_ha"}], "potencial_energetico_por_unidad_de_biomasa": [{"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "palma_de_aceite", "tipo": "cuesco", "factor": 0.217, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 3.8565264869134725e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "palma_de_aceite", "tipo": "fibra", "factor": 0.627, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 3.4436126215684166e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "palma_de_aceite", "tipo": "raquis", "factor": 1.06, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 1.985372779396675e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "cana_de_azucar_molida", "tipo": "cogollo", "factor": 3.36, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 1.3588695445454334e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "cana_de_azucar_molida", "tipo": "bagazo", "factor": 2.68, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 3.0466006569134997e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "cana_panelera", "tipo": "bagazo", "factor": 2.53, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 4.515713809201861e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "cana_panelera", "tipo": "hojascogollo", "factor": 3.75, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 9.16784369658761e-07, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "cafe", "tipo": "pulpa", "factor": 2.131, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 9.969061652870778e-07, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "cafe", "tipo": "cisco", "factor": 0.205, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 4.800677034698028e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "cafe", "tipo": "tallos", "factor": 3.024, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 3.7589644797829163e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "maiz", "tipo": "rastrojo", "factor": 0.934, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 2.7314530557928335e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "maiz", "tipo": "tusa", "factor": 0.27, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 2.890197631756e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "maiz", "tipo": "capacho", "factor": 0.211, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 4.215576340811667e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "arroz", "tipo": "tamo", "factor": 2.35, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 9.931199801133916e-07, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "arroz", "tipo": "cascarilla", "factor": 0.2, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 4.023173063735806e-06, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "banano", "tipo": "raquis_de_banano", "factor": 1.0, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 1.1925019460183555e-07, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "banano", "tipo": "vastago", "factor": 5.0, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 1.5660049553513168e-07, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "banano", "tipo": "banano_de_rechazo", "factor": 0.15, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 4.883927306211694e-07, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "platano", "tipo": "raquis_de_platano", "factor": 1.0, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 1.19250003339e-07, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "platano", "tipo": "vastago_de_platano", "factor": 5.0, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 1.5660061070060668e-07, "unidad_potencial": "TWh_t_residuo"}, {"topic": "potencial_energetico_por_unidad_de_biomasa", "bloque": "platano", "tipo": "platano_de_rechazo", "factor": 0.15, "unidad_factor": "tResiduo_tproducto_principal", "potencial": 4.883978031488222e-07, "unidad_potencial": "TWh_t_residuo"}]}
+{
+    "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo": [
+        {
+            "topic": "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo",
+            "tipo": "palma_de_aceite",
+            "value": 3.57,
+            "unidad": "t/ha"
+        },
+        {
+            "topic": "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo",
+            "tipo": "cana_de_azucar",
+            "value": 1.65,
+            "unidad": "Mlt/ha"
+        },
+        {
+            "topic": "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo",
+            "tipo": "palma_de_aceite",
+            "value": 1.1666666666666666e-05,
+            "unidad": "TWh/ha"
+        },
+        {
+            "topic": "factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo",
+            "tipo": "cana_de_azucar",
+            "value": 5.892464979033843e-05,
+            "unidad": "TWh/Mlt"
+        }
+    ],
+    "produccion_biocombustibles": [
+        {
+            "topic": "produccion_biocombustibles",
+            "tipo": "produccion_biodiesel",
+            "value": 4.0,
+            "unidad": "twh"
+        },
+        {
+            "topic": "produccion_biocombustibles",
+            "tipo": "produccion_bioetanol",
+            "value": 2.0,
+            "unidad": "twh"
+        }
+    ],
+    "porcentaje_del_cultivo_usado_para_biocombustibles": [
+        {
+            "topic": "porcentaje_del_cultivo_usado_para_biocombustibles",
+            "tipo": "palma_de_aceite",
+            "value": 30.0,
+            "unidad": "%"
+        },
+        {
+            "topic": "porcentaje_del_cultivo_usado_para_biocombustibles",
+            "tipo": "cana_de_azucar",
+            "value": 30.0,
+            "unidad": "%"
+        }
+    ],
+    "factor_de_emision_de_cultivo_usado_para_biocombustibles": [
+        {
+            "topic": "factor_de_emision_de_cultivo_usado_para_biocombustibles",
+            "tipo": "palma_de_aceite",
+            "value": 12.2,
+            "unidad": "tco2_ha"
+        },
+        {
+            "topic": "factor_de_emision_de_cultivo_usado_para_biocombustibles",
+            "tipo": "cana_de_azucar",
+            "value": 12.2,
+            "unidad": "tco2_ha"
+        }
+    ],
+    "uso_actual_de_la_tierra_sector_agropecuario_en_colombia": [
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "agricultura",
+            "valor": 22.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "ganaderia",
+            "valor": 15.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "bosques",
+            "valor": 48.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "otros",
+            "valor": 29.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "total",
+            "valor": 114.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "agricultura",
+            "valor": 0.19298245614035087,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "ganaderia",
+            "valor": 0.13157894736842105,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "bosques",
+            "valor": 0.42105263157894735,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "otros",
+            "valor": 0.2543859649122807,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_potencial",
+            "fuente": "total",
+            "valor": 1.0,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "agricultura",
+            "valor": 5.3,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "ganaderia",
+            "valor": 34.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "bosques",
+            "valor": 0.4,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "otros",
+            "valor": 29.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "total",
+            "valor": 68.69999999999999,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "agricultura",
+            "valor": 0.07714701601164484,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "ganaderia",
+            "valor": 0.49490538573508014,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "bosques",
+            "valor": 0.005822416302765649,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "otros",
+            "valor": 0.4221251819505095,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "uso_actual",
+            "fuente": "total",
+            "valor": 1.0000000000000002,
+            "unidad": "%"
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "diferencia",
+            "fuente": "agricultura",
+            "valor": 16.7,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "diferencia",
+            "fuente": "ganaderia",
+            "valor": -19.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "diferencia",
+            "fuente": "bosques",
+            "valor": 47.6,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "diferencia",
+            "fuente": "otros",
+            "valor": 0.0,
+            "unidad": ""
+        },
+        {
+            "topic": "uso_actual_de_la_tierra_sector_agropecuario_en_colombia",
+            "tipo": "diferencia",
+            "fuente": "total",
+            "valor": 45.30000000000001,
+            "unidad": ""
+        }
+    ],
+    "tasas_de_crecimiento_del_pib_sectorial_de_agricultura": [
+        {
+            "topic": "tasas_de_crecimiento_del_pib_sectorial_de_agricultura",
+            "tipo": "pib_sectorial_agricola",
+            "y2018": 0.03971994280461,
+            "y2020": 0.038434611003676296,
+            "y2025": 0.03839147734160103,
+            "y2030": 0.03809905041520184,
+            "y2035": 0.03502675044681534,
+            "y2040": 0.03502675044681534,
+            "y2045": 0.03502675044681534,
+            "y2050": 0.03502675044681534,
+            "unidad": "%"
+        }
+    ],
+    "areas_de_implementacion_de_mejores_practicas_agricolas": [
+        {
+            "topic": "areas_de_implementacion_de_mejores_practicas_agricolas",
+            "tipo": "sistemas_agroforestales",
+            "y2018": 10000.0,
+            "y2020": 10800.0,
+            "y2025": 11600.0,
+            "y2030": 12400.0,
+            "y2035": 13200.0,
+            "y2040": 14000.0,
+            "y2045": 14800.0,
+            "y2050": 15600.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "areas_de_implementacion_de_mejores_practicas_agricolas",
+            "tipo": "uso_eficiente_de_fertilizantes",
+            "y2018": 17600.0,
+            "y2020": 19008.0,
+            "y2025": 20416.0,
+            "y2030": 21824.0,
+            "y2035": 23232.0,
+            "y2040": 24640.0,
+            "y2045": 26048.0,
+            "y2050": 27456.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "areas_de_implementacion_de_mejores_practicas_agricolas",
+            "tipo": "uso_de_biodigestores",
+            "y2018": 12000.0,
+            "y2020": 12960.0,
+            "y2025": 13919.999999999998,
+            "y2030": 14880.0,
+            "y2035": 15840.0,
+            "y2040": 16800.0,
+            "y2045": 17760.0,
+            "y2050": 18720.0,
+            "unidad": "ha"
+        },
+        {
+            "topic": "areas_de_implementacion_de_mejores_practicas_agricolas",
+            "tipo": "plantaciones_de_mango_y_aguacate",
+            "y2018": 51331.0,
+            "y2020": 55437.48,
+            "y2025": 59543.96,
+            "y2030": 63650.44,
+            "y2035": 67756.92,
+            "y2040": 71863.4,
+            "y2045": 75969.88,
+            "y2050": 80076.36,
+            "unidad": "ha"
+        }
+    ],
+    "factor_de_produccion_biomasa_por_cultivo": [
+        {
+            "topic": "factor_de_produccion_biomasa_por_cultivo",
+            "tipo": "palma_de_aceite",
+            "value": 9.34793765961238,
+            "unidad": "tresiduos_ha"
+        },
+        {
+            "topic": "factor_de_produccion_biomasa_por_cultivo",
+            "tipo": "cana_de_azucar",
+            "value": 117.58,
+            "unidad": "tresiduos_ha"
+        },
+        {
+            "topic": "factor_de_produccion_biomasa_por_cultivo",
+            "tipo": "cana_panelera",
+            "value": 40.1092820427074,
+            "unidad": "tresiduos_ha"
+        },
+        {
+            "topic": "factor_de_produccion_biomasa_por_cultivo",
+            "tipo": "cafe",
+            "value": 0.634244227022735,
+            "unidad": "tresiduos_ha"
+        },
+        {
+            "topic": "factor_de_produccion_biomasa_por_cultivo",
+            "tipo": "maiz",
+            "value": 2.74161576036764,
+            "unidad": "tresiduos_ha"
+        },
+        {
+            "topic": "factor_de_produccion_biomasa_por_cultivo",
+            "tipo": "arroz",
+            "value": 5.29000551464625,
+            "unidad": "tresiduos_ha"
+        },
+        {
+            "topic": "factor_de_produccion_biomasa_por_cultivo",
+            "tipo": "banano",
+            "value": 129.01,
+            "unidad": "tresiduos_ha"
+        },
+        {
+            "topic": "factor_de_produccion_biomasa_por_cultivo",
+            "tipo": "platano",
+            "value": 15.81,
+            "unidad": "tresiduos_ha"
+        }
+    ],
+    "potencial_energetico_por_unidad_de_biomasa": [
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "palma_de_aceite",
+            "tipo": "cuesco",
+            "factor": 0.217,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 3.8565264869134725e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "palma_de_aceite",
+            "tipo": "fibra",
+            "factor": 0.627,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 3.4436126215684166e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "palma_de_aceite",
+            "tipo": "raquis",
+            "factor": 1.06,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 1.985372779396675e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "cana_de_azucar_molida",
+            "tipo": "cogollo",
+            "factor": 3.36,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 1.3588695445454334e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "cana_de_azucar_molida",
+            "tipo": "bagazo",
+            "factor": 2.68,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 3.0466006569134997e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "cana_panelera",
+            "tipo": "bagazo",
+            "factor": 2.53,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 4.515713809201861e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "cana_panelera",
+            "tipo": "hojascogollo",
+            "factor": 3.75,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 9.16784369658761e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "cafe",
+            "tipo": "pulpa",
+            "factor": 2.131,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 9.969061652870778e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "cafe",
+            "tipo": "cisco",
+            "factor": 0.205,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 4.800677034698028e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "cafe",
+            "tipo": "tallos",
+            "factor": 3.024,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 3.7589644797829163e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "maiz",
+            "tipo": "rastrojo",
+            "factor": 0.934,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 2.7314530557928335e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "maiz",
+            "tipo": "tusa",
+            "factor": 0.27,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 2.890197631756e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "maiz",
+            "tipo": "capacho",
+            "factor": 0.211,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 4.215576340811667e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "arroz",
+            "tipo": "tamo",
+            "factor": 2.35,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 9.931199801133916e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "arroz",
+            "tipo": "cascarilla",
+            "factor": 0.2,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 4.023173063735806e-06,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "banano",
+            "tipo": "raquis_de_banano",
+            "factor": 1.0,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 1.1925019460183555e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "banano",
+            "tipo": "vastago",
+            "factor": 5.0,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 1.5660049553513168e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "banano",
+            "tipo": "banano_de_rechazo",
+            "factor": 0.15,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 4.883927306211694e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "platano",
+            "tipo": "raquis_de_platano",
+            "factor": 1.0,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 1.19250003339e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "platano",
+            "tipo": "vastago_de_platano",
+            "factor": 5.0,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 1.5660061070060668e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        },
+        {
+            "topic": "potencial_energetico_por_unidad_de_biomasa",
+            "bloque": "platano",
+            "tipo": "platano_de_rechazo",
+            "factor": 0.15,
+            "unidad_factor": "tResiduo_tproducto_principal",
+            "potencial": 4.883978031488222e-07,
+            "unidad_potencial": "TWh_t_residuo"
+        }
+    ]
+}
