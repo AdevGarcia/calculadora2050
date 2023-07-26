@@ -3,9 +3,17 @@
 
 
 ### Operacion en segundo plano
+```bash
+# como root
 cp .env.sample .env
+virtualenv venv
+source ./venv/bin/activate
+pip install -r requirements.txt
+
 ./install.sh
-nohup ./start_dev.sh > logs.out 2> logs.err < /dev/null &
+sudo nohup ./start_dev.sh > logs.out 2> logs.err < /dev/null &
+# sudo para usar el puerto 80
+```
 
 
 
