@@ -216,8 +216,8 @@ class SUPUESTOS_FIJOS(BaseModel):
 # ####################################################################################
 
 class Salidas_name(str, Enum):
-    energia_consumida = 'energia_consumida'
-    energia_producida = 'energia_producida'
+    salida_energia_consumida = 'salida_energia_consumida'
+    salida_energia_producida = 'salida_energia_producida'
 
 class _RES_SOL_SALIDAS_energia_consumida(BaseModel):
     """Salidas - energia_consumida
@@ -241,7 +241,7 @@ class _RES_SOL_SALIDAS_energia_consumida(BaseModel):
 class RES_SOL_SALIDAS_energia_consumida(BaseModel):
     """energia_consumida"""
 
-    energia_consumida : list[_RES_SOL_SALIDAS_energia_consumida]
+    salida_energia_consumida : list[_RES_SOL_SALIDAS_energia_consumida]
 
     class Config:
         orm_mode : True
@@ -269,7 +269,7 @@ class _RES_SOL_SALIDAS_energia_producida(BaseModel):
 class RES_SOL_SALIDAS_energia_producida(BaseModel):
     """energia_producida"""
 
-    energia_producida : list[_RES_SOL_SALIDAS_energia_producida]
+    salida_energia_producida : list[_RES_SOL_SALIDAS_energia_producida]
 
     class Config:
         orm_mode : True
@@ -279,8 +279,8 @@ class SALIDAS(BaseModel):
     """Salidas
     """
     
-    energia_consumida : list[_RES_SOL_SALIDAS_energia_consumida]
-    energia_producida : list[_RES_SOL_SALIDAS_energia_producida]
+    salida_energia_consumida : list[_RES_SOL_SALIDAS_energia_consumida]
+    salida_energia_producida : list[_RES_SOL_SALIDAS_energia_producida]
 
     class Config:
         orm_mode : True

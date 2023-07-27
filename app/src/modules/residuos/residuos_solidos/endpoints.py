@@ -201,7 +201,7 @@ def create_SF(
                 
             case 'datos_para_la_estimacion_de_las_emisiones_de_incineracion':
                 loader(db=db, model=models.RES_SOL_SF_datos_para_la_estimacion_de_las_emisiones_de_incineracion, obj_in=jdata[key], 
-                       filters=['topic', 'bloque', 'tipo'])
+                       filters=['topic', 'bloque', 'tipo', 'unidad'])
             
             case _:
                 logger.error(f'[ERROR] {key} is invalid')
@@ -278,7 +278,7 @@ def create_salida_energia_consumida(
     loader(
         db=db, 
         model=models.RES_SOL_SALIDAS_energia_consumida, 
-        obj_in=jdata['energia_consumida'], 
+        obj_in=jdata['salida_energia_consumida'], 
         filters=['topic', 'bloque', 'tipo', 'medida_1']
     )
     
@@ -302,7 +302,7 @@ def create_salida_energia_producida(
     loader(
         db=db, 
         model=models.RES_SOL_SALIDAS_energia_producida, 
-        obj_in=jdata['energia_producida'], 
+        obj_in=jdata['salida_energia_producida'], 
         filters=['topic', 'bloque', 'tipo', 'medida_1']
     )
     
@@ -323,20 +323,20 @@ def read_salidas_module(
     filter = {'medida_1' : medida_1}
 
     match module:
-        case schemas.Salidas_name.energia_consumida:
+        case schemas.Salidas_name.salida_energia_consumida:
             rd = downloader(
                 db=db, 
                 model=models.RES_SOL_SALIDAS_energia_consumida,
-                topic='energia_consumida',
+                topic='energia_producida_y_requerida',
                 **filter
                 )
             result = jsonable_encoder(rd)
                 
-        case schemas.Salidas_name.energia_producida:
+        case schemas.Salidas_name.salida_energia_producida:
             rd = downloader(
                 db=db, 
                 model=models.RES_SOL_SALIDAS_energia_producida,
-                topic='energia_producida',
+                topic='energia_producida_y_requerida',
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -368,49 +368,39 @@ def delete_Salidas(
 ####################################################################################
 
 @router.post(
-        path='/emisiones/emisiones_de_gases_de_efecto_invernadero_residuos', 
-        response_model=schemas.RES_SOL_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
+        path='/emisiones', 
+        response_model=schemas.EMISIONES, 
         status_code=status.HTTP_201_CREATED)
 def create_emisiones_de_gases_de_efecto_invernadero_residuos(
-    data: schemas.RES_SOL_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
+    data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
+    keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
-
-    loader(
-        db=db, 
-        model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
-        obj_in=jdata['emisiones_de_gases_de_efecto_invernadero_residuos'], 
-        filters=['topic', 'bloque', 'grupo', 'tipo', 'medida_1']
-    )
     
-    return jdata
-
-
-@router.post(
-        path='/emisiones/emisiones_de_gases_de_efecto_invernadero_energia', 
-        response_model=schemas.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia, 
-        status_code=status.HTTP_201_CREATED)
-def create_emisiones_de_gases_de_efecto_invernadero_energia(
-    data: schemas.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia, 
-    db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
-    ) -> Any:
-    """CREATE
-    """
-
-    jdata = jsonable_encoder(data)
-
-    loader(
-        db=db, 
-        model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia, 
-        obj_in=jdata['emisiones_de_gases_de_efecto_invernadero_energia'], 
-        filters=['topic', 'bloque', 'grupo', 'tipo', 'medida_1']
-    )
+    for key in keys:
+        match key:
+            case 'emisiones_de_gases_de_efecto_invernadero_residuos':
+                loader(
+                    db=db, 
+                    model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'bloque', 'grupo', 'tipo', 'medida_1']
+                )
+                    
+            case 'emisiones_de_gases_de_efecto_invernadero_energia':
+                loader(
+                    db=db, 
+                    model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'bloque', 'grupo', 'tipo', 'medida_1']
+                )
+            
+            case _:
+                logger.error(f'[ERROR] {key} is invalid')
     
     return jdata
 
@@ -467,4 +457,4 @@ def delete_Emisiones(
     prune(db=db, model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_aguas_residuales)
     prune(db=db, model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia)
 
-    return {'msg': 'Deleted SC successfully'}
+    return {'msg': 'Deleted successfully'}
