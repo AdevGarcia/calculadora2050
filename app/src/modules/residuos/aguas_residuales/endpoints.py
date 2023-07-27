@@ -37,8 +37,7 @@ def create_ST(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
@@ -92,8 +91,8 @@ def read_ST_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'trayectoria' : trayectoria}
 
     match module:
@@ -104,7 +103,6 @@ def read_ST_module(
                 topic='cantidad_de_aguas_residuales_domesticas',
                 **filter
                 )
-            result = jsonable_encoder(rd)
                 
         case schemas.ST_name.cantidad_de_aguas_residuales_industriales:
             rd = downloader(
@@ -113,7 +111,6 @@ def read_ST_module(
                 topic='cantidad_de_aguas_residuales_industriales',
                 **filter
                 )
-            result = jsonable_encoder(rd)
         
         case schemas.ST_name.estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas:
             rd = downloader(
@@ -122,7 +119,6 @@ def read_ST_module(
                 topic='estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas',
                 **filter
                 )
-            result = jsonable_encoder(rd)
                 
         case schemas.ST_name.estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas:
             rd = downloader(
@@ -131,15 +127,14 @@ def read_ST_module(
                 topic='estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas',
                 **filter
                 )
-            result = jsonable_encoder(rd)
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
@@ -147,8 +142,7 @@ def delete_ST(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.RES_AGU_ST_cantidad_de_aguas_residuales_domesticas)
     prune(db=db, model=models.RES_AGU_ST_cantidad_de_aguas_residuales_industriales)
@@ -167,8 +161,7 @@ def create_SF(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
@@ -176,36 +169,68 @@ def create_SF(
     for key in keys:
         match key:
             case 'dbo_por_m3_de_agua_residual_domestica_tratada':
-                loader(db=db, model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_domestica_tratada, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_domestica_tratada, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'tipo']
+                )
                     
             case 'dbo_por_m3_de_agua_residual_domestica_no_tratada':
-                loader(db=db, model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_domestica_no_tratada, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_domestica_no_tratada, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'tipo']
+                )
                 
             case 'dbo_por_m3_de_agua_residual_industrial_tratada':
-                loader(db=db, model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_industrial_tratada, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_industrial_tratada, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'tipo']
+                )
                 
             case 'dbo_por_m3_de_agua_residual_industrial_no_tratada':
-                loader(db=db, model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_industrial_no_tratada, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_industrial_no_tratada, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'tipo']
+                )
             
             case 'generacion_de_ch4_por_kg_dbo_tratado':
-                loader(db=db, model=models.RES_AGU_SF_generacion_de_ch4_por_kg_dbo_tratado, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_SF_generacion_de_ch4_por_kg_dbo_tratado, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'tipo']
+                )
             
             case 'generacion_de_ch4_por_kg_dbo_no_tratado':
-                loader(db=db, model=models.RES_AGU_SF_generacion_de_ch4_por_kg_dbo_no_tratado, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_SF_generacion_de_ch4_por_kg_dbo_no_tratado, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'tipo']
+                )
                 
             case 'datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento':
-                loader(db=db, model=models.RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'tipo']
+                )
             
             case 'consumo_energetico_medio_por_tratamiento':
-                loader(db=db, model=models.RES_AGU_SF_consumo_energetico_medio_por_tratamiento, obj_in=jdata[key], 
-                       filters=['topic', 'tipo'])
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_SF_consumo_energetico_medio_por_tratamiento, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'tipo']
+                )
             
             case _:
                 logger.error(f'[ERROR] {key} is invalid')
@@ -220,8 +245,7 @@ def read_SF(
     limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
     
     d = {
         'dbo_por_m3_de_agua_residual_domestica_tratada'                      : models.RES_AGU_SF_dbo_por_m3_de_agua_residual_domestica_tratada,
@@ -235,12 +259,11 @@ def read_SF(
         }
     
     rd = downloader_batch(db=db, **d)
-    result = jsonable_encoder(rd)
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
@@ -248,8 +271,7 @@ def delete_SF(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_domestica_tratada)
     prune(db=db, model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_domestica_no_tratada)
@@ -276,15 +298,14 @@ def create_salida_energia_consumida(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
 
     loader(
         db=db, 
         model=models.RES_AGU_SALIDAS_energia_consumida, 
-        obj_in=jdata['energia_consumida'], 
+        obj_in=jdata['salida_energia_consumida'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2']
     )
     
@@ -300,15 +321,14 @@ def create_salida_energia_producida(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
     jdata = jsonable_encoder(data)
 
     loader(
         db=db, 
         model=models.RES_AGU_SALIDAS_energia_producida, 
-        obj_in=jdata['energia_producida'], 
+        obj_in=jdata['salida_energia_producida'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2']
     )
     
@@ -325,36 +345,34 @@ def read_salidas_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
 
     match module:
-        case schemas.Salidas_name.energia_consumida:
+        case schemas.Salidas_name.salida_energia_consumida:
             rd = downloader(
                 db=db, 
                 model=models.RES_AGU_SALIDAS_energia_consumida,
-                topic='energia_consumida',
+                topic='energia_producida_y_requerida',
                 **filter
                 )
-            result = jsonable_encoder(rd)
                 
-        case schemas.Salidas_name.energia_producida:
+        case schemas.Salidas_name.salida_energia_producida:
             rd = downloader(
                 db=db, 
                 model=models.RES_AGU_SALIDAS_energia_producida,
-                topic='energia_producida',
+                topic='energia_producida_y_requerida',
                 **filter
                 )
-            result = jsonable_encoder(rd)
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
@@ -362,8 +380,7 @@ def delete_Salidas(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.RES_AGU_SALIDAS_energia_consumida)
     prune(db=db, model=models.RES_AGU_SALIDAS_energia_producida)
@@ -375,49 +392,39 @@ def delete_Salidas(
 ####################################################################################
 
 @router.post(
-        path='/emisiones/emisiones_de_gases_de_efecto_invernadero_aguas_residuales', 
-        response_model=schemas.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
+        path='/emisiones', 
+        response_model=schemas.EMISIONES, 
         status_code=status.HTTP_201_CREATED)
-def create_emisiones_de_gases_de_efecto_invernadero_aguas_residuales(
-    data: schemas.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
+def create_emisiones(
+    data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """CREATE
-    """
+    """CREATE"""
 
+    keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
-
-    loader(
-        db=db, 
-        model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
-        obj_in=jdata['emisiones_de_gases_de_efecto_invernadero_aguas_residuales'], 
-        filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2']
-    )
     
-    return jdata
-
-
-@router.post(
-        path='/emisiones/emisiones_de_gases_de_efecto_invernadero_energia', 
-        response_model=schemas.RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia, 
-        status_code=status.HTTP_201_CREATED)
-def create_emisiones_de_gases_de_efecto_invernadero_energia(
-    data: schemas.RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia, 
-    db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
-    ) -> Any:
-    """CREATE
-    """
-
-    jdata = jsonable_encoder(data)
-
-    loader(
-        db=db, 
-        model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia, 
-        obj_in=jdata['emisiones_de_gases_de_efecto_invernadero_energia'], 
-        filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2']
-    )
+    for key in keys:
+        match key:
+            case 'emisiones_de_gases_de_efecto_invernadero_aguas_residuales':
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2']
+                )
+                    
+            case 'emisiones_de_gases_de_efecto_invernadero_energia':
+                loader(
+                    db=db, 
+                    model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia, 
+                    obj_in=jdata[key], 
+                    filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2']
+                )
+            
+            case _:
+                logger.error(f'[ERROR] {key} is invalid')
     
     return jdata
 
@@ -432,8 +439,8 @@ def read_Emisiones_module(
     # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
-    """READ ALL
-    """
+    """READ ALL"""
+
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
 
     match module:
@@ -444,7 +451,6 @@ def read_Emisiones_module(
                 topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
                 **filter
                 )
-            result = jsonable_encoder(rd)
         
         case schemas.Emisiones_name.emisiones_de_gases_de_efecto_invernadero_energia:
             rd = downloader(
@@ -453,15 +459,14 @@ def read_Emisiones_module(
                 topic='emisiones_de_gases_de_efecto_invernadero_energia',
                 **filter
                 )
-            result = jsonable_encoder(rd)
 
         case _:
             logger.error(f'[ERROR] {module} is invalid')
     
     if DEBUG:
-        logger.info(f'Read Data: {result}')
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
 
-    return result
+    return jsonable_encoder(rd)
 
 
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
@@ -469,10 +474,9 @@ def delete_Emisiones(
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
-    """DELETE ALL
-    """
+    """DELETE ALL"""
     
     prune(db=db, model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales)
     prune(db=db, model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia)
 
-    return {'msg': 'Deleted SC successfully'}
+    return {'msg': 'Deleted successfully'}
