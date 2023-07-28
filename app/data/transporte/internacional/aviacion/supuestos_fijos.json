@@ -1,0 +1,25 @@
+{
+    "uso_de_combustible_para_aviacion_internacional": [
+        {
+            "topic": "uso_de_combustible_para_aviacion_internacional",
+            "tipo": "queroseno",
+            "value": 4.195374462432972,
+            "unidad": "TWh"
+        }
+    ],
+    "proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje": [
+        {
+            "topic": "proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje",
+            "tipo": "aereo",
+            "y2018": 0.06956,
+            "y2020": 0.06956,
+            "y2025": 0.06956,
+            "y2030": 0.06956,
+            "y2035": 0.06956,
+            "y2040": 0.06956,
+            "y2045": 0.06956,
+            "y2050": 0.06956,
+            "unidad": "%"
+        }
+    ]
+}
