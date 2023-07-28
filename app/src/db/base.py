@@ -31,10 +31,10 @@ from app.src.modules.industria.models import *  # noqa
 from app.src.modules.residuos.aguas_residuales.models import *  # noqa
 from app.src.modules.residuos.residuos_solidos.models import *  # noqa
 # # Transporte
-# from app.src.modules.transporte.internacional.aviacion.models import *  # noqa
-# from app.src.modules.transporte.internacional.navegacion.models import *  # noqa
-# from app.src.modules.transporte.nacional.transporte_carga.models import *  # noqa
-# from app.src.modules.transporte.nacional.transporte_pasajeros.models import *  # noqa
+from app.src.modules.transporte.internacional.aviacion.models import *  # noqa
+from app.src.modules.transporte.internacional.navegacion.models import *  # noqa
+from app.src.modules.transporte.nacional.transporte_carga.models import *  # noqa
+from app.src.modules.transporte.nacional.transporte_pasajeros.models import *  # noqa
 
 # # Resultados
 # from app.src.modules.resultados.agricultura.models import *  # noqa

@@ -29,11 +29,11 @@ from modules.industria import endpoints as industria  # noqa
 # Residuos
 from modules.residuos.aguas_residuales import endpoints as aguas  # noqa
 from modules.residuos.residuos_solidos import endpoints as solidos  # noqa
-# # Transporte
-# from modules.transporte.internacional.aviacion import endpoints as aviacion  # noqa
-# from modules.transporte.internacional.navegacion import endpoints as navegacion  # noqa
-# from modules.transporte.nacional.transporte_carga import endpoints as carga  # noqa
-# from modules.transporte.nacional.transporte_pasajeros import endpoints as pasajeros  # noqa
+# Transporte
+from modules.transporte.internacional.aviacion import endpoints as aviacion  # noqa
+from modules.transporte.internacional.navegacion import endpoints as navegacion  # noqa
+from modules.transporte.nacional.transporte_carga import endpoints as carga  # noqa
+from modules.transporte.nacional.transporte_pasajeros import endpoints as pasajeros  # noqa
 
 # # Resultados
 # from modules.resultados.agricultura import endpoints as agricultura_result  # noqa
@@ -184,24 +184,24 @@ api_router.include_router(
 
 # Transporte
 # Transporte Nacional
-# api_router.include_router(
-#     router=carga.router, 
-#     prefix="/transporte/nacional/transporte_carga", 
-#     tags=["Transporte Nacional"]
-# )
-# api_router.include_router(
-#     router=pasajeros.router, 
-#     prefix="/transporte/nacional/transporte_pasajeros", 
-#     tags=["Transporte Nacional"]
-# )
+api_router.include_router(
+    router=carga.router, 
+    prefix="/transporte/nacional/transporte_carga", 
+    tags=["Transporte Nacional"]
+)
+api_router.include_router(
+    router=pasajeros.router, 
+    prefix="/transporte/nacional/transporte_pasajeros", 
+    tags=["Transporte Nacional"]
+)
 # # Transporte Internacional
-# api_router.include_router(
-#     router=aviacion.router, 
-#     prefix="/transporte/internacional/aviacion", 
-#     tags=["Transporte Internacional"]
-# )
-# api_router.include_router(
-#     router=navegacion.router, 
-#     prefix="/transporte/internacional/navegacion", 
-#     tags=["Transporte Internacional"]
-# )
+api_router.include_router(
+    router=aviacion.router, 
+    prefix="/transporte/internacional/aviacion", 
+    tags=["Transporte Internacional"]
+)
+api_router.include_router(
+    router=navegacion.router, 
+    prefix="/transporte/internacional/navegacion", 
+    tags=["Transporte Internacional"]
+)
