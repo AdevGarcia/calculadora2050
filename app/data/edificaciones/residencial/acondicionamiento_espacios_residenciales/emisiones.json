@@ -1,0 +1,60 @@
+{
+    "emisiones": [
+        {
+            "topic": "emisiones_de_gases_efecto_invernadero",
+            "tipo": "total_co2_e",
+            "y2018": 0.0,
+            "y2020": 0.0,
+            "y2025": 0.0,
+            "y2030": 0.0,
+            "y2035": 0.0,
+            "y2040": 0.0,
+            "y2045": 0.0,
+            "y2050": 0.0,
+            "unidad": "TWh",
+            "medida_1": 1.0
+        },
+        {
+            "topic": "emisiones_de_gases_efecto_invernadero",
+            "tipo": "total_co2_e",
+            "y2018": 0.0,
+            "y2020": 0.0,
+            "y2025": 0.0,
+            "y2030": 0.0,
+            "y2035": 0.0,
+            "y2040": 0.0,
+            "y2045": 0.0,
+            "y2050": 0.0,
+            "unidad": "TWh",
+            "medida_1": 2.0
+        },
+        {
+            "topic": "emisiones_de_gases_efecto_invernadero",
+            "tipo": "total_co2_e",
+            "y2018": 0.0,
+            "y2020": 0.0,
+            "y2025": 0.0,
+            "y2030": 0.0,
+            "y2035": 0.0,
+            "y2040": 0.0,
+            "y2045": 0.0,
+            "y2050": 0.0,
+            "unidad": "TWh",
+            "medida_1": 3.0
+        },
+        {
+            "topic": "emisiones_de_gases_efecto_invernadero",
+            "tipo": "total_co2_e",
+            "y2018": 0.0,
+            "y2020": 0.0,
+            "y2025": 0.0,
+            "y2030": 0.0,
+            "y2035": 0.0,
+            "y2040": 0.0,
+            "y2045": 0.0,
+            "y2050": 0.0,
+            "unidad": "TWh",
+            "medida_1": 4.0
+        }
+    ]
+}
