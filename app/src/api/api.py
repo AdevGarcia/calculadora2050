@@ -6,29 +6,37 @@ from modules.excel import download_excel
 
 # Agricultura
 from modules.agricultura import endpoints as agricultura
+
 # Bosques
 from modules.bosques import endpoints as bosques
-# # Edificaciones
-# from modules.edificaciones.comercial_servicio.acondicionamiento_espacios_comerciales import endpoints as acec  # noqa
-# from modules.edificaciones.comercial_servicio.usos_termicos_equipamiento import endpoints as uste  # noqa
-# from modules.edificaciones.residencial.acondicionamiento_espacios_residenciales import endpoints as acer  # noqa
-# from modules.edificaciones.residencial.iluminacion_refrigeracion_coccion_otros import endpoints as ilrco  # noqa
-# from modules.edificaciones.residencial.residencial_rural import endpoints as rural  # noqa
+
+# Edificaciones
+from modules.edificaciones.comercial.acondicionamiento_espacios_comerciales import endpoints as acec  # noqa
+from modules.edificaciones.comercial.usos_termicos_y_equipamiento import endpoints as uste  # noqa
+from modules.edificaciones.residencial.acondicionamiento_espacios_residenciales import endpoints as acer  # noqa
+from modules.edificaciones.residencial.iluminacion_refrigeracion_coccion_y_otros import endpoints as ilrco  # noqa
+from modules.edificaciones.residencial.residencial_rural import endpoints as rural  # noqa
+
 # # Electricidad
 # from modules.electricidad.autogeneracion import endpoints as autogeneracion  # noqa
 # from modules.electricidad.electricidad import endpoints as electricidad  # noqa
 # from modules.electricidad.importaciones_exportaciones import endpoints as elie  # noqa
+
 # # Energia
 # from modules.energia.bioenergia import endpoints as bioenergia  # noqa
 # from modules.energia.combustibles_fosiles import endpoints as fosiles  # noqa
 # from modules.energia.importaciones_exportaciones import endpoints as enie  # noqa
+
 # Ganaderia
 from modules.ganaderia import endpoints as ganaderia  # noqa
+
 # Industria
 from modules.industria import endpoints as industria  # noqa
+
 # Residuos
 from modules.residuos.aguas_residuales import endpoints as aguas  # noqa
 from modules.residuos.residuos_solidos import endpoints as solidos  # noqa
+
 # Transporte
 from modules.transporte.internacional.aviacion import endpoints as aviacion  # noqa
 from modules.transporte.internacional.navegacion import endpoints as navegacion  # noqa
@@ -87,34 +95,34 @@ api_router.include_router(
 
 # Edificaciones
 # Edificaciones Residenciales
-# api_router.include_router(
-#     router=acer.router,
-#     prefix="/edificaciones/residencial/acondicionamiento_espacios_residenciales",
-#     tags=["Edificaciones Residencial"]
-# )
-# api_router.include_router(
-#     router=ilrco.router, 
-#     prefix="/edificaciones/residencial/iluminacion_refrigeracion_coccion_otros", 
-#     tags=["Edificaciones Residencial"]
-# )
-# api_router.include_router(
-#     rural.router, 
-#     prefix="/edificaciones/residencial/residencial_rural", 
-# tags=["Edificaciones Residencial"]
-# )
+api_router.include_router(
+    router=acer.router,
+    prefix="/edificaciones/residencial/acondicionamiento_espacios_residenciales",
+    tags=["Edificaciones Residencial"]
+)
+api_router.include_router(
+    router=ilrco.router, 
+    prefix="/edificaciones/residencial/iluminacion_refrigeracion_coccion_otros", 
+    tags=["Edificaciones Residencial"]
+)
+api_router.include_router(
+    rural.router, 
+    prefix="/edificaciones/residencial/residencial_rural", 
+    tags=["Edificaciones Residencial"]
+)
 
 
 # Edificaciones Comerciales y de Servicios
-# api_router.include_router(
-#     router=acec.router, 
-#     prefix="/edificaciones/comercial_servicios/acondicionamiento_espacios_comerciales", 
-#     tags=["Edificaciones Comercial y Servicios"]
-# )
-# api_router.include_router(
-#     router=uste.router, 
-#     prefix="/edificaciones/comercial_servicios/usos_termicos_equipamiento", 
-#     tags=["Edificaciones Comercial y Servicios"]
-# )
+api_router.include_router(
+    router=acec.router, 
+    prefix="/edificaciones/comercial_servicios/acondicionamiento_espacios_comerciales", 
+    tags=["Edificaciones Comercial y Servicios"]
+)
+api_router.include_router(
+    router=uste.router, 
+    prefix="/edificaciones/comercial_servicios/usos_termicos_equipamiento", 
+    tags=["Edificaciones Comercial y Servicios"]
+)
 
 
 # Electricidad
