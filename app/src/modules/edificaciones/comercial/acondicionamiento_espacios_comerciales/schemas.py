@@ -95,7 +95,7 @@ class EDIF_COM_ACOND_SALIDAS(BaseModel):
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : str
+    medida_1    : float
 
 
 class SALIDAS(BaseModel):
@@ -129,7 +129,7 @@ class EDIF_COM_ACOND_EMISIONES(BaseModel):
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : str
+    medida_1    : float
 
 
 class EMISIONES(BaseModel):

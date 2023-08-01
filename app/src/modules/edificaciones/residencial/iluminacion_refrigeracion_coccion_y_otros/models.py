@@ -362,6 +362,8 @@ class EDIF_RES_ILU_REF_COC_OTR_SALIDAS(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
+    medida_2    = Column(name='medida_2', type_=Integer)
+    medida_3    = Column(name='medida_3', type_=Integer)
 
 
 ####################################################################################
@@ -384,4 +386,5 @@ class EDIF_RES_ILU_REF_COC_OTR_EMISIONES(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-
+    medida_2    = Column(name='medida_2', type_=Integer)
+    medida_3    = Column(name='medida_3', type_=Integer)

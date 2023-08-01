@@ -92,7 +92,7 @@ class SUPUESTOS_FIJOS(BaseModel):
 # ####################################################################################
 
 class Salidas_name(str, Enum):
-    energia_requerida = 'energia_requerida'
+    salidas = 'salidas'
 
 
 class TRANS_AVI_SALIDAS_energia_requerida(BaseModel):
@@ -117,7 +117,7 @@ class SALIDAS(BaseModel):
     """Salidas
     """
     
-    energia_requerida : list[TRANS_AVI_SALIDAS_energia_requerida]
+    salidas : list[TRANS_AVI_SALIDAS_energia_requerida]
 
     class Config:
         orm_mode : True
@@ -128,7 +128,7 @@ class SALIDAS(BaseModel):
 ####################################################################################
 
 class Emisiones_name(str, Enum):
-    emisiones_aviacion_y_navegacion_internacional = 'emisiones_aviacion_y_navegacion_internacional'
+    emisiones = 'emisiones'
 
 
 class TRANS_AVI_emisiones_aviacion_y_navegacion_internacional(BaseModel):
@@ -152,7 +152,7 @@ class TRANS_AVI_emisiones_aviacion_y_navegacion_internacional(BaseModel):
 class EMISIONES(BaseModel):
     """Emisiones - emisiones_gases_efecto_invernadero
     """
-    emisiones_aviacion_y_navegacion_internacional : list[TRANS_AVI_emisiones_aviacion_y_navegacion_internacional]
+    emisiones : list[TRANS_AVI_emisiones_aviacion_y_navegacion_internacional]
 
     class Config:
         orm_mode : True

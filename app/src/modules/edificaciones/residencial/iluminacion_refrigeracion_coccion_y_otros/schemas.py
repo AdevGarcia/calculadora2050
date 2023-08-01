@@ -403,6 +403,8 @@ class EDIF_RES_ILU_REF_COC_OTR_SALIDAS(BaseModel):
     y2050       : float | None
     unidad      : str
     medida_1    : float
+    medida_2    : float
+    medida_3    : float
 
 
 class SALIDAS(BaseModel):
@@ -437,6 +439,8 @@ class EDIF_RES_ILU_REF_COC_OTR_EMISIONES(BaseModel):
     y2050       : float | None
     unidad      : str
     medida_1    : float
+    medida_2    : float
+    medida_3    : float
 
 
 class EMISIONES(BaseModel):

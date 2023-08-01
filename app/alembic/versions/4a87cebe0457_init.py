@@ -1,8 +1,8 @@
 """init
 
-Revision ID: f7843fcce02d
+Revision ID: 4a87cebe0457
 Revises: 
-Create Date: 2023-08-01 13:57:00.765412
+Create Date: 2023-08-01 15:15:16.239900
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f7843fcce02d'
+revision = '4a87cebe0457'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -716,6 +716,8 @@ def upgrade() -> None:
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.Column('medida_2', sa.Integer(), nullable=True),
+    sa.Column('medida_3', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_emisiones_id'), 'edif_res_ilu_ref_coc_otr_emisiones', ['id'], unique=False)
@@ -734,6 +736,8 @@ def upgrade() -> None:
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.Column('medida_2', sa.Integer(), nullable=True),
+    sa.Column('medida_3', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_salidas_id'), 'edif_res_ilu_ref_coc_otr_salidas', ['id'], unique=False)

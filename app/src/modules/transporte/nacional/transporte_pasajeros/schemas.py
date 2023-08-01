@@ -445,7 +445,7 @@ class SUPUESTOS_FIJOS(BaseModel):
 # ####################################################################################
 
 class Salidas_name(str, Enum):
-    energia_requerida_transporte_pasajeros = 'energia_requerida_transporte_pasajeros'
+    salidas = 'salidas'
 
 
 class TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros(BaseModel):
@@ -471,7 +471,7 @@ class SALIDAS(BaseModel):
     """Salidas
     """
     
-    energia_requerida_transporte_pasajeros : list[TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros]
+    salidas : list[TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros]
 
     class Config:
         orm_mode : True
@@ -482,7 +482,7 @@ class SALIDAS(BaseModel):
 ####################################################################################
 
 class Emisiones_name(str, Enum):
-    emisiones_de_gases_efecto_invernadero = 'emisiones_de_gases_efecto_invernadero'
+    emisiones = 'emisiones'
 
 
 class TRANS_PAS_emisiones_de_gases_efecto_invernadero(BaseModel):
@@ -507,7 +507,7 @@ class TRANS_PAS_emisiones_de_gases_efecto_invernadero(BaseModel):
 class EMISIONES(BaseModel):
     """Emisiones - emisiones_gases_efecto_invernadero
     """
-    emisiones_de_gases_efecto_invernadero : list[TRANS_PAS_emisiones_de_gases_efecto_invernadero]
+    emisiones : list[TRANS_PAS_emisiones_de_gases_efecto_invernadero]
 
     class Config:
         orm_mode : True

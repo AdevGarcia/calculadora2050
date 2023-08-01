@@ -407,7 +407,7 @@ def create_salidas(
     loader(
         db=db, 
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros, 
-        obj_in=jdata['energia_requerida_transporte_pasajeros'], 
+        obj_in=jdata['salidas'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2']
     )
     return jdata
@@ -469,15 +469,14 @@ def create_emisiones(
     loader(
         db=db, 
         model=models.TRANS_PAS_emisiones_de_gases_efecto_invernadero, 
-        obj_in=jdata['emisiones_de_gases_efecto_invernadero'], 
+        obj_in=jdata['emisiones'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2']
     )
     return jdata
 
 
-@router.get('/emisiones/{module}')
+@router.get('/emisiones')
 def read_Emisiones_module(
-    module: schemas.Emisiones_name,
     medida_1: schemas.Trayectoria,
     medida_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
@@ -489,17 +488,12 @@ def read_Emisiones_module(
 
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
 
-    match module:
-        case schemas.Emisiones_name.emisiones_de_gases_efecto_invernadero:
-            rd = downloader(
-                db=db, 
-                model=models.TRANS_PAS_emisiones_de_gases_efecto_invernadero,
-                topic='emisiones_de_gases_efecto_invernadero',
-                **filter
-                )
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+            db=db, 
+            model=models.TRANS_PAS_emisiones_de_gases_efecto_invernadero,
+            topic='emisiones_de_gases_efecto_invernadero',
+            **filter
+        )
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')

@@ -193,9 +193,8 @@ def create_emisiones(
     return jdata
 
 
-@router.get('/emisiones/{module}')
+@router.get('/emisiones')
 def read_Emisiones_module(
-    module: schemas.Emisiones_name,
     medida_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
@@ -206,17 +205,12 @@ def read_Emisiones_module(
 
     filter = {'medida_1' : medida_1}
 
-    match module:
-        case schemas.Emisiones_name.emisiones:
-            rd = downloader(
-                db=db, 
-                model=models.TRANS_NAV_emisiones,
-                topic='emisiones',
-                **filter
-                )
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+            db=db, 
+            model=models.TRANS_NAV_emisiones,
+            topic='emisiones',
+            **filter
+        )
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')

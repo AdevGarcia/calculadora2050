@@ -143,7 +143,7 @@ def create_salidas(
     loader(
         db=db, 
         model=models.EDIF_COM_ACOND_SALIDAS, 
-        obj_in=jdata['energia_producida_y_requerida'], 
+        obj_in=jdata['salidas'], 
         filters=['topic', 'tipo', 'medida_1']
     )
     return jdata
@@ -210,9 +210,8 @@ def create_emisiones(
     return jdata
 
 
-@router.get('/emisiones/{module}')
+@router.get('/emisiones')
 def read_Emisiones_module(
-    module: schemas.Emisiones_name,
     medida_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
@@ -223,17 +222,12 @@ def read_Emisiones_module(
 
     filter = {'medida_1' : medida_1}
 
-    match module:
-        case schemas.Emisiones_name.emisiones:
-            rd = downloader(
-                db=db, 
-                model=models.EDIF_COM_ACOND_EMISIONES,
-                topic='emisiones',
-                **filter
-                )
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+            db=db, 
+            model=models.EDIF_COM_ACOND_EMISIONES,
+            topic='emisiones_de_gases_efecto_invernadero',
+            **filter
+        )
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')

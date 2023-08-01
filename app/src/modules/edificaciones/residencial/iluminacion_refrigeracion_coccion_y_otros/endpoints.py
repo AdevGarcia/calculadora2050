@@ -401,7 +401,7 @@ def create_salidas(
         db=db, 
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS, 
         obj_in=jdata['salidas'], 
-        filters=['topic', 'bloque', 'tipo', 'medida_1']
+        filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2', 'medida_3']
     )
     return jdata
 
@@ -409,6 +409,8 @@ def create_salidas(
 @router.get('/salidas')
 def read_salidas_module(
     medida_1: schemas.Trayectoria,
+    medida_2: schemas.Trayectoria,
+    medida_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -416,7 +418,7 @@ def read_salidas_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1}
+    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
 
     rd = downloader(
         db=db, 
@@ -462,15 +464,16 @@ def create_emisiones(
         db=db, 
         model=models.EDIF_RES_ILU_REF_COC_OTR_EMISIONES, 
         obj_in=jdata['emisiones'], 
-        filters=['topic', 'tipo', 'medida_1']
+        filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_3']
     )
     return jdata
 
 
-@router.get('/emisiones/{module}')
+@router.get('/emisiones')
 def read_Emisiones_module(
-    module: schemas.Emisiones_name,
     medida_1: schemas.Trayectoria,
+    medida_2: schemas.Trayectoria,
+    medida_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -478,19 +481,14 @@ def read_Emisiones_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1}
+    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
 
-    match module:
-        case schemas.Emisiones_name.emisiones:
-            rd = downloader(
-                db=db, 
-                model=models.EDIF_RES_ILU_REF_COC_OTR_EMISIONES,
-                topic='emisiones',
-                **filter
-                )
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+            db=db, 
+            model=models.EDIF_RES_ILU_REF_COC_OTR_EMISIONES,
+            topic='emisiones_de_gases_efecto_invernadero',
+            **filter
+        )
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')

@@ -50,7 +50,7 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
 # ####################################################################################
 
 class Salidas_name(str, Enum):
-    energia_requerida = 'energia_requerida'
+    salidas = 'salidas'
 
 
 class TRANS_NAV_SALIDAS_energia_requerida(BaseModel):
@@ -75,7 +75,7 @@ class SALIDAS(BaseModel):
     """Salidas
     """
     
-    energia_requerida : list[TRANS_NAV_SALIDAS_energia_requerida]
+    salidas : list[TRANS_NAV_SALIDAS_energia_requerida]
 
     class Config:
         orm_mode : True
