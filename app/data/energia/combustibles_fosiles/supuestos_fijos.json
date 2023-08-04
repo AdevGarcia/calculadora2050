@@ -1,1 +1,326 @@
-{"produccion_de_hidrocarburos": [{"topic": "produccion_de_hidrocarburos", "tipo": "crudo_kbl", "y2018": 315900.55884990905, "y2020": 285876.23164, "y2025": 262485.0063465743, "y2030": 254835.0364088979, "y2035": 247408.02031099272, "y2040": 240197.46019534123, "y2045": 233197.04758063203, "y2050": 226400.65784250243, "unidad": "Ud"}, {"topic": "produccion_de_hidrocarburos", "tipo": "gas_natural_mpc", "y2018": 821943.2956500002, "y2020": 707121.3, "y2025": 412249.0, "y2030": 140391.0, "y2035": 131487.0, "y2040": 403355.0, "y2045": 675223.0, "y2050": 947091.0, "unidad": "Ud"}], "produccion_de_carbon": [{"topic": "produccion_de_carbon", "tipo": "produccion_total_de_carbon", "y2018": 84283891.73, "y2020": 49330730.75, "y2025": 54825000.0, "y2030": 54245000.0, "y2035": 53666000.0, "y2040": 53086000.0, "y2045": 52506000.0, "y2050": 51926000.0, "unidad": "t_ano"}, {"topic": "produccion_de_carbon", "tipo": "subterraneo", "y2018": 0.07, "y2020": 0.07, "y2025": 0.07, "y2030": 0.07, "y2035": 0.07, "y2040": 0.07, "y2045": 0.07, "y2050": 0.07, "unidad": "t_ano"}, {"topic": "produccion_de_carbon", "tipo": "cielo_abierto", "y2018": 0.93, "y2020": 0.93, "y2025": 0.93, "y2030": 0.93, "y2035": 0.93, "y2040": 0.93, "y2045": 0.93, "y2050": 0.93, "unidad": "t_ano"}], "factores_de_emision_carbon": [{"topic": "factores_de_emision_carbon", "tipo": "extraccion_subterranea_venteo", "valor": 13.03, "unidad": "m3 CH4/ton"}, {"topic": "factores_de_emision_carbon", "tipo": "postextraccion_subterranea", "valor": 3.909, "unidad": "m3 CH4/ton"}, {"topic": "factores_de_emision_carbon", "tipo": "extraccion_cielo_abierto", "valor": 0.89, "unidad": "m3 CH4/ton"}, {"topic": "factores_de_emision_carbon", "tipo": "postextraccion_cielo_abierto", "valor": 0.2, "unidad": "m3 CH4/ton"}, {"topic": "factores_de_emision_carbon", "tipo": "extraccion_subterranea", "valor": 0.267, "unidad": "m3 CO2/ton"}, {"topic": "factores_de_emision_carbon", "tipo": "postextraccion_subterranea", "valor": 0.018, "unidad": "m3 CO2/ton"}, {"topic": "factores_de_emision_carbon", "tipo": "extraccion_cielo_abierto", "valor": 0.44, "unidad": "m3 CO2/ton"}], "no_de_pozos": [{"topic": "no_de_pozos", "tipo": "perforacion_de_pozo", "fuente": "crudo", "valor": 11.0, "unidad": "n_pozos"}, {"topic": "no_de_pozos", "tipo": "pozos_en_produccion", "fuente": "crudo", "valor": 32.0, "unidad": "n_pozos"}, {"topic": "no_de_pozos", "tipo": "perforacion_de_pozo", "fuente": "gas", "valor": 45.0, "unidad": "n_pozos"}, {"topic": "no_de_pozos", "tipo": "pozos_en_produccion", "fuente": "gas", "valor": 45.0, "unidad": "n_pozos"}], "datos_de_la_produccion_de_crudo_en_el_ano_base": [{"topic": "datos_de_la_produccion_de_crudo_en_el_ano_base", "tipo": "produccion", "valor": 50205.0387044599, "%_total_crudo": "-", "unidad": "10^3 m3"}, {"topic": "datos_de_la_produccion_de_crudo_en_el_ano_base", "tipo": "glp_producido", "valor": 1005.5606794542, "%_total_crudo": 0.020029078861458428, "unidad": "10^3 m3"}, {"topic": "datos_de_la_produccion_de_crudo_en_el_ano_base", "tipo": "crudo_trasportado_oleoducto", "valor": 11547.158902025776, "%_total_crudo": 0.22999999999999998, "unidad": "10^3 m3"}, {"topic": "datos_de_la_produccion_de_crudo_en_el_ano_base", "tipo": "crudo_a_refineria", "valor": 21510.288113000002, "%_total_crudo": 0.4284487905611188, "unidad": "10^3 m3"}], "datos_de_la_produccion_de_gas_natural_en_el_ano_base": [{"topic": "datos_de_la_produccion_de_gas_natural_en_el_ano_base", "tipo": "extraccion_primaria", "valor": 23274840049.475197, "%_total_crudo": 1.0, "unidad": "10^6 m3"}, {"topic": "datos_de_la_produccion_de_gas_natural_en_el_ano_base", "tipo": "insumos_transformacion", "valor": 4033403994.4969897, "%_total_crudo": 0.17329459562012908, "unidad": "10^6 m3"}, {"topic": "datos_de_la_produccion_de_gas_natural_en_el_ano_base", "tipo": "oferta_interna", "valor": 8007326243.224474, "%_total_crudo": 0.34, "unidad": "10^6 m3"}], "consumo_de_energeticos": [{"topic": "consumo_de_energeticos", "tipo": "gas_natural", "valor": 52957.132350232, "unidad": "TJ"}, {"topic": "consumo_de_energeticos", "tipo": "petroleo", "valor": 0.0, "unidad": "TJ"}, {"topic": "consumo_de_energeticos", "tipo": "diesel", "valor": 29.724724009708464, "unidad": "TJ"}, {"topic": "consumo_de_energeticos", "tipo": "fuel_oil", "valor": 32.50430292812623, "unidad": "TJ"}, {"topic": "consumo_de_energeticos", "tipo": "glp", "valor": 3031.8894873612603, "unidad": "TJ"}, {"topic": "consumo_de_energeticos", "tipo": "gasolina_para_motones", "valor": 2.476309854353044, "unidad": "TJ"}, {"topic": "consumo_de_energeticos", "tipo": "queroseno_y_jet_fuel", "valor": 0.14369700030135857, "unidad": "TJ"}, {"topic": "consumo_de_energeticos", "tipo": "gas_natural", "valor": 14.710314541731112, "unidad": "TWh"}, {"topic": "consumo_de_energeticos", "tipo": "petroleo", "valor": 0.0, "unidad": "TWh"}, {"topic": "consumo_de_energeticos", "tipo": "diesel", "valor": 0.008256867780474573, "unidad": "TWh"}, {"topic": "consumo_de_energeticos", "tipo": "fuel_oil", "valor": 0.00902897303559062, "unidad": "TWh"}, {"topic": "consumo_de_energeticos", "tipo": "glp", "valor": 0.8421915242670167, "unidad": "TWh"}, {"topic": "consumo_de_energeticos", "tipo": "gasolina_para_motones", "valor": 0.0006878638484314011, "unidad": "TWh"}, {"topic": "consumo_de_energeticos", "tipo": "queroseno_y_jet_fuel", "valor": 3.991583341704405e-05, "unidad": "TWh"}, {"topic": "consumo_de_energeticos", "tipo": "gas_natural", "valor": 6.836128563353134e-07, "unidad": "TWh/m3"}, {"topic": "consumo_de_energeticos", "tipo": "petroleo", "valor": 0.0, "unidad": "TWh/m3"}, {"topic": "consumo_de_energeticos", "tipo": "diesel", "valor": 3.837104197725059e-10, "unidad": "TWh/m3"}, {"topic": "consumo_de_energeticos", "tipo": "fuel_oil", "valor": 4.1959143899504064e-10, "unidad": "TWh/m3"}, {"topic": "consumo_de_energeticos", "tipo": "glp", "valor": 3.91380450671053e-08, "unidad": "TWh/m3"}, {"topic": "consumo_de_energeticos", "tipo": "gasolina_para_motones", "valor": 3.196618052333327e-11, "unidad": "TWh/m3"}, {"topic": "consumo_de_energeticos", "tipo": "queroseno_y_jet_fuel", "valor": 1.854955366033859e-12, "unidad": "TWh/m3"}]}
+{
+    "produccion_de_hidrocarburos": [
+        {
+            "topic": "produccion_de_hidrocarburos",
+            "tipo": "crudo_kbl",
+            "y2018": 315900.55884990905,
+            "y2020": 285876.23164,
+            "y2025": 262485.0063465743,
+            "y2030": 254835.0364088979,
+            "y2035": 247408.02031099272,
+            "y2040": 240197.46019534123,
+            "y2045": 233197.04758063203,
+            "y2050": 226400.65784250243,
+            "unidad": "Ud"
+        },
+        {
+            "topic": "produccion_de_hidrocarburos",
+            "tipo": "gas_natural_mpc",
+            "y2018": 821943.2956500002,
+            "y2020": 707121.3,
+            "y2025": 412249.0,
+            "y2030": 140391.0,
+            "y2035": 131487.0,
+            "y2040": 403355.0,
+            "y2045": 675223.0,
+            "y2050": 947091.0,
+            "unidad": "Ud"
+        }
+    ],
+    "produccion_de_carbon": [
+        {
+            "topic": "produccion_de_carbon",
+            "tipo": "produccion_total_de_carbon",
+            "y2018": 84283891.73,
+            "y2020": 49330730.75,
+            "y2025": 54825000.0,
+            "y2030": 54245000.0,
+            "y2035": 53666000.0,
+            "y2040": 53086000.0,
+            "y2045": 52506000.0,
+            "y2050": 51926000.0,
+            "unidad": "t_ano"
+        },
+        {
+            "topic": "produccion_de_carbon",
+            "tipo": "subterraneo",
+            "y2018": 0.07,
+            "y2020": 0.07,
+            "y2025": 0.07,
+            "y2030": 0.07,
+            "y2035": 0.07,
+            "y2040": 0.07,
+            "y2045": 0.07,
+            "y2050": 0.07,
+            "unidad": "t_ano"
+        },
+        {
+            "topic": "produccion_de_carbon",
+            "tipo": "cielo_abierto",
+            "y2018": 0.93,
+            "y2020": 0.93,
+            "y2025": 0.93,
+            "y2030": 0.93,
+            "y2035": 0.93,
+            "y2040": 0.93,
+            "y2045": 0.93,
+            "y2050": 0.93,
+            "unidad": "t_ano"
+        }
+    ],
+    "factores_de_emision_carbon": [
+        {
+            "topic": "factores_de_emision_carbon",
+            "tipo": "extraccion_subterranea_venteo",
+            "valor": 13.03,
+            "unidad": "m3 CH4/ton"
+        },
+        {
+            "topic": "factores_de_emision_carbon",
+            "tipo": "postextraccion_subterranea",
+            "valor": 3.909,
+            "unidad": "m3 CH4/ton"
+        },
+        {
+            "topic": "factores_de_emision_carbon",
+            "tipo": "extraccion_cielo_abierto",
+            "valor": 0.89,
+            "unidad": "m3 CH4/ton"
+        },
+        {
+            "topic": "factores_de_emision_carbon",
+            "tipo": "postextraccion_cielo_abierto",
+            "valor": 0.2,
+            "unidad": "m3 CH4/ton"
+        },
+        {
+            "topic": "factores_de_emision_carbon",
+            "tipo": "extraccion_subterranea",
+            "valor": 0.267,
+            "unidad": "m3 CO2/ton"
+        },
+        {
+            "topic": "factores_de_emision_carbon",
+            "tipo": "postextraccion_subterranea",
+            "valor": 0.018,
+            "unidad": "m3 CO2/ton"
+        },
+        {
+            "topic": "factores_de_emision_carbon",
+            "tipo": "extraccion_cielo_abierto",
+            "valor": 0.44,
+            "unidad": "m3 CO2/ton"
+        }
+    ],
+    "no_de_pozos": [
+        {
+            "topic": "no_de_pozos",
+            "tipo": "perforacion_de_pozo",
+            "fuente": "crudo",
+            "valor": 11.0,
+            "unidad": "n_pozos"
+        },
+        {
+            "topic": "no_de_pozos",
+            "tipo": "pozos_en_produccion",
+            "fuente": "crudo",
+            "valor": 32.0,
+            "unidad": "n_pozos"
+        },
+        {
+            "topic": "no_de_pozos",
+            "tipo": "perforacion_de_pozo",
+            "fuente": "gas",
+            "valor": 45.0,
+            "unidad": "n_pozos"
+        },
+        {
+            "topic": "no_de_pozos",
+            "tipo": "pozos_en_produccion",
+            "fuente": "gas",
+            "valor": 45.0,
+            "unidad": "n_pozos"
+        }
+    ],
+    "datos_de_la_produccion_de_crudo_en_el_ano_base": [
+        {
+            "topic": "datos_de_la_produccion_de_crudo_en_el_ano_base",
+            "tipo": "produccion",
+            "valor": 50205.0387044599,
+            "total_crudo": "-",
+            "unidad": "10^3 m3"
+        },
+        {
+            "topic": "datos_de_la_produccion_de_crudo_en_el_ano_base",
+            "tipo": "glp_producido",
+            "valor": 1005.5606794542,
+            "total_crudo": 0.020029078861458428,
+            "unidad": "10^3 m3"
+        },
+        {
+            "topic": "datos_de_la_produccion_de_crudo_en_el_ano_base",
+            "tipo": "crudo_trasportado_oleoducto",
+            "valor": 11547.158902025776,
+            "total_crudo": 0.22999999999999998,
+            "unidad": "10^3 m3"
+        },
+        {
+            "topic": "datos_de_la_produccion_de_crudo_en_el_ano_base",
+            "tipo": "crudo_a_refineria",
+            "valor": 21510.288113000002,
+            "total_crudo": 0.4284487905611188,
+            "unidad": "10^3 m3"
+        }
+    ],
+    "datos_de_la_produccion_de_gas_natural_en_el_ano_base": [
+        {
+            "topic": "datos_de_la_produccion_de_gas_natural_en_el_ano_base",
+            "tipo": "extraccion_primaria",
+            "valor": 23274840049.475197,
+            "total_crudo": 1.0,
+            "unidad": "10^6 m3"
+        },
+        {
+            "topic": "datos_de_la_produccion_de_gas_natural_en_el_ano_base",
+            "tipo": "insumos_transformacion",
+            "valor": 4033403994.4969897,
+            "total_crudo": 0.17329459562012908,
+            "unidad": "10^6 m3"
+        },
+        {
+            "topic": "datos_de_la_produccion_de_gas_natural_en_el_ano_base",
+            "tipo": "oferta_interna",
+            "valor": 8007326243.224474,
+            "total_crudo": 0.34,
+            "unidad": "10^6 m3"
+        }
+    ],
+    "consumo_de_energeticos": [
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "gas_natural",
+            "valor": 52957.132350232,
+            "unidad": "TJ"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "petroleo",
+            "valor": 0.0,
+            "unidad": "TJ"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "diesel",
+            "valor": 29.724724009708464,
+            "unidad": "TJ"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "fuel_oil",
+            "valor": 32.50430292812623,
+            "unidad": "TJ"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "glp",
+            "valor": 3031.8894873612603,
+            "unidad": "TJ"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "gasolina_para_motones",
+            "valor": 2.476309854353044,
+            "unidad": "TJ"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "queroseno_y_jet_fuel",
+            "valor": 0.14369700030135857,
+            "unidad": "TJ"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "gas_natural",
+            "valor": 14.710314541731112,
+            "unidad": "TWh"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "petroleo",
+            "valor": 0.0,
+            "unidad": "TWh"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "diesel",
+            "valor": 0.008256867780474573,
+            "unidad": "TWh"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "fuel_oil",
+            "valor": 0.00902897303559062,
+            "unidad": "TWh"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "glp",
+            "valor": 0.8421915242670167,
+            "unidad": "TWh"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "gasolina_para_motones",
+            "valor": 0.0006878638484314011,
+            "unidad": "TWh"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "queroseno_y_jet_fuel",
+            "valor": 3.991583341704405e-05,
+            "unidad": "TWh"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "gas_natural",
+            "valor": 6.836128563353134e-07,
+            "unidad": "TWh/m3"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "petroleo",
+            "valor": 0.0,
+            "unidad": "TWh/m3"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "diesel",
+            "valor": 3.837104197725059e-10,
+            "unidad": "TWh/m3"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "fuel_oil",
+            "valor": 4.1959143899504064e-10,
+            "unidad": "TWh/m3"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "glp",
+            "valor": 3.91380450671053e-08,
+            "unidad": "TWh/m3"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "gasolina_para_motones",
+            "valor": 3.196618052333327e-11,
+            "unidad": "TWh/m3"
+        },
+        {
+            "topic": "consumo_de_energeticos",
+            "tipo": "queroseno_y_jet_fuel",
+            "valor": 1.854955366033859e-12,
+            "unidad": "TWh/m3"
+        }
+    ]
+}
