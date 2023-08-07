@@ -58,9 +58,8 @@ def create_ST(
     return jdata
 
 
-@router.get('/supuestos_trayectoria/{module}')
+@router.get('/supuestos_trayectoria')
 def read_ST_module(
-    module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
@@ -71,17 +70,12 @@ def read_ST_module(
 
     filter = {'trayectoria' : trayectoria}
 
-    match module:
-        case schemas.ST_name.capacidad_de_generacion:
-            rd = downloader(
-                db=db, 
-                model=models.ELECT_Electricidad_ST_capacidad_de_generacion,
-                topic='capacidad_de_generacion',
-                **filter
-                )
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+        db=db, 
+        model=models.ELECT_Electricidad_ST_capacidad_de_generacion,
+        topic='capacidad_de_generacion',
+        **filter
+        )
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')
@@ -179,56 +173,86 @@ def delete_SF(
 ####################################################################################
 
 @router.post(
-        path='/salidas', 
-        response_model=schemas.SALIDAS, 
+        path='/salidas_combustibles_fosiles',
+        response_model=schemas.ELECT_Electricidad_SALIDAS_combustibles_fosiles, 
         status_code=status.HTTP_201_CREATED)
-def create_total_areas_reforestadas(
-    data: schemas.SALIDAS, 
+def create_salidas_combustibels_fosiles(
+    data: schemas.ELECT_Electricidad_SALIDAS_combustibles_fosiles, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
-    keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
-    
-    for key in keys:
-        match key:
-            case 'salidas_combustibels_fosiles':
-                loader(
-                    db=db, 
-                    model=models.ELECT_Electricidad_SALIDAS_combustibels_fosiles, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'tipo', 'medida_1']
-                )
-                    
-            case 'salidas_energias_renovables_no_convencionales':
-                loader(
-                    db=db, 
-                    model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'tipo', 'medida_1']
-                )
-                
-            case 'salidas_energia_demandada':
-                loader(
-                    db=db, 
-                    model=models.ELECT_Electricidad_SALIDAS_energia_demandada, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'tipo', 'medida_1']
-                )
-            
-            case 'salidas_balance':
-                loader(
-                    db=db, 
-                    model=models.ELECT_Electricidad_SALIDAS_balance, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'tipo', 'medida_1']
-                )
-            
-            case _:
-                logger.error(f'[ERROR] {key} is invalid')
+    loader(
+        db=db, 
+        model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles, 
+        obj_in=jdata['salidas_combustibles_fosiles'], 
+        filters=['topic', 'tipo', 'medida_1']
+    )
+    return jdata
 
+
+@router.post(
+        path='/salidas_energias_renovables_no_convencionales',
+        response_model=schemas.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales, 
+        status_code=status.HTTP_201_CREATED)
+def create_salidas_energias_renovables_no_convencionales(
+    data: schemas.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales, 
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """CREATE"""
+
+    jdata = jsonable_encoder(data)
+    loader(
+        db=db, 
+        model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales, 
+        obj_in=jdata['salidas_energias_renovables_no_convencionales'], 
+        filters=['topic', 'tipo', 'medida_1']
+    )
+    return jdata
+
+
+@router.post(
+        path='/salidas_energia_demandada',
+        response_model=schemas.ELECT_Electricidad_SALIDAS_energia_demandada, 
+        status_code=status.HTTP_201_CREATED)
+def create_salidas_energia_demandada(
+    data: schemas.ELECT_Electricidad_SALIDAS_energia_demandada, 
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """CREATE"""
+
+    jdata = jsonable_encoder(data)
+    loader(
+        db=db, 
+        model=models.ELECT_Electricidad_SALIDAS_energia_demandada, 
+        obj_in=jdata['salidas_energia_demandada'], 
+        filters=['topic', 'tipo', 'medida_1']
+    )
+    return jdata
+
+
+@router.post(
+        path='/salidas_balance',
+        response_model=schemas.ELECT_Electricidad_SALIDAS_balance, 
+        status_code=status.HTTP_201_CREATED)
+def create_salidas_balance(
+    data: schemas.ELECT_Electricidad_SALIDAS_balance, 
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """CREATE"""
+
+    jdata = jsonable_encoder(data)
+    loader(
+        db=db, 
+        model=models.ELECT_Electricidad_SALIDAS_balance, 
+        obj_in=jdata['salidas_balance'], 
+        filters=['topic', 'tipo', 'medida_1']
+    )
     return jdata
 
 
@@ -246,10 +270,10 @@ def read_salidas_module(
     filter = {'medida_1' : medida_1}
 
     match module:
-        case schemas.Salidas_name.salidas_combustibels_fosiles:
+        case schemas.Salidas_name.salidas_combustibles_fosiles:
             rd = downloader(
                 db=db, 
-                model=models.ELECT_Electricidad_SALIDAS_combustibels_fosiles,
+                model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
                 topic='combustibels_fosiles',
                 **filter
                 )
@@ -294,7 +318,7 @@ def delete_Salidas(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.ELECT_Electricidad_SALIDAS_combustibels_fosiles)
+    prune(db=db, model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles)
     prune(db=db, model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales)
     prune(db=db, model=models.ELECT_Electricidad_SALIDAS_energia_demandada)
     prune(db=db, model=models.ELECT_Electricidad_SALIDAS_balance)
@@ -306,11 +330,33 @@ def delete_Salidas(
 ####################################################################################
 
 @router.post(
-        path='/emisiones', 
-        response_model=schemas.EMISIONES, 
+        path='/emisiones_combustibles_fosiles', 
+        response_model=schemas.ELECT_Electricidad_EMISIONES_combustibles_fosiles, 
         status_code=status.HTTP_201_CREATED)
-def create_emisiones(
-    data: schemas.EMISIONES, 
+def create_emisiones_combustibles_fosiles(
+    data: schemas.ELECT_Electricidad_EMISIONES_combustibles_fosiles, 
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """CREATE"""
+
+    jdata = jsonable_encoder(data)
+    loader(
+        db=db, 
+        model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles, 
+        obj_in=jdata['emisiones_combustibles_fosiles'], 
+        filters=['topic', 'bloque', 'tipo', 'medida_1']
+    )
+
+    return jdata
+
+
+@router.post(
+        path='/emisiones_energias_renovables_no_convencionales', 
+        response_model=schemas.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales, 
+        status_code=status.HTTP_201_CREATED)
+def create_emisiones_energias_renovables_no_convencionales(
+    data: schemas.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -318,27 +364,12 @@ def create_emisiones(
 
     keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
-    
-    for key in keys:
-        match key:
-            case 'emisiones_combustibles_fosiles':
-                loader(
-                    db=db, 
-                    model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'bloque', 'tipo', 'medida_1']
-                )
-                    
-            case 'emisiones_energias_renovables_no_convencionales':
-                loader(
-                    db=db, 
-                    model=models.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'bloque', 'tipo', 'medida_1']
-                )
-            
-            case _:
-                logger.error(f'[ERROR] {key} is invalid')
+    loader(
+        db=db, 
+        model=models.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales, 
+        obj_in=jdata['emisiones_energias_renovables_no_convencionales'], 
+        filters=['topic', 'bloque', 'tipo', 'medida_1']
+    )
 
     return jdata
 

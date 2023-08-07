@@ -18,15 +18,15 @@ from app.src.modules.edificaciones.residencial.acondicionamiento_espacios_reside
 from app.src.modules.edificaciones.residencial.iluminacion_refrigeracion_coccion_y_otros.models import *  # noqa
 from app.src.modules.edificaciones.residencial.residencial_rural.models import *  # noqa
 
-# # Electricidad
-# from app.src.modules.electricidad.autogeneracion.models import *  # noqa
-# from app.src.modules.electricidad.electricidad.models import *  # noqa
-# from app.src.modules.electricidad.importaciones_exportaciones.models import *  # noqa
+# Electricidad
+from app.src.modules.electricidad.autogeneracion.models import *  # noqa
+from app.src.modules.electricidad.electricidad.models import *  # noqa
+from app.src.modules.electricidad.requerimientos_excedentes.models import *  # noqa
 
-# # Energia
-# from app.src.modules.energia.bioenergia.models import *  # noqa
-# from app.src.modules.energia.combustibles_fosiles.models import *  # noqa
-# from app.src.modules.energia.importaciones_exportaciones.models import *  # noqa
+# Energia
+from app.src.modules.energia.bioenergia.models import *  # noqa
+from app.src.modules.energia.combustibles_fosiles.models import *  # noqa
+from app.src.modules.energia.requerimientos_excedentes.models import *  # noqa
 
 # Ganaderia
 from app.src.modules.ganaderia.models import *  # noqa

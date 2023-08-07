@@ -63,7 +63,7 @@ class ELECT_Electricidad_SF_factor_de_carga(Base):
 # #######                               Salidas                                #######
 # ####################################################################################
 
-class ELECT_Electricidad_SALIDAS_combustibels_fosiles(Base):
+class ELECT_Electricidad_SALIDAS_combustibles_fosiles(Base):
     """salidas_combustibels_fosiles"""
 
     id          = Column(Integer, primary_key=True, index=True)

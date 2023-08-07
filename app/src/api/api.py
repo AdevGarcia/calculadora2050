@@ -17,15 +17,15 @@ from modules.edificaciones.residencial.acondicionamiento_espacios_residenciales 
 from modules.edificaciones.residencial.iluminacion_refrigeracion_coccion_y_otros import endpoints as ilrco  # noqa
 from modules.edificaciones.residencial.residencial_rural import endpoints as rural  # noqa
 
-# # Electricidad
-# from modules.electricidad.autogeneracion import endpoints as autogeneracion  # noqa
-# from modules.electricidad.electricidad import endpoints as electricidad  # noqa
-# from modules.electricidad.importaciones_exportaciones import endpoints as elie  # noqa
+# Electricidad
+from modules.electricidad.autogeneracion import endpoints as autogeneracion  # noqa
+from modules.electricidad.electricidad import endpoints as electricidad  # noqa
+from modules.electricidad.requerimientos_excedentes import endpoints as elie  # noqa
 
-# # Energia
-# from modules.energia.bioenergia import endpoints as bioenergia  # noqa
-# from modules.energia.combustibles_fosiles import endpoints as fosiles  # noqa
-# from modules.energia.importaciones_exportaciones import endpoints as enie  # noqa
+# Energia
+from modules.energia.bioenergia import endpoints as bioenergia  # noqa
+from modules.energia.combustibles_fosiles import endpoints as fosiles  # noqa
+from modules.energia.requerimientos_excedentes import endpoints as enie  # noqa
 
 # Ganaderia
 from modules.ganaderia import endpoints as ganaderia  # noqa
@@ -126,11 +126,11 @@ api_router.include_router(
 
 
 # Electricidad
-# api_router.include_router(
-#     router=electricidad.router, 
-#     prefix="/electricidad/electricidad", 
-#     tags=["Electricidad"]
-# )
+api_router.include_router(
+    router=electricidad.router, 
+    prefix="/electricidad/electricidad", 
+    tags=["Electricidad"]
+)
 # api_router.include_router(
 #     router=autogeneracion.router,
 #     prefix="/electricidad/autogeneracion", 
@@ -144,11 +144,11 @@ api_router.include_router(
 
 
 # Energia
-# api_router.include_router(
-#     router=fosiles.router, 
-#     prefix="/energia/combustibles_fosiles", 
-#     tags=["Energia"]
-# )
+api_router.include_router(
+    router=fosiles.router, 
+    prefix="/energia/combustibles_fosiles", 
+    tags=["Energia"]
+)
 # api_router.include_router(
 #     router=bioenergia.router, 
 #     prefix="/energia/bioenergia", 

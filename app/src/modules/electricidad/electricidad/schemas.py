@@ -94,12 +94,12 @@ class SUPUESTOS_FIJOS(BaseModel):
 # ####################################################################################
 
 class Salidas_name(str, Enum):
-    salidas_combustibels_fosiles                  = 'salidas_combustibels_fosiles'
+    salidas_combustibles_fosiles                  = 'salidas_combustibles_fosiles'
     salidas_energias_renovables_no_convencionales = 'salidas_energias_renovables_no_convencionales'
     salidas_energia_demandada                     = 'salidas_energia_demandada'
     salidas_balance                               = 'salidas_balance'
 
-class ELECT_Electricidad_SALIDAS_combustibels_fosiles(BaseModel):
+class _ELECT_Electricidad_SALIDAS_combustibles_fosiles(BaseModel):
     """salidas_combustibels_fosiles"""
 
     topic       : str
@@ -116,7 +116,7 @@ class ELECT_Electricidad_SALIDAS_combustibels_fosiles(BaseModel):
     medida_1    : float
 
 
-class ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(BaseModel):
+class _ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(BaseModel):
     """salidas_energias_renovables_no_convencionales"""
 
     topic       : str
@@ -133,7 +133,7 @@ class ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(BaseModel
     medida_1    : float
 
 
-class ELECT_Electricidad_SALIDAS_energia_demandada(BaseModel):
+class _ELECT_Electricidad_SALIDAS_energia_demandada(BaseModel):
     """salidas_energia_demandada"""
 
     topic       : str
@@ -150,7 +150,7 @@ class ELECT_Electricidad_SALIDAS_energia_demandada(BaseModel):
     medida_1    : float
 
 
-class ELECT_Electricidad_SALIDAS_balance(BaseModel):
+class _ELECT_Electricidad_SALIDAS_balance(BaseModel):
     """salidas_balance"""
 
     topic       : str
@@ -167,11 +167,48 @@ class ELECT_Electricidad_SALIDAS_balance(BaseModel):
     medida_1    : float
 
 
+class ELECT_Electricidad_SALIDAS_combustibles_fosiles(BaseModel):
+    """salidas_combustibels_fosiles"""
+
+    salidas_combustibles_fosiles : list[_ELECT_Electricidad_SALIDAS_combustibles_fosiles]
+
+    class Config:
+        orm_mode : True
+
+
+class ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(BaseModel):
+    """salidas_energias_renovables_no_convencionales"""
+
+    salidas_energias_renovables_no_convencionales : list[_ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales]
+
+    class Config:
+        orm_mode : True
+
+
+class ELECT_Electricidad_SALIDAS_energia_demandada(BaseModel):
+    """salidas_energia_demandada"""
+
+    salidas_energia_demandada : list[_ELECT_Electricidad_SALIDAS_energia_demandada]
+
+    class Config:
+        orm_mode : True
+
+
+class ELECT_Electricidad_SALIDAS_balance(BaseModel):
+    """salidas_balance"""
+
+    salidas_balance : list[_ELECT_Electricidad_SALIDAS_balance]
+
+    class Config:
+        orm_mode : True
+  
+
+
 class SALIDAS(BaseModel):
     """Salidas
     """
     
-    salidas_combustibels_fosiles                  : list[ELECT_Electricidad_SALIDAS_combustibels_fosiles]
+    salidas_combustibels_fosiles                  : list[ELECT_Electricidad_SALIDAS_combustibles_fosiles]
     salidas_energias_renovables_no_convencionales : list[ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales]
     salidas_energia_demandada                     : list[ELECT_Electricidad_SALIDAS_energia_demandada]
     salidas_balance                               : list[ELECT_Electricidad_SALIDAS_balance]
@@ -189,7 +226,7 @@ class Emisiones_name(str, Enum):
     emisiones_energias_renovables_no_convencionales = 'emisiones_energias_renovables_no_convencionales'
 
 
-class ELECT_Electricidad_EMISIONES_combustibles_fosiles(BaseModel):
+class _ELECT_Electricidad_EMISIONES_combustibles_fosiles(BaseModel):
     """emisiones_combustibles_fosiles"""
 
     topic       : str
@@ -207,7 +244,7 @@ class ELECT_Electricidad_EMISIONES_combustibles_fosiles(BaseModel):
     medida_1    : float
 
 
-class ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(BaseModel):
+class _ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(BaseModel):
     """emisiones_energias_renovables_no_convencionales"""
 
     topic       : str
@@ -223,6 +260,24 @@ class ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(BaseMod
     y2050       : float | None
     unidad      : str
     medida_1    : float
+
+
+class ELECT_Electricidad_EMISIONES_combustibles_fosiles(BaseModel):
+    """emisiones_combustibles_fosiles"""
+
+    emisiones_combustibles_fosiles : list[_ELECT_Electricidad_EMISIONES_combustibles_fosiles]
+
+    class Config:
+        orm_mode : True
+
+
+class ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(BaseModel):
+    """emisiones_energias_renovables_no_convencionales"""
+
+    emisiones_energias_renovables_no_convencionales : list[_ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales]
+
+    class Config:
+        orm_mode : True
 
 
 class EMISIONES(BaseModel):

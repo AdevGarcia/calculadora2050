@@ -1,8 +1,8 @@
 """init
 
-Revision ID: 4a87cebe0457
+Revision ID: 2f07e0bb5c37
 Revises: 
-Create Date: 2023-08-01 15:15:16.239900
+Create Date: 2023-08-07 16:16:01.505257
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4a87cebe0457'
+revision = '2f07e0bb5c37'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -1126,6 +1126,335 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_rural_st_demanda_de_lena_id'), 'edif_res_rural_st_demanda_de_lena', ['id'], unique=False)
+    op.create_table('elect_electricidad_emisiones_combustibles_fosiles',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_emisiones_combustibles_fosiles_id'), 'elect_electricidad_emisiones_combustibles_fosiles', ['id'], unique=False)
+    op.create_table('elect_electricidad_emisiones_energias_renovables_no_convencionales',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_emisiones_energias_renovables_no_convencionales_id'), 'elect_electricidad_emisiones_energias_renovables_no_convencionales', ['id'], unique=False)
+    op.create_table('elect_electricidad_salidas_balance',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_salidas_balance_id'), 'elect_electricidad_salidas_balance', ['id'], unique=False)
+    op.create_table('elect_electricidad_salidas_combustibles_fosiles',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_salidas_combustibles_fosiles_id'), 'elect_electricidad_salidas_combustibles_fosiles', ['id'], unique=False)
+    op.create_table('elect_electricidad_salidas_energia_demandada',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_salidas_energia_demandada_id'), 'elect_electricidad_salidas_energia_demandada', ['id'], unique=False)
+    op.create_table('elect_electricidad_salidas_energias_renovables_no_convencionales',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_salidas_energias_renovables_no_convencionales_id'), 'elect_electricidad_salidas_energias_renovables_no_convencionales', ['id'], unique=False)
+    op.create_table('elect_electricidad_sf_factor_de_carga',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_sf_factor_de_carga_id'), 'elect_electricidad_sf_factor_de_carga', ['id'], unique=False)
+    op.create_table('elect_electricidad_sf_horas_de_operacion_ano',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('valor', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_sf_horas_de_operacion_ano_id'), 'elect_electricidad_sf_horas_de_operacion_ano', ['id'], unique=False)
+    op.create_table('elect_electricidad_st_capacidad_de_generacion',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('trayectoria', sa.Integer(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_st_capacidad_de_generacion_id'), 'elect_electricidad_st_capacidad_de_generacion', ['id'], unique=False)
+    op.create_table('ener_combfosil_emisiones_consumo',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_emisiones_consumo_id'), 'ener_combfosil_emisiones_consumo', ['id'], unique=False)
+    op.create_table('ener_combfosil_emisiones_produccion',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_emisiones_produccion_id'), 'ener_combfosil_emisiones_produccion', ['id'], unique=False)
+    op.create_table('ener_combfosil_salidas_combustibles_fosiles_producidos',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_salidas_combustibles_fosiles_producidos_id'), 'ener_combfosil_salidas_combustibles_fosiles_producidos', ['id'], unique=False)
+    op.create_table('ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector_id'), 'ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector', ['id'], unique=False)
+    op.create_table('ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos_id'), 'ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos', ['id'], unique=False)
+    op.create_table('ener_combfosil_sf_consumo_de_energeticos',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('valor', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_sf_consumo_de_energeticos_id'), 'ener_combfosil_sf_consumo_de_energeticos', ['id'], unique=False)
+    op.create_table('ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('valor', sa.Float(), nullable=True),
+    sa.Column('total_crudo', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base_id'), 'ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base', ['id'], unique=False)
+    op.create_table('ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('valor', sa.Float(), nullable=True),
+    sa.Column('total_crudo', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base_id'), 'ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base', ['id'], unique=False)
+    op.create_table('ener_combfosil_sf_factores_de_emision_carbon',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('valor', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_sf_factores_de_emision_carbon_id'), 'ener_combfosil_sf_factores_de_emision_carbon', ['id'], unique=False)
+    op.create_table('ener_combfosil_sf_no_de_pozos',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('fuente', sa.String(), nullable=True),
+    sa.Column('valor', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_sf_no_de_pozos_id'), 'ener_combfosil_sf_no_de_pozos', ['id'], unique=False)
+    op.create_table('ener_combfosil_sf_produccion_de_carbon',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_sf_produccion_de_carbon_id'), 'ener_combfosil_sf_produccion_de_carbon', ['id'], unique=False)
+    op.create_table('ener_combfosil_sf_produccion_de_hidrocarburos',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_sf_produccion_de_hidrocarburos_id'), 'ener_combfosil_sf_produccion_de_hidrocarburos', ['id'], unique=False)
+    op.create_table('ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('trayectoria', sa.Integer(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo_id'), 'ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo', ['id'], unique=False)
     op.create_table('gana_emisiones',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -3236,6 +3565,50 @@ def downgrade() -> None:
     op.drop_table('gana_salidas')
     op.drop_index(op.f('ix_gana_emisiones_id'), table_name='gana_emisiones')
     op.drop_table('gana_emisiones')
+    op.drop_index(op.f('ix_ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo_id'), table_name='ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo')
+    op.drop_table('ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo')
+    op.drop_index(op.f('ix_ener_combfosil_sf_produccion_de_hidrocarburos_id'), table_name='ener_combfosil_sf_produccion_de_hidrocarburos')
+    op.drop_table('ener_combfosil_sf_produccion_de_hidrocarburos')
+    op.drop_index(op.f('ix_ener_combfosil_sf_produccion_de_carbon_id'), table_name='ener_combfosil_sf_produccion_de_carbon')
+    op.drop_table('ener_combfosil_sf_produccion_de_carbon')
+    op.drop_index(op.f('ix_ener_combfosil_sf_no_de_pozos_id'), table_name='ener_combfosil_sf_no_de_pozos')
+    op.drop_table('ener_combfosil_sf_no_de_pozos')
+    op.drop_index(op.f('ix_ener_combfosil_sf_factores_de_emision_carbon_id'), table_name='ener_combfosil_sf_factores_de_emision_carbon')
+    op.drop_table('ener_combfosil_sf_factores_de_emision_carbon')
+    op.drop_index(op.f('ix_ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base_id'), table_name='ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base')
+    op.drop_table('ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base')
+    op.drop_index(op.f('ix_ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base_id'), table_name='ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base')
+    op.drop_table('ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base')
+    op.drop_index(op.f('ix_ener_combfosil_sf_consumo_de_energeticos_id'), table_name='ener_combfosil_sf_consumo_de_energeticos')
+    op.drop_table('ener_combfosil_sf_consumo_de_energeticos')
+    op.drop_index(op.f('ix_ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos_id'), table_name='ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos')
+    op.drop_table('ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos')
+    op.drop_index(op.f('ix_ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector_id'), table_name='ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector')
+    op.drop_table('ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector')
+    op.drop_index(op.f('ix_ener_combfosil_salidas_combustibles_fosiles_producidos_id'), table_name='ener_combfosil_salidas_combustibles_fosiles_producidos')
+    op.drop_table('ener_combfosil_salidas_combustibles_fosiles_producidos')
+    op.drop_index(op.f('ix_ener_combfosil_emisiones_produccion_id'), table_name='ener_combfosil_emisiones_produccion')
+    op.drop_table('ener_combfosil_emisiones_produccion')
+    op.drop_index(op.f('ix_ener_combfosil_emisiones_consumo_id'), table_name='ener_combfosil_emisiones_consumo')
+    op.drop_table('ener_combfosil_emisiones_consumo')
+    op.drop_index(op.f('ix_elect_electricidad_st_capacidad_de_generacion_id'), table_name='elect_electricidad_st_capacidad_de_generacion')
+    op.drop_table('elect_electricidad_st_capacidad_de_generacion')
+    op.drop_index(op.f('ix_elect_electricidad_sf_horas_de_operacion_ano_id'), table_name='elect_electricidad_sf_horas_de_operacion_ano')
+    op.drop_table('elect_electricidad_sf_horas_de_operacion_ano')
+    op.drop_index(op.f('ix_elect_electricidad_sf_factor_de_carga_id'), table_name='elect_electricidad_sf_factor_de_carga')
+    op.drop_table('elect_electricidad_sf_factor_de_carga')
+    op.drop_index(op.f('ix_elect_electricidad_salidas_energias_renovables_no_convencionales_id'), table_name='elect_electricidad_salidas_energias_renovables_no_convencionales')
+    op.drop_table('elect_electricidad_salidas_energias_renovables_no_convencionales')
+    op.drop_index(op.f('ix_elect_electricidad_salidas_energia_demandada_id'), table_name='elect_electricidad_salidas_energia_demandada')
+    op.drop_table('elect_electricidad_salidas_energia_demandada')
+    op.drop_index(op.f('ix_elect_electricidad_salidas_combustibles_fosiles_id'), table_name='elect_electricidad_salidas_combustibles_fosiles')
+    op.drop_table('elect_electricidad_salidas_combustibles_fosiles')
+    op.drop_index(op.f('ix_elect_electricidad_salidas_balance_id'), table_name='elect_electricidad_salidas_balance')
+    op.drop_table('elect_electricidad_salidas_balance')
+    op.drop_index(op.f('ix_elect_electricidad_emisiones_energias_renovables_no_convencionales_id'), table_name='elect_electricidad_emisiones_energias_renovables_no_convencionales')
+    op.drop_table('elect_electricidad_emisiones_energias_renovables_no_convencionales')
+    op.drop_index(op.f('ix_elect_electricidad_emisiones_combustibles_fosiles_id'), table_name='elect_electricidad_emisiones_combustibles_fosiles')
+    op.drop_table('elect_electricidad_emisiones_combustibles_fosiles')
     op.drop_index(op.f('ix_edif_res_rural_st_demanda_de_lena_id'), table_name='edif_res_rural_st_demanda_de_lena')
     op.drop_table('edif_res_rural_st_demanda_de_lena')
     op.drop_index(op.f('ix_edif_res_rural_st_demanda_de_glp_id'), table_name='edif_res_rural_st_demanda_de_glp')
