@@ -147,7 +147,7 @@
             "topic": "datos_de_la_produccion_de_crudo_en_el_ano_base",
             "tipo": "produccion",
             "valor": 50205.0387044599,
-            "total_crudo": "-",
+            "total_crudo": 0.0,
             "unidad": "10^3 m3"
         },
         {

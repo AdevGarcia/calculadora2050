@@ -163,7 +163,7 @@ class Salidas_name(str, Enum):
     salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  = 'salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos'
 
 
-class ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(BaseModel):
+class _ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(BaseModel):
     """salidas_combustibles_fosiles_producidos"""
 
     topic       : str
@@ -180,7 +180,7 @@ class ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(BaseModel):
     medida_1    : float
 
 
-class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector(BaseModel):
+class _ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector(BaseModel):
     """salidas_consumo_de_combustibles_fosiles_por_el_propio_sector"""
 
     topic       : str
@@ -197,7 +197,7 @@ class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_secto
     medida_1    : float
 
 
-class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos(BaseModel):
+class _ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos(BaseModel):
     """salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos"""
 
     topic       : str
@@ -214,13 +214,40 @@ class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos
     medida_1    : float
 
 
+class ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(BaseModel):
+    """salidas_combustibles_fosiles_producidos"""
+
+    salidas_combustibles_fosiles_producidos : list[_ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos]
+
+    class Config:
+        orm_mode : True
+
+
+class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector(BaseModel):
+    """salidas_consumo_de_combustibles_fosiles_por_el_propio_sector"""
+
+    salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector]
+
+    class Config:
+        orm_mode : True
+
+
+class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos(BaseModel):
+    """salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos"""
+
+    salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos]
+
+    class Config:
+        orm_mode : True
+
+
 class SALIDAS(BaseModel):
     """Salidas
     """
     
-    salidas_combustibles_fosiles_producidos                      : list[ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos]
-    salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector]
-    salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos]
+    salidas_combustibles_fosiles_producidos                      : list[_ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos]
+    salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector]
+    salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos]
 
     class Config:
         orm_mode : True
@@ -235,7 +262,7 @@ class Emisiones_name(str, Enum):
     emisiones_consumo    = 'emisiones_consumo'
 
 
-class ENER_CombFosil_EMISIONES_produccion(BaseModel):
+class _ENER_CombFosil_EMISIONES_produccion(BaseModel):
     """emisiones_produccion"""
 
     topic       : str
@@ -253,7 +280,7 @@ class ENER_CombFosil_EMISIONES_produccion(BaseModel):
     medida_1    : float
 
 
-class ENER_CombFosil_EMISIONES_consumo(BaseModel):
+class _ENER_CombFosil_EMISIONES_consumo(BaseModel):
     """emisiones_consumo"""
 
     topic       : str
@@ -271,11 +298,29 @@ class ENER_CombFosil_EMISIONES_consumo(BaseModel):
     medida_1    : float
 
 
+class ENER_CombFosil_EMISIONES_produccion(BaseModel):
+    """emisiones_produccion"""
+
+    emisiones_produccion : list[_ENER_CombFosil_EMISIONES_produccion]
+
+    class Config:
+        orm_mode : True
+
+
+class ENER_CombFosil_EMISIONES_consumo(BaseModel):
+    """emisiones_consumo"""
+
+    emisiones_consumo    : list[_ENER_CombFosil_EMISIONES_consumo]
+
+    class Config:
+        orm_mode : True
+
+
 class EMISIONES(BaseModel):
     """Emisiones - emisiones_gases_efecto_invernadero
     """
-    emisiones_produccion : list[ENER_CombFosil_EMISIONES_produccion]
-    emisiones_consumo    : list[ENER_CombFosil_EMISIONES_consumo]
+    emisiones_produccion : list[_ENER_CombFosil_EMISIONES_produccion]
+    emisiones_consumo    : list[_ENER_CombFosil_EMISIONES_consumo]
 
     class Config:
         orm_mode : True

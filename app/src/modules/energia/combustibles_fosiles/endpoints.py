@@ -39,28 +39,19 @@ def create_ST(
     ) -> Any:
     """CREATE"""
 
-    keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
-    
-    for key in keys:
-        match key:
-            case 'eficiencia_energetica_en_la_refinacion_de_crudo':
-                loader(
-                    db=db,
-                    model=models.ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'trayectoria']
-                )
-                    
-            case _:
-                logger.error(f'[ERROR] {key} is invalid')
+    loader(
+        db=db,
+        model=models.ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo, 
+        obj_in=jdata['eficiencia_energetica_en_la_refinacion_de_crudo'], 
+        filters=['topic', 'trayectoria']
+    )
 
     return jdata
 
 
-@router.get('/supuestos_trayectoria/{module}')
+@router.get('/supuestos_trayectoria')
 def read_ST_module(
-    module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
@@ -71,17 +62,12 @@ def read_ST_module(
 
     filter = {'trayectoria' : trayectoria}
 
-    match module:
-        case schemas.ST_name.eficiencia_energetica_en_la_refinacion_de_crudo:
-            rd = downloader(
-                db=db, 
-                model=models.ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo,
-                topic='eficiencia_energetica_en_la_refinacion_de_crudo',
-                **filter
-                )
-
-        case _:
-            logger.error(f'[ERROR] {module} is invalid')
+    rd = downloader(
+        db=db, 
+        model=models.ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo,
+        topic='eficiencia_energetica_en_la_refinacion_de_crudo',
+        **filter
+        )
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')
@@ -229,47 +215,69 @@ def delete_SF(
 ####################################################################################
 
 @router.post(
-        path='/salidas', 
-        response_model=schemas.SALIDAS, 
+        path='/salidas_combustibles_fosiles_producidos', 
+        response_model=schemas.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos, 
         status_code=status.HTTP_201_CREATED)
-def create_total_areas_reforestadas(
-    data: schemas.SALIDAS, 
+def create_salidas_combustibles_fosiles_producidos(
+    data: schemas.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
-    keys = data.__dict__.keys()
+    jdata = jsonable_encoder(data)
+    loader(
+        db=db, 
+        model=models.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos, 
+        obj_in=jdata['salidas_combustibles_fosiles_producidos'], 
+        filters=['topic', 'tipo', 'medida_1']
+    )
+
+    return jdata
+
+
+@router.post(
+        path='/salidas_consumo_de_combustibles_fosiles_por_el_propio_sector', 
+        response_model=schemas.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector, 
+        status_code=status.HTTP_201_CREATED)
+def create_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector(
+    data: schemas.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector, 
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """CREATE"""
+
     jdata = jsonable_encoder(data)
     
-    for key in keys:
-        match key:
-            case 'salidas_combustibles_fosiles_producidos':
-                loader(
-                    db=db, 
-                    model=models.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'tipo', 'medida_1']
-                )
-                    
-            case 'salidas_consumo_de_combustibles_fosiles_por_el_propio_sector':
-                loader(
-                    db=db, 
-                    model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'tipo', 'medida_1']
-                )
-                
-            case 'salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos':
-                loader(
-                    db=db, 
-                    model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'tipo', 'medida_1']
-                )
-            
-            case _:
-                logger.error(f'[ERROR] {key} is invalid')
+    loader(
+        db=db, 
+        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector, 
+        obj_in=jdata['salidas_consumo_de_combustibles_fosiles_por_el_propio_sector'], 
+        filters=['topic', 'tipo', 'medida_1']
+    )
+
+    return jdata
+
+
+@router.post(
+        path='/salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos', 
+        response_model=schemas.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos, 
+        status_code=status.HTTP_201_CREATED)
+def create_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos(
+    data: schemas.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos, 
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """CREATE"""
+
+    jdata = jsonable_encoder(data)
+    
+    loader(
+        db=db, 
+        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos, 
+        obj_in=jdata['salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos'], 
+        filters=['topic', 'tipo', 'medida_1']
+    )
 
     return jdata
 
@@ -339,39 +347,47 @@ def delete_Salidas(
 ####################################################################################
 
 @router.post(
-        path='/emisiones', 
-        response_model=schemas.EMISIONES, 
+        path='/emisiones_produccion', 
+        response_model=schemas.ENER_CombFosil_EMISIONES_produccion, 
         status_code=status.HTTP_201_CREATED)
-def create_emisiones(
-    data: schemas.EMISIONES, 
+def create_emisiones_produccion(
+    data: schemas.ENER_CombFosil_EMISIONES_produccion, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
-    keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
     
-    for key in keys:
-        match key:
-            case 'emisiones_produccion':
-                loader(
-                    db=db, 
-                    model=models.ENER_CombFosil_EMISIONES_produccion, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'bloque', 'tipo', 'medida_1']
-                )
-                    
-            case 'emisiones_consumo':
-                loader(
-                    db=db, 
-                    model=models.ENER_CombFosil_EMISIONES_consumo, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'bloque', 'tipo', 'medida_1']
-                )
-            
-            case _:
-                logger.error(f'[ERROR] {key} is invalid')
+    loader(
+        db=db, 
+        model=models.ENER_CombFosil_EMISIONES_produccion, 
+        obj_in=jdata['emisiones_produccion'], 
+        filters=['topic', 'bloque', 'tipo', 'medida_1']
+    )
+
+    return jdata
+
+
+@router.post(
+        path='/emisiones_consumo', 
+        response_model=schemas.ENER_CombFosil_EMISIONES_consumo, 
+        status_code=status.HTTP_201_CREATED)
+def create_emisiones_consumo(
+    data: schemas.ENER_CombFosil_EMISIONES_consumo, 
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """CREATE"""
+
+    jdata = jsonable_encoder(data)
+    
+    loader(
+        db=db, 
+        model=models.ENER_CombFosil_EMISIONES_consumo, 
+        obj_in=jdata['emisiones_consumo'], 
+        filters=['topic', 'bloque', 'tipo', 'medida_1']
+    )
 
     return jdata
 
