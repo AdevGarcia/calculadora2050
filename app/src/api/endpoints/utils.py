@@ -1,17 +1,24 @@
-# from typing import Any
+from typing import Any
 
-# from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends
 # from pydantic.networks import EmailStr
 
 # from app.src.modules.user import models as models_user
 # from app.src.modules.user import schemas as schemas_user
-# from app.src.modules.msg import schemas as schemas_msg
+from app.src.modules.msg import schemas as schemas_msg
 
 # from app.src.db import deps
 # from app.src.core.celery_app import celery_app
 # from app.src.utils import send_test_email
 
-# router = APIRouter()
+router = APIRouter()
+
+@router.get("/test", response_model=schemas_msg.Msg)
+def test_endpoint() -> Any:
+    """
+    Test current endpoint.
+    """
+    return {"msg": "Message returned ok."}
 
 
 # @router.post("/test-celery/", response_model=schemas_msg.Msg, status_code=201)
