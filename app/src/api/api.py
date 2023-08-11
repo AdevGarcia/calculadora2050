@@ -49,6 +49,8 @@ from modules.entradas import endpoint_ener_bioener as entrada_ener_bioener  # no
 from modules.entradas import endpoint_ener_import_export as entrada_ener_import_export  # noqa
 from modules.entradas import endpoint_elect_electricidad as entrada_elect_electricidad  # noqa
 from modules.entradas import endpoint_elect_autogen as entrada_elect_autogen  # noqa
+from modules.entradas import endpoint_elect_import_export as entrada_elect_import_export  # noqa
+from modules.entradas import endpoint_ind as entrada_ind  # noqa
 
 # # Resultados
 # from modules.resultados.agricultura import endpoints as agricultura_result  # noqa
@@ -76,6 +78,8 @@ api_router.include_router(entrada_ener_bioener.router, prefix="/entradas/energia
 api_router.include_router(entrada_ener_import_export.router, prefix="/entradas/energia", tags=["Entradas"]) 
 api_router.include_router(entrada_elect_electricidad.router, prefix="/entradas/electricidad", tags=["Entradas"]) 
 api_router.include_router(entrada_elect_autogen.router, prefix="/entradas/electricidad", tags=["Entradas"])
+api_router.include_router(entrada_elect_import_export.router, prefix="/entradas/electricidad", tags=["Entradas"])
+api_router.include_router(entrada_ind.router, prefix="/entradas/industria", tags=["Entradas"])
 
 # Resultados
 # api_router.include_router(general_result.router, prefix="/resultados", tags=["Resultados"])

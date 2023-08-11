@@ -348,20 +348,20 @@ def read_entradas_excedentes_energeticos(
 
     ####################################################################################
 
-    result_crudo['topic']  = 'requerimientos_energeticos'
+    result_crudo['topic']  = 'excedentes_energeticos'
     result_crudo['tipo']   = 'crudo'
     result_crudo['unidad'] = 'TWh'
 
-    result_gas['topic']  = 'requerimientos_energeticos'
+    result_gas['topic']  = 'excedentes_energeticos'
     result_gas['tipo']   = 'gas'
     result_gas['unidad'] = 'TWh'
 
-    result_carbon['topic']  = 'requerimientos_energeticos'
+    result_carbon['topic']  = 'excedentes_energeticos'
     result_carbon['tipo']   = 'carbon'
     result_carbon['unidad'] = 'TWh'
 
     result = {
-        'requerimientos_energeticos' : [result_crudo, result_gas, result_carbon]
+        'excedentes_energeticos' : [result_crudo, result_gas, result_carbon]
     }
 
 
