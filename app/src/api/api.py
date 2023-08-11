@@ -47,6 +47,7 @@ from modules.transporte.nacional.transporte_pasajeros import endpoints as pasaje
 from modules.entradas import endpoint_ener_combfosil as entrada_ener_combfosil  # noqa
 from modules.entradas import endpoint_ener_bioener as entrada_ener_bioener  # noqa
 from modules.entradas import endpoint_ener_import_export as entrada_ener_import_export  # noqa
+from modules.entradas import endpoint_elect_electricidad as entrada_elect_electricidad  # noqa
 
 # # Resultados
 # from modules.resultados.agricultura import endpoints as agricultura_result  # noqa
@@ -71,7 +72,8 @@ api_router.include_router(download_excel.router, prefix="/download", tags=["Down
 # Entradas
 api_router.include_router(entrada_ener_combfosil.router, prefix="/entradas/energia", tags=["Entradas"])
 api_router.include_router(entrada_ener_bioener.router, prefix="/entradas/energia", tags=["Entradas"])
-api_router.include_router(entrada_ener_import_export.router, prefix="/entradas/energia", tags=["Entradas"])
+api_router.include_router(entrada_ener_import_export.router, prefix="/entradas/energia", tags=["Entradas"]) 
+api_router.include_router(entrada_elect_electricidad.router, prefix="/entradas/electricidad", tags=["Entradas"])
 
 # Resultados
 # api_router.include_router(general_result.router, prefix="/resultados", tags=["Resultados"])

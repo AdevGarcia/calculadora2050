@@ -14,7 +14,7 @@ from db import deps
 from app.src.modules.user import models as models_user
 
 from .util.constants import YEARS
-from .util.util import db_to_df, get_item, set_item, set_zeros, set_suma_total, get_total, not_negative
+from .util.util import db_to_df, get_item, set_item, set_zeros, set_suma_total
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -22,58 +22,6 @@ logger = logging.getLogger(__name__)
 DEBUG = False
 
 router = APIRouter()
-
-# def db_to_df(rd: dict, debug: bool=False)-> pd.DataFrame:
-#     years = ["y2018","y2020","y2025", "y2030", "y2035", "y2040", "y2045", "y2050"]
-#     d = jsonable_encoder(rd)
-
-#     if debug:
-#         print('### db_to_df\n', d)
-#     return pd.DataFrame(d[list(d.keys())[0]])[years]
-
-
-# def db_to_dict(rd: dict)-> dict:
-#     return db_to_df(rd=rd).to_dict(orient='records')[0]
-
-
-# def fvalue(rd: dict, topic: str, bloque: str, tipo: str, unidad:str)-> dict:
-    
-#     d = db_to_dict(rd=rd)
-#     d["topic"]    = topic
-#     d["bloque"]   = bloque
-#     d["tipo"]     = tipo
-#     d["unidad"]   = unidad
-
-#     return d
-
-
-# def ftotal(items: list, topic: str, bloque: str, tipo: str, unidad:str)->dict:
-#     years = ["y2018","y2020","y2025", "y2030", "y2035", "y2040", "y2045", "y2050"]
-#     total = pd.DataFrame(items)[years].sum().to_dict()
-#     total["topic"]    = topic
-#     total["bloque"]   = bloque
-#     total["tipo"]     = tipo
-#     total["unidad"]   = unidad
-
-#     return total
-
-
-# def fcero(topic: str, bloque: str, tipo: str, unidad:str)-> dict:
-#         dcero = {
-#             'y2018'  : 0.0, 
-#             'y2020'  : 0.0, 
-#             'y2025'  : 0.0, 
-#             'y2030'  : 0.0, 
-#             'y2035'  : 0.0, 
-#             'y2040'  : 0.0, 
-#             'y2045'  : 0.0, 
-#             'y2050'  : 0.0,
-#             'topic'  : topic, 
-#             'bloque' : bloque, 
-#             'tipo'   : tipo, 
-#             'unidad' : unidad
-#         }
-#         return dcero
 
 
 ####################################################################################
@@ -160,7 +108,7 @@ def read_entradas_energia_combustibles_fosiles_gasolina(
 
 
 ####################################################################################
-#######                              diesel                                #######
+#######                              diesel                                  #######
 ####################################################################################
 
 @router.get('/energia_combustibles_fosiles/diesel')
@@ -333,7 +281,7 @@ def read_entradas_energia_combustibles_fosiles_fuel_oil(
 
 
 ####################################################################################
-#######                              gas_natural                                #######
+#######                              gas_natural                             #######
 ####################################################################################
 
 @router.get('/energia_combustibles_fosiles/gas_natural')
@@ -450,7 +398,7 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
 
 
 ####################################################################################
-#######                              glp                                #######
+#######                              glp                                     #######
 ####################################################################################
 
 @router.get('/energia_combustibles_fosiles/glp')
@@ -542,7 +490,7 @@ def read_entradas_energia_combustibles_fosiles_glp(
 
 
 ####################################################################################
-#######                              carbon                                #######
+#######                              carbon                                  #######
 ####################################################################################
 
 @router.get('/energia_combustibles_fosiles/carbon')
@@ -599,7 +547,7 @@ def read_entradas_energia_combustibles_fosiles_carbon(
 
 
 ####################################################################################
-#######                              queroseno                                #######
+#######                              queroseno                               #######
 ####################################################################################
 
 @router.get('/energia_combustibles_fosiles/queroseno')
@@ -668,7 +616,7 @@ def read_entradas_energia_combustibles_fosiles_queroseno(
 
 
 ####################################################################################
-#######                              coque                                #######
+#######                              coque                                   #######
 ####################################################################################
 
 @router.get('/energia_combustibles_fosiles/coque')
