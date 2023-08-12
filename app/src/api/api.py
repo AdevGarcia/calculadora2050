@@ -53,16 +53,16 @@ from modules.entradas import endpoint_elect_import_export as entrada_elect_impor
 from modules.entradas import endpoint_ind as entrada_ind  # noqa
 
 # # Resultados
-# from modules.resultados.agricultura import endpoints as agricultura_result  # noqa
-# from modules.resultados.bosques import endpoints as bosques_result  # noqa
+from modules.resultados import agricultura as agricultura_result  # noqa
+from modules.resultados import bosques as bosques_result  # noqa
 # from modules.resultados.edificaciones import endpoints as edificaciones_result  # noqa
 # from modules.resultados.electricidad import endpoints as electricidad_result  # noqa
 # from modules.resultados.energia import endpoints as energia_result  # noqa
-# from modules.resultados.ganaderia import endpoints as ganaderia_result  # noqa
+from modules.resultados import ganaderia as ganaderia_result  # noqa
 # from modules.resultados.general import endpoints as general_result  # noqa
 # from modules.resultados.industria import endpoints as industria_result  # noqa
 # from modules.resultados.residuos import endpoints as residuos_result  # noqa
-# from modules.resultados.transporte import endpoints as transporte_result  # noqa
+from modules.resultados import transporte as transporte_result  # noqa
 
 
 api_router = APIRouter()
@@ -82,16 +82,16 @@ api_router.include_router(entrada_elect_import_export.router, prefix="/entradas/
 api_router.include_router(entrada_ind.router, prefix="/entradas/industria", tags=["Entradas"])
 
 # Resultados
-# api_router.include_router(general_result.router, prefix="/resultados", tags=["Resultados"])
-# api_router.include_router(agricultura_result.router, prefix="/resultados", tags=["Resultados"])
-# api_router.include_router(bosques_result.router, prefix="/resultados", tags=["Resultados"])
-# api_router.include_router(edificaciones_result.router, prefix="/resultados", tags=["Resultados"])
+# api_router.include_router(general_result.router, prefix="/resultados/general", tags=["Resultados"])
+api_router.include_router(agricultura_result.router, prefix="/resultados/agricultura", tags=["Resultados"])
+api_router.include_router(bosques_result.router, prefix="/resultados/bosques", tags=["Resultados"])
+# api_router.include_router(edificaciones_result.router, prefix="/resultados/edificaciones", tags=["Resultados"])
 # api_router.include_router(electricidad_result.router, prefix="/resultados", tags=["Resultados"])
 # api_router.include_router(energia_result.router, prefix="/resultados", tags=["Resultados"])
-# api_router.include_router(ganaderia_result.router, prefix="/resultados", tags=["Resultados"])
+api_router.include_router(ganaderia_result.router, prefix="/resultados/ganaderia", tags=["Resultados"])
 # api_router.include_router(industria_result.router, prefix="/resultados", tags=["Resultados"])
 # api_router.include_router(residuos_result.router, prefix="/resultados", tags=["Resultados"])
-# api_router.include_router(transporte_result.router, prefix="/resultados", tags=["Resultados"])
+api_router.include_router(transporte_result.router, prefix="/resultados/transporte", tags=["Resultados"])
 
 
 ### Modules of sectors ###
