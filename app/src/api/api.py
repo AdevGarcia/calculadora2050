@@ -56,8 +56,8 @@ from modules.entradas import endpoint_ind as entrada_ind  # noqa
 from modules.resultados import agricultura as agricultura_result  # noqa
 from modules.resultados import bosques as bosques_result  # noqa
 from modules.resultados import edificaciones as edificaciones_result  # noqa
-# from modules.resultados.electricidad import endpoints as electricidad_result  # noqa
-# from modules.resultados.energia import endpoints as energia_result  # noqa
+from modules.resultados import electricidad as electricidad_result  # noqa
+from modules.resultados import energia as energia_result  # noqa
 from modules.resultados import ganaderia as ganaderia_result  # noqa
 from modules.resultados import industria as industria_result  # noqa
 from modules.resultados import residuos as residuos_result  # noqa
@@ -87,8 +87,8 @@ api_router.include_router(entrada_ind.router, prefix="/entradas/industria", tags
 api_router.include_router(agricultura_result.router, prefix="/resultados/agricultura", tags=["Resultados"])
 api_router.include_router(bosques_result.router, prefix="/resultados/bosques", tags=["Resultados"])
 api_router.include_router(edificaciones_result.router, prefix="/resultados/edificaciones", tags=["Resultados"])
-# api_router.include_router(electricidad_result.router, prefix="/resultados", tags=["Resultados"])
-# api_router.include_router(energia_result.router, prefix="/resultados", tags=["Resultados"])
+api_router.include_router(electricidad_result.router, prefix="/resultados/electricidad", tags=["Resultados"])
+api_router.include_router(energia_result.router, prefix="/resultados/energia", tags=["Resultados"])
 api_router.include_router(ganaderia_result.router, prefix="/resultados/ganaderia", tags=["Resultados"])
 api_router.include_router(industria_result.router, prefix="/resultados/industria", tags=["Resultados"])
 api_router.include_router(residuos_result.router, prefix="/resultados/residuos", tags=["Resultados"])

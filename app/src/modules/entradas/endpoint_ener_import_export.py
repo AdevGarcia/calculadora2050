@@ -37,6 +37,20 @@ router = APIRouter()
 @router.get('/requerimientos_energeticos')
 def read_entradas_requerimientos_energeticos(
     medida_ener_1: schemas.Trayectoria=1,
+    medida_ind_1: schemas.Trayectoria=1,
+    medida_ind_2: schemas.Trayectoria=1,
+    medida_ind_3: schemas.Trayectoria=1,
+    medida_ind_4: schemas.Trayectoria=1,
+    medida_trans_car_1: schemas.Trayectoria=1,
+    medida_trans_car_2: schemas.Trayectoria=1,
+    medida_trans_pas_1: schemas.Trayectoria=1,
+    medida_trans_pas_2: schemas.Trayectoria=1,
+    medida_trans_nav_1: schemas.Trayectoria=1,
+    medida_edi_com_ute_1: schemas.Trayectoria=1,
+    medida_edi_res_irco_1: schemas.Trayectoria=1,
+    medida_edi_res_irco_2: schemas.Trayectoria=1,
+    medida_edi_res_irco_3: schemas.Trayectoria=1,
+    medida_edi_res_rural_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -50,59 +64,59 @@ def read_entradas_requerimientos_energeticos(
 
     gasolina = read_entradas_energia_combustibles_fosiles_gasolina(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_trans_car_1=1,
-        medida_trans_car_2=1,
-        medida_trans_pas_1=1,
-        medida_trans_pas_2=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_trans_car_1=medida_trans_car_1,
+        medida_trans_car_2=medida_trans_car_2,
+        medida_trans_pas_1=medida_trans_pas_1,
+        medida_trans_pas_2=medida_trans_pas_2
         ) 
 
     diesel = read_entradas_energia_combustibles_fosiles_diesel(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_trans_car_1=1,
-        medida_trans_car_2=1,
-        medida_trans_pas_1=1,
-        medida_trans_pas_2=1,
-        medida_trans_nav_1=1,
-        medida_edi_com_ute_1=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_trans_car_1=medida_trans_car_1,
+        medida_trans_car_2=medida_trans_car_2,
+        medida_trans_pas_1=medida_trans_pas_1,
+        medida_trans_pas_2=medida_trans_pas_2,
+        medida_trans_nav_1=medida_trans_nav_1,
+        medida_edi_com_ute_1=medida_edi_com_ute_1
     )
 
     fuel_oil = read_entradas_energia_combustibles_fosiles_fuel_oil(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_edi_com_ute_1=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_edi_com_ute_1=medida_edi_com_ute_1
     )
 
     glp = read_entradas_energia_combustibles_fosiles_glp(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_edi_com_ute_1=1,
-        medida_edi_res_irco_1=1,
-        medida_edi_res_irco_2=1,
-        medida_edi_res_irco_3=1,
-        medida_edi_res_rural_1=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        medida_edi_res_irco_1=medida_edi_res_irco_1,
+        medida_edi_res_irco_2=medida_edi_res_irco_2,
+        medida_edi_res_irco_3=medida_edi_res_irco_3,
+        medida_edi_res_rural_1=medida_edi_res_rural_1
     )
 
     queroseno = read_entradas_energia_combustibles_fosiles_queroseno(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_edi_com_ute_1=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_edi_com_ute_1=medida_edi_com_ute_1
     )
 
     sum_combustibles = pd.concat(
@@ -131,18 +145,18 @@ def read_entradas_requerimientos_energeticos(
     ####################################################################################
 
     gas_natural = read_entradas_energia_combustibles_fosiles_gas_natural(db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_trans_car_1=1,
-        medida_trans_car_2=1,
-        medida_trans_pas_1=1,
-        medida_trans_pas_2=1,
-        medida_edi_com_ute_1=1,
-        medida_edi_res_irco_1=1,
-        medida_edi_res_irco_2=1,
-        medida_edi_res_irco_3=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_trans_car_1=medida_trans_car_1,
+        medida_trans_car_2=medida_trans_car_2,
+        medida_trans_pas_1=medida_trans_pas_1,
+        medida_trans_pas_2=medida_trans_pas_2,
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        medida_edi_res_irco_1=medida_edi_res_irco_1,
+        medida_edi_res_irco_2=medida_edi_res_irco_2,
+        medida_edi_res_irco_3=medida_edi_res_irco_3
     )
 
     gas = get_item(db=db, 
@@ -161,10 +175,10 @@ def read_entradas_requerimientos_energeticos(
     ####################################################################################
 
     carbon_mineral = read_entradas_energia_combustibles_fosiles_carbon(db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4
     )
 
     carbon = get_item(db=db, 
@@ -205,6 +219,20 @@ def read_entradas_requerimientos_energeticos(
 @router.get('/excedentes_energeticos')
 def read_entradas_excedentes_energeticos(
     medida_ener_1: schemas.Trayectoria=1,
+    medida_ind_1: schemas.Trayectoria=1,
+    medida_ind_2: schemas.Trayectoria=1,
+    medida_ind_3: schemas.Trayectoria=1,
+    medida_ind_4: schemas.Trayectoria=1,
+    medida_trans_car_1: schemas.Trayectoria=1,
+    medida_trans_car_2: schemas.Trayectoria=1,
+    medida_trans_pas_1: schemas.Trayectoria=1,
+    medida_trans_pas_2: schemas.Trayectoria=1,
+    medida_trans_nav_1: schemas.Trayectoria=1,
+    medida_edi_com_ute_1: schemas.Trayectoria=1,
+    medida_edi_res_irco_1: schemas.Trayectoria=1,
+    medida_edi_res_irco_2: schemas.Trayectoria=1,
+    medida_edi_res_irco_3: schemas.Trayectoria=1,
+    medida_edi_res_rural_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -218,59 +246,59 @@ def read_entradas_excedentes_energeticos(
 
     gasolina = read_entradas_energia_combustibles_fosiles_gasolina(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_trans_car_1=1,
-        medida_trans_car_2=1,
-        medida_trans_pas_1=1,
-        medida_trans_pas_2=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_trans_car_1=medida_trans_car_1,
+        medida_trans_car_2=medida_trans_car_2,
+        medida_trans_pas_1=medida_trans_pas_1,
+        medida_trans_pas_2=medida_trans_pas_2
         ) 
 
     diesel = read_entradas_energia_combustibles_fosiles_diesel(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_trans_car_1=1,
-        medida_trans_car_2=1,
-        medida_trans_pas_1=1,
-        medida_trans_pas_2=1,
-        medida_trans_nav_1=1,
-        medida_edi_com_ute_1=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_trans_car_1=medida_trans_car_1,
+        medida_trans_car_2=medida_trans_car_2,
+        medida_trans_pas_1=medida_trans_pas_1,
+        medida_trans_pas_2=medida_trans_pas_2,
+        medida_trans_nav_1=medida_trans_nav_1,
+        medida_edi_com_ute_1=medida_edi_com_ute_1
     )
 
     fuel_oil = read_entradas_energia_combustibles_fosiles_fuel_oil(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_edi_com_ute_1=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_edi_com_ute_1=medida_edi_com_ute_1
     )
 
     glp = read_entradas_energia_combustibles_fosiles_glp(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_edi_com_ute_1=1,
-        medida_edi_res_irco_1=1,
-        medida_edi_res_irco_2=1,
-        medida_edi_res_irco_3=1,
-        medida_edi_res_rural_1=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        medida_edi_res_irco_1=medida_edi_res_irco_1,
+        medida_edi_res_irco_2=medida_edi_res_irco_2,
+        medida_edi_res_irco_3=medida_edi_res_irco_3,
+        medida_edi_res_rural_1=medida_edi_res_rural_1
     )
 
     queroseno = read_entradas_energia_combustibles_fosiles_queroseno(
         db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_edi_com_ute_1=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_edi_com_ute_1=medida_edi_com_ute_1
     )
 
     sum_combustibles = pd.concat(
@@ -300,18 +328,18 @@ def read_entradas_excedentes_energeticos(
     ####################################################################################
 
     gas_natural = read_entradas_energia_combustibles_fosiles_gas_natural(db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1,
-        medida_trans_car_1=1,
-        medida_trans_car_2=1,
-        medida_trans_pas_1=1,
-        medida_trans_pas_2=1,
-        medida_edi_com_ute_1=1,
-        medida_edi_res_irco_1=1,
-        medida_edi_res_irco_2=1,
-        medida_edi_res_irco_3=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4,
+        medida_trans_car_1=medida_trans_car_1,
+        medida_trans_car_2=medida_trans_car_2,
+        medida_trans_pas_1=medida_trans_pas_1,
+        medida_trans_pas_2=medida_trans_pas_2,
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        medida_edi_res_irco_1=medida_edi_res_irco_1,
+        medida_edi_res_irco_2=medida_edi_res_irco_2,
+        medida_edi_res_irco_3=medida_edi_res_irco_3
     )
 
     gas = get_item(db=db, 
@@ -330,10 +358,10 @@ def read_entradas_excedentes_energeticos(
     ####################################################################################
 
     carbon_mineral = read_entradas_energia_combustibles_fosiles_carbon(db=db,
-        medida_ind_1=1,
-        medida_ind_2=1,
-        medida_ind_3=1,
-        medida_ind_4=1
+        medida_ind_1=medida_ind_1,
+        medida_ind_2=medida_ind_2,
+        medida_ind_3=medida_ind_3,
+        medida_ind_4=medida_ind_4
     )
 
     carbon = get_item(db=db, 
