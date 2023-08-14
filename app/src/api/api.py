@@ -63,7 +63,7 @@ from modules.resultados import industria as industria_result  # noqa
 from modules.resultados import residuos as residuos_result  # noqa
 from modules.resultados import transporte as transporte_result  # noqa
 
-# from modules.resultados.general import endpoints as general_result  # noqa
+from modules.resultados import general as general_result  # noqa
 
 
 api_router = APIRouter()
@@ -83,7 +83,7 @@ api_router.include_router(entrada_elect_import_export.router, prefix="/entradas/
 api_router.include_router(entrada_ind.router, prefix="/entradas/industria", tags=["Entradas"])
 
 # Resultados
-# api_router.include_router(general_result.router, prefix="/resultados/general", tags=["Resultados"])
+api_router.include_router(general_result.router, prefix="/resultados/general", tags=["Resultados"])
 api_router.include_router(agricultura_result.router, prefix="/resultados/agricultura", tags=["Resultados"])
 api_router.include_router(bosques_result.router, prefix="/resultados/bosques", tags=["Resultados"])
 api_router.include_router(edificaciones_result.router, prefix="/resultados/edificaciones", tags=["Resultados"])

@@ -349,7 +349,7 @@ def resultados_evolucion_excedentes_energeticos(
 #######        Evolución de los requerimientos energeticos                   #######
 ####################################################################################
 @router.get('/evolucion_requerimientos_energeticos')
-def resultados_eevolucion_requerimientos_energeticos(
+def resultados_evolucion_requerimientos_energeticos(
     medida_ener_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
     medida_ind_2: schemas.Trayectoria=1,
