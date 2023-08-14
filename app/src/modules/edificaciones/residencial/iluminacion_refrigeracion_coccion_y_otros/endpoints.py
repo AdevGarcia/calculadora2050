@@ -380,6 +380,69 @@ def delete_SF(
 
     return {'msg': 'Deleted SF successfully'}
 
+####################################################################################
+#######                           Metodologia                                #######
+####################################################################################
+
+@router.post(
+        path='/metodologia', 
+        response_model=schemas.METODOLOGIA, 
+        status_code=status.HTTP_201_CREATED)
+def create_metodologia_generacion_solar_fotovoltaica(
+    data: schemas.METODOLOGIA, 
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """CREATE"""
+
+    jdata = jsonable_encoder(data)
+    loader(
+        db=db, 
+        model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica, 
+        obj_in=jdata['metodologia'], 
+        filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_3']
+    )
+    return jdata
+
+
+@router.get('/metodologia')
+def read_metodologia(
+    medida_1: schemas.Trayectoria,
+    medida_2: schemas.Trayectoria,
+    medida_3: schemas.Trayectoria,
+    db: Session = Depends(deps.get_db), 
+    # skip: int = 0, 
+    # limit: int = 100,
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    ) -> Any:
+    """READ ALL"""
+
+    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
+
+    rd = downloader(
+            db=db, 
+            model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica,
+            topic='generacion_solar_fotovoltaica',
+            **filter
+            )
+    
+    if DEBUG:
+        logger.info(f'Read Data: {jsonable_encoder(rd)}')
+
+    return jsonable_encoder(rd)
+
+
+@router.delete('/metodologia', status_code=status.HTTP_200_OK)
+def delete_Metodologia(
+    db: Session = Depends(deps.get_db),
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    ) -> Any:
+    """DELETE ALL"""
+    
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica)
+
+    return {'msg': 'Deleted Metodologia successfully'}
+
 
 ####################################################################################
 #######                               Salidas                                #######

@@ -292,6 +292,15 @@ class Emisiones_name(str, Enum):
     emisiones_de_gases_de_efecto_invernadero_energia = 'emisiones_de_gases_de_efecto_invernadero_energia'
 
 
+class Emisiones_bloque(str, Enum):
+    aguas_residuales_domesticas = 'aguas_residuales_domesticas'
+    aguas_residuales_industriales = 'aguas_residuales_industriales'
+
+
+class Emisiones_emisiones(str, Enum):
+    emisiones = 'emisiones'
+
+
 class RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales(BaseModel):
     """Emisiones - emisiones_de_gases_de_efecto_invernadero_aguas_residuales
     """
@@ -332,11 +341,31 @@ class RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia(BaseModel):
     medida_2    : float
 
 
+class RES_AGU_emisiones(BaseModel):
+    """Emisiones - emisiones"""
+
+    topic    : str
+    bloque   : str
+    tipo     : str
+    y2018       : float | None
+    y2020       : float | None
+    y2025       : float | None
+    y2030       : float | None
+    y2035       : float | None
+    y2040       : float | None
+    y2045       : float | None
+    y2050       : float | None
+    unidad      : str
+    medida_1    : float
+    medida_2    : float
+
+
 class EMISIONES(BaseModel):
     """Emisiones - emisiones_gases_efecto_invernadero
     """
-    emisiones_de_gases_de_efecto_invernadero_aguas_residuales : list[RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales]
-    emisiones_de_gases_de_efecto_invernadero_energia : list[RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia]
+    # emisiones_de_gases_de_efecto_invernadero_aguas_residuales : list[RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales]
+    # emisiones_de_gases_de_efecto_invernadero_energia : list[RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia]
+    emisiones : list[RES_AGU_emisiones]
 
     class Config:
         orm_mode : True

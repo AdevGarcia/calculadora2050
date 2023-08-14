@@ -341,9 +341,33 @@ class EDIF_RES_ILU_REF_COC_OTR_SF_horas_utiles_de_operacion_de_la_autogeneracion
     unidad      = Column(name='unidad', type_=String)
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                           Metodologia                                #######
+####################################################################################
+
+class EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica(Base):
+    """Metodologia_generacion_solar_fotovoltaica"""
+
+    id          = Column(Integer, primary_key=True, index=True)
+    topic       = Column(name='topic', type_=String)
+    tipo        = Column(name='tipo', type_=String)
+    y2018       = Column(name='2018', type_=Float)
+    y2020       = Column(name='2020', type_=Float)
+    y2025       = Column(name='2025', type_=Float)
+    y2030       = Column(name='2030', type_=Float)
+    y2035       = Column(name='2035', type_=Float)
+    y2040       = Column(name='2040', type_=Float)
+    y2045       = Column(name='2045', type_=Float)
+    y2050       = Column(name='2050', type_=Float)
+    unidad      = Column(name='unidad', type_=String)
+    medida_1    = Column(name='medida_1', type_=Integer)
+    medida_2    = Column(name='medida_2', type_=Integer)
+    medida_3    = Column(name='medida_3', type_=Integer)
+
+
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class EDIF_RES_ILU_REF_COC_OTR_SALIDAS(Base):
     """energia_producida_y_requerida"""

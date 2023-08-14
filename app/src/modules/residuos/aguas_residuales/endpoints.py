@@ -402,36 +402,19 @@ def create_emisiones(
     ) -> Any:
     """CREATE"""
 
-    keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
-    
-    for key in keys:
-        match key:
-            case 'emisiones_de_gases_de_efecto_invernadero_aguas_residuales':
-                loader(
-                    db=db, 
-                    model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2']
-                )
-                    
-            case 'emisiones_de_gases_de_efecto_invernadero_energia':
-                loader(
-                    db=db, 
-                    model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2']
-                )
-            
-            case _:
-                logger.error(f'[ERROR] {key} is invalid')
-    
+    loader(
+        db=db, 
+        model=models.RES_AGU_emisiones, 
+        obj_in=jdata['emisiones'], 
+        filters=['topic', 'bloque', 'tipo', 'medida_1', 'medida_2']
+    )
     return jdata
-
 
 @router.get('/emisiones')
 def read_Emisiones_module(
     module: schemas.Emisiones_name,
+    # bloque: schemas.Emisiones_bloque,
     medida_1: schemas.Trayectoria,
     medida_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
@@ -441,13 +424,14 @@ def read_Emisiones_module(
     ) -> Any:
     """READ ALL"""
 
+    # filter = {'bloque' : bloque, 'medida_1' : medida_1, 'medida_2' : medida_2}
     filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
 
     match module:
         case schemas.Emisiones_name.emisiones_de_gases_de_efecto_invernadero_aguas_residuales:
             rd = downloader(
                 db=db, 
-                model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales,
+                model=models.RES_AGU_emisiones,
                 topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
                 **filter
                 )
@@ -455,7 +439,7 @@ def read_Emisiones_module(
         case schemas.Emisiones_name.emisiones_de_gases_de_efecto_invernadero_energia:
             rd = downloader(
                 db=db, 
-                model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia,
+                model=models.RES_AGU_emisiones,
                 topic='emisiones_de_gases_de_efecto_invernadero_energia',
                 **filter
                 )
@@ -469,6 +453,7 @@ def read_Emisiones_module(
     return jsonable_encoder(rd)
 
 
+
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
 def delete_Emisiones(
     db: Session = Depends(deps.get_db),
@@ -476,7 +461,6 @@ def delete_Emisiones(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales)
-    prune(db=db, model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia)
+    prune(db=db, model=models.RES_AGU_emisiones)
 
     return {'msg': 'Deleted successfully'}

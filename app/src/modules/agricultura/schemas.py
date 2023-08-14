@@ -198,9 +198,46 @@ class SUPUESTOS_FIJOS(BaseModel):
         orm_mode : True
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                           Metodologia                                #######
+####################################################################################
+
+class Metodologia_name(str, Enum):
+    metodologia= 'metodologia'
+
+
+class AGRO_Metodologia_tierra_dedicada_para_biocombustibles(BaseModel):
+    """Metodologia_tierra_dedicada_para_biocombustibles"""
+
+    topic       : str
+    tipo        : str
+    y2018       : float | None
+    y2020       : float | None
+    y2025       : float | None
+    y2030       : float | None
+    y2035       : float | None
+    y2040       : float | None
+    y2045       : float | None
+    y2050       : float | None
+    unidad      : str
+    medida_1    : float 
+    medida_2    : float 
+    medida_3    : float 
+
+
+class METODOLOGIA(BaseModel):
+    """Metodologia con todos los topics
+    """
+    
+    metodologia : list[AGRO_Metodologia_tierra_dedicada_para_biocombustibles]
+    
+    class Config:
+        orm_mode : True
+
+
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class Salidas_name(str, Enum):
     salida_cultivos         = 'salida_cultivos'

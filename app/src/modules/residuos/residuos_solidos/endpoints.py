@@ -371,37 +371,20 @@ def delete_Salidas(
         path='/emisiones', 
         response_model=schemas.EMISIONES, 
         status_code=status.HTTP_201_CREATED)
-def create_emisiones_de_gases_de_efecto_invernadero_residuos(
+def create_emisiones(
     data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
-    keys = data.__dict__.keys()
     jdata = jsonable_encoder(data)
-    
-    for key in keys:
-        match key:
-            case 'emisiones_de_gases_de_efecto_invernadero_residuos':
-                loader(
-                    db=db, 
-                    model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_aguas_residuales, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'bloque', 'grupo', 'tipo', 'medida_1']
-                )
-                    
-            case 'emisiones_de_gases_de_efecto_invernadero_energia':
-                loader(
-                    db=db, 
-                    model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia, 
-                    obj_in=jdata[key], 
-                    filters=['topic', 'bloque', 'grupo', 'tipo', 'medida_1']
-                )
-            
-            case _:
-                logger.error(f'[ERROR] {key} is invalid')
-    
+    loader(
+        db=db, 
+        model=models.RES_SOL_emisiones, 
+        obj_in=jdata['emisiones'], 
+        filters=['topic', 'bloque', 'grupo', 'tipo', 'medida_1']
+    )
     return jdata
 
 
@@ -422,7 +405,7 @@ def read_Emisiones_module(
         case schemas.Emisiones_name.emisiones_de_gases_de_efecto_invernadero_residuos:
             rd = downloader(
                 db=db, 
-                model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_aguas_residuales,
+                model=models.RES_SOL_emisiones,
                 topic='emisiones_de_gases_de_efecto_invernadero_residuos',
                 **filter
                 )
@@ -431,7 +414,7 @@ def read_Emisiones_module(
         case schemas.Emisiones_name.emisiones_de_gases_de_efecto_invernadero_energia:
             rd = downloader(
                 db=db, 
-                model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia,
+                model=models.RES_SOL_emisiones,
                 topic='emisiones_de_gases_de_efecto_invernadero_energia',
                 **filter
                 )
@@ -454,7 +437,6 @@ def delete_Emisiones(
     """DELETE ALL
     """
     
-    prune(db=db, model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_aguas_residuales)
-    prune(db=db, model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia)
+    prune(db=db, model=models.RES_SOL_emisiones)
 
     return {'msg': 'Deleted successfully'}

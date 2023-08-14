@@ -59,7 +59,7 @@ from modules.resultados import edificaciones as edificaciones_result  # noqa
 # from modules.resultados.electricidad import endpoints as electricidad_result  # noqa
 # from modules.resultados.energia import endpoints as energia_result  # noqa
 from modules.resultados import ganaderia as ganaderia_result  # noqa
-# from modules.resultados.industria import endpoints as industria_result  # noqa
+from modules.resultados import industria as industria_result  # noqa
 from modules.resultados import residuos as residuos_result  # noqa
 from modules.resultados import transporte as transporte_result  # noqa
 
@@ -90,7 +90,7 @@ api_router.include_router(edificaciones_result.router, prefix="/resultados/edifi
 # api_router.include_router(electricidad_result.router, prefix="/resultados", tags=["Resultados"])
 # api_router.include_router(energia_result.router, prefix="/resultados", tags=["Resultados"])
 api_router.include_router(ganaderia_result.router, prefix="/resultados/ganaderia", tags=["Resultados"])
-# api_router.include_router(industria_result.router, prefix="/resultados", tags=["Resultados"])
+api_router.include_router(industria_result.router, prefix="/resultados/industria", tags=["Resultados"])
 api_router.include_router(residuos_result.router, prefix="/resultados/residuos", tags=["Resultados"])
 api_router.include_router(transporte_result.router, prefix="/resultados/transporte", tags=["Resultados"])
 

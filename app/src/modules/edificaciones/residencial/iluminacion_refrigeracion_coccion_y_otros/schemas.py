@@ -379,9 +379,47 @@ class SUPUESTOS_FIJOS(BaseModel):
     class Config:
         orm_mode : True
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+
+####################################################################################
+#######                           Metodologia                                #######
+####################################################################################
+
+class Metodologia_name(str, Enum):
+    metodologia= 'metodologia'
+
+
+class EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica(BaseModel):
+    """Metodologia_generacion_solar_fotovoltaica"""
+
+    topic       : str
+    tipo        : str
+    y2018       : float | None
+    y2020       : float | None
+    y2025       : float | None
+    y2030       : float | None
+    y2035       : float | None
+    y2040       : float | None
+    y2045       : float | None
+    y2050       : float | None
+    unidad      : str
+    medida_1    : float 
+    medida_2    : float 
+    medida_3    : float 
+
+
+class METODOLOGIA(BaseModel):
+    """Metodologia con todos los topics
+    """
+    
+    metodologia : list[EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica]
+    
+    class Config:
+        orm_mode : True
+
+
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class Salidas_name(str, Enum):
     energia_producida_y_requerida = 'energia_producida_y_requerida'
