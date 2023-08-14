@@ -42,7 +42,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     ##########  1 relleno_sanitario_controlados_sin_captacion  RES_SOL ############## Mt_CO2_e
     filter={"bloque": "relleno_sanitario_controlados", "grupo": "sin_captacion", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
-        model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_residuos,
+        model=models.RES_SOL_emisiones,
         **filter)
         
     relleno_sanitario_controlados_sin_captacion = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -54,7 +54,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     ##########  2 relleno_sanitario_controlados_quema_antorcha  RES_SOL ############## Mt_CO2_e
     filter={"bloque": "relleno_sanitario_controlados", "grupo": "quema_en_antorcha", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
-        model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_residuos,
+        model=models.RES_SOL_emisiones,
         **filter)
         
     relleno_sanitario_controlados_quema_antorcha = db_to_df(rd=rd).sum().to_dict()
@@ -66,7 +66,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     ########## 3  celda_de_contingencia  RES_SOL ############## Mt_CO2_e
     filter={"bloque": "relleno_sanitario_controlados", "grupo": "celda_de_contingencia", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
-        model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_residuos,
+        model=models.RES_SOL_emisiones,
         **filter)
         
     celda_de_contingencia = db_to_df(rd=rd).sum().to_dict()
@@ -78,7 +78,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     ##########  4 tratamiento_mecanico_biologico_compostaje RES_SOL  ############## Mt_CO2_e
     filter={"bloque": "planta_de_tratamiento", "grupo": "tratamiento_mecanico_biologico_tmbcompostaje", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
-        model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_residuos,
+        model=models.RES_SOL_emisiones,
         **filter)
         
     tratamiento_mecanico_biologico_compostaje = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -90,7 +90,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     ##########  5 aguas_residuales_domesticas RES_AGU  ############## Mt_CO2_e
     filter={"bloque": "aguas_residuales_domesticas", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
-        model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales,
+        model=models.RES_AGU_emisiones,
         **filter)
     
     df = db_to_df(rd=rd)
@@ -113,7 +113,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     ##########  6 aguas_residuales_industriales RES_AGU  ############## Mt_CO2_e
     filter={"bloque": "aguas_residuales_industriales", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
-        model=models.RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales,
+        model=models.RES_AGU_emisiones,
         **filter)
     
     df = db_to_df(rd=rd)

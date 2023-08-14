@@ -142,8 +142,31 @@ def resultados_tierras_dedicada_a_biocombustibles(
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     
+    filter={"tipo": "palma_de_aceite",'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
+    rd = downloader(db=db, topic='tierra_dedicada_para_biocombustibles',
+        model=models.AGRO_Metodologia_tierra_dedicada_para_biocombustibles,
+        **filter)
     
-    resultado = {"TODO": 'Hay que meter bloque de metodologia AGRO_[519 y 520]'}
+    palma_de_aceite = db_to_df(rd=rd).to_dict(orient='records')[0]
+    palma_de_aceite["topic"]    = "resultados"
+    palma_de_aceite["bloque"]   = "agricultura"
+    palma_de_aceite["tipo"]     = "palma_de_aceite"
+    palma_de_aceite["unidad"]   = "TWh"
+
+
+    filter={"tipo": "cana_de_azucar",'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
+    rd = downloader(db=db, topic='tierra_dedicada_para_biocombustibles',
+        model=models.AGRO_Metodologia_tierra_dedicada_para_biocombustibles,
+        **filter)
+    
+    cana_de_azucar = db_to_df(rd=rd).to_dict(orient='records')[0]
+    cana_de_azucar["topic"]    = "resultados"
+    cana_de_azucar["bloque"]   = "agricultura"
+    cana_de_azucar["tipo"]     = "cana_de_azucar"
+    cana_de_azucar["unidad"]   = "TWh"
+
+
+    resultado = {"entradas": [palma_de_aceite, cana_de_azucar]}
 
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(resultado)}')

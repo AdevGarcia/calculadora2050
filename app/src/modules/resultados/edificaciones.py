@@ -423,13 +423,9 @@ def resultados_evolucion_consumo_energetico_por_sector(
 ####################################################################################
 @router.get('/evolucion_generacion_energetica_sector_edificaciones')
 def resultados_evolucion_generacion_energetica_sector_edificaciones(
-    medida_edi_res_acond_1: schemas.Trayectoria=1,
     medida_edi_res_irco_1: schemas.Trayectoria=1,
     medida_edi_res_irco_2: schemas.Trayectoria=1,
     medida_edi_res_irco_3: schemas.Trayectoria=1,
-    medida_edi_res_rural_1: schemas.Trayectoria=1,
-    medida_edi_com_acond_1: schemas.Trayectoria=1,
-    medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -437,24 +433,19 @@ def resultados_evolucion_generacion_energetica_sector_edificaciones(
     ) -> Any:
     """READ"""    
     
-    ##########   edificaciones_residenciales_rurales   ############## TWh
+    filter={'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
+    rd = downloader(db=db, topic='generacion_solar_fotovoltaica',
+        model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica,
+        **filter)
 
-    # edi_res_urb_irco
-    # filter={"tipo": "iluminacion_y_otros_usos", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
-    # rd = downloader(db=db, topic='energia_producida_y_requerida',
-    #     model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
-    #     **filter)
-
-    # edificaciones_residenciales_rurales = db_to_df(rd=rd).to_dict()
-    # edificaciones_residenciales_rurales["topic"]    = "resultados"
-    # edificaciones_residenciales_rurales["bloque"]   = "edificaciones"
-    # edificaciones_residenciales_rurales["tipo"]     = "edificaciones_residenciales_rurales"
-    # edificaciones_residenciales_rurales["unidad"]   = "TWh"
+    edificaciones_residenciales_urbanas = db_to_df(rd=rd).to_dict(orient='records')[0]
+    edificaciones_residenciales_urbanas["topic"]    = "resultados"
+    edificaciones_residenciales_urbanas["bloque"]   = "edificaciones"
+    edificaciones_residenciales_urbanas["tipo"]     = "edificaciones_residenciales_urbanas"
+    edificaciones_residenciales_urbanas["unidad"]   = "TWh"
     
 
-    # resultado = {"resultados": [edificaciones_residenciales_rurales]}
-
-    resultado = {"TODO": 'Hay que meter bloque de metodologia EDI_RES_URB_IRCO[893]'}
+    resultado = {"resultados": [edificaciones_residenciales_urbanas]}
 
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(resultado)}')
