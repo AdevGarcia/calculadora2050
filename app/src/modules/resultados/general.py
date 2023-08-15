@@ -13,7 +13,7 @@ from db import deps
 
 from app.src.modules.user import models as models_user
 
-from .util.util import db_to_df, db_to_dict, get_item, set_zeros, set_suma_total, not_negative, YEARS
+from .util.util import db_to_df, YEARS
 
 from .energia import resultados_evolucion_de_las_emisiones_del_sector_energia
 
