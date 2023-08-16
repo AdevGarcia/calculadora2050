@@ -321,6 +321,22 @@
             "medida_1": 1.0
         },
         {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_residuos",
+            "bloque": "total",
+            "grupo": "total",
+            "tipo": "total_co2_e",
+            "y2018": 12.12451702050549,
+            "y2020": 13.163147335856975,
+            "y2025": 15.842865949217575,
+            "y2030": 18.67188925723284,
+            "y2035": 18.896512502992355,
+            "y2040": 19.127133075694253,
+            "y2045": 19.363994413566918,
+            "y2050": 19.607353310790813,
+            "unidad": "Mt_CO2e",
+            "medida_1": 1.0
+        },
+        {
             "topic": "emisiones_de_gases_de_efecto_invernadero_energia",
             "bloque": "relleno_sanitario_controlados",
             "grupo": "aprovechamiento_energetico_del_biogas",
@@ -445,6 +461,22 @@
             "y2040": 0.0,
             "y2045": 0.0,
             "y2050": 0.0,
+            "unidad": "Mt_CO2e",
+            "medida_1": 1.0
+        },
+        {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_energia",
+            "bloque": "total",
+            "grupo": "total",
+            "tipo": "total_co2_e",
+            "y2018": 1.8857674683380603,
+            "y2020": 2.0473091822889784,
+            "y2025": 2.4640949541946964,
+            "y2030": 2.904102594284833,
+            "y2035": 2.939039013506268,
+            "y2040": 2.9749082174337476,
+            "y2045": 3.011748068844892,
+            "y2050": 3.049598507814073,
             "unidad": "Mt_CO2e",
             "medida_1": 1.0
         },
@@ -769,6 +801,22 @@
             "medida_1": 2.0
         },
         {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_residuos",
+            "bloque": "total",
+            "grupo": "total",
+            "tipo": "total_co2_e",
+            "y2018": 12.125222788653547,
+            "y2020": 12.74709867892723,
+            "y2025": 14.058459100131133,
+            "y2030": 15.060207379885114,
+            "y2035": 13.715268894094885,
+            "y2040": 12.336311187972532,
+            "y2045": 10.921953383202016,
+            "y2050": 9.47073884120269,
+            "unidad": "Mt_CO2e",
+            "medida_1": 2.0
+        },
+        {
             "topic": "emisiones_de_gases_de_efecto_invernadero_energia",
             "bloque": "relleno_sanitario_controlados",
             "grupo": "aprovechamiento_energetico_del_biogas",
@@ -893,6 +941,22 @@
             "y2040": 0.09742920856996992,
             "y2045": 0.11949144576894487,
             "y2050": 0.1415536829679198,
+            "unidad": "Mt_CO2e",
+            "medida_1": 2.0
+        },
+        {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_energia",
+            "bloque": "total",
+            "grupo": "total",
+            "tipo": "total_co2_e",
+            "y2018": 1.8860047810860674,
+            "y2020": 1.9883820409513402,
+            "y2025": 2.2051727465291706,
+            "y2030": 2.3788024695835475,
+            "y2035": 2.18485487648288,
+            "y2040": 1.9856988272351979,
+            "y2045": 1.7811229047626478,
+            "y2050": 1.5709040928380718,
             "unidad": "Mt_CO2e",
             "medida_1": 2.0
         },
@@ -1217,6 +1281,22 @@
             "medida_1": 3.0
         },
         {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_residuos",
+            "bloque": "total",
+            "grupo": "total",
+            "tipo": "total_co2_e",
+            "y2018": 12.125222788653547,
+            "y2020": 12.74709867892723,
+            "y2025": 14.08667244740496,
+            "y2030": 15.120316022190151,
+            "y2035": 13.80042280402702,
+            "y2040": 12.446510365531765,
+            "y2045": 11.057197828388347,
+            "y2050": 9.631028554016119,
+            "unidad": "Mt_CO2e",
+            "medida_1": 3.0
+        },
+        {
             "topic": "emisiones_de_gases_de_efecto_invernadero_energia",
             "bloque": "relleno_sanitario_controlados",
             "grupo": "aprovechamiento_energetico_del_biogas",
@@ -1341,6 +1421,22 @@
             "y2040": 0.1344834022548255,
             "y2045": 0.16496704710944946,
             "y2050": 0.1954506919640734,
+            "unidad": "Mt_CO2e",
+            "medida_1": 3.0
+        },
+        {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_energia",
+            "bloque": "total",
+            "grupo": "total",
+            "tipo": "total_co2_e",
+            "y2018": 1.8860047810860674,
+            "y2020": 1.9883820409513402,
+            "y2025": 2.2146594129230337,
+            "y2030": 2.399013847957105,
+            "y2035": 2.2134876625120867,
+            "y2040": 2.0227530209200535,
+            "y2045": 1.8265985061031524,
+            "y2050": 1.6248011018342252,
             "unidad": "Mt_CO2e",
             "medida_1": 3.0
         },
@@ -1665,6 +1761,22 @@
             "medida_1": 4.0
         },
         {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_residuos",
+            "bloque": "total",
+            "grupo": "total",
+            "tipo": "total_co2_e",
+            "y2018": 12.125222788653547,
+            "y2020": 12.763104280325507,
+            "y2025": 13.372934869780583,
+            "y2030": 13.57212746372289,
+            "y2035": 11.5172104618551,
+            "y2040": 9.40938329034458,
+            "y2045": 8.578500761507774,
+            "y2050": 7.725656708527939,
+            "unidad": "Mt_CO2e",
+            "medida_1": 4.0
+        },
+        {
             "topic": "emisiones_de_gases_de_efecto_invernadero_energia",
             "bloque": "relleno_sanitario_controlados",
             "grupo": "aprovechamiento_energetico_del_biogas",
@@ -1789,6 +1901,22 @@
             "y2040": 0.1954506919640734,
             "y2045": 0.21321893668808006,
             "y2050": 0.2309871814120868,
+            "unidad": "Mt_CO2e",
+            "medida_1": 4.0
+        },
+        {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_energia",
+            "bloque": "total",
+            "grupo": "total",
+            "tipo": "total_co2_e",
+            "y2018": 1.8860047810860674,
+            "y2020": 2.0047825117416576,
+            "y2025": 2.1425018751441893,
+            "y2030": 2.201731111088509,
+            "y2035": 1.8999408014442705,
+            "y2040": 1.5897936748254278,
+            "y2045": 1.4679832607563614,
+            "y2050": 1.3427041668666495,
             "unidad": "Mt_CO2e",
             "medida_1": 4.0
         }

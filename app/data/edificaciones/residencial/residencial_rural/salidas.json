@@ -58,6 +58,20 @@
         },
         {
             "topic": "energia_producida_y_requerida",
+            "tipo": "total",
+            "y2018": 0.0,
+            "y2020": 0.0,
+            "y2025": 0.0,
+            "y2030": 0.0,
+            "y2035": 0.0,
+            "y2040": 0.0,
+            "y2045": 0.0,
+            "y2050": 0.0,
+            "unidad": "TWh",
+            "medida_1": 1.0
+        },
+        {
+            "topic": "energia_producida_y_requerida",
             "tipo": "demanda_edificaciones_rurales",
             "y2018": 32.01401187682733,
             "y2020": 29.47460841488313,
@@ -109,6 +123,20 @@
             "y2040": 10.058340612272211,
             "y2045": 8.029061390982662,
             "y2050": 6.240396703462497,
+            "unidad": "TWh",
+            "medida_1": 2.0
+        },
+        {
+            "topic": "energia_producida_y_requerida",
+            "tipo": "total",
+            "y2018": 0.0,
+            "y2020": 0.0,
+            "y2025": 0.0,
+            "y2030": 0.0,
+            "y2035": 0.0,
+            "y2040": 0.0,
+            "y2045": 0.0,
+            "y2050": 0.0,
             "unidad": "TWh",
             "medida_1": 2.0
         },
@@ -170,6 +198,20 @@
         },
         {
             "topic": "energia_producida_y_requerida",
+            "tipo": "total",
+            "y2018": 0.0,
+            "y2020": 0.0,
+            "y2025": 0.0,
+            "y2030": 0.0,
+            "y2035": 0.0,
+            "y2040": 0.0,
+            "y2045": 0.0,
+            "y2050": 0.0,
+            "unidad": "TWh",
+            "medida_1": 3.0
+        },
+        {
+            "topic": "energia_producida_y_requerida",
             "tipo": "demanda_edificaciones_rurales",
             "y2018": 32.13361111543945,
             "y2020": 29.176733913558024,
@@ -220,6 +262,20 @@
             "y2035": 6.995126594621805,
             "y2040": 3.7234197641832205,
             "y2045": 1.3051134232156671,
+            "y2050": 0.0,
+            "unidad": "TWh",
+            "medida_1": 4.0
+        },
+        {
+            "topic": "energia_producida_y_requerida",
+            "tipo": "total",
+            "y2018": 0.0,
+            "y2020": 0.0,
+            "y2025": 0.0,
+            "y2030": 0.0,
+            "y2035": 0.0,
+            "y2040": 0.0,
+            "y2045": 0.0,
             "y2050": 0.0,
             "unidad": "TWh",
             "medida_1": 4.0

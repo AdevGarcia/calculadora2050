@@ -182,6 +182,21 @@
         },
         {
             "topic": "emisiones_de_gases_de_efecto_invernadero_gei",
+            "bloque": "total_produccion",
+            "tipo": "total_produccion_mt_co2_e",
+            "y2018": 8.026299533792049,
+            "y2020": 7.395894768152905,
+            "y2025": 7.60402632528384,
+            "y2030": 7.443646248812257,
+            "y2035": 7.3623740511173565,
+            "y2040": 7.365312947217015,
+            "y2045": 7.369260630919303,
+            "y2050": 7.374187701707434,
+            "unidad": "Mt_CO2e",
+            "medida_1": 1.0
+        },
+        {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_gei",
             "bloque": "crudo",
             "tipo": "co2",
             "y2018": 0.1572433294238484,
@@ -362,6 +377,21 @@
         },
         {
             "topic": "emisiones_de_gases_de_efecto_invernadero_gei",
+            "bloque": "total_produccion",
+            "tipo": "total_produccion_mt_co2_e",
+            "y2018": 8.026299533792049,
+            "y2020": 7.395894768152905,
+            "y2025": 7.60402632528384,
+            "y2030": 7.443646248812257,
+            "y2035": 7.3623740511173565,
+            "y2040": 7.365312947217015,
+            "y2045": 7.369260630919303,
+            "y2050": 7.374187701707434,
+            "unidad": "Mt_CO2e",
+            "medida_1": 2.0
+        },
+        {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_gei",
             "bloque": "crudo",
             "tipo": "co2",
             "y2018": 0.1572433294238484,
@@ -542,6 +572,21 @@
         },
         {
             "topic": "emisiones_de_gases_de_efecto_invernadero_gei",
+            "bloque": "total_produccion",
+            "tipo": "total_produccion_mt_co2_e",
+            "y2018": 8.026299533792049,
+            "y2020": 7.395894768152905,
+            "y2025": 7.60402632528384,
+            "y2030": 7.443646248812257,
+            "y2035": 7.3623740511173565,
+            "y2040": 7.365312947217015,
+            "y2045": 7.369260630919303,
+            "y2050": 7.374187701707434,
+            "unidad": "Mt_CO2e",
+            "medida_1": 3.0
+        },
+        {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_gei",
             "bloque": "crudo",
             "tipo": "co2",
             "y2018": 0.1572433294238484,
@@ -717,6 +762,21 @@
             "y2040": 3.9406274271094643,
             "y2045": 3.8975734409789693,
             "y2050": 3.854519454848473,
+            "unidad": "Mt_CO2e",
+            "medida_1": 4.0
+        },
+        {
+            "topic": "emisiones_de_gases_de_efecto_invernadero_gei",
+            "bloque": "total_produccion",
+            "tipo": "total_produccion_mt_co2_e",
+            "y2018": 8.026299533792049,
+            "y2020": 7.395894768152905,
+            "y2025": 7.60402632528384,
+            "y2030": 7.443646248812257,
+            "y2035": 7.3623740511173565,
+            "y2040": 7.365312947217015,
+            "y2045": 7.369260630919303,
+            "y2050": 7.374187701707434,
             "unidad": "Mt_CO2e",
             "medida_1": 4.0
         }
