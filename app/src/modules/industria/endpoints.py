@@ -3,12 +3,14 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status
 from fastapi.encoders import jsonable_encoder
 import logging
-
+import pandas as pd
 from app.src.crud.base import loader, prune, downloader, downloader_batch
 from . import models, schemas
 from db import deps
 
 from app.src.modules.user import models as models_user
+# from app.src.modules.agricultura.models import AGRO_SALIDAS_cultivos
+# from app.src.modules.agricultura.endpoints import read_salidas_module
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -24,6 +26,7 @@ SCHEMAS_SALIDAS    = schemas.SALIDAS
 SCHEMAS_EMISIONES  = schemas.EMISIONES
 
 DEBUG = False
+YEARS = ["y2018","y2020","y2025", "y2030", "y2035", "y2040", "y2045", "y2050"]
 
 router = APIRouter()
 
@@ -508,10 +511,13 @@ def create_salida_balance_total_de_la_energia_requerida_industria(
 @router.get('/salidas/{module}')#, response_model=SCHEMAS_SALIDAS)
 def read_Salidas_module(
     module: schemas.Salidas_name,
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
-    medida_3: schemas.Trayectoria,
-    medida_4: schemas.Trayectoria,
+    medida_ind_1: schemas.Trayectoria,
+    medida_ind_2: schemas.Trayectoria,
+    medida_ind_3: schemas.Trayectoria,
+    medida_ind_4: schemas.Trayectoria,
+    # medida_agro_1: schemas.Trayectoria,
+    # medida_agro_2: schemas.Trayectoria,
+    # medida_agro_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -519,7 +525,7 @@ def read_Salidas_module(
     ) -> Any:
     """READ ALL
     """
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3, 'medida_4' : medida_4}
+    filter = {'medida_1' : medida_ind_1, 'medida_2' : medida_ind_2, 'medida_3' : medida_ind_3, 'medida_4' : medida_ind_4}
 
     match module:
         case schemas.Salidas_name.salida_energia_requerida_combustible:
@@ -548,6 +554,53 @@ def read_Salidas_module(
                 **filter
                 )
             result = jsonable_encoder(rd)
+            # ind 610
+            # filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+            # rd = downloader(
+            #     db=db, 
+            #     topic='energia_requerida',
+            #     model=models.INDU_SALIDAS_por_combustible_energia_requerida,
+            #     **filter)
+            # d = jsonable_encoder(rd)
+            # df1 = pd.DataFrame(d[list(d.keys())[0]])[YEARS]
+            
+            # # ind 632
+            # filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+            # rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
+            #     model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
+            #     **filter)
+            # d = jsonable_encoder(rd)
+            # df2 = pd.DataFrame(d[list(d.keys())[0]])[YEARS]
+            
+            # # agro 282
+            # # filter={"bloque": "total_cultivos", "tipo": "total_cultivos", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
+            # # rd = downloader(db=db, topic='cultivos',
+            # #     model=AGRO_SALIDAS_cultivos,
+            # #     **filter)
+            
+            # # d = jsonable_encoder(rd)
+            # # df3 = pd.DataFrame(d[list(d.keys())[0]])[YEARS]
+
+            
+
+            # d = read_salidas_module(module='salida_cultivos', medida_1=medida_agro_1, medida_2=medida_agro_2, medida_3=medida_agro_3, db=db)
+            # #d = jsonable_encoder(rd)
+            # df3 = pd.DataFrame(d[list(d.keys())[0]])[YEARS]
+
+            # df = df1 - df2 - df3
+            
+            # result = df.to_dict(orient='records')[0]
+            # result["topic"]    = "resultados"
+            # result["bloque"]   = "por_combustible"
+            # result["tipo"]     = "bagazo"
+            # result["unidad"]   = "TWh"
+            # result["medida_1"] = medida_ind_1
+            # result["medida_2"] = medida_ind_2
+            # result["medida_3"] = medida_ind_3
+            # result["medida_4"] = medida_ind_4
+            # result["medida_agro_1"] = medida_agro_1
+            # result["medida_agro_2"] = medida_agro_2
+            # result["medida_agro_3"] = medida_agro_3
             
         case schemas.Salidas_name.salida_energia_requerida_industria:
             rd = downloader(

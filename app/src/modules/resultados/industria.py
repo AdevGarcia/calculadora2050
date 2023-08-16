@@ -324,30 +324,31 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     """READ"""
 
     ##########   bagazo  ############## TWh
-    filter={"bloque": "por_combustible", "tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    # ind 610
+    filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_energia_requerida,
         **filter)
+    df1 = db_to_df(rd=rd)
     
-    energia_requerida = db_to_df(rd=rd)
-
-    filter={"bloque": "por_combustible", "tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    # ind 632
+    filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
         model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
         **filter)
+    df2 = db_to_df(rd=rd)
     
-    energia_producida_por_autogeneracion_y_cogeneracion = db_to_df(rd=rd)
-
-    filter={'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
+    # agro 282
+    filter={"bloque": "total_cultivos", "tipo": "total_cultivos", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
         **filter)
     
-    cultivos = db_to_df(rd=rd).sum()
-    
-    bagazo = energia_requerida - energia_producida_por_autogeneracion_y_cogeneracion - cultivos
+    df3 = db_to_df(rd=rd)
 
-    bagazo = bagazo.to_dict(orient='records')[0]
+    df = df1 - df2 - df3
+    
+    bagazo = df.to_dict(orient='records')[0]
     bagazo["topic"]    = "resultados"
     bagazo["bloque"]   = "industria"
     bagazo["tipo"]     = "bagazo"
