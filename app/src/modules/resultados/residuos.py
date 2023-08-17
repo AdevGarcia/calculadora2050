@@ -2,8 +2,6 @@ from typing import Any
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status
 from fastapi.encoders import jsonable_encoder
-
-import pandas as pd
 import logging
 
 from app.src.crud.base import downloader
@@ -57,7 +55,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
         model=models.RES_SOL_emisiones,
         **filter)
         
-    relleno_sanitario_controlados_quema_antorcha = db_to_df(rd=rd).sum().to_dict()
+    relleno_sanitario_controlados_quema_antorcha = db_to_df(rd=rd).to_dict(orient='records')[0]
     relleno_sanitario_controlados_quema_antorcha["topic"]    = "resultados"
     relleno_sanitario_controlados_quema_antorcha["bloque"]   = "residuos"
     relleno_sanitario_controlados_quema_antorcha["tipo"]     = "relleno_sanitario_controlados_quema_antorcha"
@@ -69,7 +67,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
         model=models.RES_SOL_emisiones,
         **filter)
         
-    celda_de_contingencia = db_to_df(rd=rd).sum().to_dict()
+    celda_de_contingencia = db_to_df(rd=rd).to_dict(orient='records')[0]
     celda_de_contingencia["topic"]    = "resultados"
     celda_de_contingencia["bloque"]   = "residuos"
     celda_de_contingencia["tipo"]     = "celda_de_contingencia"
@@ -88,22 +86,12 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     tratamiento_mecanico_biologico_compostaje["unidad"]   = "Mt_CO2_e"
 
     ##########  5 aguas_residuales_domesticas RES_AGU  ############## Mt_CO2_e
-    filter={"bloque": "aguas_residuales_domesticas", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
+    filter={"bloque": "aguas_residuales_domesticas", "tipo": "total_co2_e_ard", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
         model=models.RES_AGU_emisiones,
         **filter)
-    
-    df = db_to_df(rd=rd)
-
-    PCG_CO2 = 1
-    PCG_CH4 = 28
-    PCG_N2O = 265
-
-    df.iloc[0] = df.iloc[0] * PCG_CO2
-    df.iloc[1] = df.iloc[1] * PCG_CH4
-    df.iloc[2] = df.iloc[2] * PCG_N2O
         
-    aguas_residuales_domesticas = df.sum().to_dict()
+    aguas_residuales_domesticas = db_to_df(rd=rd).to_dict(orient='records')[0]
     aguas_residuales_domesticas["topic"]    = "resultados"
     aguas_residuales_domesticas["bloque"]   = "residuos"
     aguas_residuales_domesticas["tipo"]     = "aguas_residuales_domesticas"
@@ -111,22 +99,12 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
 
 
     ##########  6 aguas_residuales_industriales RES_AGU  ############## Mt_CO2_e
-    filter={"bloque": "aguas_residuales_industriales", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
+    filter={"bloque": "aguas_residuales_industriales", "tipo": "total_co2_e_ari", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
         model=models.RES_AGU_emisiones,
         **filter)
-    
-    df = db_to_df(rd=rd)
-
-    PCG_CO2 = 1
-    PCG_CH4 = 28
-    PCG_N2O = 265
-
-    df.iloc[0] = df.iloc[0] * PCG_CO2
-    df.iloc[1] = df.iloc[1] * PCG_CH4
-    df.iloc[2] = df.iloc[2] * PCG_N2O
         
-    aguas_residuales_industriales = df.sum().to_dict()
+    aguas_residuales_industriales = db_to_df(rd=rd).to_dict(orient='records')[0]
     aguas_residuales_industriales["topic"]    = "resultados"
     aguas_residuales_industriales["bloque"]   = "residuoes"
     aguas_residuales_industriales["tipo"]     = "aguas_residuales_industriales"
@@ -164,50 +142,12 @@ def resultados_residuos(
     """READ"""
 
     ##########   reduccion_y_mejora_de_la_gestion_de_residuos_solidos RES_SOL  ############## TWh
-    # 331
-    filter={"bloque": "energia_consumida", "tipo": "celda_de_contingencia", 'medida_1': medida_res_sol_1}
+    filter={"bloque": "energia_consumida", "tipo": "total_consumido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_consumida,
         **filter)
-    df1 = db_to_df(rd=rd)
 
-    # 334
-    filter={"bloque": "energia_consumida", "tipo": "combustibles_derivados_de_residuos_cdm", 'medida_1': medida_res_sol_1}
-    rd = downloader(db=db, topic='energia_producida_y_requerida',
-        model=models.RES_SOL_SALIDAS_energia_consumida,
-        **filter)
-    df2 = db_to_df(rd=rd)
-
-    # 335
-    filter={"bloque": "energia_consumida", "tipo": "incineracion", 'medida_1': medida_res_sol_1}
-    rd = downloader(db=db, topic='energia_producida_y_requerida',
-        model=models.RES_SOL_SALIDAS_energia_consumida,
-        **filter)
-    df3 = db_to_df(rd=rd)
-
-    # 336
-    filter={"bloque": "energia_consumida", "tipo": "reciclado", 'medida_1': medida_res_sol_1}
-    rd = downloader(db=db, topic='energia_producida_y_requerida',
-        model=models.RES_SOL_SALIDAS_energia_consumida,
-        **filter)
-    df4 = db_to_df(rd=rd)
-
-    # 333
-    filter={"bloque": "energia_consumida", "tipo": "tratamiento_mecanico_biologico_tmbcompostaje", 'medida_1': medida_res_sol_1}
-    rd = downloader(db=db, topic='energia_producida_y_requerida',
-        model=models.RES_SOL_SALIDAS_energia_consumida,
-        **filter)
-    df5 = db_to_df(rd=rd)
-
-    # 330
-    filter={"bloque": "energia_consumida", "tipo": "relleno_sanitario_controlados", 'medida_1': medida_res_sol_1}
-    rd = downloader(db=db, topic='energia_producida_y_requerida',
-        model=models.RES_SOL_SALIDAS_energia_consumida,
-        **filter)
-    df6 = db_to_df(rd=rd)
-
-
-    reduccion_y_mejora_de_la_gestion_de_residuos_solidos = pd.concat([df1, df2, df3, df4, df5, df6]).sum().to_dict()
+    reduccion_y_mejora_de_la_gestion_de_residuos_solidos = db_to_df(rd=rd).to_dict(orient='records')[0]
     reduccion_y_mejora_de_la_gestion_de_residuos_solidos["topic"]    = "resultados"
     reduccion_y_mejora_de_la_gestion_de_residuos_solidos["bloque"]   = "residuos"
     reduccion_y_mejora_de_la_gestion_de_residuos_solidos["tipo"]     = "reduccion_y_mejora_de_la_gestion_de_residuos_solidos"

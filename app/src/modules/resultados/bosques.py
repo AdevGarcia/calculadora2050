@@ -115,7 +115,4 @@ def resultados_evolucion_de_las_hectareas_de_bosque(
         logger.info(f'Read Data: {jsonable_encoder(resultado)}')
 
     return jsonable_encoder(resultado)
-
-
-
  

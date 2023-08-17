@@ -2,8 +2,6 @@ from typing import Any
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status
 from fastapi.encoders import jsonable_encoder
-
-import pandas as pd
 import logging
 
 from app.src.crud.base import downloader
@@ -40,31 +38,24 @@ def resultados_evolucion_de_las_emisiones_del_sector_agricultura(
     """READ"""
 
     ##########   cultivo_de_biocombustible   ##############
-    filter={"bloque": "cultivo", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
+    filter={"bloque": "cultivo", "tipo": "total", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='emisiones_cultivo_biocombustibles',
         model=models.AGRO_EMISIONES,
         **filter)
     
-    cultivo_de_biocombustible = db_to_df(rd=rd).sum().to_dict()
+    cultivo_de_biocombustible = db_to_df(rd=rd).to_dict(orient='records')[0]
     cultivo_de_biocombustible["topic"]    = "resultados"
     cultivo_de_biocombustible["bloque"]   = "agricultura"
     cultivo_de_biocombustible["tipo"]     = "cultivo_de_biocombustible"
     cultivo_de_biocombustible["unidad"]   = "Mt_CO2_e"
 
     ##########   mejores_practicas   ##############
-    filter={"tipo": "plantaciones_de_mango_y_aguacate", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
-    rd = downloader(db=db, topic='implementacion_de_mejores_practicas_agricolas',
-        model=models.AGRO_EMISIONES,
-        **filter)
-    df1 = db_to_df(rd=rd)
-    
     filter={"tipo": "potencial_de_reduccion_de_emisiones_de_las_medidas", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='implementacion_de_mejores_practicas_agricolas',
         model=models.AGRO_EMISIONES,
         **filter)
-    df2 = db_to_df(rd=rd)
-    
-    mejores_practicas = pd.concat([df1, df2]).sum().to_dict()
+
+    mejores_practicas = db_to_df(rd=rd).to_dict(orient='records')[0]
     mejores_practicas["topic"]    = "resultados"
     mejores_practicas["bloque"]   = "agricultura"
     mejores_practicas["tipo"]     = "mejores_practicas"
@@ -96,24 +87,24 @@ def resultados_evolucion_del_potencial_energetico_para_aprovechamiento_de_residu
     """READ"""
 
     ##########   cultivos   ##############
-    filter={'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
+    filter={"bloque": "total_cultivos", "tipo": "total_cultivos", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
         **filter)
     
-    cultivos = db_to_df(rd=rd).sum().to_dict()
+    cultivos = db_to_df(rd=rd).to_dict(orient='records')[0]
     cultivos["topic"]    = "resultados"
     cultivos["bloque"]   = "agricultura"
     cultivos["tipo"]     = "cultivos"
     cultivos["unidad"]   = "TWh"
 
     ##########   biocombustibles   ##############
-    filter={'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
+    filter={"tipo": "total", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='biocombustibles',
         model=models.AGRO_SALIDAS_biocombustibles,
         **filter)
     
-    biocombustibles = db_to_df(rd=rd).sum().to_dict()
+    biocombustibles = db_to_df(rd=rd).to_dict(orient='records')[0]
     biocombustibles["topic"]    = "resultados"
     biocombustibles["bloque"]   = "agricultura"
     biocombustibles["tipo"]     = "biocombustibles"

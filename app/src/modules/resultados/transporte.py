@@ -124,24 +124,24 @@ def resultados_evolucion_demanda_energetica_por_modo_transporte(
     """READ"""
 
     ##########   transporte_de_pasajeros   ############## TWh
-    filter={'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
+    filter={"tipo": "total", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
         **filter)
         
-    transporte_de_pasajeros = db_to_df(rd=rd).sum().to_dict()#(orient='records')[0]
+    transporte_de_pasajeros = db_to_df(rd=rd).to_dict(orient='records')[0]
     transporte_de_pasajeros["topic"]    = "resultados"
     transporte_de_pasajeros["bloque"]   = "transporte"
     transporte_de_pasajeros["tipo"]     = "transporte_de_pasajeros"
     transporte_de_pasajeros["unidad"]   = "TWh"
     
     ##########   transporte_de_carga   ############## TWh
-    filter={'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
+    filter={"tipo": "total", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
         **filter)
         
-    transporte_de_carga = db_to_df(rd=rd).sum().to_dict()#(orient='records')[0]
+    transporte_de_carga = db_to_df(rd=rd).to_dict(orient='records')[0]
     transporte_de_carga["topic"]    = "resultados"
     transporte_de_carga["bloque"]   = "transporte"
     transporte_de_carga["tipo"]     = "transporte_de_carga"

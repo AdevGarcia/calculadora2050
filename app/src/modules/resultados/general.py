@@ -72,8 +72,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
         model=models.ENER_CombFosil_EMISIONES_consumo,
         **filter)
         
-    _energia = db_to_df(rd=rd)
-    energia = _energia.to_dict(orient='records')[0]
+    energia = db_to_df(rd=rd).to_dict(orient='records')[0]
     energia["topic"]    = "resultados"
     energia["bloque"]   = "general"
     energia["tipo"]     = "energia"
@@ -84,10 +83,8 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales,
         **filter)
-    
-    _electricidad = db_to_df(rd=rd)
         
-    electricidad = _electricidad.to_dict(orient='records')[0]
+    electricidad = db_to_df(rd=rd).to_dict(orient='records')[0]
     electricidad["topic"]    = "resultados"
     electricidad["bloque"]   = "general"
     electricidad["tipo"]     = "electricidad"
@@ -100,9 +97,8 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
         model=models.INDU_emisiones_sao,
         **filter)
     
-    _industria = db_to_df(rd=rd)
         
-    industria = _industria.to_dict(orient='records')[0]
+    industria = db_to_df(rd=rd).to_dict(orient='records')[0]
     industria["topic"]    = "resultados"
     industria["bloque"]   = "general"
     industria["tipo"]     = "industria"
@@ -126,10 +122,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     
     res_agu = db_to_df(rd=rd)
 
-    
-    _residuos = pd.concat([res_sol, res_agu]).sum()
-
-    residuos = _residuos.to_dict()
+    residuos = pd.concat([res_sol, res_agu]).sum().to_dict()
     residuos["topic"]    = "resultados"
     residuos["bloque"]   = "general"
     residuos["tipo"]     = "residuos"
@@ -177,15 +170,14 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     
     edi_com_ute = db_to_df(rd=rd)
 
-    _edificaciones = pd.concat([
+    edificaciones = pd.concat([
         edi_res_urb_aer, 
         edi_res_urb_irco, 
         edi_res_urb_rural, 
         edi_com_aec, 
         edi_com_ute
-        ]).sum()
+        ]).sum().to_dict()
     
-    edificaciones = _edificaciones.to_dict()
     edificaciones["topic"]    = "resultados"
     edificaciones["bloque"]   = "general"
     edificaciones["tipo"]     = "edificaciones"
@@ -225,14 +217,13 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     
     trans_nav = db_to_df(rd=rd)
 
-    _transporte = pd.concat([
+    transporte = pd.concat([
         trans_pas, 
         trans_car, 
         trans_avi, 
         trans_nav
-        ]).sum()
+        ]).sum().to_dict()
     
-    transporte = _transporte.to_dict()
     transporte["topic"]    = "resultados"
     transporte["bloque"]   = "general"
     transporte["tipo"]     = "transporte"
@@ -244,10 +235,8 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     rd = downloader(db=db, topic='total_agricultura',
         model=models.AGRO_EMISIONES,
         **filter)
-    
-    _agricultura = db_to_df(rd=rd)
         
-    agricultura = _agricultura.to_dict(orient='records')[0]
+    agricultura = db_to_df(rd=rd).to_dict(orient='records')[0]
     agricultura["topic"]    = "resultados"
     agricultura["bloque"]   = "general"
     agricultura["tipo"]     = "agricultura"
@@ -259,10 +248,8 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     rd = downloader(db=db, topic='total',
         model=models.GANA_EMISIONES,
         **filter)
-    
-    _ganaderia = db_to_df(rd=rd)
         
-    ganaderia = _ganaderia.to_dict(orient='records')[0]
+    ganaderia = db_to_df(rd=rd).to_dict(orient='records')[0]
     ganaderia["topic"]    = "resultados"
     ganaderia["bloque"]   = "general"
     ganaderia["tipo"]     = "ganaderia"
@@ -274,10 +261,8 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     rd = downloader(db=db, topic='total_emisiones',
         model=models.BOSQ_EMISIONES,
         **filter)
-    
-    _bosques = db_to_df(rd=rd)
         
-    bosques = _bosques.to_dict(orient='records')[0]
+    bosques = db_to_df(rd=rd).to_dict(orient='records')[0]
     bosques["topic"]    = "resultados"
     bosques["bloque"]   = "general"
     bosques["tipo"]     = "bosques"
@@ -910,15 +895,14 @@ def resultados_consumo_combustibles_por_sector(
     
     df5 = db_to_df(rd=rd)
 
-    _edificaciones = pd.concat([
+    edificaciones = pd.concat([
         df1, 
         df2, 
         df3, 
         df4, 
         df5
-        ]).sum()
+        ]).sum().to_dict()
     
-    edificaciones = _edificaciones.to_dict()
     edificaciones["topic"]    = "resultados"
     edificaciones["bloque"]   = "general"
     edificaciones["tipo"]     = "edificaciones"
@@ -976,14 +960,13 @@ def resultados_consumo_combustibles_por_sector(
     
     trans_nav = db_to_df(rd=rd)
 
-    _transporte = pd.concat([
+    transporte = pd.concat([
         trans_pas, 
         trans_car, 
         trans_avi, 
         trans_nav
-        ]).sum()
+        ]).sum().to_dict()
     
-    transporte = _transporte.to_dict()
     transporte["topic"]    = "resultados"
     transporte["bloque"]   = "general"
     transporte["tipo"]     = "transporte"
@@ -1266,13 +1249,11 @@ def resultados_consumo_por_tipo_de_combustible(
         **filter)
     df6 = db_to_df(rd=rd)
     
-
     glp = pd.concat([df1, df2, df3, df4, df5, df6]).sum().to_dict()
     glp["topic"]    = "resultados"
     glp["bloque"]   = "general"
     glp["tipo"]     = "glp"
     glp["unidad"]   = "TWh"
-
 
     ##########  fuel_oil ############## TWh
     # edi_com_ute 266
@@ -1295,7 +1276,6 @@ def resultados_consumo_por_tipo_de_combustible(
     fuel_oil["tipo"]     = "fuel_oil"
     fuel_oil["unidad"]   = "TWh"
 
-
     ##########  crudo ############## TWh
     # edi_com_ute 262
     filter={"tipo": "petroleo", 'medida_1': medida_edi_com_ute_1}
@@ -1310,7 +1290,6 @@ def resultados_consumo_por_tipo_de_combustible(
         model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         **filter)
     df2 = db_to_df(rd=rd)
-    
 
     crudo = pd.concat([df1, df2]).sum().to_dict()
     crudo["topic"]    = "resultados"

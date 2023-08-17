@@ -2,8 +2,6 @@ from typing import Any
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status
 from fastapi.encoders import jsonable_encoder
-
-import pandas as pd
 import logging
 
 from app.src.crud.base import downloader
@@ -40,24 +38,24 @@ def resultados_evolucion_de_las_emisiones_del_sector_ganaderia(
     """READ"""
 
     ##########   hato_ganadero   ##############
-    filter={'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
+    filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='emisiones_de_hato_ganadero',
         model=models.GANA_EMISIONES,
         **filter)
         
-    hato_ganadero = db_to_df(rd=rd).sum().to_dict()
+    hato_ganadero = db_to_df(rd=rd).to_dict(orient='records')[0]
     hato_ganadero["topic"]    = "resultados"
     hato_ganadero["bloque"]   = "ganaderia"
     hato_ganadero["tipo"]     = "hato_ganadero"
     hato_ganadero["unidad"]   = "Mt_CO2_e"
 
     ##########   practicas_sostenibles   ##############
-    filter={'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
+    filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='practicas_sostenibles_en_suelos_ganaderos',
         model=models.GANA_EMISIONES,
         **filter)
         
-    practicas_sostenibles = db_to_df(rd=rd).sum().to_dict()
+    practicas_sostenibles = db_to_df(rd=rd).to_dict(orient='records')[0]
     practicas_sostenibles["topic"]    = "resultados"
     practicas_sostenibles["bloque"]   = "ganaderia"
     practicas_sostenibles["tipo"]     = "practicas_sostenibles"
@@ -65,12 +63,12 @@ def resultados_evolucion_de_las_emisiones_del_sector_ganaderia(
 
 
     ##########   mejores_practicas_pecuarias   ##############
-    filter={'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
+    filter={"tipo": "reduccion_por_la_implementacion_de_la_medida", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='mejores_practicas_pecuarias',
         model=models.GANA_EMISIONES,
         **filter)
         
-    mejores_practicas_pecuarias = db_to_df(rd=rd).sum().to_dict()
+    mejores_practicas_pecuarias = db_to_df(rd=rd).to_dict(orient='records')[0]
     mejores_practicas_pecuarias["topic"]    = "resultados"
     mejores_practicas_pecuarias["bloque"]   = "ganaderia"
     mejores_practicas_pecuarias["tipo"]     = "mejores_practicas_pecuarias"
@@ -78,12 +76,12 @@ def resultados_evolucion_de_las_emisiones_del_sector_ganaderia(
 
 
     ##########   manejo_de_estiercol   ##############
-    filter={'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
+    filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='manejo_de_estiercol',
         model=models.GANA_EMISIONES,
         **filter)
         
-    manejo_de_estiercol = db_to_df(rd=rd).sum().to_dict()
+    manejo_de_estiercol = db_to_df(rd=rd).to_dict(orient='records')[0]
     manejo_de_estiercol["topic"]    = "resultados"
     manejo_de_estiercol["bloque"]   = "ganaderia"
     manejo_de_estiercol["tipo"]     = "manejo_de_estiercol"
@@ -145,7 +143,4 @@ def resultados_evolucion_de_produccion_bioenergia_por_estiercol(
         logger.info(f'Read Data: {jsonable_encoder(resultado)}')
 
     return jsonable_encoder(resultado)
-
-
-
  

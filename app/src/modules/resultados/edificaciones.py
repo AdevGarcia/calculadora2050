@@ -57,12 +57,12 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     
     
     ##########  2 eficiencia_energetica_y_equipos_eficientes_en_viviendas   ############## Mt_CO2_e
-    filter={'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
+    filter={"tipo": "total_co2_e", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_RES_ILU_REF_COC_OTR_EMISIONES,
         **filter)
         
-    eficiencia_energetica_y_equipos_eficientes_en_viviendas = db_to_df(rd=rd).sum().to_dict()
+    eficiencia_energetica_y_equipos_eficientes_en_viviendas = db_to_df(rd=rd).to_dict(orient='records')[0]
     eficiencia_energetica_y_equipos_eficientes_en_viviendas["topic"]    = "resultados"
     eficiencia_energetica_y_equipos_eficientes_en_viviendas["bloque"]   = "edificaciones"
     eficiencia_energetica_y_equipos_eficientes_en_viviendas["tipo"]     = "eficiencia_energetica_y_equipos_eficientes_en_viviendas"
@@ -70,12 +70,12 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     
 
     ########## 3  eficiencia_energetica_para_viviendas_rurales   ############## Mt_CO2_e
-    filter={'medida_1': medida_edi_res_rural_1}
+    filter={"tipo": "total_co2_e", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_RES_RURAL_EMISIONES,
         **filter)
         
-    eficiencia_energetica_para_viviendas_rurales = db_to_df(rd=rd).sum().to_dict()
+    eficiencia_energetica_para_viviendas_rurales = db_to_df(rd=rd).to_dict(orient='records')[0]
     eficiencia_energetica_para_viviendas_rurales["topic"]    = "resultados"
     eficiencia_energetica_para_viviendas_rurales["bloque"]   = "edificaciones"
     eficiencia_energetica_para_viviendas_rurales["tipo"]     = "eficiencia_energetica_para_viviendas_rurales"
@@ -94,20 +94,17 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     acondicionamiento_de_espacios_comerciales_y_de_servicio["tipo"]     = "acondicionamiento_de_espacios_comerciales_y_de_servicio"
     acondicionamiento_de_espacios_comerciales_y_de_servicio["unidad"]   = "Mt_CO2_e"
 
-
-
     ##########  5 usos_termicos_y_equipamiento_comercial_y_de_servicio   ############## Mt_CO2_e
-    filter={'medida_1': medida_edi_com_ute_1}
+    filter={"tipo": "total_co2_e", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_COM_USOS_TERM_EQUIP_EMISIONES,
         **filter)
         
-    usos_termicos_y_equipamiento_comercial_y_de_servicio = db_to_df(rd=rd).sum().to_dict()
+    usos_termicos_y_equipamiento_comercial_y_de_servicio = db_to_df(rd=rd).to_dict(orient='records')[0]
     usos_termicos_y_equipamiento_comercial_y_de_servicio["topic"]    = "resultados"
     usos_termicos_y_equipamiento_comercial_y_de_servicio["bloque"]   = "edificaciones"
     usos_termicos_y_equipamiento_comercial_y_de_servicio["tipo"]     = "usos_termicos_y_equipamiento_comercial_y_de_servicio"
     usos_termicos_y_equipamiento_comercial_y_de_servicio["unidad"]   = "Mt_CO2_e"
-    
     
 
     resultado = {"resultados": [
@@ -247,7 +244,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
         **filter)
     
-    petroleo = db_to_df(rd=rd).sum().to_dict()
+    petroleo = db_to_df(rd=rd).to_dict(orient='records')[0]
     petroleo["topic"]    = "resultados"
     petroleo["bloque"]   = "edificaciones"
     petroleo["tipo"]     = "petroleo"
@@ -260,7 +257,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
         **filter)
     
-    queroseno = db_to_df(rd=rd).sum().to_dict()
+    queroseno = db_to_df(rd=rd).to_dict(orient='records')[0]
     queroseno["topic"]    = "resultados"
     queroseno["bloque"]   = "edificaciones"
     queroseno["tipo"]     = "queroseno"
@@ -273,7 +270,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
         **filter)
     
-    diesel = db_to_df(rd=rd).sum().to_dict()
+    diesel = db_to_df(rd=rd).to_dict(orient='records')[0]
     diesel["topic"]    = "resultados"
     diesel["bloque"]   = "edificaciones"
     diesel["tipo"]     = "diesel"
@@ -286,7 +283,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
         **filter)
     
-    fuel_oil = db_to_df(rd=rd).sum().to_dict()
+    fuel_oil = db_to_df(rd=rd).to_dict(orient='records')[0]
     fuel_oil["topic"]    = "resultados"
     fuel_oil["bloque"]   = "edificaciones"
     fuel_oil["tipo"]     = "fuel_oil"
@@ -299,7 +296,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
         model=models.EDIF_RES_RURAL_SALIDAS,
         **filter)
     
-    biomansa_seca_y_residuos = db_to_df(rd=rd).sum().to_dict()
+    biomansa_seca_y_residuos = db_to_df(rd=rd).to_dict(orient='records')[0]
     biomansa_seca_y_residuos["topic"]    = "resultados"
     biomansa_seca_y_residuos["bloque"]   = "edificaciones"
     biomansa_seca_y_residuos["tipo"]     = "biomansa_seca_y_residuos"
@@ -344,7 +341,6 @@ def resultados_evolucion_consumo_energetico_por_sector(
     """READ"""
 
     ##########   edificaciones_residenciales_urbanas   ############## TWh
-
     # edi_res_urb_aer
     filter={"tipo": "acondicionamiento_de_espacios", 'medida_1': medida_edi_res_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
@@ -365,9 +361,7 @@ def resultados_evolucion_consumo_energetico_por_sector(
     edificaciones_residenciales_urbanas["tipo"]     = "edificaciones_residenciales_urbanas"
     edificaciones_residenciales_urbanas["unidad"]   = "TWh"
     
-    
     ##########   edificaciones_residenciales_rurales   ############## TWh
-
     # edi_res_rural
     filter={"tipo": "demanda_edificaciones_rurales", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
@@ -379,9 +373,7 @@ def resultados_evolucion_consumo_energetico_por_sector(
     edificaciones_residenciales_rurales["tipo"]     = "edificaciones_residenciales_rurales"
     edificaciones_residenciales_rurales["unidad"]   = "TWh"
     
-
     ##########   edificaciones_comerciales_y_de_servicio   ############## TWh
-
     # edi_com_aec
     filter={"tipo": "acondicionamiento_de_espacios", 'medida_1': medida_edi_com_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
@@ -396,7 +388,6 @@ def resultados_evolucion_consumo_energetico_por_sector(
         **filter)
     edi_com_ute = db_to_df(rd=rd)
 
-
     edificaciones_comerciales_y_de_servicio = pd.concat([edi_com_aec, edi_com_ute]).sum().to_dict()
     edificaciones_comerciales_y_de_servicio["topic"]    = "resultados"
     edificaciones_comerciales_y_de_servicio["bloque"]   = "edificaciones"
@@ -404,8 +395,6 @@ def resultados_evolucion_consumo_energetico_por_sector(
     edificaciones_comerciales_y_de_servicio["unidad"]   = "TWh"
     
     
-    
-
     resultado = {"resultados": [
         edificaciones_residenciales_urbanas, 
         edificaciones_residenciales_rurales,

@@ -2,8 +2,6 @@ from typing import Any
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status
 from fastapi.encoders import jsonable_encoder
-
-import pandas as pd
 import logging
 
 from app.src.crud.base import downloader
@@ -142,66 +140,20 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
 
 
     ##########  9 autogeneracion_residuos  ############## Mt_CO2_e
-    # RES_AGU [245] + RES_SOL [400]
-
-    ##########  5 aguas_residuales_domesticas RES_AGU  ############## Mt_CO2_e
-    filter={"bloque": "aguas_residuales_domesticas", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
+    # RES_AGU [245]
+    filter={"bloque": "total_emisiones_gei_energia", "tipo": "total_emisiones_gei_energia", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
         model=models.RES_AGU_emisiones,
         **filter)
-    
-    df = db_to_df(rd=rd)
+    res_agu = db_to_df(rd=rd)
 
-    PCG_CO2 = 1
-    PCG_CH4 = 28
-    PCG_N2O = 265
-
-    df.iloc[0] = df.iloc[0] * PCG_CO2
-    df.iloc[1] = df.iloc[1] * PCG_CH4
-    df.iloc[2] = df.iloc[2] * PCG_N2O
-        
-    aguas_residuales_domesticas = df.sum()# .to_dict()
-
-
-    ##########  6 aguas_residuales_industriales RES_AGU  ############## Mt_CO2_e
-    filter={"bloque": "aguas_residuales_industriales", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
-    rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
-        model=models.RES_AGU_emisiones,
-        **filter)
-    
-    df = db_to_df(rd=rd)
-
-    PCG_CO2 = 1
-    PCG_CH4 = 28
-    PCG_N2O = 265
-
-    df.iloc[0] = df.iloc[0] * PCG_CO2
-    df.iloc[1] = df.iloc[1] * PCG_CH4
-    df.iloc[2] = df.iloc[2] * PCG_N2O
-        
-    aguas_residuales_industriales = df.sum()# .to_dict()
-
-
-    res_agu = aguas_residuales_domesticas + aguas_residuales_industriales
-
-    ##########  1 relleno_sanitario_controlados_sin_captacion  RES_SOL ############## Mt_CO2_e
-    filter={"bloque": "relleno_sanitario_controlados", "grupo": "aprovechamiento_energetico_del_biogas", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
+    # RES_SOL [400]
+    filter={"bloque": "total", "grupo": "total", "tipo": "total_co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
         model=models.RES_SOL_emisiones,
         **filter)
-        
-    aprovechamiento_energetico_del_biogas = db_to_df(rd=rd)# .to_dict(orient='records')[0]
+    res_sol = db_to_df(rd=rd)
     
-    ##########  2 relleno_sanitario_controlados_quema_antorcha  RES_SOL ############## Mt_CO2_e
-    filter={"bloque": "relleno_sanitario_controlados", "grupo": "incineracion", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
-    rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
-        model=models.RES_SOL_emisiones,
-        **filter)
-        
-    incineracion = db_to_df(rd=rd).sum()# .to_dict()
-
-    res_sol = aprovechamiento_energetico_del_biogas + incineracion
-
     autogeneracion_residuos = res_agu + res_sol
         
     autogeneracion_residuos = autogeneracion_residuos.to_dict(orient='records')[0]
@@ -342,40 +294,17 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     termoelectrica_carbon_ccus["unidad"]   = "TWh"
 
     ##########  9 autogeneracion_residuos  ############## TWh
-    # filter={"tipo": "cemento", 'medida_1': medida_elect_1}
-    # rd = downloader(db=db, topic='balance_total_de_la_energia',
-    #     model=models.INDU_SALIDAS_por_tipo_de_electricidad_balance_total_de_la_energia_requerida,
-    #     **filter)
-        
-    # autogeneracion_residuos = db_to_df(rd=rd).to_dict(orient='records')[0]
-    # autogeneracion_residuos["topic"]    = "resultados"
-    # autogeneracion_residuos["bloque"]   = "electricidad"
-    # autogeneracion_residuos["tipo"]     = "autogeneracion_residuos"
-    # autogeneracion_residuos["unidad"]   = "TWh"
-
-    ##########  1 relleno_sanitario_controlados_sin_captacion  RES_SOL ############## Mt_CO2_e
-    filter={"bloque": "relleno_sanitario_controlados", "grupo": "aprovechamiento_energetico_del_biogas", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
+    # RES_SOL [400]
+    filter={"bloque": "total", "grupo": "total", "tipo": "total_co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
         model=models.RES_SOL_emisiones,
         **filter)
         
-    aprovechamiento_energetico_del_biogas = db_to_df(rd=rd)# .to_dict(orient='records')[0]
-    
-    ##########  2 relleno_sanitario_controlados_quema_antorcha  RES_SOL ############## Mt_CO2_e
-    filter={"bloque": "relleno_sanitario_controlados", "grupo": "incineracion", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
-    rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
-        model=models.RES_SOL_emisiones,
-        **filter)
-        
-    incineracion = db_to_df(rd=rd).sum()# .to_dict()
-
-    autogeneracion_residuos = aprovechamiento_energetico_del_biogas + incineracion
-        
-    autogeneracion_residuos = autogeneracion_residuos.to_dict(orient='records')[0]
+    autogeneracion_residuos = db_to_df(rd=rd).to_dict(orient='records')[0]
     autogeneracion_residuos["topic"]    = "resultados"
     autogeneracion_residuos["bloque"]   = "electricidad"
     autogeneracion_residuos["tipo"]     = "autogeneracion_residuos"
-    autogeneracion_residuos["unidad"]   = "Mt_CO2_e"
+    autogeneracion_residuos["unidad"]   = "TWh"
 
     ##########  10 grandes_centrales_hidroelectricas  ############## TWh
     filter={"tipo": "grandes_centrales_hidroelectricas", 'medida_1': medida_elect_1}
