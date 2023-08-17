@@ -285,7 +285,7 @@ def create_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos(
 @router.get('/salidas/{module}')
 def read_salidas_module(
     module: schemas.Salidas_name,
-    medida_1: schemas.Trayectoria,
+    medida_ener_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -293,7 +293,7 @@ def read_salidas_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1}
+    filter = {'medida_1' : medida_ener_1}
 
     match module:
         case schemas.Salidas_name.salidas_combustibles_fosiles_producidos:
@@ -395,7 +395,7 @@ def create_emisiones_consumo(
 @router.get('/emisiones/{module}')
 def read_emisiones_module(
     module: schemas.Emisiones_name,
-    medida_1: schemas.Trayectoria,
+    medida_ener_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -403,7 +403,7 @@ def read_emisiones_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1}
+    filter = {'medida_1' : medida_ener_1}
 
     match module:
         case schemas.Emisiones_name.emisiones_produccion:

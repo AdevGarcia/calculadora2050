@@ -1,8 +1,8 @@
 """init
 
-Revision ID: 7998d57baefa
+Revision ID: 4e9b198663de
 Revises: 
-Create Date: 2023-08-16 12:45:10.801535
+Create Date: 2023-08-17 17:17:42.273671
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7998d57baefa'
+revision = '4e9b198663de'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -1701,7 +1701,6 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
     sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.Column('medida_3', sa.Integer(), nullable=True),
     sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -1719,10 +1718,8 @@ def upgrade() -> None:
     sa.Column('2045', sa.Float(), nullable=True),
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
     sa.Column('medida_2', sa.Integer(), nullable=True),
     sa.Column('medida_3', sa.Integer(), nullable=True),
-    sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_emisiones_por_el_consumo_de_bagazo_y_otros_id'), 'indu_emisiones_por_el_consumo_de_bagazo_y_otros', ['id'], unique=False)
@@ -1761,8 +1758,6 @@ def upgrade() -> None:
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.Column('medida_3', sa.Integer(), nullable=True),
     sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -1782,9 +1777,6 @@ def upgrade() -> None:
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.Column('medida_3', sa.Integer(), nullable=True),
-    sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_salidas_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion_id'), 'indu_salidas_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion', ['id'], unique=False)
@@ -1803,8 +1795,6 @@ def upgrade() -> None:
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.Column('medida_3', sa.Integer(), nullable=True),
     sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -1824,8 +1814,6 @@ def upgrade() -> None:
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.Column('medida_3', sa.Integer(), nullable=True),
     sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -1845,9 +1833,6 @@ def upgrade() -> None:
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.Column('medida_3', sa.Integer(), nullable=True),
-    sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_salidas_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion_id'), 'indu_salidas_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion', ['id'], unique=False)
@@ -1866,8 +1851,6 @@ def upgrade() -> None:
     sa.Column('2050', sa.Float(), nullable=True),
     sa.Column('unidad', sa.String(), nullable=True),
     sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.Column('medida_3', sa.Integer(), nullable=True),
     sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -2141,44 +2124,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_agu_emisiones_id'), 'res_agu_emisiones', ['id'], unique=False)
-    op.create_table('res_agu_emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_res_agu_emisiones_de_gases_de_efecto_invernadero_aguas_residuales_id'), 'res_agu_emisiones_de_gases_de_efecto_invernadero_aguas_residuales', ['id'], unique=False)
-    op.create_table('res_agu_emisiones_de_gases_de_efecto_invernadero_energia',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_2', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_res_agu_emisiones_de_gases_de_efecto_invernadero_energia_id'), 'res_agu_emisiones_de_gases_de_efecto_invernadero_energia', ['id'], unique=False)
     op.create_table('res_agu_salidas_energia_consumida',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2372,44 +2317,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_sol_emisiones_id'), 'res_sol_emisiones', ['id'], unique=False)
-    op.create_table('res_sol_emisiones_de_gases_de_efecto_invernadero_energia',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('grupo', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_res_sol_emisiones_de_gases_de_efecto_invernadero_energia_id'), 'res_sol_emisiones_de_gases_de_efecto_invernadero_energia', ['id'], unique=False)
-    op.create_table('res_sol_emisiones_de_gases_de_efecto_invernadero_residuos',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('grupo', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_res_sol_emisiones_de_gases_de_efecto_invernadero_residuos_id'), 'res_sol_emisiones_de_gases_de_efecto_invernadero_residuos', ['id'], unique=False)
     op.create_table('res_sol_salidas_energia_consumida',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -3521,10 +3428,6 @@ def downgrade() -> None:
     op.drop_table('res_sol_salidas_energia_producida')
     op.drop_index(op.f('ix_res_sol_salidas_energia_consumida_id'), table_name='res_sol_salidas_energia_consumida')
     op.drop_table('res_sol_salidas_energia_consumida')
-    op.drop_index(op.f('ix_res_sol_emisiones_de_gases_de_efecto_invernadero_residuos_id'), table_name='res_sol_emisiones_de_gases_de_efecto_invernadero_residuos')
-    op.drop_table('res_sol_emisiones_de_gases_de_efecto_invernadero_residuos')
-    op.drop_index(op.f('ix_res_sol_emisiones_de_gases_de_efecto_invernadero_energia_id'), table_name='res_sol_emisiones_de_gases_de_efecto_invernadero_energia')
-    op.drop_table('res_sol_emisiones_de_gases_de_efecto_invernadero_energia')
     op.drop_index(op.f('ix_res_sol_emisiones_id'), table_name='res_sol_emisiones')
     op.drop_table('res_sol_emisiones')
     op.drop_index(op.f('ix_res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas_id'), table_name='res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas')
@@ -3555,10 +3458,6 @@ def downgrade() -> None:
     op.drop_table('res_agu_salidas_energia_producida')
     op.drop_index(op.f('ix_res_agu_salidas_energia_consumida_id'), table_name='res_agu_salidas_energia_consumida')
     op.drop_table('res_agu_salidas_energia_consumida')
-    op.drop_index(op.f('ix_res_agu_emisiones_de_gases_de_efecto_invernadero_energia_id'), table_name='res_agu_emisiones_de_gases_de_efecto_invernadero_energia')
-    op.drop_table('res_agu_emisiones_de_gases_de_efecto_invernadero_energia')
-    op.drop_index(op.f('ix_res_agu_emisiones_de_gases_de_efecto_invernadero_aguas_residuales_id'), table_name='res_agu_emisiones_de_gases_de_efecto_invernadero_aguas_residuales')
-    op.drop_table('res_agu_emisiones_de_gases_de_efecto_invernadero_aguas_residuales')
     op.drop_index(op.f('ix_res_agu_emisiones_id'), table_name='res_agu_emisiones')
     op.drop_table('res_agu_emisiones')
     op.drop_index(op.f('ix_indu_st_sustitucion_de_sao_y_hfc_id'), table_name='indu_st_sustitucion_de_sao_y_hfc')

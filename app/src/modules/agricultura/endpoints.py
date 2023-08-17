@@ -252,9 +252,9 @@ def create_metodologia_tierra_dedicada_para_biocombustibles(
 
 @router.get('/metodologia')
 def read_Metodologia(
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
-    medida_3: schemas.Trayectoria,
+    medida_agro_1: schemas.Trayectoria,
+    medida_agro_2: schemas.Trayectoria,
+    medida_agro_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -262,7 +262,7 @@ def read_Metodologia(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
+    filter = {'medida_1' : medida_agro_1, 'medida_2' : medida_agro_2, 'medida_3' : medida_agro_3}
 
     rd = downloader(
             db=db, 
@@ -338,9 +338,9 @@ def create_salidas_biocombustibles(
 @router.get('/salidas/{module}')
 def read_salidas_module(
     module: schemas.Salidas_name,
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
-    medida_3: schemas.Trayectoria,
+    medida_agro_1: schemas.Trayectoria,
+    medida_agro_2: schemas.Trayectoria,
+    medida_agro_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -348,7 +348,7 @@ def read_salidas_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
+    filter = {'medida_1' : medida_agro_1, 'medida_2' : medida_agro_2, 'medida_3' : medida_agro_3}
 
     match module:
         case schemas.Salidas_name.salida_cultivos:
@@ -416,9 +416,9 @@ def create_emisiones(
 @router.get('/emisiones')
 def read_Emisiones_module(
     module: schemas.Emisiones_name,
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
-    medida_3: schemas.Trayectoria,
+    medida_agro_1: schemas.Trayectoria,
+    medida_agro_2: schemas.Trayectoria,
+    medida_agro_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -426,7 +426,7 @@ def read_Emisiones_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
+    filter = {'medida_1' : medida_agro_1, 'medida_2' : medida_agro_2, 'medida_3' : medida_agro_3}
 
     match module:
         case schemas.Emisiones_name.emisiones_cultivo_biocombustibles:

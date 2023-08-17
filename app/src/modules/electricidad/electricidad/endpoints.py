@@ -259,7 +259,7 @@ def create_salidas_balance(
 @router.get('/salidas/{module}')
 def read_salidas_module(
     module: schemas.Salidas_name,
-    medida_1: schemas.Trayectoria,
+    medida_elect_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -267,7 +267,7 @@ def read_salidas_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1}
+    filter = {'medida_1' : medida_elect_1}
 
     match module:
         case schemas.Salidas_name.salidas_combustibles_fosiles:
@@ -377,7 +377,7 @@ def create_emisiones_energias_renovables_no_convencionales(
 @router.get('/emisiones/{module}')
 def read_emisiones_module(
     module: schemas.Emisiones_name,
-    medida_1: schemas.Trayectoria,
+    medida_elect_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -385,7 +385,7 @@ def read_emisiones_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1}
+    filter = {'medida_1' : medida_elect_1}
 
     match module:
         case schemas.Emisiones_name.emisiones_combustibles_fosiles:

@@ -269,9 +269,9 @@ def create_salidas(
 
 @router.get('/salidas')
 def read_salidas_module(
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
-    medida_3: schemas.Trayectoria,
+    medida_gana_1: schemas.Trayectoria,
+    medida_gana_2: schemas.Trayectoria,
+    medida_gana_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -279,7 +279,7 @@ def read_salidas_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
+    filter = {'medida_1' : medida_gana_1, 'medida_2' : medida_gana_2, 'medida_3' : medida_gana_3}
 
     rd = downloader(
         db=db, 
@@ -333,9 +333,9 @@ def create_emisiones(
 @router.get('/emisiones/{module}')
 def read_Emisiones_module(
     module: schemas.Emisiones_name,
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
-    medida_3: schemas.Trayectoria,
+    medida_gana_1: schemas.Trayectoria,
+    medida_gana_2: schemas.Trayectoria,
+    medida_gana_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -343,7 +343,7 @@ def read_Emisiones_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3}
+    filter = {'medida_1' : medida_gana_1, 'medida_2' : medida_gana_2, 'medida_3' : medida_gana_3}
 
     match module:
         case schemas.Emisiones_name.emisiones_de_hato_ganadero:

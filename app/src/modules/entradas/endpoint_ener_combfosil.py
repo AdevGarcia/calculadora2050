@@ -13,7 +13,6 @@ from db import deps
 
 from app.src.modules.user import models as models_user
 
-from .util.constants import YEARS
 from .util.util import db_to_df, get_item, set_item, set_zeros, set_suma_total
 
 logging.basicConfig(level=logging.INFO)

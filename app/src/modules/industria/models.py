@@ -324,8 +324,8 @@ class INDU_SALIDAS_por_combustible_energia_requerida(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    medida_2    = Column(name='medida_2', type_=Integer)
-    medida_3    = Column(name='medida_3', type_=Integer)
+    # medida_2    = Column(name='medida_2', type_=Integer)
+    # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
 
@@ -347,9 +347,9 @@ class INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogene
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    medida_2    = Column(name='medida_2', type_=Integer)
-    medida_3    = Column(name='medida_3', type_=Integer)
-    medida_4    = Column(name='medida_4', type_=Integer)
+    # medida_2    = Column(name='medida_2', type_=Integer)
+    # medida_3    = Column(name='medida_3', type_=Integer)
+    # medida_4    = Column(name='medida_4', type_=Integer)
 
 
 class INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(Base):
@@ -370,8 +370,8 @@ class INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    medida_2    = Column(name='medida_2', type_=Integer)
-    medida_3    = Column(name='medida_3', type_=Integer)
+    # medida_2    = Column(name='medida_2', type_=Integer)
+    # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
 
@@ -395,8 +395,8 @@ class INDU_SALIDAS_por_tipo_de_industria_energia_requerida(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    medida_2    = Column(name='medida_2', type_=Integer)
-    medida_3    = Column(name='medida_3', type_=Integer)
+    # medida_2    = Column(name='medida_2', type_=Integer)
+    # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
 
@@ -418,9 +418,9 @@ class INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    medida_2    = Column(name='medida_2', type_=Integer)
-    medida_3    = Column(name='medida_3', type_=Integer)
-    medida_4    = Column(name='medida_4', type_=Integer)
+    # medida_2    = Column(name='medida_2', type_=Integer)
+    # medida_3    = Column(name='medida_3', type_=Integer)
+    # medida_4    = Column(name='medida_4', type_=Integer)
 
 
 class INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(Base):
@@ -441,8 +441,8 @@ class INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(B
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    medida_2    = Column(name='medida_2', type_=Integer)
-    medida_3    = Column(name='medida_3', type_=Integer)
+    # medida_2    = Column(name='medida_2', type_=Integer)
+    # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
 
@@ -468,7 +468,7 @@ class INDU_emisiones_gases_efecto_invernadero(Base):
     unidad   = Column(name='unidad', type_=String)
     medida_1 = Column(name='medida_1', type_=Integer)
     medida_2 = Column(name='medida_2', type_=Integer)
-    medida_3 = Column(name='medida_3', type_=Integer)
+    # medida_3 = Column(name='medida_3', type_=Integer)
     medida_4 = Column(name='medida_4', type_=Integer)
 
 
@@ -488,10 +488,10 @@ class INDU_emisiones_por_el_consumo_de_bagazo_y_otros(Base):
     y2045    = Column(name='2045', type_=Float)
     y2050    = Column(name='2050', type_=Float)
     unidad   = Column(name='unidad', type_=String)
-    medida_1 = Column(name='medida_1', type_=Integer)
+    # medida_1 = Column(name='medida_1', type_=Integer)
     medida_2 = Column(name='medida_2', type_=Integer)
     medida_3 = Column(name='medida_3', type_=Integer)
-    medida_4 = Column(name='medida_4', type_=Integer)
+    # medida_4 = Column(name='medida_4', type_=Integer)
 
 
 class INDU_emisiones_sao(Base):

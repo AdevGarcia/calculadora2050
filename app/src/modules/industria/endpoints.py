@@ -354,8 +354,8 @@ def create_salida_energia_requerida_combustible(
     loader(
         db=db, 
         model=models.INDU_SALIDAS_por_combustible_energia_requerida, 
-        obj_in=jdata['salida_energia_requerida_combustible'], 
-        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_2', 'medida_3', 'medida_4']
+        obj_in=jdata['salida_energia_requerida_combustible'],
+        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_4']
     )
     
     return jdata
@@ -378,8 +378,8 @@ def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_combustibl
     loader(
         db=db, 
         model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion, 
-        obj_in=jdata['salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible'], 
-        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_2', 'medida_3', 'medida_4']
+        obj_in=jdata['salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible'],
+        filters=['bloque', 'topic', 'tipo', 'medida_1']
     )
     
     return jdata
@@ -403,7 +403,7 @@ def create_salida_balance_total_de_la_energia_requerida_combustible(
         db=db, 
         model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida, 
         obj_in=jdata['salida_balance_total_de_la_energia_requerida_combustible'], 
-        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_2', 'medida_3', 'medida_4']
+        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_4']
     )
     
     return jdata
@@ -426,8 +426,8 @@ def create_salida_energia_requerida_industria(
     loader(
         db=db, 
         model=models.INDU_SALIDAS_por_tipo_de_industria_energia_requerida, 
-        obj_in=jdata['salida_energia_requerida_industria'], 
-        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_2', 'medida_3', 'medida_4']
+        obj_in=jdata['salida_energia_requerida_industria'],
+        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_4']
     )
     
     return jdata
@@ -450,8 +450,8 @@ def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_industria(
     loader(
         db=db, 
         model=models.INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion, 
-        obj_in=jdata['salida_energia_producida_por_autogeneracion_y_cogeneracion_industria'], 
-        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_2', 'medida_3', 'medida_4']
+        obj_in=jdata['salida_energia_producida_por_autogeneracion_y_cogeneracion_industria'],
+        filters=['bloque', 'topic', 'tipo', 'medida_1']
     )
     
     return jdata
@@ -474,8 +474,8 @@ def create_salida_balance_total_de_la_energia_requerida_industria(
     loader(
         db=db, 
         model=models.INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida, 
-        obj_in=jdata['salida_balance_total_de_la_energia_requerida_industria'], 
-        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_2', 'medida_3', 'medida_4']
+        obj_in=jdata['salida_balance_total_de_la_energia_requerida_industria'],
+        filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_4']
     )
     
     return jdata
@@ -484,13 +484,8 @@ def create_salida_balance_total_de_la_energia_requerida_industria(
 @router.get('/salidas/{module}')#, response_model=SCHEMAS_SALIDAS)
 def read_Salidas_module(
     module: schemas.Salidas_name,
-    medida_ind_1: schemas.Trayectoria,
-    medida_ind_2: schemas.Trayectoria,
-    medida_ind_3: schemas.Trayectoria,
-    medida_ind_4: schemas.Trayectoria,
-    # medida_agro_1: schemas.Trayectoria,
-    # medida_agro_2: schemas.Trayectoria,
-    # medida_agro_3: schemas.Trayectoria,
+    medida_ind_1: schemas.Trayectoria=1,
+    medida_ind_4: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -498,10 +493,11 @@ def read_Salidas_module(
     ) -> Any:
     """READ ALL
     """
-    filter = {'medida_1' : medida_ind_1, 'medida_2' : medida_ind_2, 'medida_3' : medida_ind_3, 'medida_4' : medida_ind_4}
+    # filter = {'medida_1' : medida_ind_1, 'medida_2' : medida_ind_2, 'medida_3' : medida_ind_3, 'medida_4' : medida_ind_4}
 
     match module:
         case schemas.Salidas_name.salida_energia_requerida_combustible:
+            filter = {'medida_1' : medida_ind_1, 'medida_4' : medida_ind_4}
             rd = downloader(
                 db=db, 
                 model=models.INDU_SALIDAS_por_combustible_energia_requerida,
@@ -511,6 +507,7 @@ def read_Salidas_module(
             result = jsonable_encoder(rd)
                 
         case schemas.Salidas_name.salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible:
+            filter = {'medida_1' : medida_ind_1}
             rd = downloader(
                 db=db, 
                 model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
@@ -520,6 +517,7 @@ def read_Salidas_module(
             result = jsonable_encoder(rd)
             
         case schemas.Salidas_name.salida_balance_total_de_la_energia_requerida_combustible:
+            filter = {'medida_1' : medida_ind_1, 'medida_4' : medida_ind_4}
             rd = downloader(
                 db=db, 
                 model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
@@ -527,60 +525,9 @@ def read_Salidas_module(
                 **filter
                 )
             result = jsonable_encoder(rd)
-
-            # a = read_entradas_produccion(medida_agro_1=medida_agro_1, medida_agro_2=medida_agro_2, medida_agro_3=medida_agro_3, db=db)
-            
-            # print('\n read_entradas_produccion \n', a)
-
-            # ind 610
-            # filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
-            # rd = downloader(
-            #     db=db, 
-            #     topic='energia_requerida',
-            #     model=models.INDU_SALIDAS_por_combustible_energia_requerida,
-            #     **filter)
-            # d = jsonable_encoder(rd)
-            # df1 = pd.DataFrame(d[list(d.keys())[0]])[YEARS]
-            
-            # # ind 632
-            # filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
-            # rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
-            #     model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
-            #     **filter)
-            # d = jsonable_encoder(rd)
-            # df2 = pd.DataFrame(d[list(d.keys())[0]])[YEARS]
-            
-            # # agro 282
-            # # filter={"bloque": "total_cultivos", "tipo": "total_cultivos", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
-            # # rd = downloader(db=db, topic='cultivos',
-            # #     model=AGRO_SALIDAS_cultivos,
-            # #     **filter)
-            
-            # # d = jsonable_encoder(rd)
-            # # df3 = pd.DataFrame(d[list(d.keys())[0]])[YEARS]
-
-            
-
-            # d = read_salidas_module(module='salida_cultivos', medida_1=medida_agro_1, medida_2=medida_agro_2, medida_3=medida_agro_3, db=db)
-            # #d = jsonable_encoder(rd)
-            # df3 = pd.DataFrame(d[list(d.keys())[0]])[YEARS]
-
-            # df = df1 - df2 - df3
-            
-            # result = df.to_dict(orient='records')[0]
-            # result["topic"]    = "resultados"
-            # result["bloque"]   = "por_combustible"
-            # result["tipo"]     = "bagazo"
-            # result["unidad"]   = "TWh"
-            # result["medida_1"] = medida_ind_1
-            # result["medida_2"] = medida_ind_2
-            # result["medida_3"] = medida_ind_3
-            # result["medida_4"] = medida_ind_4
-            # result["medida_agro_1"] = medida_agro_1
-            # result["medida_agro_2"] = medida_agro_2
-            # result["medida_agro_3"] = medida_agro_3
             
         case schemas.Salidas_name.salida_energia_requerida_industria:
+            filter = {'medida_1' : medida_ind_1, 'medida_4' : medida_ind_4}
             rd = downloader(
                 db=db, 
                 model=models.INDU_SALIDAS_por_tipo_de_industria_energia_requerida,
@@ -590,6 +537,7 @@ def read_Salidas_module(
             result = jsonable_encoder(rd)
             
         case schemas.Salidas_name.salida_energia_producida_por_autogeneracion_y_cogeneracion_industria:
+            filter = {'medida_1' : medida_ind_1}
             rd = downloader(
                 db=db, 
                 model=models.INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion,
@@ -599,6 +547,7 @@ def read_Salidas_module(
             result = jsonable_encoder(rd)
             
         case schemas.Salidas_name.salida_balance_total_de_la_energia_requerida_industria:
+            filter = {'medida_1' : medida_ind_1, 'medida_4' : medida_ind_4}
             rd = downloader(
                 db=db, 
                 model=models.INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida,
@@ -655,7 +604,7 @@ def create_emisiones_gases_efecto_invernadero(
         db=db, 
         model=models.INDU_emisiones_gases_efecto_invernadero, 
         obj_in=jdata['emisiones_gases_efecto_invernadero'], 
-        filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_3', 'medida_4']
+        filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_4']
     )
     
     return jdata
@@ -679,7 +628,7 @@ def create_emisiones_por_el_consumo_de_bagazo_y_otros(
         db=db, 
         model=models.INDU_emisiones_por_el_consumo_de_bagazo_y_otros, 
         obj_in=jdata['emisiones_por_el_consumo_de_bagazo_y_otros'], 
-        filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_3', 'medida_4']
+        filters=['topic', 'tipo', 'medida_2', 'medida_3']
     )
     
     return jdata
@@ -712,10 +661,12 @@ def create_emisiones_sao(
 @router.get('/emisiones/{module}')#, response_model=SCHEMAS_SALIDAS)
 def read_Emisiones_module(
     module: schemas.Emisiones_name,
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
-    medida_3: schemas.Trayectoria,
-    medida_4: schemas.Trayectoria,
+    medida_ind_1: schemas.Trayectoria=1,
+    medida_ind_2: schemas.Trayectoria=1,
+    medida_ind_3: schemas.Trayectoria=1,
+    medida_ind_4: schemas.Trayectoria=1,
+    medida_agro_2: schemas.Trayectoria=1,
+    medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -723,10 +674,10 @@ def read_Emisiones_module(
     ) -> Any:
     """READ ALL
     """
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2, 'medida_3' : medida_3, 'medida_4' : medida_4}
 
     match module:
         case schemas.Emisiones_name.emisiones_gases_efecto_invernadero:
+            filter = {'medida_1' : medida_ind_1, 'medida_2' : medida_ind_2, 'medida_4' : medida_ind_4}
             rd = downloader(
                 db=db, 
                 model=models.INDU_emisiones_gases_efecto_invernadero,
@@ -736,15 +687,17 @@ def read_Emisiones_module(
             result = jsonable_encoder(rd)
                 
         case schemas.Emisiones_name.emisiones_por_el_consumo_de_bagazo_y_otros:
+            filter = {'medida_2' : medida_agro_2, 'medida_3' : medida_agro_3}
             rd = downloader(
                 db=db, 
                 model=models.INDU_emisiones_por_el_consumo_de_bagazo_y_otros,
-                topic='gases_efecto_invernadero',
+                topic='emisiones_por_el_consumo_de_bagazo_y_otros',
                 **filter
                 )
             result = jsonable_encoder(rd)
             
         case schemas.Emisiones_name.emisiones_sao:
+            filter = {'medida_1' : medida_ind_1, 'medida_2' : medida_ind_2, 'medida_3' : medida_ind_3, 'medida_4' : medida_ind_4}
             rd = downloader(
                 db=db, 
                 model=models.INDU_emisiones_sao,

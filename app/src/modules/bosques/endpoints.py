@@ -240,8 +240,8 @@ def create_total_areas_reforestadas(
 
 @router.get('/salidas')
 def read_salidas_module(
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
+    medida_bosq_1: schemas.Trayectoria,
+    medida_bosq_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -249,7 +249,7 @@ def read_salidas_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
+    filter = {'medida_1' : medida_bosq_1, 'medida_2' : medida_bosq_2}
 
     rd = downloader(
         db=db, 
@@ -303,8 +303,8 @@ def create_emisiones(
 @router.get('/emisiones')
 def read_emisiones_module(
     # module: schemas.Emisiones_name,
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
+    medida_bosq_1: schemas.Trayectoria,
+    medida_bosq_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -312,7 +312,7 @@ def read_emisiones_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
+    filter = {'medida_1' : medida_bosq_1, 'medida_2' : medida_bosq_2}
 
     rd = downloader(
         db=db, 

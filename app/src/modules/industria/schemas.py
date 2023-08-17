@@ -364,10 +364,10 @@ class _INDU_SALIDAS_por_combustible_energia_requerida(BaseModel):
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    medida_1    : float | None
+    # medida_2    : float | None
+    # medida_3    : float | None
+    medida_4    : float | None
 
 class INDU_SALIDAS_por_combustible_energia_requerida(BaseModel):
     """Salidas - por_combustible_energia_requerida
@@ -395,10 +395,10 @@ class _INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogen
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    medida_1    : float | None
+    # medida_2    : float | None
+    # medida_3    : float | None
+    # medida_4    : float | None
 
 class INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion(BaseModel):
     """Salidas - por_combustible_energia_producida_por_autogeneracion_y_cogeneracion
@@ -426,10 +426,10 @@ class _INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(BaseMo
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    medida_1    : float | None
+    # medida_2    : float | None
+    # medida_3    : float | None
+    medida_4    : float | None
 
 class INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(BaseModel):
     """Salidas - por_combustible_balance_total_de_la_energia_requerida
@@ -459,10 +459,10 @@ class _INDU_SALIDAS_por_tipo_de_industria_energia_requerida(BaseModel):
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    medida_1    : float | None
+    # medida_2    : float | None
+    # medida_3    : float | None
+    medida_4    : float | None
 
 class INDU_SALIDAS_por_tipo_de_industria_energia_requerida(BaseModel):
     """Salidas - por_tipo_de_industria_energia_requerida
@@ -490,10 +490,10 @@ class _INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    medida_1    : float | None
+    # medida_2    : float | None
+    # medida_3    : float | None
+    # medida_4    : float | None
 
 class INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion(BaseModel):
     """Salidas - por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion
@@ -521,10 +521,10 @@ class _INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    medida_1    : float | None
+    # medida_2    : float | None
+    # medida_3    : float | None
+    medida_4    : float | None
 
 class INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(BaseModel):
     """Salidas - por_tipo_de_industria_balance_total_de_la_energia_requerida
@@ -575,10 +575,10 @@ class _INDU_emisiones_gases_efecto_invernadero(BaseModel):
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    medida_1    : float | None
+    medida_2    : float | None
+    # medida_3    : float | None
+    medida_4    : float | None
 
 class INDU_emisiones_gases_efecto_invernadero(BaseModel):
     """Emisiones - emisiones_gases_efecto_invernadero
@@ -604,10 +604,10 @@ class _INDU_emisiones_por_el_consumo_de_bagazo_y_otros(BaseModel):
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    # medida_1    : float | None
+    medida_2    : float | None
+    medida_3    : float | None
+    # medida_4    : float | None
 
 
 class INDU_emisiones_por_el_consumo_de_bagazo_y_otros(BaseModel):
@@ -634,10 +634,10 @@ class _INDU_emisiones_sao(BaseModel):
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    medida_1    : float
-    medida_2    : float
-    medida_3    : float
-    medida_4    : float
+    medida_1    : float | None
+    medida_2    : float | None
+    medida_3    : float | None
+    medida_4    : float | None
 
 
 class INDU_emisiones_sao(BaseModel):

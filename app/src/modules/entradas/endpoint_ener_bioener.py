@@ -13,51 +13,14 @@ from db import deps
 
 from app.src.modules.user import models as models_user
 
+from .util.util import db_to_df, set_zeros
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 DEBUG = False
 
 router = APIRouter()
-
-def db_to_df(rd: dict, debug: bool=False)-> pd.DataFrame:
-    years = ["y2018","y2020","y2025", "y2030", "y2035", "y2040", "y2045", "y2050"]
-    d = jsonable_encoder(rd)
-
-    if debug:
-        print('### db_to_df\n', d)
-    return pd.DataFrame(d[list(d.keys())[0]])[years]
-
-def db_to_dict(rd: dict)-> dict:
-    return db_to_df(rd=rd).to_dict(orient='records')[0]
-
-
-def fvalue(rd: dict, topic: str, bloque: str, tipo: str, unidad:str)-> dict:
-    
-    d = db_to_dict(rd=rd)
-    d["topic"]    = topic
-    d["bloque"]   = bloque
-    d["tipo"]     = tipo
-    d["unidad"]   = unidad
-
-    return d
-
-
-def fcero(topic: str, tipo: str, unidad:str)-> dict:
-        dcero = {
-            'y2018'  : 0.0, 
-            'y2020'  : 0.0, 
-            'y2025'  : 0.0, 
-            'y2030'  : 0.0, 
-            'y2035'  : 0.0, 
-            'y2040'  : 0.0, 
-            'y2045'  : 0.0, 
-            'y2050'  : 0.0,
-            'topic'  : topic, 
-            'tipo'   : tipo, 
-            'unidad' : unidad
-        }
-        return dcero
 
 
 ####################################################################################
@@ -99,15 +62,15 @@ def read_entradas_energia_bioenergia(
 
     #### 
 
-    combustibles_fosiles = fcero(topic='produccion', tipo='combustibles_fosiles', unidad='TWh')
-    energia              = fcero(topic='produccion', tipo='energia',              unidad='TWh')
-    industria            = fcero(topic='produccion', tipo='industria',            unidad='TWh')
-    residuos             = fcero(topic='produccion', tipo='residuos',             unidad='TWh')
-    edificaciones        = fcero(topic='produccion', tipo='edificaciones',        unidad='TWh')
-    transporte           = fcero(topic='produccion', tipo='transporte',           unidad='TWh')
-    # agricultura          = fcero(topic='produccion', tipo='agricultura',          unidad='TWh')
-    ganaderia            = fcero(topic='produccion', tipo='ganaderia',            unidad='TWh')
-    bosques              = fcero(topic='produccion', tipo='bosques',              unidad='TWh')
+    combustibles_fosiles = set_zeros(topic_item='produccion', tipo='combustibles_fosiles', unidad='TWh')
+    energia              = set_zeros(topic_item='produccion', tipo='energia',              unidad='TWh')
+    industria            = set_zeros(topic_item='produccion', tipo='industria',            unidad='TWh')
+    residuos             = set_zeros(topic_item='produccion', tipo='residuos',             unidad='TWh')
+    edificaciones        = set_zeros(topic_item='produccion', tipo='edificaciones',        unidad='TWh')
+    transporte           = set_zeros(topic_item='produccion', tipo='transporte',           unidad='TWh')
+    # agricultura          = set_zeros(topic_item='produccion', tipo='agricultura',          unidad='TWh')
+    ganaderia            = set_zeros(topic_item='produccion', tipo='ganaderia',            unidad='TWh')
+    bosques              = set_zeros(topic_item='produccion', tipo='bosques',              unidad='TWh')
 
     resultado = {
         "produccion": [

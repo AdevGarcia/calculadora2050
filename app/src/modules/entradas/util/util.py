@@ -53,10 +53,10 @@ def set_suma_total(items: list, topic: str, tipo: str, unidad:str, bloque: str=N
     return total
 
 
-def set_zeros(topic_item: str, bloque: str, tipo: str, unidad:str)-> dict:
+def set_zeros(topic_item: str, tipo: str, unidad:str, bloque: str=None)-> dict:
         """set zeros item dict"""
 
-        return {
+        d= {
             'y2018'  : 0.0, 
             'y2020'  : 0.0, 
             'y2025'  : 0.0, 
@@ -65,11 +65,15 @@ def set_zeros(topic_item: str, bloque: str, tipo: str, unidad:str)-> dict:
             'y2040'  : 0.0, 
             'y2045'  : 0.0, 
             'y2050'  : 0.0,
-            'topic'  : topic_item, 
-            'bloque' : bloque, 
+            'topic'  : topic_item,
             'tipo'   : tipo, 
             'unidad' : unidad
         }
+
+        if bloque != None:
+            d["bloque"]   = bloque
+        
+        return d
 
 
 def get_total(d: dict)-> pd.DataFrame:

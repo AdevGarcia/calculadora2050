@@ -209,7 +209,7 @@ def create_salidas(
 
 @router.get('/salidas')
 def read_salidas_module(
-    medida_1: schemas.Trayectoria,
+    medida_edi_res_rural_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -217,7 +217,7 @@ def read_salidas_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1}
+    filter = {'medida_1' : medida_edi_res_rural_1}
 
     rd = downloader(
         db=db, 
@@ -270,7 +270,7 @@ def create_emisiones(
 
 @router.get('/emisiones')
 def read_Emisiones_module(
-    medida_1: schemas.Trayectoria,
+    medida_edi_res_rural_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -278,7 +278,7 @@ def read_Emisiones_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1}
+    filter = {'medida_1' : medida_edi_res_rural_1}
 
     rd = downloader(
             db=db, 

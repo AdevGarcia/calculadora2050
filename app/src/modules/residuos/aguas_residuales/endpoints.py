@@ -338,8 +338,8 @@ def create_salida_energia_producida(
 @router.get('/salidas/{module}')
 def read_salidas_module(
     module: schemas.Salidas_name,
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
+    medida_res_agu_1: schemas.Trayectoria,
+    medida_res_agu_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -347,7 +347,7 @@ def read_salidas_module(
     ) -> Any:
     """READ ALL"""
 
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
+    filter = {'medida_1' : medida_res_agu_1, 'medida_2' : medida_res_agu_2}
 
     match module:
         case schemas.Salidas_name.salida_energia_consumida:
@@ -415,8 +415,8 @@ def create_emisiones(
 def read_Emisiones_module(
     module: schemas.Emisiones_name,
     # bloque: schemas.Emisiones_bloque,
-    medida_1: schemas.Trayectoria,
-    medida_2: schemas.Trayectoria,
+    medida_res_agu_1: schemas.Trayectoria,
+    medida_res_agu_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
     # limit: int = 100,
@@ -424,8 +424,7 @@ def read_Emisiones_module(
     ) -> Any:
     """READ ALL"""
 
-    # filter = {'bloque' : bloque, 'medida_1' : medida_1, 'medida_2' : medida_2}
-    filter = {'medida_1' : medida_1, 'medida_2' : medida_2}
+    filter = {'medida_1' : medida_res_agu_1, 'medida_2' : medida_res_agu_2}
 
     match module:
         case schemas.Emisiones_name.emisiones_de_gases_de_efecto_invernadero_aguas_residuales:
