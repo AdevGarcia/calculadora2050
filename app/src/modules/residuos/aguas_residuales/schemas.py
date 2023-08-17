@@ -301,44 +301,44 @@ class Emisiones_emisiones(str, Enum):
     emisiones = 'emisiones'
 
 
-class RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales(BaseModel):
-    """Emisiones - emisiones_de_gases_de_efecto_invernadero_aguas_residuales
-    """
+# class RES_AGU_emisiones_de_gases_de_efecto_invernadero_aguas_residuales(BaseModel):
+#     """Emisiones - emisiones_de_gases_de_efecto_invernadero_aguas_residuales
+#     """
 
-    topic    : str
-    bloque   : str
-    tipo     : str
-    y2018       : float | None
-    y2020       : float | None
-    y2025       : float | None
-    y2030       : float | None
-    y2035       : float | None
-    y2040       : float | None
-    y2045       : float | None
-    y2050       : float | None
-    unidad      : str
-    medida_1    : float
-    medida_2    : float
+#     topic    : str
+#     bloque   : str
+#     tipo     : str
+#     y2018       : float | None
+#     y2020       : float | None
+#     y2025       : float | None
+#     y2030       : float | None
+#     y2035       : float | None
+#     y2040       : float | None
+#     y2045       : float | None
+#     y2050       : float | None
+#     unidad      : str
+#     medida_1    : float
+#     medida_2    : float
 
 
-class RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia(BaseModel):
-    """Emisiones - emisiones_de_gases_de_efecto_invernadero_energia
-    """
+# class RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia(BaseModel):
+#     """Emisiones - emisiones_de_gases_de_efecto_invernadero_energia
+#     """
 
-    topic    : str
-    bloque   : str
-    tipo     : str
-    y2018       : float | None
-    y2020       : float | None
-    y2025       : float | None
-    y2030       : float | None
-    y2035       : float | None
-    y2040       : float | None
-    y2045       : float | None
-    y2050       : float | None
-    unidad      : str
-    medida_1    : float
-    medida_2    : float
+#     topic    : str
+#     bloque   : str
+#     tipo     : str
+#     y2018       : float | None
+#     y2020       : float | None
+#     y2025       : float | None
+#     y2030       : float | None
+#     y2035       : float | None
+#     y2040       : float | None
+#     y2045       : float | None
+#     y2050       : float | None
+#     unidad      : str
+#     medida_1    : float
+#     medida_2    : float
 
 
 class RES_AGU_emisiones(BaseModel):
