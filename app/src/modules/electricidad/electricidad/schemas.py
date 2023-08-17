@@ -43,8 +43,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     
     capacidad_de_generacion  : list[ELECT_Electricidad_ST_capacidad_de_generacion]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -85,8 +85,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     horas_de_operacion_ano : list[ELECT_Electricidad_SF_horas_de_operacion_ano]
     factor_de_carga        : list[ELECT_Electricidad_SF_factor_de_carga]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -172,8 +172,8 @@ class ELECT_Electricidad_SALIDAS_combustibles_fosiles(BaseModel):
 
     salidas_combustibles_fosiles : list[_ELECT_Electricidad_SALIDAS_combustibles_fosiles]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(BaseModel):
@@ -181,8 +181,8 @@ class ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(BaseModel
 
     salidas_energias_renovables_no_convencionales : list[_ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class ELECT_Electricidad_SALIDAS_energia_demandada(BaseModel):
@@ -190,8 +190,8 @@ class ELECT_Electricidad_SALIDAS_energia_demandada(BaseModel):
 
     salidas_energia_demandada : list[_ELECT_Electricidad_SALIDAS_energia_demandada]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class ELECT_Electricidad_SALIDAS_balance(BaseModel):
@@ -199,8 +199,8 @@ class ELECT_Electricidad_SALIDAS_balance(BaseModel):
 
     salidas_balance : list[_ELECT_Electricidad_SALIDAS_balance]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
   
 
 
@@ -213,8 +213,8 @@ class SALIDAS(BaseModel):
     salidas_energia_demandada                     : list[ELECT_Electricidad_SALIDAS_energia_demandada]
     salidas_balance                               : list[ELECT_Electricidad_SALIDAS_balance]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -267,8 +267,8 @@ class ELECT_Electricidad_EMISIONES_combustibles_fosiles(BaseModel):
 
     emisiones_combustibles_fosiles : list[_ELECT_Electricidad_EMISIONES_combustibles_fosiles]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(BaseModel):
@@ -276,8 +276,8 @@ class ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(BaseMod
 
     emisiones_energias_renovables_no_convencionales : list[_ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class EMISIONES(BaseModel):
@@ -286,5 +286,5 @@ class EMISIONES(BaseModel):
     emisiones_combustibles_fosiles                  : list[ELECT_Electricidad_EMISIONES_combustibles_fosiles]
     emisiones_energias_renovables_no_convencionales : list[ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

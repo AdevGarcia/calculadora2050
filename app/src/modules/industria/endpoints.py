@@ -11,6 +11,7 @@ from db import deps
 from app.src.modules.user import models as models_user
 # from app.src.modules.agricultura.models import AGRO_SALIDAS_cultivos
 # from app.src.modules.agricultura.endpoints import read_salidas_module
+# from app.src.modules.entradas.endpoint_ind import read_entradas_produccion
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -100,34 +101,6 @@ def create_ST(
                 logger.error(f'[ERROR] {key} is invalid')
 
     return jdata
-
-
-# @router.get(URI_ST, response_model=SCHEMAS_ST)
-# def read_ST(
-#     db: Session = Depends(deps.get_db), 
-#     # skip: int = 0, 
-#     # limit: int = 100,
-#     # current_user: models_user.User = Depends(deps.get_current_active_user)
-#     ) -> Any:
-#     """READ ALL
-#     """
-
-#     d = {
-#         'reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica' : models.INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica,
-#         'eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras'       : models.INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras,
-#         'eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion'      : models.INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion,
-#         'eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras'         : models.INDU_ST_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras,
-#         'sustitucion_de_sao_y_hfc'                                                : models.INDU_ST_sustitucion_de_sao_y_hfc,
-#         'procesos_productivos_sostenibles'                                        : models.INDU_ST_procesos_productivos_sostenibles
-#         }
-    
-#     rd = downloader_batch(db=db, **d)
-#     result = jsonable_encoder(rd)
-    
-#     if DEBUG:
-#         logger.info(f'Read Data: {result}')
-
-#     return result
 
 
 @router.get('/supuestos_trayectoria/{module}')#, response_model=SCHEMAS_ST)
@@ -554,6 +527,11 @@ def read_Salidas_module(
                 **filter
                 )
             result = jsonable_encoder(rd)
+
+            # a = read_entradas_produccion(medida_agro_1=medida_agro_1, medida_agro_2=medida_agro_2, medida_agro_3=medida_agro_3, db=db)
+            
+            # print('\n read_entradas_produccion \n', a)
+
             # ind 610
             # filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
             # rd = downloader(

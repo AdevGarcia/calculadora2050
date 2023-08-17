@@ -62,8 +62,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     demanda_de_glp  : list[EDIF_RES_RURAL_ST_demanda_de_glp]
     demanda_de_lena : list[EDIF_RES_RURAL_ST_demanda_de_lena]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -92,8 +92,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     
     demanda_de_energia_electrica     : list[EDIF_RES_RURAL_SF_demanda_de_energia_electrica]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -126,8 +126,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[EDIF_RES_RURAL_SALIDAS]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 ####################################################################################
 #######                             Emisiones                                #######
@@ -159,6 +159,6 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[EDIF_RES_RURAL_EMISIONES]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
     

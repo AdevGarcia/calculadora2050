@@ -203,8 +203,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     reduccion_total_de_la_demanda_de_energia_electrica        : list[EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_total_de_la_demanda_de_energia_electrica]
     potencia_instalada_para_autogeneracion_solar_fotovoltaica : list[EDIF_RES_ILU_REF_COC_OTR_ST_potencia_instalada_para_autogeneracion_solar_fotovoltaica]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -376,8 +376,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     porcentaje_de_tenencia_refrigeradores : list[EDIF_RES_ILU_REF_COC_OTR_SF_porcentaje_de_tenencia_refrigeradores]
     horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica : list[EDIF_RES_ILU_REF_COC_OTR_SF_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -413,8 +413,8 @@ class METODOLOGIA(BaseModel):
     
     metodologia : list[EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -450,8 +450,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[EDIF_RES_ILU_REF_COC_OTR_SALIDAS]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -486,6 +486,6 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[EDIF_RES_ILU_REF_COC_OTR_EMISIONES]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
     

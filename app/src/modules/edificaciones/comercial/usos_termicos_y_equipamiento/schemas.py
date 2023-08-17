@@ -84,8 +84,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     reduccion_por_eficiencia_en_refrigeracion  : list[EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_refrigeracion]
     reduccion_por_eficiencia_en_usos_termicos  : list[EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_usos_termicos]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -173,8 +173,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     participacion_de_los_energeticos_en_los_usos_termicos : list[EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_los_usos_termicos]
     participacion_de_los_energeticos_en_equipamiento      : list[EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_equipamiento]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -207,8 +207,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[EDIF_COM_USOS_TERM_EQUIP_SALIDAS]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -241,5 +241,5 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[EDIF_COM_USOS_TERM_EQUIP_EMISIONES]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

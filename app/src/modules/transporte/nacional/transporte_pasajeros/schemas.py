@@ -81,8 +81,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     transporte_urbano_distancia_promedio_por_viaje_por_modo : list[TRANS_PAS_ST_transporte_urbano_distancia_promedio_por_viaje_por_modo]
     transporte_urbano_distribucion_por_tecnologia : list[TRANS_PAS_ST_transporte_urbano_distribucion_por_tecnologia]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -436,8 +436,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     numero_de_vehiculos_transporte_interurbano                              : list[TRANS_PAS_SF_numero_de_vehiculos_transporte_interurbano]
 
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -473,8 +473,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -509,5 +509,5 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[TRANS_PAS_emisiones_de_gases_efecto_invernadero]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

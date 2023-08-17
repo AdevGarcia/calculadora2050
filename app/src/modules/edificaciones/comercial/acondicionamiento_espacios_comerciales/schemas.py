@@ -64,8 +64,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia : list[EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia]
     demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia          : list[EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -103,8 +103,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[EDIF_COM_ACOND_SALIDAS]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -137,5 +137,5 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[EDIF_COM_ACOND_EMISIONES]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

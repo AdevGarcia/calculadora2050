@@ -108,8 +108,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     implementacion                                                   : list[EDIF_RES_ACOND_ST_implementacion]
     equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia : list[EDIF_RES_ACOND_ST_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 ####################################################################################
 #######                          Supuestos Fijos                             #######
@@ -138,8 +138,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     
     tenencia : list[EDIF_RES_ACOND_SF_tenencia]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -172,8 +172,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[EDIF_RES_ACOND_SALIDAS]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -206,6 +206,6 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[EDIF_RES_ACOND_EMISIONES]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
     

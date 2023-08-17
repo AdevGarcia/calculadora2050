@@ -64,8 +64,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     mejores_practicas_agricolas_superficie_de_implementacion          : list[AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion]
     tierra_dedicada_para_biocombustibles_superficie_de_implementacion : list[AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -194,8 +194,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     factor_de_produccion_biomasa_por_cultivo                             : list[AGRO_SF_factor_de_produccion_biomasa_por_cultivo]
     potencial_energetico_por_unidad_de_biomasa                           : list[AGRO_SF_potencial_energetico_por_unidad_de_biomasa]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -231,8 +231,8 @@ class METODOLOGIA(BaseModel):
     
     metodologia : list[AGRO_Metodologia_tierra_dedicada_para_biocombustibles]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -269,8 +269,8 @@ class AGRO_SALIDAS_cultivos(BaseModel):
 
     salida_cultivos : list[_AGRO_SALIDAS_cultivos]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _AGRO_SALIDAS_biocombustibles(BaseModel):
@@ -297,8 +297,8 @@ class AGRO_SALIDAS_biocombustibles(BaseModel):
 
     salida_biocombustibles : list[_AGRO_SALIDAS_biocombustibles]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class SALIDAS(BaseModel):
@@ -308,8 +308,8 @@ class SALIDAS(BaseModel):
     salida_cultivos         : list[_AGRO_SALIDAS_cultivos]
     salida_biocombustibles  : list[_AGRO_SALIDAS_biocombustibles]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -348,6 +348,6 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[AGRO_EMISIONES]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 

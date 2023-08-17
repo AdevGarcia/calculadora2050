@@ -41,8 +41,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     
     uso_de_combustible_para_navegacion_nacional : list[TRANS_NAV_ST_uso_de_combustible_para_navegacion_nacional]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -77,8 +77,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[TRANS_NAV_SALIDAS_energia_requerida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -112,5 +112,5 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[TRANS_NAV_emisiones]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

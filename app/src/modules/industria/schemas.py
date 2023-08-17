@@ -141,8 +141,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     sustitucion_de_sao_y_hfc                                                : list[INDU_ST_sustitucion_de_sao_y_hfc]
     procesos_productivos_sostenibles                                        : list[INDU_ST_procesos_productivos_sostenibles]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -330,8 +330,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     excedentes_de_cogeneracion                             : list[INDU_SF_excedentes_de_cogeneracion]
     emision_de_sao                                         : list[INDU_SF_emision_de_sao]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -375,8 +375,8 @@ class INDU_SALIDAS_por_combustible_energia_requerida(BaseModel):
 
     salida_energia_requerida_combustible : list[_INDU_SALIDAS_por_combustible_energia_requerida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion(BaseModel):
@@ -406,8 +406,8 @@ class INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogene
 
     salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible : list[_INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(BaseModel):
@@ -437,8 +437,8 @@ class INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(BaseMod
 
     salida_balance_total_de_la_energia_requerida_combustible : list[_INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # # POR TIPO DE INDUSTRIA
@@ -470,8 +470,8 @@ class INDU_SALIDAS_por_tipo_de_industria_energia_requerida(BaseModel):
 
     salida_energia_requerida_industria : list[_INDU_SALIDAS_por_tipo_de_industria_energia_requerida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion(BaseModel):
@@ -501,8 +501,8 @@ class INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_
 
     salida_energia_producida_por_autogeneracion_y_cogeneracion_industria : list[_INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(BaseModel):
@@ -532,8 +532,8 @@ class INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(B
 
     salida_balance_total_de_la_energia_requerida_industria : list[_INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class SALIDAS(BaseModel):
@@ -547,8 +547,8 @@ class SALIDAS(BaseModel):
     salida_energia_producida_por_autogeneracion_y_cogeneracion_industria   : list[_INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion]
     salida_balance_total_de_la_energia_requerida_industria                 : list[_INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -585,8 +585,8 @@ class INDU_emisiones_gases_efecto_invernadero(BaseModel):
     """
     emisiones_gases_efecto_invernadero : list[_INDU_emisiones_gases_efecto_invernadero]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _INDU_emisiones_por_el_consumo_de_bagazo_y_otros(BaseModel):
@@ -615,8 +615,8 @@ class INDU_emisiones_por_el_consumo_de_bagazo_y_otros(BaseModel):
     """
     emisiones_por_el_consumo_de_bagazo_y_otros : list[_INDU_emisiones_por_el_consumo_de_bagazo_y_otros]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _INDU_emisiones_sao(BaseModel):
@@ -645,8 +645,8 @@ class INDU_emisiones_sao(BaseModel):
     """
     emisiones_sao : list[_INDU_emisiones_sao]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
     
 
 class EMISIONES(BaseModel):
@@ -657,5 +657,5 @@ class EMISIONES(BaseModel):
     emisiones_por_el_consumo_de_bagazo_y_otros : list[_INDU_emisiones_por_el_consumo_de_bagazo_y_otros]
     emisiones_sao                              : list[_INDU_emisiones_sao]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

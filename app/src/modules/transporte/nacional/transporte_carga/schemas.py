@@ -171,8 +171,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     distribucion_por_tecnologia_transporte_de_carga_urbano                    : list[TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano]
     distribucion_por_tecnologia_transporte_de_carga_interurbano               : list[TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_interurbano]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -282,8 +282,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     numero_de_vehiculos_transporte_de_carga_urbano      : list[TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_urbano]
     numero_de_vehiculos_transporte_de_carga_interurbano : list[TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_interurbano]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -319,8 +319,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -355,5 +355,5 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[TRANS_CAR_emisiones_de_gases_efecto_invernadero]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

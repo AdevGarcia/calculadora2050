@@ -102,8 +102,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas  : list[RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas]
     estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas : list[RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -203,8 +203,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento : list[RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento]
     consumo_energetico_medio_por_tratamiento                           : list[RES_AGU_SF_consumo_energetico_medio_por_tratamiento]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -240,8 +240,8 @@ class RES_AGU_SALIDAS_energia_consumida(BaseModel):
 
     salida_energia_consumida : list[_RES_AGU_SALIDAS_energia_consumida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _RES_AGU_SALIDAS_energia_producida(BaseModel):
@@ -268,8 +268,8 @@ class RES_AGU_SALIDAS_energia_producida(BaseModel):
 
     salida_energia_producida : list[_RES_AGU_SALIDAS_energia_producida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class SALIDAS(BaseModel):
@@ -279,8 +279,8 @@ class SALIDAS(BaseModel):
     salida_energia_consumida : list[_RES_AGU_SALIDAS_energia_consumida]
     salida_energia_producida : list[_RES_AGU_SALIDAS_energia_producida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -367,5 +367,5 @@ class EMISIONES(BaseModel):
     # emisiones_de_gases_de_efecto_invernadero_energia : list[RES_AGU_emisiones_de_gases_de_efecto_invernadero_energia]
     emisiones : list[RES_AGU_emisiones]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

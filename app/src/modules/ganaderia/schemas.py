@@ -84,8 +84,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado                   : list[GANA_ST_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado]
     produccion_de_estiercol_para_bioenergia                                       : list[GANA_ST_produccion_de_estiercol_para_bioenergia]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -219,8 +219,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual : list[GANA_SF_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual]
     potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias                     : list[GANA_SF_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -254,8 +254,8 @@ class SALIDAS(BaseModel):
 
     salidas : list[GANA_SALIDAS]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -293,5 +293,5 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[GANA_EMISIONES]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

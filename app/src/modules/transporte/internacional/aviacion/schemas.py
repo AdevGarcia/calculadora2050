@@ -41,8 +41,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     
     uso_de_combustible_para_aviacion_internacional : list[TRANS_AVI_ST_uso_de_combustible_para_aviacion_internacional]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -83,8 +83,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     uso_de_combustible_para_aviacion_internacional : list[TRANS_AVI_SF_uso_de_combustible_para_aviacion_internacional]
     proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje : list[TRANS_AVI_SF_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -119,8 +119,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[TRANS_AVI_SALIDAS_energia_requerida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -154,5 +154,5 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[TRANS_AVI_emisiones_aviacion_y_navegacion_internacional]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

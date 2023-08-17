@@ -42,8 +42,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     
     eficiencia_energetica_en_la_refinacion_de_crudo  : list[ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -149,8 +149,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     datos_de_la_produccion_de_gas_natural_en_el_ano_base      : list[ENER_CombFosil_SF_datos_de_la_produccion_de_gas_natural_en_el_ano_base]
     consumo_de_energeticos                                    : list[ENER_CombFosil_SF_consumo_de_energeticos]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -219,8 +219,8 @@ class ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(BaseModel):
 
     salidas_combustibles_fosiles_producidos : list[_ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector(BaseModel):
@@ -228,8 +228,8 @@ class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_secto
 
     salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos(BaseModel):
@@ -237,8 +237,8 @@ class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos
 
     salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class SALIDAS(BaseModel):
@@ -249,8 +249,8 @@ class SALIDAS(BaseModel):
     salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector]
     salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -303,8 +303,8 @@ class ENER_CombFosil_EMISIONES_produccion(BaseModel):
 
     emisiones_produccion : list[_ENER_CombFosil_EMISIONES_produccion]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class ENER_CombFosil_EMISIONES_consumo(BaseModel):
@@ -312,8 +312,8 @@ class ENER_CombFosil_EMISIONES_consumo(BaseModel):
 
     emisiones_consumo    : list[_ENER_CombFosil_EMISIONES_consumo]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class EMISIONES(BaseModel):
@@ -322,5 +322,5 @@ class EMISIONES(BaseModel):
     emisiones_produccion : list[_ENER_CombFosil_EMISIONES_produccion]
     emisiones_consumo    : list[_ENER_CombFosil_EMISIONES_consumo]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

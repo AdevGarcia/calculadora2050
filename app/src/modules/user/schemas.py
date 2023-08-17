@@ -25,8 +25,8 @@ class UserCreateUpdate(UserBase):
 class UserInDBBase(UserBase):
     id: Optional[int] = None
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes  = True
 
 
 # Additional properties to return via API

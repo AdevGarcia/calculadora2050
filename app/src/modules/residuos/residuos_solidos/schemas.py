@@ -102,8 +102,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios : list[RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios]
     capacidad_instalada_para_los_sistemas_de_incineracion : list[RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_incineracion]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -207,8 +207,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     consumo_energetico_medio_por_tratamiento                  : list[RES_SOL_SF_consumo_energetico_medio_por_tratamiento]
     datos_para_la_estimacion_de_las_emisiones_de_incineracion : list[RES_SOL_SF_datos_para_la_estimacion_de_las_emisiones_de_incineracion]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -243,8 +243,8 @@ class RES_SOL_SALIDAS_energia_consumida(BaseModel):
 
     salida_energia_consumida : list[_RES_SOL_SALIDAS_energia_consumida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class _RES_SOL_SALIDAS_energia_producida(BaseModel):
@@ -271,8 +271,8 @@ class RES_SOL_SALIDAS_energia_producida(BaseModel):
 
     salida_energia_producida : list[_RES_SOL_SALIDAS_energia_producida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 class SALIDAS(BaseModel):
@@ -282,8 +282,8 @@ class SALIDAS(BaseModel):
     salida_energia_consumida : list[_RES_SOL_SALIDAS_energia_consumida]
     salida_energia_producida : list[_RES_SOL_SALIDAS_energia_producida]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -365,5 +365,5 @@ class EMISIONES(BaseModel):
     # emisiones_de_gases_de_efecto_invernadero_energia  : list[RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia]
     emisiones : list[RES_SOL_emisiones]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True

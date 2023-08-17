@@ -64,8 +64,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     escenarios_de_deforestacion          : list[BOSQ_ST_escenarios_de_deforestacion]
     desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales : list[BOSQ_ST_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -170,8 +170,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     biomasa_aerea_subterranea_reforestacion_comercial : list[BOSQ_SF_biomasa_aerea_subterranea_reforestacion_comercial]
     descuentos_aplicables_a_reforestacion_comercial   : list[BOSQ_SF_descuentos_aplicables_a_reforestacion_comercial]
     
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 # ####################################################################################
@@ -205,8 +205,8 @@ class SALIDAS(BaseModel):
     
     salidas : list[BOSQ_SALIDAS]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
 
 
 ####################################################################################
@@ -240,5 +240,5 @@ class EMISIONES(BaseModel):
     """
     emisiones : list[BOSQ_EMISIONES]
 
-    class Config:
-        orm_mode : True
+    class ConfigDict:
+        from_attributes = True
