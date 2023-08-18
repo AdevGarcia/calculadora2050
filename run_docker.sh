@@ -16,6 +16,7 @@ do
    sleep 1
 done
 
+
 echo "load data"
 export PYTHONPATH=$PWD
 

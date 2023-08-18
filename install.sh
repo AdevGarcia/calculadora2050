@@ -2,9 +2,12 @@
 set -e 
 
 export PYTHONPATH=$PWD
+export $(grep API_ENV .env)
+export $(grep DEBUG .env)
+
 echo "The PYTHONPATH is: $PYTHONPATH" # Check
-echo "API_ENV: $API_ENV" 
-echo "DEBUG: $DEBUG" 
+echo "API_ENV          : $API_ENV" 
+echo "DEBUG            : $DEBUG" 
 
 DIRECTORIO=app/alembic
 SQLITE=app/app.sqlite

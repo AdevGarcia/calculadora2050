@@ -7,6 +7,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONPATH $PWD
 
+RUN apt-get update && apt-get install -y python3-psycopg2
+
 WORKDIR /api
 
 COPY requirements.txt /tmp/requirements.txt

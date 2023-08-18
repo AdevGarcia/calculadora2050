@@ -15,6 +15,22 @@ APP_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(APP_DIR)
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 sys.path.append(BASE_DIR)
+
+print(f'\n########################### \nAlembic env:')
+print(f'BASE_DIR: {BASE_DIR}')
+print(f'API_ENV           : {os.getenv("API_ENV")}')
+print(f'POSTGRES_SERVER   : {os.getenv("POSTGRES_SERVER")}')
+print(f'POSTGRES_USER     : {os.getenv("POSTGRES_USER")}')
+print(f'POSTGRES_PASSWORD : {os.getenv("POSTGRES_PASSWORD")}')
+print(f'POSTGRES_DB       : {os.getenv("POSTGRES_DB")}')
+
+_user     = os.getenv("POSTGRES_USER", "postgres")
+_password = os.getenv("POSTGRES_PASSWORD", "")
+_server   = os.getenv("POSTGRES_SERVER", "db")
+_port     = os.getenv("POSTGRES_PORT", "5432")
+_db       = os.getenv("POSTGRES_DB", "app")
+print(f"postgresql://{_user}:{_password}@{_server}:{_port}/{_db}")
+print()
 #------------------------------------------------------------#
 
 # this is the Alembic Config object, which provides
@@ -54,11 +70,12 @@ target_metadata = Base.metadata
 def get_url(ddbb: str= 'sqlite'):
     
     if ddbb == 'postgresql':
-        user = os.getenv("POSTGRES_USER", "postgres")
+        user     = os.getenv("POSTGRES_USER", "postgres")
         password = os.getenv("POSTGRES_PASSWORD", "")
-        server = os.getenv("POSTGRES_SERVER", "db")
-        db = os.getenv("POSTGRES_DB", "app")
-        return f"postgresql://{user}:{password}@{server}/{db}"
+        server   = os.getenv("POSTGRES_SERVER", "db")
+        port   = os.getenv("POSTGRES_PORT", "5432")
+        db       = os.getenv("POSTGRES_DB", "app")
+        return f"postgresql://{user}:{password}@{server}:{port}/{db}"
     
     elif ddbb == 'sqlite':
         return "sqlite:///./app.sqlite"
@@ -67,11 +84,9 @@ def get_url(ddbb: str= 'sqlite'):
 
 if os.getenv("API_ENV") == 'development':
     ddbb = 'sqlite'
-    print(os.getenv("API_ENV"), ddbb)
 
 if os.getenv("API_ENV") == 'production':
     ddbb = 'postgresql'
-    print(os.getenv("API_ENV"), ddbb)
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
@@ -87,6 +102,9 @@ def run_migrations_offline() -> None:
     """
     # url = config.get_main_option("sqlalchemy.url")
     url = get_url(ddbb)
+    print(f'\n ############## \n Run Migrations Offline:')
+    print(f'\n API_ENV: {os.getenv("API_ENV")} - {ddbb}')
+    print(f'\n PostgreSQL: {url}')
     
     context.configure(
         url=url,
