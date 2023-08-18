@@ -15,6 +15,10 @@ sudo nohup ./start_dev.sh > logs.out 2> logs.err < /dev/null &
 # sudo para usar el puerto 80
 ```
 
+# Installation
+```bash
+pip install httpx
+```
 
 
 # Proceso de creación de modulos
