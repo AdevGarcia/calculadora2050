@@ -45,8 +45,8 @@ class RES_SOL_ST_tipo_de_gestion(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios(Base):
+      ############################################################### 
+class RES_SOL_ST_cap_inst_sist_recup_aprov_biogas_rellenos_sanit(Base):
     """Supuestos de Trayectoria capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios
     """
 
@@ -64,7 +64,7 @@ class RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovec
     unidad      = Column(name='unidad', type_=String)
 
 
-class RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_incineracion(Base):
+class RES_SOL_ST_capacidad_instalada_sistemas_incineracion(Base):
     """Supuestos de Trayectoria capacidad_instalada_para_los_sistemas_de_incineracion
     """
 
@@ -144,7 +144,7 @@ class RES_SOL_SF_generacion_de_metano_por_tipologia_de_residuo(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class RES_SOL_SF_datos_de_la_generacion_energetica_mediante_incineracion(Base):
+class RES_SOL_SF_generacion_energetica_mediante_incineracion(Base):
     """Supuestos Fijos datos_de_la_generacion_energetica_mediante_incineracion
     """
 
@@ -166,7 +166,7 @@ class RES_SOL_SF_consumo_energetico_medio_por_tratamiento(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class RES_SOL_SF_datos_para_la_estimacion_de_las_emisiones_de_incineracion(Base):
+class RES_SOL_SF_estimacion_emisiones_incineracion(Base):
     """Supuestos Fijos datos_para_la_estimacion_de_las_emisiones_de_incineracion
     """
 

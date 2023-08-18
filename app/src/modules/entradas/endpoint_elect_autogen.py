@@ -55,7 +55,8 @@ def read_entradas_produccion(
     ##########   industria   ##############
     filter={'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
-        model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
+        # model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
+        model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
         **filter)
 
     industria = db_to_df(rd).sum().to_dict()

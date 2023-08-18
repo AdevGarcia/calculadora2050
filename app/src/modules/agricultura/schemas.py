@@ -21,7 +21,7 @@ class ST_name(str, Enum):
     tierra_dedicada_para_biocombustibles_superficie_de_implementacion = 'tierra_dedicada_para_biocombustibles_superficie_de_implementacion'
 
 
-class AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion(BaseModel):
+class AGRO_ST_mejores_practicas_agricolas_superficie_implementacion(BaseModel):
     """Supuestos de Trayectoria mejores_practicas_agricolas_superficie_de_implementacion
     """
 
@@ -39,7 +39,7 @@ class AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion(BaseModel
     unidad      : str
 
 
-class AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion(BaseModel):
+class AGRO_ST_tierra_biocombustibles_superficie_implementacion(BaseModel):
     """Supuestos de Trayectoria tierra_dedicada_para_biocombustibles_superficie_de_implementacion
     """
 
@@ -61,8 +61,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """Supuestos de trayectoria con todos los topics
     """
     
-    mejores_practicas_agricolas_superficie_de_implementacion          : list[AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion]
-    tierra_dedicada_para_biocombustibles_superficie_de_implementacion : list[AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion]
+    mejores_practicas_agricolas_superficie_de_implementacion          : list[AGRO_ST_mejores_practicas_agricolas_superficie_implementacion]
+    tierra_dedicada_para_biocombustibles_superficie_de_implementacion : list[AGRO_ST_tierra_biocombustibles_superficie_implementacion]
     
     class ConfigDict:
         from_attributes = True
@@ -72,7 +72,7 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
 #######                          Supuestos Fijos                             #######
 ####################################################################################
 
-class AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo(BaseModel):
+class AGRO_SF_factor_produc_biocombustibles_por_ha_tipo_de_cultivo(BaseModel):
     """Supuestos Fijos factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo
     """
 
@@ -112,7 +112,7 @@ class AGRO_SF_factor_de_emision_de_cultivo_usado_para_biocombustibles(BaseModel)
     unidad      : str
 
 
-class AGRO_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia(BaseModel):
+class AGRO_SF_uso_actual_tierra_sector_agropecuario_colombia(BaseModel):
     """Supuestos Fijos uso_actual_de_la_tierra_sector_agropecuario_en_colombia
     """
 
@@ -184,11 +184,11 @@ class SUPUESTOS_FIJOS(BaseModel):
     """Supuestos fijos con todos los topics
     """
     
-    factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo : list[AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo]
+    factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo : list[AGRO_SF_factor_produc_biocombustibles_por_ha_tipo_de_cultivo]
     produccion_biocombustibles                                           : list[AGRO_SF_produccion_biocombustibles]
     porcentaje_del_cultivo_usado_para_biocombustibles                    : list[AGRO_SF_porcentaje_del_cultivo_usado_para_biocombustibles]
     factor_de_emision_de_cultivo_usado_para_biocombustibles              : list[AGRO_SF_factor_de_emision_de_cultivo_usado_para_biocombustibles]
-    uso_actual_de_la_tierra_sector_agropecuario_en_colombia              : list[AGRO_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia]
+    uso_actual_de_la_tierra_sector_agropecuario_en_colombia              : list[AGRO_SF_uso_actual_tierra_sector_agropecuario_colombia]
     tasas_de_crecimiento_del_pib_sectorial_de_agricultura                : list[AGRO_SF_tasas_de_crecimiento_del_pib_sectorial_de_agricultura]
     areas_de_implementacion_de_mejores_practicas_agricolas               : list[AGRO_SF_areas_de_implementacion_de_mejores_practicas_agricolas]
     factor_de_produccion_biomasa_por_cultivo                             : list[AGRO_SF_factor_de_produccion_biomasa_por_cultivo]

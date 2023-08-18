@@ -45,8 +45,8 @@ class RES_AGU_ST_cantidad_de_aguas_residuales_industriales(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas(Base):
+      ############################################################### 
+class RES_AGU_ST_est_tratam_aguas_res_municipales_extraccion_biogas(Base):
     """Supuestos de Trayectoria estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas
     """
 
@@ -63,8 +63,8 @@ class RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_e
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas(Base):
+      ############################################################### 
+class RES_AGU_ST_est_tratamiento_aguas_res_ind_extraccion_biogas(Base):
     """Supuestos de Trayectoria estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas
     """
 
@@ -151,8 +151,8 @@ class RES_AGU_SF_generacion_de_ch4_por_kg_dbo_no_tratado(Base):
     value       = Column(name='value', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento(Base):
+      ############################################################### 
+class RES_AGU_SF_generacion_energetica_estaciones_tratamiento(Base):
     """Supuestos Fijos datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento
     """
 

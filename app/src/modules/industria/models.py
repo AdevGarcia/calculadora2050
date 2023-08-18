@@ -7,8 +7,8 @@ from app.src.db.base_class import Base
 ####################################################################################
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
-
-class INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica(Base):
+      ############################################################### 
+class INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica(Base):
     """Supuestos de Trayectoria reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica
     """
 
@@ -26,8 +26,8 @@ class INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energ
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras(Base):
+      ############################################################### 
+class INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras(Base):
     """Supuestos de Trayectoria eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras
     """
 
@@ -44,8 +44,8 @@ class INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras(
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion(Base):
+      ###############################################################    
+class INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion(Base):
     """Supuestos de Trayectoria eficiencia_energetica_%_crecimiento_de_autogeneracion_y_cogeneracion
     """
 
@@ -63,8 +63,8 @@ class INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class INDU_ST_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras(Base):
+      ############################################################### 
+class INDU_ST_efic_ener_autogeneracion_cogeneracion_ladrilleras(Base):
     """Supuestos de Trayectoria eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras
     """
 
@@ -223,7 +223,7 @@ class INDU_SF_uso_energetico_por_combustible(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class INDU_SF_factor_de_utilizacion_de_autogeneracion_y_cogeneracion(Base):
+class INDU_SF_factor_utilizacion_autogeneracion_cogeneracion(Base):
     """Supuestos Fijos factor_de_utilizacion_de_autogeneracion_y_cogeneracion
     """
 
@@ -328,8 +328,8 @@ class INDU_SALIDAS_por_combustible_energia_requerida(Base):
     # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
-
-class INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion(Base):
+      ############################################################### 
+class INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion(Base):
     """Salidas - por_combustible_energia_producida_por_autogeneracion_y_cogeneracion
     """
 
@@ -351,8 +351,8 @@ class INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogene
     # medida_3    = Column(name='medida_3', type_=Integer)
     # medida_4    = Column(name='medida_4', type_=Integer)
 
-
-class INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(Base):
+      ############################################################### 
+class INDU_SALIDAS_por_combustible_balance_total_energia_requerida(Base):
     """Salidas - por_combustible_balance_total_de_la_energia_requerida
     """
 
@@ -399,8 +399,8 @@ class INDU_SALIDAS_por_tipo_de_industria_energia_requerida(Base):
     # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
-
-class INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion(Base):
+      ############################################################### 
+class INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac(Base):
     """Salidas - por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion
     """
 
@@ -423,7 +423,7 @@ class INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_
     # medida_4    = Column(name='medida_4', type_=Integer)
 
 
-class INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(Base):
+class INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida(Base):
     """Salidas - por_tipo_de_industria_balance_total_de_la_energia_requerida
     """
 

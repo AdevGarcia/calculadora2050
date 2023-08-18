@@ -48,7 +48,8 @@ def read_entradas_energia_combustibles_fosiles_gasolina(
     filter={"tipo": "gasolina", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="consumo_de_combustibles_fosiles", 
@@ -133,7 +134,8 @@ def read_entradas_energia_combustibles_fosiles_diesel(
     filter={"tipo": "diesel", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
      
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="consumo_de_combustibles_fosiles", 
@@ -232,7 +234,8 @@ def read_entradas_energia_combustibles_fosiles_fuel_oil(
     filter={"tipo": "fuel_oil", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="consumo_de_combustibles_fosiles", 
@@ -308,7 +311,8 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
     filter={"tipo": "gas_natural", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="consumo_de_combustibles_fosiles", 
@@ -422,7 +426,8 @@ def read_entradas_energia_combustibles_fosiles_glp(
     filter={"tipo": "glp", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="consumo_de_combustibles_fosiles", 
@@ -509,7 +514,8 @@ def read_entradas_energia_combustibles_fosiles_carbon(
     filter={"tipo": "carbon_mineral", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="consumo_de_combustibles_fosiles", 
@@ -567,7 +573,8 @@ def read_entradas_energia_combustibles_fosiles_queroseno(
     filter={"tipo": "queroseno", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="consumo_de_combustibles_fosiles", 
@@ -635,7 +642,8 @@ def read_entradas_energia_combustibles_fosiles_coque(
     filter={"tipo": "coque", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="consumo_de_combustibles_fosiles", 

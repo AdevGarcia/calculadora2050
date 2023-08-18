@@ -128,7 +128,7 @@ def create_SF(
             case 'proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje':
                 loader(
                     db=db, 
-                    model=models.TRANS_AVI_SF_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje, 
+                    model=models.TRANS_AVI_SF_prop_comb_utilizado_etapas_despegue_aterrizaje, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -150,7 +150,7 @@ def read_SF(
     
     d = {
         'uso_de_combustible_para_aviacion_internacional'                         : models.TRANS_AVI_SF_uso_de_combustible_para_aviacion_internacional,
-        'proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje' : models.TRANS_AVI_SF_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje,
+        'proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje' : models.TRANS_AVI_SF_prop_comb_utilizado_etapas_despegue_aterrizaje,
         }
     
     rd = downloader_batch(db=db, **d)
@@ -169,7 +169,7 @@ def delete_SF(
     """DELETE ALL"""
     
     prune(db=db, model=models.TRANS_AVI_SF_uso_de_combustible_para_aviacion_internacional)
-    prune(db=db, model=models.TRANS_AVI_SF_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje)
+    prune(db=db, model=models.TRANS_AVI_SF_prop_comb_utilizado_etapas_despegue_aterrizaje)
 
     return {'msg': 'Deleted SF successfully'}
 

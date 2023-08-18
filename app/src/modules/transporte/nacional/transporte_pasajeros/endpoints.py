@@ -55,7 +55,7 @@ def create_ST(
             case 'transporte_urbano_distancia_promedio_por_viaje_por_modo':
                 loader(
                     db=db,
-                    model=models.TRANS_PAS_ST_transporte_urbano_distancia_promedio_por_viaje_por_modo, 
+                    model=models.TRANS_PAS_ST_transp_urbano_dist_promedio_viaje_modo, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -99,7 +99,7 @@ def read_ST_module(
         case schemas.ST_name.transporte_urbano_distancia_promedio_por_viaje_por_modo:
             rd = downloader(
                 db=db, 
-                model=models.TRANS_PAS_ST_transporte_urbano_distancia_promedio_por_viaje_por_modo,
+                model=models.TRANS_PAS_ST_transp_urbano_dist_promedio_viaje_modo,
                 topic='transporte_urbano_distancia_promedio_por_viaje_por_modo',
                 **filter
                 )
@@ -129,7 +129,7 @@ def delete_ST(
     """DELETE ALL"""
     
     prune(db=db, model=models.TRANS_PAS_ST_transporte_urbano_distribucion_modal)
-    prune(db=db, model=models.TRANS_PAS_ST_transporte_urbano_distancia_promedio_por_viaje_por_modo)
+    prune(db=db, model=models.TRANS_PAS_ST_transp_urbano_dist_promedio_viaje_modo)
     prune(db=db, model=models.TRANS_PAS_ST_transporte_urbano_distribucion_por_tecnologia)
 
     return {'msg': 'Deleted successfully'}
@@ -170,7 +170,7 @@ def create_SF(
             case 'rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos, 
+                    model=models.TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_nuevos, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo']
                 )
@@ -178,7 +178,7 @@ def create_SF(
             case 'rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes, 
+                    model=models.TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_existentes, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo']
                 )
@@ -194,7 +194,7 @@ def create_SF(
             case 'rendimiento_modo_tecnologia_transporte_urbano_electrico':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_electrico, 
+                    model=models.TRANS_PAS_SF_rend_modo_tec_transp_urbano_electrico, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo']
                 )
@@ -218,7 +218,7 @@ def create_SF(
             case 'kilometros_totales_modo_carretero_transporte_interurbano':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_kilometros_totales_modo_carretero_transporte_interurbano, 
+                    model=models.TRANS_PAS_SF_km_tot_modo_carretero_transp_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -226,7 +226,7 @@ def create_SF(
             case 'demanda_de_energia_otros_modos_transporte_interurbano':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_demanda_de_energia_otros_modos_transporte_interurbano, 
+                    model=models.TRANS_PAS_SF_demanda_ener_otros_modos_transp_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -234,7 +234,7 @@ def create_SF(
             case 'porcentaje_de_demanda_electrica_para_el_modo_ferreo':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_porcentaje_de_demanda_electrica_para_el_modo_ferreo, 
+                    model=models.TRANS_PAS_SF_demanda_electrica_modo_ferreo, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -242,7 +242,7 @@ def create_SF(
             case 'distribucion_por_modo_carretero_transporte_interurbano':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_distribucion_por_modo_carretero_transporte_interurbano, 
+                    model=models.TRANS_PAS_SF_distr_modo_carretero_trans_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -250,7 +250,7 @@ def create_SF(
             case 'rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes, 
+                    model=models.TRANS_PAS_SF_rend_modo_tec_trans_interurbano_vehic_existentes, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo']
                 )
@@ -258,7 +258,7 @@ def create_SF(
             case 'porcentaje_de_vehiculos_nuevos_transporte_interurbano':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_porcentaje_de_vehiculos_nuevos_transporte_interurbano, 
+                    model=models.TRANS_PAS_SF_vehiculos_nuevos_transp_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -266,7 +266,7 @@ def create_SF(
             case 'distancia_tipica_viajada_por_modo_transporte_urbano':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_urbano, 
+                    model=models.TRANS_PAS_SF_dist_tip_viajada_por_modo_transp_urbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -274,7 +274,7 @@ def create_SF(
             case 'distancia_tipica_viajada_por_modo_transporte_interurbano':
                 loader(
                     db=db, 
-                    model=models.TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_interurbano, 
+                    model=models.TRANS_PAS_SF_dist_tip_viajada_modo_transp_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -329,20 +329,20 @@ def read_SF(
     d = {
         'n_viajes_por_habitante_por_dia'                                          : models.TRANS_PAS_SF_n_viajes_por_habitante_por_dia,
         'uso_de_combustibles_fosiles_en_vehiculos_hibridos'                       : models.TRANS_PAS_SF_uso_de_combustibles_fosiles_en_vehiculos_hibridos,
-        'rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos'          : models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos,
-        'rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes'      : models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes,
+        'rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos'          : models.TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_nuevos,
+        'rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes'      : models.TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_existentes,
         'rendimiento_modo_tecnologia_transporte_urbano'                           : models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano,
-        'rendimiento_modo_tecnologia_transporte_urbano_electrico'                 : models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_electrico,
+        'rendimiento_modo_tecnologia_transporte_urbano_electrico'                 : models.TRANS_PAS_SF_rend_modo_tec_transp_urbano_electrico,
         'gas_natural_vehicular'                                                   : models.TRANS_PAS_SF_gas_natural_vehicular,
         'porcentaje_de_vehiculos_nuevos_transporte_urbano'                        : models.TRANS_PAS_SF_porcentaje_de_vehiculos_nuevos_transporte_urbano,
-        'kilometros_totales_modo_carretero_transporte_interurbano'                : models.TRANS_PAS_SF_kilometros_totales_modo_carretero_transporte_interurbano,
-        'demanda_de_energia_otros_modos_transporte_interurbano'                   : models.TRANS_PAS_SF_demanda_de_energia_otros_modos_transporte_interurbano,
-        'porcentaje_de_demanda_electrica_para_el_modo_ferreo'                     : models.TRANS_PAS_SF_porcentaje_de_demanda_electrica_para_el_modo_ferreo,
-        'distribucion_por_modo_carretero_transporte_interurbano'                  : models.TRANS_PAS_SF_distribucion_por_modo_carretero_transporte_interurbano,
-        'rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes' : models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes,
-        'porcentaje_de_vehiculos_nuevos_transporte_interurbano'                   : models.TRANS_PAS_SF_porcentaje_de_vehiculos_nuevos_transporte_interurbano,
-        'distancia_tipica_viajada_por_modo_transporte_urbano'                     : models.TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_urbano,
-        'distancia_tipica_viajada_por_modo_transporte_interurbano'                : models.TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_interurbano,
+        'kilometros_totales_modo_carretero_transporte_interurbano'                : models.TRANS_PAS_SF_km_tot_modo_carretero_transp_interurbano,
+        'demanda_de_energia_otros_modos_transporte_interurbano'                   : models.TRANS_PAS_SF_demanda_ener_otros_modos_transp_interurbano,
+        'porcentaje_de_demanda_electrica_para_el_modo_ferreo'                     : models.TRANS_PAS_SF_demanda_electrica_modo_ferreo,
+        'distribucion_por_modo_carretero_transporte_interurbano'                  : models.TRANS_PAS_SF_distr_modo_carretero_trans_interurbano,
+        'rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes' : models.TRANS_PAS_SF_rend_modo_tec_trans_interurbano_vehic_existentes,
+        'porcentaje_de_vehiculos_nuevos_transporte_interurbano'                   : models.TRANS_PAS_SF_vehiculos_nuevos_transp_interurbano,
+        'distancia_tipica_viajada_por_modo_transporte_urbano'                     : models.TRANS_PAS_SF_dist_tip_viajada_por_modo_transp_urbano,
+        'distancia_tipica_viajada_por_modo_transporte_interurbano'                : models.TRANS_PAS_SF_dist_tip_viajada_modo_transp_interurbano,
         'total_viajes_anuales'                                                    : models.TRANS_PAS_SF_total_viajes_anuales,
         'vida_util'                                                               : models.TRANS_PAS_SF_vida_util,
         'numero_de_vehiculos_transporte_urbano'                                   : models.TRANS_PAS_SF_numero_de_vehiculos_transporte_urbano,
@@ -366,20 +366,20 @@ def delete_SF(
 
     prune(db=db, model=models.TRANS_PAS_SF_n_viajes_por_habitante_por_dia)
     prune(db=db, model=models.TRANS_PAS_SF_uso_de_combustibles_fosiles_en_vehiculos_hibridos)
-    prune(db=db, model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos)
-    prune(db=db, model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes)
+    prune(db=db, model=models.TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_nuevos)
+    prune(db=db, model=models.TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_existentes)
     prune(db=db, model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano)
-    prune(db=db, model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_electrico)
+    prune(db=db, model=models.TRANS_PAS_SF_rend_modo_tec_transp_urbano_electrico)
     prune(db=db, model=models.TRANS_PAS_SF_gas_natural_vehicular)
     prune(db=db, model=models.TRANS_PAS_SF_porcentaje_de_vehiculos_nuevos_transporte_urbano)
-    prune(db=db, model=models.TRANS_PAS_SF_kilometros_totales_modo_carretero_transporte_interurbano)
-    prune(db=db, model=models.TRANS_PAS_SF_demanda_de_energia_otros_modos_transporte_interurbano)
-    prune(db=db, model=models.TRANS_PAS_SF_porcentaje_de_demanda_electrica_para_el_modo_ferreo)
-    prune(db=db, model=models.TRANS_PAS_SF_distribucion_por_modo_carretero_transporte_interurbano)
-    prune(db=db, model=models.TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes)
-    prune(db=db, model=models.TRANS_PAS_SF_porcentaje_de_vehiculos_nuevos_transporte_interurbano)
-    prune(db=db, model=models.TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_urbano)
-    prune(db=db, model=models.TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_interurbano)
+    prune(db=db, model=models.TRANS_PAS_SF_km_tot_modo_carretero_transp_interurbano)
+    prune(db=db, model=models.TRANS_PAS_SF_demanda_ener_otros_modos_transp_interurbano)
+    prune(db=db, model=models.TRANS_PAS_SF_demanda_electrica_modo_ferreo)
+    prune(db=db, model=models.TRANS_PAS_SF_distr_modo_carretero_trans_interurbano)
+    prune(db=db, model=models.TRANS_PAS_SF_rend_modo_tec_trans_interurbano_vehic_existentes)
+    prune(db=db, model=models.TRANS_PAS_SF_vehiculos_nuevos_transp_interurbano)
+    prune(db=db, model=models.TRANS_PAS_SF_dist_tip_viajada_por_modo_transp_urbano)
+    prune(db=db, model=models.TRANS_PAS_SF_dist_tip_viajada_modo_transp_interurbano)
     prune(db=db, model=models.TRANS_PAS_SF_total_viajes_anuales)
     prune(db=db, model=models.TRANS_PAS_SF_vida_util)
     prune(db=db, model=models.TRANS_PAS_SF_numero_de_vehiculos_transporte_urbano)

@@ -24,7 +24,7 @@ class ST_name(str, Enum):
     procesos_productivos_sostenibles = 'procesos_productivos_sostenibles'
 
 
-class INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica(BaseModel):
+class INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica(BaseModel):
     """Supuestos de Trayectoria reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica
     """
     
@@ -42,7 +42,7 @@ class INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energ
     unidad      : str
 
 
-class INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras(BaseModel):
+class INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras(BaseModel):
     """Supuestos de Trayectoria eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras
     """
     
@@ -59,7 +59,7 @@ class INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras(
     unidad      : str
 
 
-class INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion(BaseModel):
+class INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion(BaseModel):
     """Supuestos de Trayectoria eficiencia_energetica_%_crecimiento_de_autogeneracion_y_cogeneracion
     """
     
@@ -77,7 +77,7 @@ class INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion
     unidad      : str
 
 
-class INDU_ST_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras(BaseModel):
+class INDU_ST_efic_ener_autogeneracion_cogeneracion_ladrilleras(BaseModel):
     """Supuestos de Trayectoria eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras
     """
     
@@ -134,10 +134,10 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """Supuestos de trayectoria con todos los topics
     """
     
-    reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica : list[INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica]
-    eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras       : list[INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras]
-    eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion      : list[INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion]
-    eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras         : list[INDU_ST_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras]
+    reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica : list[INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica]
+    eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras       : list[INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras]
+    eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion      : list[INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion]
+    eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras         : list[INDU_ST_efic_ener_autogeneracion_cogeneracion_ladrilleras]
     sustitucion_de_sao_y_hfc                                                : list[INDU_ST_sustitucion_de_sao_y_hfc]
     procesos_productivos_sostenibles                                        : list[INDU_ST_procesos_productivos_sostenibles]
 
@@ -241,7 +241,7 @@ class INDU_SF_uso_energetico_por_combustible(BaseModel):
     unidad      : str
 
 
-class INDU_SF_factor_de_utilizacion_de_autogeneracion_y_cogeneracion(BaseModel):
+class INDU_SF_factor_utilizacion_autogeneracion_cogeneracion(BaseModel):
     """Supuestos Fijos factor_de_utilizacion_de_autogeneracion_y_cogeneracion
     """
 
@@ -323,7 +323,7 @@ class SUPUESTOS_FIJOS(BaseModel):
     indice_de_consumo                                      : list[INDU_SF_indice_de_consumo]
     distribucion_segun_tipo_de_combustible_ladrilleras     : list[INDU_SF_distribucion_segun_tipo_de_combustible_ladrilleras]
     uso_energetico_por_combustible                         : list[INDU_SF_uso_energetico_por_combustible]
-    factor_de_utilizacion_de_autogeneracion_y_cogeneracion : list[INDU_SF_factor_de_utilizacion_de_autogeneracion_y_cogeneracion]
+    factor_de_utilizacion_de_autogeneracion_y_cogeneracion : list[INDU_SF_factor_utilizacion_autogeneracion_cogeneracion]
     capacidad_instalada_de_autogeneracion                  : list[INDU_SF_capacidad_instalada_de_autogeneracion]
     excedentes_de_autogeneracion                           : list[INDU_SF_excedentes_de_autogeneracion]
     capacidad_instalada_de_cogeneracion                    : list[INDU_SF_capacidad_instalada_de_cogeneracion]
@@ -379,7 +379,7 @@ class INDU_SALIDAS_por_combustible_energia_requerida(BaseModel):
         from_attributes = True
 
 
-class _INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion(BaseModel):
+class _INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion(BaseModel):
     """Salidas - por_combustible_energia_producida_por_autogeneracion_y_cogeneracion
     """
 
@@ -400,17 +400,17 @@ class _INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogen
     # medida_3    : float | None
     # medida_4    : float | None
 
-class INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion(BaseModel):
+class INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion(BaseModel):
     """Salidas - por_combustible_energia_producida_por_autogeneracion_y_cogeneracion
     """
 
-    salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible : list[_INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion]
+    salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible : list[_INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion]
 
     class ConfigDict:
         from_attributes = True
 
 
-class _INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(BaseModel):
+class _INDU_SALIDAS_por_combustible_balance_total_energia_requerida(BaseModel):
     """Salidas - por_combustible_balance_total_de_la_energia_requerida
     """
 
@@ -431,11 +431,11 @@ class _INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(BaseMo
     # medida_3    : float | None
     medida_4    : float | None
 
-class INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida(BaseModel):
+class INDU_SALIDAS_por_combustible_balance_total_energia_requerida(BaseModel):
     """Salidas - por_combustible_balance_total_de_la_energia_requerida
     """
 
-    salida_balance_total_de_la_energia_requerida_combustible : list[_INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida]
+    salida_balance_total_de_la_energia_requerida_combustible : list[_INDU_SALIDAS_por_combustible_balance_total_energia_requerida]
 
     class ConfigDict:
         from_attributes = True
@@ -474,7 +474,7 @@ class INDU_SALIDAS_por_tipo_de_industria_energia_requerida(BaseModel):
         from_attributes = True
 
 
-class _INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion(BaseModel):
+class _INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac(BaseModel):
     """Salidas - por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion
     """
 
@@ -495,17 +495,17 @@ class _INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y
     # medida_3    : float | None
     # medida_4    : float | None
 
-class INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion(BaseModel):
+class INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac(BaseModel):
     """Salidas - por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion
     """
 
-    salida_energia_producida_por_autogeneracion_y_cogeneracion_industria : list[_INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion]
+    salida_energia_producida_por_autogeneracion_y_cogeneracion_industria : list[_INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac]
 
     class ConfigDict:
         from_attributes = True
 
 
-class _INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(BaseModel):
+class _INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida(BaseModel):
     """Salidas - por_tipo_de_industria_balance_total_de_la_energia_requerida
     """
 
@@ -526,11 +526,11 @@ class _INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(
     # medida_3    : float | None
     medida_4    : float | None
 
-class INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida(BaseModel):
+class INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida(BaseModel):
     """Salidas - por_tipo_de_industria_balance_total_de_la_energia_requerida
     """
 
-    salida_balance_total_de_la_energia_requerida_industria : list[_INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida]
+    salida_balance_total_de_la_energia_requerida_industria : list[_INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida]
 
     class ConfigDict:
         from_attributes = True
@@ -541,11 +541,11 @@ class SALIDAS(BaseModel):
     """
     
     salida_energia_requerida_combustible                                   : list[_INDU_SALIDAS_por_combustible_energia_requerida]
-    salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible : list[_INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion]
-    salida_balance_total_de_la_energia_requerida_combustible               : list[_INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida]
+    salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible : list[_INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion]
+    salida_balance_total_de_la_energia_requerida_combustible               : list[_INDU_SALIDAS_por_combustible_balance_total_energia_requerida]
     salida_energia_requerida_industria                                     : list[_INDU_SALIDAS_por_tipo_de_industria_energia_requerida]
-    salida_energia_producida_por_autogeneracion_y_cogeneracion_industria   : list[_INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion]
-    salida_balance_total_de_la_energia_requerida_industria                 : list[_INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida]
+    salida_energia_producida_por_autogeneracion_y_cogeneracion_industria   : list[_INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac]
+    salida_balance_total_de_la_energia_requerida_industria                 : list[_INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida]
 
     class ConfigDict:
         from_attributes = True

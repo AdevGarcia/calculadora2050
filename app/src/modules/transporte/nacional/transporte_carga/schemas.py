@@ -25,7 +25,7 @@ class ST_name(str, Enum):
     distribucion_por_tecnologia_transporte_de_carga_interurbano               = 'distribucion_por_tecnologia_transporte_de_carga_interurbano'
 
 
-class TRANS_CAR_ST_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano(BaseModel):
+class TRANS_CAR_ST_uso_ener_trans_ferreo_transp_carga_interurbano(BaseModel):
     """Supuestos de Trayectoria uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano
     """
 
@@ -58,7 +58,7 @@ class TRANS_CAR_ST_distancia_modo_ferreo(BaseModel):
     unidad      : str
 
 
-class TRANS_CAR_ST_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano(BaseModel):
+class TRANS_CAR_ST_dist_trans_carretero_transp_carga_interurbano(BaseModel):
     """Supuestos de Trayectoria distancia_para_el_transporte_carretero_transporte_de_carga_interurbano"""
     
     topic       : str
@@ -74,7 +74,7 @@ class TRANS_CAR_ST_distancia_para_el_transporte_carretero_transporte_de_carga_in
     unidad      : str
 
 
-class TRANS_CAR_ST_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano(BaseModel):
+class TRANS_CAR_ST_uso_ener_trans_fluvial_transp_carga_interurbano(BaseModel):
     """Supuestos de Trayectoria uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano"""
     
     topic       : str
@@ -90,7 +90,7 @@ class TRANS_CAR_ST_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga
     unidad      : str
 
 
-class TRANS_CAR_ST_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano(BaseModel):
+class TRANS_CAR_ST_uso_de_ener_trans_aereo_trans_carga_interurbano(BaseModel):
     """Supuestos de Trayectoria uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano"""
     
     topic       : str
@@ -106,7 +106,7 @@ class TRANS_CAR_ST_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_i
     unidad      : str
 
 
-class TRANS_CAR_ST_carga_sustituida_por_modo_transporte_de_carga_interurbano(BaseModel):
+class TRANS_CAR_ST_carga_sustituida_modo_trans_carga_interurbano(BaseModel):
     """Supuestos de Trayectoria carga_sustituida_por_modo_transporte_de_carga_interurbano"""
     
     topic       : str
@@ -123,7 +123,7 @@ class TRANS_CAR_ST_carga_sustituida_por_modo_transporte_de_carga_interurbano(Bas
     unidad      : str
 
 
-class TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano(BaseModel):
+class TRANS_CAR_ST_distr_tecnologia_transporte_carga_urbano(BaseModel):
     """Supuestos de Trayectoria distribucion_por_tecnologia_transporte_de_carga_urbano"""
     
     topic       : str
@@ -140,7 +140,7 @@ class TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano(BaseMo
     unidad      : str
 
 
-class TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_interurbano(BaseModel):
+class TRANS_CAR_ST_dist_tecn_transporte_carga_interurbano(BaseModel):
     """Supuestos de Trayectoria distribucion_por_tecnologia_transporte_de_carga_interurbano"""
     
     topic       : str
@@ -162,14 +162,14 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """Supuestos de trayectoria con todos los topics
     """
     
-    uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano  : list[TRANS_CAR_ST_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano]
+    uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano  : list[TRANS_CAR_ST_uso_ener_trans_ferreo_transp_carga_interurbano]
     distancia_modo_ferreo                                                     : list[TRANS_CAR_ST_distancia_modo_ferreo]
-    distancia_para_el_transporte_carretero_transporte_de_carga_interurbano    : list[TRANS_CAR_ST_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano]
-    uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano : list[TRANS_CAR_ST_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano]
-    uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano   : list[TRANS_CAR_ST_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano]
-    carga_sustituida_por_modo_transporte_de_carga_interurbano                 : list[TRANS_CAR_ST_carga_sustituida_por_modo_transporte_de_carga_interurbano]
-    distribucion_por_tecnologia_transporte_de_carga_urbano                    : list[TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano]
-    distribucion_por_tecnologia_transporte_de_carga_interurbano               : list[TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_interurbano]
+    distancia_para_el_transporte_carretero_transporte_de_carga_interurbano    : list[TRANS_CAR_ST_dist_trans_carretero_transp_carga_interurbano]
+    uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano : list[TRANS_CAR_ST_uso_ener_trans_fluvial_transp_carga_interurbano]
+    uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano   : list[TRANS_CAR_ST_uso_de_ener_trans_aereo_trans_carga_interurbano]
+    carga_sustituida_por_modo_transporte_de_carga_interurbano                 : list[TRANS_CAR_ST_carga_sustituida_modo_trans_carga_interurbano]
+    distribucion_por_tecnologia_transporte_de_carga_urbano                    : list[TRANS_CAR_ST_distr_tecnologia_transporte_carga_urbano]
+    distribucion_por_tecnologia_transporte_de_carga_interurbano               : list[TRANS_CAR_ST_dist_tecn_transporte_carga_interurbano]
     
     class ConfigDict:
         from_attributes = True
@@ -255,7 +255,7 @@ class TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_urbano(BaseModel):
     unidad      : str
 
 
-class TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_interurbano(BaseModel):
+class TRANS_CAR_SF_num_vehiculos_transporte_carga_interurbano(BaseModel):
     """Supuestos Fijos numero_de_vehiculos_transporte_de_carga_interurbano"""
 
     topic       : str
@@ -280,7 +280,7 @@ class SUPUESTOS_FIJOS(BaseModel):
     distancia_tipica_por_modo                           : list[TRANS_CAR_SF_distancia_tipica_por_modo]
     vida_util                                           : list[TRANS_CAR_SF_vida_util]
     numero_de_vehiculos_transporte_de_carga_urbano      : list[TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_urbano]
-    numero_de_vehiculos_transporte_de_carga_interurbano : list[TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_interurbano]
+    numero_de_vehiculos_transporte_de_carga_interurbano : list[TRANS_CAR_SF_num_vehiculos_transporte_carga_interurbano]
     
     class ConfigDict:
         from_attributes = True

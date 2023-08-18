@@ -47,7 +47,7 @@ def create_ST(
             case 'demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia':
                 loader(
                     db=db,
-                    model=models.EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia, 
+                    model=models.EDIF_RES_ACOND_ST_demanda_acond_espacios_diseno_eficiencia, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo', 'trayectoria']
                 )
@@ -55,7 +55,7 @@ def create_ST(
             case 'demanda_para_acondicionamiento_de_espacios_solo_eficiencia':
                 loader(
                     db=db,
-                    model=models.EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_solo_eficiencia, 
+                    model=models.EDIF_RES_ACOND_ST_demanda_acond_espacios_solo_eficiencia, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo', 'trayectoria']
                 )
@@ -71,7 +71,7 @@ def create_ST(
             case 'equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia':
                 loader(
                     db=db,
-                    model=models.EDIF_RES_ACOND_ST_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia, 
+                    model=models.EDIF_RES_ACOND_ST_equipos_acond_espacios_alta_eficiencia, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo', 'trayectoria']
                 )
@@ -99,7 +99,7 @@ def read_ST_module(
         case schemas.ST_name.demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia,
+                model=models.EDIF_RES_ACOND_ST_demanda_acond_espacios_diseno_eficiencia,
                 topic='demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia',
                 **filter
                 )
@@ -107,7 +107,7 @@ def read_ST_module(
         case schemas.ST_name.demanda_para_acondicionamiento_de_espacios_solo_eficiencia:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_solo_eficiencia,
+                model=models.EDIF_RES_ACOND_ST_demanda_acond_espacios_solo_eficiencia,
                 topic='demanda_para_acondicionamiento_de_espacios_solo_eficiencia',
                 **filter
                 )
@@ -123,7 +123,7 @@ def read_ST_module(
         case schemas.ST_name.equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_RES_ACOND_ST_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia,
+                model=models.EDIF_RES_ACOND_ST_equipos_acond_espacios_alta_eficiencia,
                 topic='equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia',
                 **filter
                 )
@@ -144,10 +144,10 @@ def delete_ST(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia)
-    prune(db=db, model=models.EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_solo_eficiencia)
+    prune(db=db, model=models.EDIF_RES_ACOND_ST_demanda_acond_espacios_diseno_eficiencia)
+    prune(db=db, model=models.EDIF_RES_ACOND_ST_demanda_acond_espacios_solo_eficiencia)
     prune(db=db, model=models.EDIF_RES_ACOND_ST_implementacion)
-    prune(db=db, model=models.EDIF_RES_ACOND_ST_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia)
+    prune(db=db, model=models.EDIF_RES_ACOND_ST_equipos_acond_espacios_alta_eficiencia)
 
     return {'msg': 'Deleted successfully'}
 

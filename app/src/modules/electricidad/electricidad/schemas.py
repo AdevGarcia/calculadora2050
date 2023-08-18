@@ -116,7 +116,7 @@ class _ELECT_Electricidad_SALIDAS_combustibles_fosiles(BaseModel):
     medida_1    : float
 
 
-class _ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(BaseModel):
+class _ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales(BaseModel):
     """salidas_energias_renovables_no_convencionales"""
 
     topic       : str
@@ -176,10 +176,10 @@ class ELECT_Electricidad_SALIDAS_combustibles_fosiles(BaseModel):
         from_attributes = True
 
 
-class ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(BaseModel):
+class ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales(BaseModel):
     """salidas_energias_renovables_no_convencionales"""
 
-    salidas_energias_renovables_no_convencionales : list[_ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales]
+    salidas_energias_renovables_no_convencionales : list[_ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales]
 
     class ConfigDict:
         from_attributes = True
@@ -209,7 +209,7 @@ class SALIDAS(BaseModel):
     """
     
     salidas_combustibels_fosiles                  : list[ELECT_Electricidad_SALIDAS_combustibles_fosiles]
-    salidas_energias_renovables_no_convencionales : list[ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales]
+    salidas_energias_renovables_no_convencionales : list[ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales]
     salidas_energia_demandada                     : list[ELECT_Electricidad_SALIDAS_energia_demandada]
     salidas_balance                               : list[ELECT_Electricidad_SALIDAS_balance]
 
@@ -244,7 +244,7 @@ class _ELECT_Electricidad_EMISIONES_combustibles_fosiles(BaseModel):
     medida_1    : float
 
 
-class _ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(BaseModel):
+class _ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales(BaseModel):
     """emisiones_energias_renovables_no_convencionales"""
 
     topic       : str
@@ -271,10 +271,10 @@ class ELECT_Electricidad_EMISIONES_combustibles_fosiles(BaseModel):
         from_attributes = True
 
 
-class ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(BaseModel):
+class ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales(BaseModel):
     """emisiones_energias_renovables_no_convencionales"""
 
-    emisiones_energias_renovables_no_convencionales : list[_ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales]
+    emisiones_energias_renovables_no_convencionales : list[_ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales]
 
     class ConfigDict:
         from_attributes = True
@@ -284,7 +284,7 @@ class EMISIONES(BaseModel):
     """Emisiones - emisiones_gases_efecto_invernadero
     """
     emisiones_combustibles_fosiles                  : list[ELECT_Electricidad_EMISIONES_combustibles_fosiles]
-    emisiones_energias_renovables_no_convencionales : list[ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales]
+    emisiones_energias_renovables_no_convencionales : list[ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales]
 
     class ConfigDict:
         from_attributes = True

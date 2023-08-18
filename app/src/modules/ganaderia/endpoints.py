@@ -47,7 +47,7 @@ def create_ST(
             case 'practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies':
                 loader(
                     db=db,
-                    model=models.GANA_ST_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies, 
+                    model=models.GANA_ST_pract_sost_suelos_ganaderos_crecimiento_estimado_sup, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -55,7 +55,7 @@ def create_ST(
             case 'mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado':
                 loader(
                     db=db, 
-                    model=models.GANA_ST_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado, 
+                    model=models.GANA_ST_mejores_pract_pecuarias_cabezas_ganado, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -91,7 +91,7 @@ def read_ST_module(
         case schemas.ST_name.practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies:
             rd = downloader(
                 db=db, 
-                model=models.GANA_ST_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies,
+                model=models.GANA_ST_pract_sost_suelos_ganaderos_crecimiento_estimado_sup,
                 topic='practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies',
                 **filter
                 )
@@ -99,7 +99,7 @@ def read_ST_module(
         case schemas.ST_name.mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado:
             rd = downloader(
                 db=db, 
-                model=models.GANA_ST_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado,
+                model=models.GANA_ST_mejores_pract_pecuarias_cabezas_ganado,
                 topic='mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado',
                 **filter
                 )
@@ -128,8 +128,8 @@ def delete_ST(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.GANA_ST_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies)
-    prune(db=db, model=models.GANA_ST_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado)
+    prune(db=db, model=models.GANA_ST_pract_sost_suelos_ganaderos_crecimiento_estimado_sup)
+    prune(db=db, model=models.GANA_ST_mejores_pract_pecuarias_cabezas_ganado)
     prune(db=db, model=models.GANA_ST_produccion_de_estiercol_para_bioenergia)
 
     return {'msg': 'Deleted successfully'}
@@ -152,7 +152,7 @@ def create_SF(
     for key in keys:
         match key:
             case 'uso_actual_de_la_tierra_sector_agropecuario_en_colombia':
-                loader(db=db, model=models.GANA_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia, obj_in=jdata[key], 
+                loader(db=db, model=models.GANA_SF_uso_actual_tierra_sector_agropecuario_colombia, obj_in=jdata[key], 
                        filters=['topic', 'tipo', 'fuente', 'unidad'])
                     
             case 'hato_ganadero_colombiano':
@@ -164,11 +164,11 @@ def create_SF(
                        filters=['topic', 'fuente', 'unidad'])
                 
             case 'areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos':
-                loader(db=db, model=models.GANA_SF_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos, obj_in=jdata[key], 
+                loader(db=db, model=models.GANA_SF_areas_ini_implem_pract_sostenibles_suelos_ganaderos, obj_in=jdata[key], 
                        filters=['topic', 'tipo'])
             
             case 'factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones':
-                loader(db=db, model=models.GANA_SF_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones, obj_in=jdata[key], 
+                loader(db=db, model=models.GANA_SF_fact_prod_estiercol_por_cabeza_ganado_y_emisiones, obj_in=jdata[key], 
                        filters=['topic', 'fuente', 'unidad'])
             
             case 'potencial_energetico_del_estiercol':
@@ -176,15 +176,15 @@ def create_SF(
                        filters=['topic', 'tipo'])
                 
             case 'potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos':
-                loader(db=db, model=models.GANA_SF_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos, obj_in=jdata[key], 
+                loader(db=db, model=models.GANA_SF_pot_reduc_emisiones_practicas_sost_suelos_ganaderos, obj_in=jdata[key], 
                        filters=['topic', 'tipo'])
             
             case 'coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual':
-                loader(db=db, model=models.GANA_SF_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual, obj_in=jdata[key], 
+                loader(db=db, model=models.GANA_SF_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual, obj_in=jdata[key], 
                        filters=['topic', 'tipo', 'fuente'])
                 
             case 'potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias':
-                loader(db=db, model=models.GANA_SF_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias, obj_in=jdata[key], 
+                loader(db=db, model=models.GANA_SF_pot_reduccion_emisiones_mejores_practicas_pecuarias, obj_in=jdata[key], 
                        filters=['topic', 'tipo'])
             
             case _:
@@ -203,15 +203,15 @@ def read_SF(
     """READ ALL"""
     
     d = {
-        'uso_actual_de_la_tierra_sector_agropecuario_en_colombia'                                : models.GANA_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia,
+        'uso_actual_de_la_tierra_sector_agropecuario_en_colombia'                                : models.GANA_SF_uso_actual_tierra_sector_agropecuario_colombia,
         'hato_ganadero_colombiano'                                                               : models.GANA_SF_hato_ganadero_colombiano,
         'factor_de_emision_de_metano_ch4_por_genero'                                             : models.GANA_SF_factor_de_emision_de_metano_ch4_por_genero,
-        'areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos'       : models.GANA_SF_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos,
-        'factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones'                        : models.GANA_SF_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones,
+        'areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos'       : models.GANA_SF_areas_ini_implem_pract_sostenibles_suelos_ganaderos,
+        'factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones'                        : models.GANA_SF_fact_prod_estiercol_por_cabeza_ganado_y_emisiones,
         'potencial_energetico_del_estiercol'                                                     : models.GANA_SF_potencial_energetico_del_estiercol,
-        'potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos'          : models.GANA_SF_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos,
-        'coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual' : models.GANA_SF_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual,
-        'potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias'                     : models.GANA_SF_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias
+        'potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos'          : models.GANA_SF_pot_reduc_emisiones_practicas_sost_suelos_ganaderos,
+        'coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual' : models.GANA_SF_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual,
+        'potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias'                     : models.GANA_SF_pot_reduccion_emisiones_mejores_practicas_pecuarias
         }
     
     rd = downloader_batch(db=db, **d)
@@ -229,15 +229,15 @@ def delete_SF(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.GANA_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia)
+    prune(db=db, model=models.GANA_SF_uso_actual_tierra_sector_agropecuario_colombia)
     prune(db=db, model=models.GANA_SF_hato_ganadero_colombiano)
     prune(db=db, model=models.GANA_SF_factor_de_emision_de_metano_ch4_por_genero)
-    prune(db=db, model=models.GANA_SF_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos)
-    prune(db=db, model=models.GANA_SF_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones)
+    prune(db=db, model=models.GANA_SF_areas_ini_implem_pract_sostenibles_suelos_ganaderos)
+    prune(db=db, model=models.GANA_SF_fact_prod_estiercol_por_cabeza_ganado_y_emisiones)
     prune(db=db, model=models.GANA_SF_potencial_energetico_del_estiercol)
-    prune(db=db, model=models.GANA_SF_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos)
-    prune(db=db, model=models.GANA_SF_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual)
-    prune(db=db, model=models.GANA_SF_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias)
+    prune(db=db, model=models.GANA_SF_pot_reduc_emisiones_practicas_sost_suelos_ganaderos)
+    prune(db=db, model=models.GANA_SF_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual)
+    prune(db=db, model=models.GANA_SF_pot_reduccion_emisiones_mejores_practicas_pecuarias)
 
     return {'msg': 'Deleted SF successfully'}
 

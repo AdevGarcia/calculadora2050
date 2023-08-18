@@ -81,7 +81,7 @@ class ELECT_Electricidad_SALIDAS_combustibles_fosiles(Base):
     medida_1    = Column(name='medida_1', type_=Integer)
 
 
-class ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales(Base):
+class ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales(Base):
     """salidas_energias_renovables_no_convencionales"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -157,8 +157,8 @@ class ELECT_Electricidad_EMISIONES_combustibles_fosiles(Base):
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
 
-
-class ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales(Base):
+      ############################################################### 
+class ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales(Base):
     """emisiones_energias_renovables_no_convencionales"""
 
     id          = Column(Integer, primary_key=True, index=True)

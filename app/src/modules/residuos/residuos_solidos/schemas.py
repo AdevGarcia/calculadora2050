@@ -59,7 +59,7 @@ class RES_SOL_ST_tipo_de_gestion(BaseModel):
     unidad      : str
 
 
-class RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios(BaseModel):
+class RES_SOL_ST_cap_inst_sist_recup_aprov_biogas_rellenos_sanit(BaseModel):
     """Supuestos de Trayectoria capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios
     """
 
@@ -76,7 +76,7 @@ class RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovec
     unidad      : str
 
 
-class RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_incineracion(BaseModel):
+class RES_SOL_ST_capacidad_instalada_sistemas_incineracion(BaseModel):
     """Supuestos de Trayectoria capacidad_instalada_para_los_sistemas_de_incineracion
     """
 
@@ -99,8 +99,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     
     cantidad_de_residuos_generada_anual : list[RES_SOL_ST_cantidad_de_residuos_generada_anual]
     tipo_de_gestion                     : list[RES_SOL_ST_tipo_de_gestion]
-    capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios : list[RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios]
-    capacidad_instalada_para_los_sistemas_de_incineracion : list[RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_incineracion]
+    capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios : list[RES_SOL_ST_cap_inst_sist_recup_aprov_biogas_rellenos_sanit]
+    capacidad_instalada_para_los_sistemas_de_incineracion : list[RES_SOL_ST_capacidad_instalada_sistemas_incineracion]
     
     class ConfigDict:
         from_attributes = True
@@ -164,7 +164,7 @@ class RES_SOL_SF_generacion_de_metano_por_tipologia_de_residuo(BaseModel):
     unidad      : str
 
 
-class RES_SOL_SF_datos_de_la_generacion_energetica_mediante_incineracion(BaseModel):
+class RES_SOL_SF_generacion_energetica_mediante_incineracion(BaseModel):
     """Supuestos Fijos datos_de_la_generacion_energetica_mediante_incineracion
     """
 
@@ -184,7 +184,7 @@ class RES_SOL_SF_consumo_energetico_medio_por_tratamiento(BaseModel):
     unidad      : str
 
 
-class RES_SOL_SF_datos_para_la_estimacion_de_las_emisiones_de_incineracion(BaseModel):
+class RES_SOL_SF_estimacion_emisiones_incineracion(BaseModel):
     """Supuestos Fijos datos_para_la_estimacion_de_las_emisiones_de_incineracion
     """
 
@@ -203,9 +203,9 @@ class SUPUESTOS_FIJOS(BaseModel):
     distribucion_de_los_residuos_por_zona_climatica           : list[RES_SOL_SF_distribucion_de_los_residuos_por_zona_climatica]
     caracterizacion_por_tipo_de_residuos_generados            : list[RES_SOL_SF_caracterizacion_por_tipo_de_residuos_generados]
     generacion_de_metano_por_tipologia_de_residuo             : list[RES_SOL_SF_generacion_de_metano_por_tipologia_de_residuo]
-    datos_de_la_generacion_energetica_mediante_incineracion   : list[RES_SOL_SF_datos_de_la_generacion_energetica_mediante_incineracion]
+    datos_de_la_generacion_energetica_mediante_incineracion   : list[RES_SOL_SF_generacion_energetica_mediante_incineracion]
     consumo_energetico_medio_por_tratamiento                  : list[RES_SOL_SF_consumo_energetico_medio_por_tratamiento]
-    datos_para_la_estimacion_de_las_emisiones_de_incineracion : list[RES_SOL_SF_datos_para_la_estimacion_de_las_emisiones_de_incineracion]
+    datos_para_la_estimacion_de_las_emisiones_de_incineracion : list[RES_SOL_SF_estimacion_emisiones_incineracion]
     
     class ConfigDict:
         from_attributes = True

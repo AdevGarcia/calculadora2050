@@ -26,8 +26,8 @@ class BOSQ_ST_escenarios_de_deforestacion(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class BOSQ_ST_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales(Base):
+      ############################################################### 
+class BOSQ_ST_plantaciones_forestales_con_fines_comerciales(Base):
     """Supuestos de Trayectoria desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales
     """
 

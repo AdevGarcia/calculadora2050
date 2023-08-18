@@ -39,7 +39,7 @@ class BOSQ_ST_escenarios_de_deforestacion(BaseModel):
     unidad      : str
 
 
-class BOSQ_ST_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales(BaseModel):
+class BOSQ_ST_plantaciones_forestales_con_fines_comerciales(BaseModel):
     """Supuestos de Trayectoria desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales
     """
 
@@ -62,7 +62,7 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """
     
     escenarios_de_deforestacion          : list[BOSQ_ST_escenarios_de_deforestacion]
-    desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales : list[BOSQ_ST_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales]
+    desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales : list[BOSQ_ST_plantaciones_forestales_con_fines_comerciales]
     
     class ConfigDict:
         from_attributes = True

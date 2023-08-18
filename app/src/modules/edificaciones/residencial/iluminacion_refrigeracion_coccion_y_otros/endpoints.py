@@ -55,7 +55,7 @@ def create_ST(
             case 'porcentaje_tecnologia_para_iluminacion':
                 loader(
                     db=db,
-                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_tecnologia_para_iluminacion, 
+                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_tecnologia_iluminacion, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo', 'trayectoria']
                 )
@@ -71,7 +71,7 @@ def create_ST(
             case 'porcentaje_de_neveras_mas_eficientes':
                 loader(
                     db=db,
-                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_neveras_mas_eficientes, 
+                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_neveras_mas_eficientes, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -87,7 +87,7 @@ def create_ST(
             case 'porcentaje_de_estufas_con_eficiencia_mejorada':
                 loader(
                     db=db,
-                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_estufas_con_eficiencia_mejorada, 
+                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_estufas_eficiencia_mejorada, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -103,7 +103,7 @@ def create_ST(
             case 'reduccion_total_de_la_demanda_de_energia_electrica':
                 loader(
                     db=db,
-                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_total_de_la_demanda_de_energia_electrica, 
+                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_demanda_electrica, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -111,7 +111,7 @@ def create_ST(
             case 'potencia_instalada_para_autogeneracion_solar_fotovoltaica':
                 loader(
                     db=db,
-                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_potencia_instalada_para_autogeneracion_solar_fotovoltaica, 
+                    model=models.EDIF_RES_ILU_REF_COC_OTR_ST_pot_inst_autogeneracion_fotovolt, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -147,7 +147,7 @@ def read_ST_module(
         case schemas.ST_name.porcentaje_tecnologia_para_iluminacion:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_tecnologia_para_iluminacion,
+                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_tecnologia_iluminacion,
                 topic='porcentaje_tecnologia_para_iluminacion',
                 **filter
                 )
@@ -163,7 +163,7 @@ def read_ST_module(
         case schemas.ST_name.porcentaje_de_neveras_mas_eficientes:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_neveras_mas_eficientes,
+                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_neveras_mas_eficientes,
                 topic='porcentaje_de_neveras_mas_eficientes',
                 **filter
                 )
@@ -179,7 +179,7 @@ def read_ST_module(
         case schemas.ST_name.porcentaje_de_estufas_con_eficiencia_mejorada:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_estufas_con_eficiencia_mejorada,
+                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_estufas_eficiencia_mejorada,
                 topic='porcentaje_de_estufas_con_eficiencia_mejorada',
                 **filter
                 )
@@ -195,7 +195,7 @@ def read_ST_module(
         case schemas.ST_name.reduccion_total_de_la_demanda_de_energia_electrica:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_total_de_la_demanda_de_energia_electrica,
+                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_demanda_electrica,
                 topic='reduccion_total_de_la_demanda_de_energia_electrica',
                 **filter
                 )
@@ -203,7 +203,7 @@ def read_ST_module(
         case schemas.ST_name.potencia_instalada_para_autogeneracion_solar_fotovoltaica:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_potencia_instalada_para_autogeneracion_solar_fotovoltaica,
+                model=models.EDIF_RES_ILU_REF_COC_OTR_ST_pot_inst_autogeneracion_fotovolt,
                 topic='potencia_instalada_para_autogeneracion_solar_fotovoltaica',
                 **filter
                 )
@@ -225,14 +225,14 @@ def delete_ST(
     """DELETE ALL"""
     
     prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_demanda_iluminacion)
-    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_tecnologia_para_iluminacion)
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_tecnologia_iluminacion)
     prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_demanda_total_por_refrigeracion)
-    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_neveras_mas_eficientes)
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_neveras_mas_eficientes)
     prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_demanda_coccion_con_gas_natural)
-    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_estufas_con_eficiencia_mejorada)
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_estufas_eficiencia_mejorada)
     prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_demanda_para_coccion_con_glp)
-    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_total_de_la_demanda_de_energia_electrica)
-    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_potencia_instalada_para_autogeneracion_solar_fotovoltaica)
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_demanda_electrica)
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_ST_pot_inst_autogeneracion_fotovolt)
 
 
     return {'msg': 'Deleted successfully'}
@@ -313,7 +313,7 @@ def create_SF(
             case 'porcentaje_de_tenencia_refrigeradores':
                 loader(
                     db=db, 
-                    model=models.EDIF_RES_ILU_REF_COC_OTR_SF_porcentaje_de_tenencia_refrigeradores, 
+                    model=models.EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_refrigeradores, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -321,7 +321,7 @@ def create_SF(
             case 'horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica':
                 loader(
                     db=db, 
-                    model=models.EDIF_RES_ILU_REF_COC_OTR_SF_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica, 
+                    model=models.EDIF_RES_ILU_REF_COC_OTR_SF_hr_ope_autogeneracion_fotovoltaica, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -349,8 +349,8 @@ def read_SF(
         'tenencia_por_uso_gas_natural'          : models.EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_por_uso_gas_natural,
         'tenencia_por_uso_glp'                  : models.EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_por_uso_glp,
         'numero_de_bombillos_por_hogar'         : models.EDIF_RES_ILU_REF_COC_OTR_SF_numero_de_bombillos_por_hogar,
-        'porcentaje_de_tenencia_refrigeradores' : models.EDIF_RES_ILU_REF_COC_OTR_SF_porcentaje_de_tenencia_refrigeradores,
-        'horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica' : models.EDIF_RES_ILU_REF_COC_OTR_SF_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica
+        'porcentaje_de_tenencia_refrigeradores' : models.EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_refrigeradores,
+        'horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica' : models.EDIF_RES_ILU_REF_COC_OTR_SF_hr_ope_autogeneracion_fotovoltaica
         }
     
     rd = downloader_batch(db=db, **d)
@@ -375,8 +375,8 @@ def delete_SF(
     prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_por_uso_gas_natural)
     prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_por_uso_glp)
     prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_SF_numero_de_bombillos_por_hogar)
-    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_SF_porcentaje_de_tenencia_refrigeradores)
-    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_SF_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica)
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_refrigeradores)
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_SF_hr_ope_autogeneracion_fotovoltaica)
 
     return {'msg': 'Deleted SF successfully'}
 
@@ -398,7 +398,7 @@ def create_metodologia_generacion_solar_fotovoltaica(
     jdata = jsonable_encoder(data)
     loader(
         db=db, 
-        model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica, 
+        model=models.EDIF_RES_ILU_REF_COC_OTR_Metod_generacion_solar_fotovoltaica, 
         obj_in=jdata['metodologia'], 
         filters=['topic', 'tipo', 'medida_1', 'medida_2', 'medida_3']
     )
@@ -421,7 +421,7 @@ def read_metodologia(
 
     rd = downloader(
             db=db, 
-            model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica,
+            model=models.EDIF_RES_ILU_REF_COC_OTR_Metod_generacion_solar_fotovoltaica,
             topic='generacion_solar_fotovoltaica',
             **filter
             )
@@ -439,7 +439,7 @@ def delete_Metodologia(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica)
+    prune(db=db, model=models.EDIF_RES_ILU_REF_COC_OTR_Metod_generacion_solar_fotovoltaica)
 
     return {'msg': 'Deleted Metodologia successfully'}
 

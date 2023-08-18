@@ -59,7 +59,7 @@ class RES_AGU_ST_cantidad_de_aguas_residuales_industriales(BaseModel):
     unidad      : str
 
 
-class RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas(BaseModel):
+class RES_AGU_ST_est_tratam_aguas_res_municipales_extraccion_biogas(BaseModel):
     """Supuestos de Trayectoria estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas
     """
 
@@ -76,7 +76,7 @@ class RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_e
     unidad      : str
 
 
-class RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas(BaseModel):
+class RES_AGU_ST_est_tratamiento_aguas_res_ind_extraccion_biogas(BaseModel):
     """Supuestos de Trayectoria estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas
     """
 
@@ -99,8 +99,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     
     cantidad_de_aguas_residuales_domesticas          : list[RES_AGU_ST_cantidad_de_aguas_residuales_domesticas]
     cantidad_de_aguas_residuales_industriales        : list[RES_AGU_ST_cantidad_de_aguas_residuales_industriales]
-    estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas  : list[RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas]
-    estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas : list[RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas]
+    estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas  : list[RES_AGU_ST_est_tratam_aguas_res_municipales_extraccion_biogas]
+    estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas : list[RES_AGU_ST_est_tratamiento_aguas_res_ind_extraccion_biogas]
     
     class ConfigDict:
         from_attributes = True
@@ -170,7 +170,7 @@ class RES_AGU_SF_generacion_de_ch4_por_kg_dbo_no_tratado(BaseModel):
     unidad      : str
 
 
-class RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento(BaseModel):
+class RES_AGU_SF_generacion_energetica_estaciones_tratamiento(BaseModel):
     """Supuestos Fijos datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento
     """
 
@@ -200,7 +200,7 @@ class SUPUESTOS_FIJOS(BaseModel):
     dbo_por_m3_de_agua_residual_industrial_no_tratada                  : list[RES_AGU_SF_dbo_por_m3_de_agua_residual_industrial_no_tratada]
     generacion_de_ch4_por_kg_dbo_tratado                               : list[RES_AGU_SF_generacion_de_ch4_por_kg_dbo_tratado]
     generacion_de_ch4_por_kg_dbo_no_tratado                            : list[RES_AGU_SF_generacion_de_ch4_por_kg_dbo_no_tratado]
-    datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento : list[RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento]
+    datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento : list[RES_AGU_SF_generacion_energetica_estaciones_tratamiento]
     consumo_energetico_medio_por_tratamiento                           : list[RES_AGU_SF_consumo_energetico_medio_por_tratamiento]
     
     class ConfigDict:

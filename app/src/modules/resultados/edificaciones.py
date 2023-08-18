@@ -424,7 +424,8 @@ def resultados_evolucion_generacion_energetica_sector_edificaciones(
     
     filter={'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='generacion_solar_fotovoltaica',
-        model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica,
+        # model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica,
+        model=models.EDIF_RES_ILU_REF_COC_OTR_Metod_generacion_solar_fotovoltaica,
         **filter)
 
     edificaciones_residenciales_urbanas = db_to_df(rd=rd).to_dict(orient='records')[0]

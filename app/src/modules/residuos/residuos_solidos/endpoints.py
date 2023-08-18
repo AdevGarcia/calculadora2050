@@ -64,7 +64,7 @@ def create_ST(
             case 'capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios':
                 loader(
                     db=db,
-                    model=models.RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios, 
+                    model=models.RES_SOL_ST_cap_inst_sist_recup_aprov_biogas_rellenos_sanit, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -72,7 +72,7 @@ def create_ST(
             case 'capacidad_instalada_para_los_sistemas_de_incineracion':
                 loader(
                     db=db, 
-                    model=models.RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_incineracion, 
+                    model=models.RES_SOL_ST_capacidad_instalada_sistemas_incineracion, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -118,7 +118,7 @@ def read_ST_module(
         case schemas.ST_name.capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios:
             rd = downloader(
                 db=db, 
-                model=models.RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios,
+                model=models.RES_SOL_ST_cap_inst_sist_recup_aprov_biogas_rellenos_sanit,
                 topic='capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios',
                 **filter
                 )
@@ -127,7 +127,7 @@ def read_ST_module(
         case schemas.ST_name.capacidad_instalada_para_los_sistemas_de_incineracion:
             rd = downloader(
                 db=db, 
-                model=models.RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_incineracion,
+                model=models.RES_SOL_ST_capacidad_instalada_sistemas_incineracion,
                 topic='capacidad_instalada_para_los_sistemas_de_incineracion',
                 **filter
                 )
@@ -152,8 +152,8 @@ def delete_ST(
     
     prune(db=db, model=models.RES_SOL_ST_cantidad_de_residuos_generada_anual)
     prune(db=db, model=models.RES_SOL_ST_tipo_de_gestion)
-    prune(db=db, model=models.RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios)
-    prune(db=db, model=models.RES_SOL_ST_capacidad_instalada_para_los_sistemas_de_incineracion)
+    prune(db=db, model=models.RES_SOL_ST_cap_inst_sist_recup_aprov_biogas_rellenos_sanit)
+    prune(db=db, model=models.RES_SOL_ST_capacidad_instalada_sistemas_incineracion)
 
     return {'msg': 'Deleted successfully'}
 
@@ -192,7 +192,7 @@ def create_SF(
                        filters=['topic', 'tipo'])
             
             case 'datos_de_la_generacion_energetica_mediante_incineracion':
-                loader(db=db, model=models.RES_SOL_SF_datos_de_la_generacion_energetica_mediante_incineracion, obj_in=jdata[key], 
+                loader(db=db, model=models.RES_SOL_SF_generacion_energetica_mediante_incineracion, obj_in=jdata[key], 
                        filters=['topic', 'tipo'])
             
             case 'consumo_energetico_medio_por_tratamiento':
@@ -200,7 +200,7 @@ def create_SF(
                        filters=['topic', 'tipo'])
                 
             case 'datos_para_la_estimacion_de_las_emisiones_de_incineracion':
-                loader(db=db, model=models.RES_SOL_SF_datos_para_la_estimacion_de_las_emisiones_de_incineracion, obj_in=jdata[key], 
+                loader(db=db, model=models.RES_SOL_SF_estimacion_emisiones_incineracion, obj_in=jdata[key], 
                        filters=['topic', 'bloque', 'tipo', 'unidad'])
             
             case _:
@@ -224,9 +224,9 @@ def read_SF(
         'distribucion_de_los_residuos_por_zona_climatica'           : models.RES_SOL_SF_distribucion_de_los_residuos_por_zona_climatica,
         'caracterizacion_por_tipo_de_residuos_generados'            : models.RES_SOL_SF_caracterizacion_por_tipo_de_residuos_generados,
         'generacion_de_metano_por_tipologia_de_residuo'             : models.RES_SOL_SF_generacion_de_metano_por_tipologia_de_residuo,
-        'datos_de_la_generacion_energetica_mediante_incineracion'   : models.RES_SOL_SF_datos_de_la_generacion_energetica_mediante_incineracion,
+        'datos_de_la_generacion_energetica_mediante_incineracion'   : models.RES_SOL_SF_generacion_energetica_mediante_incineracion,
         'consumo_energetico_medio_por_tratamiento'                  : models.RES_SOL_SF_consumo_energetico_medio_por_tratamiento,
-        'datos_para_la_estimacion_de_las_emisiones_de_incineracion' : models.RES_SOL_SF_datos_para_la_estimacion_de_las_emisiones_de_incineracion
+        'datos_para_la_estimacion_de_las_emisiones_de_incineracion' : models.RES_SOL_SF_estimacion_emisiones_incineracion
         }
     
     rd = downloader_batch(db=db, **d)
@@ -250,9 +250,9 @@ def delete_SF(
     prune(db=db, model=models.RES_SOL_SF_distribucion_de_los_residuos_por_zona_climatica)
     prune(db=db, model=models.RES_SOL_SF_caracterizacion_por_tipo_de_residuos_generados)
     prune(db=db, model=models.RES_SOL_SF_generacion_de_metano_por_tipologia_de_residuo)
-    prune(db=db, model=models.RES_SOL_SF_datos_de_la_generacion_energetica_mediante_incineracion)
+    prune(db=db, model=models.RES_SOL_SF_generacion_energetica_mediante_incineracion)
     prune(db=db, model=models.RES_SOL_SF_consumo_energetico_medio_por_tratamiento)
-    prune(db=db, model=models.RES_SOL_SF_datos_para_la_estimacion_de_las_emisiones_de_incineracion)
+    prune(db=db, model=models.RES_SOL_SF_estimacion_emisiones_incineracion)
 
     return {'msg': 'Deleted SF successfully'}
 

@@ -7,8 +7,8 @@ from app.src.db.base_class import Base
 ####################################################################################
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
-
-class GANA_ST_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies(Base):
+      ############################################################### 
+class GANA_ST_pract_sost_suelos_ganaderos_crecimiento_estimado_sup(Base):
     """Supuestos de Trayectoria practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies
     """
 
@@ -27,7 +27,7 @@ class GANA_ST_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_
     unidad      = Column(name='unidad', type_=String)
 
 
-class GANA_ST_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado(Base):
+class GANA_ST_mejores_pract_pecuarias_cabezas_ganado(Base):
     """Supuestos de Trayectoria mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado
     """
 
@@ -69,7 +69,7 @@ class GANA_ST_produccion_de_estiercol_para_bioenergia(Base):
 #######                          Supuestos Fijos                             #######
 ####################################################################################
 
-class GANA_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia(Base):
+class GANA_SF_uso_actual_tierra_sector_agropecuario_colombia(Base):
     """Supuestos Fijos uso_actual_de_la_tierra_sector_agropecuario_en_colombia
     """
 
@@ -109,8 +109,8 @@ class GANA_SF_factor_de_emision_de_metano_ch4_por_genero(Base):
     valor       = Column(name='valor', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class GANA_SF_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos(Base):
+      ############################################################### 
+class GANA_SF_areas_ini_implem_pract_sostenibles_suelos_ganaderos(Base):
     """Supuestos Fijos areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos
     """
 
@@ -120,8 +120,8 @@ class GANA_SF_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_su
     value       = Column(name='value', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class GANA_SF_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones(Base):
+      ###############################################################  
+class GANA_SF_fact_prod_estiercol_por_cabeza_ganado_y_emisiones(Base):
     """Supuestos Fijos factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones
     """
 
@@ -142,8 +142,8 @@ class GANA_SF_potencial_energetico_del_estiercol(Base):
     value       = Column(name='value', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class GANA_SF_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos(Base):
+      ############################################################### 
+class GANA_SF_pot_reduc_emisiones_practicas_sost_suelos_ganaderos(Base):
     """Supuestos Fijos potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos
     """
 
@@ -160,8 +160,8 @@ class GANA_SF_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelo
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class GANA_SF_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual(Base):
+      ############################################################### 
+class GANA_SF_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual(Base):
     """Supuestos Fijos coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual
     """
 
@@ -172,8 +172,8 @@ class GANA_SF_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suel
     valor       = Column(name='valor', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class GANA_SF_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias(Base):
+      ############################################################### 
+class GANA_SF_pot_reduccion_emisiones_mejores_practicas_pecuarias(Base):
     """Supuestos Fijos potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias
     """
 

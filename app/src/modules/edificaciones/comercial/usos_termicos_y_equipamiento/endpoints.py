@@ -47,7 +47,7 @@ def create_ST(
             case 'reduccion_por_eficiencia_en_la_iluminacion':
                 loader(
                     db=db,
-                    model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_la_iluminacion, 
+                    model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_iluminacion, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -55,7 +55,7 @@ def create_ST(
             case 'reduccion_por_eficiencia_en_refrigeracion':
                 loader(
                     db=db,
-                    model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_refrigeracion, 
+                    model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_refrigeracion, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -63,7 +63,7 @@ def create_ST(
             case 'reduccion_por_eficiencia_en_usos_termicos':
                 loader(
                     db=db,
-                    model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_usos_termicos, 
+                    model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_usos_termicos, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -91,7 +91,7 @@ def read_ST_module(
         case schemas.ST_name.reduccion_por_eficiencia_en_la_iluminacion:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_la_iluminacion,
+                model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_iluminacion,
                 topic='reduccion_por_eficiencia_en_la_iluminacion',
                 **filter
                 )
@@ -99,7 +99,7 @@ def read_ST_module(
         case schemas.ST_name.reduccion_por_eficiencia_en_refrigeracion:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_refrigeracion,
+                model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_refrigeracion,
                 topic='reduccion_por_eficiencia_en_refrigeracion',
                 **filter
                 )
@@ -107,7 +107,7 @@ def read_ST_module(
         case schemas.ST_name.reduccion_por_eficiencia_en_usos_termicos:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_usos_termicos,
+                model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_usos_termicos,
                 topic='reduccion_por_eficiencia_en_usos_termicos',
                 **filter
                 )
@@ -128,9 +128,9 @@ def delete_ST(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_la_iluminacion)
-    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_refrigeracion)
-    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_usos_termicos)
+    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_iluminacion)
+    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_refrigeracion)
+    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_usos_termicos)
 
     return {'msg': 'Deleted successfully'}
 
@@ -170,7 +170,7 @@ def create_SF(
             case 'participacion_de_los_energeticos_en_los_usos_termicos':
                 loader(
                     db=db, 
-                    model=models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_los_usos_termicos, 
+                    model=models.EDIF_COM_USOS_TERM_EQUIP_SF_part_energeticos_usos_termicos, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo']
                 )
@@ -178,7 +178,7 @@ def create_SF(
             case 'participacion_de_los_energeticos_en_equipamiento':
                 loader(
                     db=db, 
-                    model=models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_equipamiento, 
+                    model=models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_energ_equipamiento, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo']
                 )
@@ -201,8 +201,8 @@ def read_SF(
     d = {
         'consumo_total_de_energia_por_uso'                      : models.EDIF_COM_USOS_TERM_EQUIP_SF_consumo_total_de_energia_por_uso,
         'participacion_usos_en_equipamiento'                    : models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_usos_en_equipamiento,
-        'participacion_de_los_energeticos_en_los_usos_termicos' : models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_los_usos_termicos,
-        'participacion_de_los_energeticos_en_equipamiento'      : models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_equipamiento,
+        'participacion_de_los_energeticos_en_los_usos_termicos' : models.EDIF_COM_USOS_TERM_EQUIP_SF_part_energeticos_usos_termicos,
+        'participacion_de_los_energeticos_en_equipamiento'      : models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_energ_equipamiento,
         }
     
     rd = downloader_batch(db=db, **d)
@@ -222,8 +222,8 @@ def delete_SF(
 
     prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_SF_consumo_total_de_energia_por_uso)
     prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_usos_en_equipamiento)
-    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_los_usos_termicos)
-    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_equipamiento)
+    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_SF_part_energeticos_usos_termicos)
+    prune(db=db, model=models.EDIF_COM_USOS_TERM_EQUIP_SF_participacion_energ_equipamiento)
 
     return {'msg': 'Deleted SF successfully'}
 

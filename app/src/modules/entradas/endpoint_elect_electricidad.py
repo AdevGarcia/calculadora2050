@@ -56,7 +56,8 @@ def read_entradas_energia_inyectada_a_red(
     filter={"tipo": "total_inyectado_a_red", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="entradas",
@@ -233,7 +234,8 @@ def read_entradas_demanda(
     filter={"tipo": "total_electricidad", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
         topic_item="entradas",
@@ -412,14 +414,16 @@ def read_entradas_emisiones_derivadas_de_la_autogeneracion(
     ### residuos solidos
     filter={"grupo": "aprovechamiento_energetico_del_biogas", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
-        model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia,
+        # model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia,
+        model=models.RES_SOL_emisiones,
         **filter)
 
     df1 = db_to_df(rd=rd)
 
     filter={"grupo": "incineracion", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
-        model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia,
+        # model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia,
+        model=models.RES_SOL_emisiones,
         **filter)
 
     df2 = db_to_df(rd=rd)

@@ -20,7 +20,7 @@ class ST_name(str, Enum):
     eficiencia_energetica_en_la_refinacion_de_crudo  = 'eficiencia_energetica_en_la_refinacion_de_crudo'
     
 
-class ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo(BaseModel):
+class ENER_CombFosil_ST_eficiencia_energetica_refinacion_de_crudo(BaseModel):
     """Supuestos de Trayectoria eficiencia_energetica_en_la_refinacion_de_crudo"""
 
     topic       : str
@@ -40,7 +40,7 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """Supuestos de trayectoria con todos los topics
     """
     
-    eficiencia_energetica_en_la_refinacion_de_crudo  : list[ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo]
+    eficiencia_energetica_en_la_refinacion_de_crudo  : list[ENER_CombFosil_ST_eficiencia_energetica_refinacion_de_crudo]
     
     class ConfigDict:
         from_attributes = True
@@ -105,7 +105,7 @@ class ENER_CombFosil_SF_no_de_pozos(BaseModel):
     unidad      : str
 
 
-class ENER_CombFosil_SF_datos_de_la_produccion_de_crudo_en_el_ano_base(BaseModel):
+class ENER_CombFosil_SF_datos_produccion_crudo_ano_base(BaseModel):
     """Supuestos Fijos datos_de_la_produccion_de_crudo_en_el_ano_BaseModel
     """
 
@@ -116,7 +116,7 @@ class ENER_CombFosil_SF_datos_de_la_produccion_de_crudo_en_el_ano_base(BaseModel
     unidad      : str
 
 
-class ENER_CombFosil_SF_datos_de_la_produccion_de_gas_natural_en_el_ano_base(BaseModel):
+class ENER_CombFosil_SF_datos_produccion_gas_natural_ano_base(BaseModel):
     """Supuestos Fijos datos_de_la_produccion_de_gas_natural_en_el_ano_BaseModel
     """
 
@@ -145,8 +145,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     produccion_de_carbon                                      : list[ENER_CombFosil_SF_produccion_de_carbon]
     factores_de_emision_carbon                                : list[ENER_CombFosil_SF_factores_de_emision_carbon]
     no_de_pozos                                               : list[ENER_CombFosil_SF_no_de_pozos]
-    datos_de_la_produccion_de_crudo_en_el_ano_base            : list[ENER_CombFosil_SF_datos_de_la_produccion_de_crudo_en_el_ano_base]
-    datos_de_la_produccion_de_gas_natural_en_el_ano_base      : list[ENER_CombFosil_SF_datos_de_la_produccion_de_gas_natural_en_el_ano_base]
+    datos_de_la_produccion_de_crudo_en_el_ano_base            : list[ENER_CombFosil_SF_datos_produccion_crudo_ano_base]
+    datos_de_la_produccion_de_gas_natural_en_el_ano_base      : list[ENER_CombFosil_SF_datos_produccion_gas_natural_ano_base]
     consumo_de_energeticos                                    : list[ENER_CombFosil_SF_consumo_de_energeticos]
 
     class ConfigDict:
@@ -180,7 +180,7 @@ class _ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(BaseModel):
     medida_1    : float
 
 
-class _ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector(BaseModel):
+class _ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector(BaseModel):
     """salidas_consumo_de_combustibles_fosiles_por_el_propio_sector"""
 
     topic       : str
@@ -197,7 +197,7 @@ class _ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sect
     medida_1    : float
 
 
-class _ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos(BaseModel):
+class _ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos(BaseModel):
     """salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos"""
 
     topic       : str
@@ -223,19 +223,19 @@ class ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(BaseModel):
         from_attributes = True
 
 
-class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector(BaseModel):
+class ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector(BaseModel):
     """salidas_consumo_de_combustibles_fosiles_por_el_propio_sector"""
 
-    salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector]
+    salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[_ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector]
 
     class ConfigDict:
         from_attributes = True
 
 
-class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos(BaseModel):
+class ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos(BaseModel):
     """salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos"""
 
-    salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos]
+    salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[_ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos]
 
     class ConfigDict:
         from_attributes = True
@@ -246,8 +246,8 @@ class SALIDAS(BaseModel):
     """
     
     salidas_combustibles_fosiles_producidos                      : list[_ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos]
-    salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector]
-    salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[_ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos]
+    salidas_consumo_de_combustibles_fosiles_por_el_propio_sector : list[_ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector]
+    salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos  : list[_ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos]
 
     class ConfigDict:
         from_attributes = True

@@ -46,7 +46,7 @@ class EDIF_RES_ILU_REF_COC_OTR_ST_demanda_iluminacion(BaseModel):
     unidad      : str
 
 
-class EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_tecnologia_para_iluminacion(BaseModel):
+class EDIF_RES_ILU_REF_COC_OTR_ST_tecnologia_iluminacion(BaseModel):
     """Supuestos de Trayectoria porcentaje_tecnologia_para_iluminacion
     """
 
@@ -83,7 +83,7 @@ class EDIF_RES_ILU_REF_COC_OTR_ST_demanda_total_por_refrigeracion(BaseModel):
     unidad      : str
 
 
-class EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_neveras_mas_eficientes(BaseModel):
+class EDIF_RES_ILU_REF_COC_OTR_ST_neveras_mas_eficientes(BaseModel):
     """Supuestos de Trayectoria porcentaje_de_neveras_mas_eficientes
     """
 
@@ -119,7 +119,7 @@ class EDIF_RES_ILU_REF_COC_OTR_ST_demanda_coccion_con_gas_natural(BaseModel):
     unidad      : str
 
 
-class EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_estufas_con_eficiencia_mejorada(BaseModel):
+class EDIF_RES_ILU_REF_COC_OTR_ST_estufas_eficiencia_mejorada(BaseModel):
     """Supuestos de Trayectoria porcentaje_de_estufas_con_eficiencia_mejorada
     """
 
@@ -154,7 +154,7 @@ class EDIF_RES_ILU_REF_COC_OTR_ST_demanda_para_coccion_con_glp(BaseModel):
     unidad      : str
 
 
-class EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_total_de_la_demanda_de_energia_electrica(BaseModel):
+class EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_demanda_electrica(BaseModel):
     """Supuestos de Trayectoria reduccion_total_de_la_demanda_de_energia_electrica
     """
 
@@ -172,7 +172,7 @@ class EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_total_de_la_demanda_de_energia_elect
     unidad      : str
 
 
-class EDIF_RES_ILU_REF_COC_OTR_ST_potencia_instalada_para_autogeneracion_solar_fotovoltaica(BaseModel):
+class EDIF_RES_ILU_REF_COC_OTR_ST_pot_inst_autogeneracion_fotovolt(BaseModel):
     """Supuestos de Trayectoria potencia_instalada_para_autogeneracion_solar_fotovoltaica
     """
 
@@ -194,14 +194,14 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """
     
     demanda_iluminacion                                       : list[EDIF_RES_ILU_REF_COC_OTR_ST_demanda_iluminacion]
-    porcentaje_tecnologia_para_iluminacion                    : list[EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_tecnologia_para_iluminacion]
+    porcentaje_tecnologia_para_iluminacion                    : list[EDIF_RES_ILU_REF_COC_OTR_ST_tecnologia_iluminacion]
     demanda_total_por_refrigeracion                           : list[EDIF_RES_ILU_REF_COC_OTR_ST_demanda_total_por_refrigeracion]
-    porcentaje_de_neveras_mas_eficientes                      : list[EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_neveras_mas_eficientes]
+    porcentaje_de_neveras_mas_eficientes                      : list[EDIF_RES_ILU_REF_COC_OTR_ST_neveras_mas_eficientes]
     demanda_coccion_con_gas_natural                           : list[EDIF_RES_ILU_REF_COC_OTR_ST_demanda_coccion_con_gas_natural]
-    porcentaje_de_estufas_con_eficiencia_mejorada             : list[EDIF_RES_ILU_REF_COC_OTR_ST_porcentaje_de_estufas_con_eficiencia_mejorada]
+    porcentaje_de_estufas_con_eficiencia_mejorada             : list[EDIF_RES_ILU_REF_COC_OTR_ST_estufas_eficiencia_mejorada]
     demanda_para_coccion_con_glp                              : list[EDIF_RES_ILU_REF_COC_OTR_ST_demanda_para_coccion_con_glp]
-    reduccion_total_de_la_demanda_de_energia_electrica        : list[EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_total_de_la_demanda_de_energia_electrica]
-    potencia_instalada_para_autogeneracion_solar_fotovoltaica : list[EDIF_RES_ILU_REF_COC_OTR_ST_potencia_instalada_para_autogeneracion_solar_fotovoltaica]
+    reduccion_total_de_la_demanda_de_energia_electrica        : list[EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_demanda_electrica]
+    potencia_instalada_para_autogeneracion_solar_fotovoltaica : list[EDIF_RES_ILU_REF_COC_OTR_ST_pot_inst_autogeneracion_fotovolt]
 
     class ConfigDict:
         from_attributes = True
@@ -330,7 +330,7 @@ class EDIF_RES_ILU_REF_COC_OTR_SF_numero_de_bombillos_por_hogar(BaseModel):
     unidad      : str
 
 
-class EDIF_RES_ILU_REF_COC_OTR_SF_porcentaje_de_tenencia_refrigeradores(BaseModel):
+class EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_refrigeradores(BaseModel):
     """Supuestos Fijos porcentaje_de_tenencia_refrigeradores"""
 
     topic       : str
@@ -346,7 +346,7 @@ class EDIF_RES_ILU_REF_COC_OTR_SF_porcentaje_de_tenencia_refrigeradores(BaseMode
     unidad      : str
 
 
-class EDIF_RES_ILU_REF_COC_OTR_SF_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica(BaseModel):
+class EDIF_RES_ILU_REF_COC_OTR_SF_hr_ope_autogeneracion_fotovoltaica(BaseModel):
     """Supuestos Fijos horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica"""
 
     topic       : str
@@ -373,8 +373,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     tenencia_por_uso_gas_natural          : list[EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_por_uso_gas_natural]
     tenencia_por_uso_glp                  : list[EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_por_uso_glp]
     numero_de_bombillos_por_hogar         : list[EDIF_RES_ILU_REF_COC_OTR_SF_numero_de_bombillos_por_hogar]
-    porcentaje_de_tenencia_refrigeradores : list[EDIF_RES_ILU_REF_COC_OTR_SF_porcentaje_de_tenencia_refrigeradores]
-    horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica : list[EDIF_RES_ILU_REF_COC_OTR_SF_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica]
+    porcentaje_de_tenencia_refrigeradores : list[EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_refrigeradores]
+    horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica : list[EDIF_RES_ILU_REF_COC_OTR_SF_hr_ope_autogeneracion_fotovoltaica]
     
     class ConfigDict:
         from_attributes = True
@@ -388,7 +388,7 @@ class Metodologia_name(str, Enum):
     metodologia= 'metodologia'
 
 
-class EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica(BaseModel):
+class EDIF_RES_ILU_REF_COC_OTR_Metod_generacion_solar_fotovoltaica(BaseModel):
     """Metodologia_generacion_solar_fotovoltaica"""
 
     topic       : str
@@ -411,7 +411,7 @@ class METODOLOGIA(BaseModel):
     """Metodologia con todos los topics
     """
     
-    metodologia : list[EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica]
+    metodologia : list[EDIF_RES_ILU_REF_COC_OTR_Metod_generacion_solar_fotovoltaica]
     
     class ConfigDict:
         from_attributes = True

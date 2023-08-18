@@ -22,7 +22,7 @@ class ST_name(str, Enum):
     reduccion_por_eficiencia_en_usos_termicos  = 'reduccion_por_eficiencia_en_usos_termicos'
 
 
-class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_la_iluminacion(BaseModel):
+class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_iluminacion(BaseModel):
     """Supuestos de Trayectoria reduccion_por_eficiencia_en_la_iluminacion
     """
 
@@ -40,7 +40,7 @@ class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_la_iluminacion(Bas
     unidad      : str
 
 
-class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_refrigeracion(BaseModel):
+class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_refrigeracion(BaseModel):
     """Supuestos de Trayectoria reduccion_por_eficiencia_en_refrigeracion
     """
 
@@ -58,7 +58,7 @@ class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_refrigeracion(Base
     unidad      : str
 
 
-class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_usos_termicos(BaseModel):
+class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_usos_termicos(BaseModel):
     """Supuestos de Trayectoria reduccion_por_eficiencia_en_usos_termicos
     """
 
@@ -80,9 +80,9 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """Supuestos de trayectoria con todos los topics
     """
     
-    reduccion_por_eficiencia_en_la_iluminacion : list[EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_la_iluminacion]
-    reduccion_por_eficiencia_en_refrigeracion  : list[EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_refrigeracion]
-    reduccion_por_eficiencia_en_usos_termicos  : list[EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_por_eficiencia_en_usos_termicos]
+    reduccion_por_eficiencia_en_la_iluminacion : list[EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_iluminacion]
+    reduccion_por_eficiencia_en_refrigeracion  : list[EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_refrigeracion]
+    reduccion_por_eficiencia_en_usos_termicos  : list[EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_usos_termicos]
 
     class ConfigDict:
         from_attributes = True
@@ -128,7 +128,7 @@ class EDIF_COM_USOS_TERM_EQUIP_SF_participacion_usos_en_equipamiento(BaseModel):
     unidad      : str
 
 
-class EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_los_usos_termicos(BaseModel):
+class EDIF_COM_USOS_TERM_EQUIP_SF_part_energeticos_usos_termicos(BaseModel):
     """Supuestos Fijos participacion_de_los_energeticos_en_los_usos_termicos
     """
 
@@ -146,7 +146,7 @@ class EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_los_usos_t
     unidad      : str
 
 
-class EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_equipamiento(BaseModel):
+class EDIF_COM_USOS_TERM_EQUIP_SF_participacion_energ_equipamiento(BaseModel):
     """Supuestos Fijos participacion_de_los_energeticos_en_equipamiento
     """
 
@@ -170,8 +170,8 @@ class SUPUESTOS_FIJOS(BaseModel):
     
     consumo_total_de_energia_por_uso                      : list[EDIF_COM_USOS_TERM_EQUIP_SF_consumo_total_de_energia_por_uso]
     participacion_usos_en_equipamiento                    : list[EDIF_COM_USOS_TERM_EQUIP_SF_participacion_usos_en_equipamiento]
-    participacion_de_los_energeticos_en_los_usos_termicos : list[EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_los_usos_termicos]
-    participacion_de_los_energeticos_en_equipamiento      : list[EDIF_COM_USOS_TERM_EQUIP_SF_participacion_de_los_energeticos_en_equipamiento]
+    participacion_de_los_energeticos_en_los_usos_termicos : list[EDIF_COM_USOS_TERM_EQUIP_SF_part_energeticos_usos_termicos]
+    participacion_de_los_energeticos_en_equipamiento      : list[EDIF_COM_USOS_TERM_EQUIP_SF_participacion_energ_equipamiento]
     
     class ConfigDict:
         from_attributes = True

@@ -7,8 +7,8 @@ from app.src.db.base_class import Base
 ####################################################################################
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
-
-class TRANS_CAR_ST_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano(Base):
+      ############################################################### 
+class TRANS_CAR_ST_uso_ener_trans_ferreo_transp_carga_interurbano(Base):
     """Supuestos de Trayectoria uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano
     """
 
@@ -42,8 +42,8 @@ class TRANS_CAR_ST_distancia_modo_ferreo(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class TRANS_CAR_ST_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano(Base):
+      ############################################################### 
+class TRANS_CAR_ST_dist_trans_carretero_transp_carga_interurbano(Base):
     """Supuestos de Trayectoria distancia_para_el_transporte_carretero_transporte_de_carga_interurbano"""
     
     id          = Column(Integer, primary_key=True, index=True)
@@ -59,8 +59,8 @@ class TRANS_CAR_ST_distancia_para_el_transporte_carretero_transporte_de_carga_in
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class TRANS_CAR_ST_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano(Base):
+      ############################################################### 
+class TRANS_CAR_ST_uso_ener_trans_fluvial_transp_carga_interurbano(Base):
     """Supuestos de Trayectoria uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano"""
     
     id          = Column(Integer, primary_key=True, index=True)
@@ -76,8 +76,8 @@ class TRANS_CAR_ST_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class TRANS_CAR_ST_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano(Base):
+      ###############################################################  
+class TRANS_CAR_ST_uso_de_ener_trans_aereo_trans_carga_interurbano(Base):
     """Supuestos de Trayectoria uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano"""
     
     id          = Column(Integer, primary_key=True, index=True)
@@ -93,8 +93,8 @@ class TRANS_CAR_ST_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_i
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class TRANS_CAR_ST_carga_sustituida_por_modo_transporte_de_carga_interurbano(Base):
+      ############################################################### 
+class TRANS_CAR_ST_carga_sustituida_modo_trans_carga_interurbano(Base):
     """Supuestos de Trayectoria carga_sustituida_por_modo_transporte_de_carga_interurbano"""
     
     id          = Column(Integer, primary_key=True, index=True)
@@ -112,7 +112,7 @@ class TRANS_CAR_ST_carga_sustituida_por_modo_transporte_de_carga_interurbano(Bas
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano(Base):
+class TRANS_CAR_ST_distr_tecnologia_transporte_carga_urbano(Base):
     """Supuestos de Trayectoria distribucion_por_tecnologia_transporte_de_carga_urbano"""
     
     id          = Column(Integer, primary_key=True, index=True)
@@ -129,8 +129,8 @@ class TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_interurbano(Base):
+      ############################################################### 
+class TRANS_CAR_ST_dist_tecn_transporte_carga_interurbano(Base):
     """Supuestos de Trayectoria distribucion_por_tecnologia_transporte_de_carga_interurbano"""
     
     id          = Column(Integer, primary_key=True, index=True)
@@ -234,7 +234,7 @@ class TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_urbano(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_interurbano(Base):
+class TRANS_CAR_SF_num_vehiculos_transporte_carga_interurbano(Base):
     """Supuestos Fijos numero_de_vehiculos_transporte_de_carga_interurbano"""
 
     id          = Column(Integer, primary_key=True, index=True)

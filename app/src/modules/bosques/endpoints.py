@@ -55,7 +55,7 @@ def create_ST(
             case 'desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales':
                 loader(
                     db=db, 
-                    model=models.BOSQ_ST_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales, 
+                    model=models.BOSQ_ST_plantaciones_forestales_con_fines_comerciales, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -91,7 +91,7 @@ def read_ST_module(
         case schemas.ST_name.desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales:
             rd = downloader(
                 db=db, 
-                model=models.BOSQ_ST_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales,
+                model=models.BOSQ_ST_plantaciones_forestales_con_fines_comerciales,
                 topic='desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales',
                 **filter
                 )
@@ -113,7 +113,7 @@ def delete_ST(
     """DELETE ALL"""
     
     prune(db=db, model=models.BOSQ_ST_escenarios_de_deforestacion)
-    prune(db=db, model=models.BOSQ_ST_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales)
+    prune(db=db, model=models.BOSQ_ST_plantaciones_forestales_con_fines_comerciales)
 
     return {'msg': 'Deleted successfully'}
 

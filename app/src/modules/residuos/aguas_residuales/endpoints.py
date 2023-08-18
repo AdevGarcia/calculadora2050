@@ -63,7 +63,7 @@ def create_ST(
             case 'estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas':
                 loader(
                     db=db,
-                    model=models.RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas, 
+                    model=models.RES_AGU_ST_est_tratam_aguas_res_municipales_extraccion_biogas, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -71,7 +71,7 @@ def create_ST(
             case 'estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas':
                 loader(
                     db=db, 
-                    model=models.RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas, 
+                    model=models.RES_AGU_ST_est_tratamiento_aguas_res_ind_extraccion_biogas, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -115,7 +115,7 @@ def read_ST_module(
         case schemas.ST_name.estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas:
             rd = downloader(
                 db=db, 
-                model=models.RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas,
+                model=models.RES_AGU_ST_est_tratam_aguas_res_municipales_extraccion_biogas,
                 topic='estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas',
                 **filter
                 )
@@ -123,7 +123,7 @@ def read_ST_module(
         case schemas.ST_name.estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas:
             rd = downloader(
                 db=db, 
-                model=models.RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas,
+                model=models.RES_AGU_ST_est_tratamiento_aguas_res_ind_extraccion_biogas,
                 topic='estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas',
                 **filter
                 )
@@ -146,8 +146,8 @@ def delete_ST(
     
     prune(db=db, model=models.RES_AGU_ST_cantidad_de_aguas_residuales_domesticas)
     prune(db=db, model=models.RES_AGU_ST_cantidad_de_aguas_residuales_industriales)
-    prune(db=db, model=models.RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas)
-    prune(db=db, model=models.RES_AGU_ST_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas)
+    prune(db=db, model=models.RES_AGU_ST_est_tratam_aguas_res_municipales_extraccion_biogas)
+    prune(db=db, model=models.RES_AGU_ST_est_tratamiento_aguas_res_ind_extraccion_biogas)
 
     return {'msg': 'Deleted successfully'}
 
@@ -219,7 +219,7 @@ def create_SF(
             case 'datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento':
                 loader(
                     db=db, 
-                    model=models.RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento, 
+                    model=models.RES_AGU_SF_generacion_energetica_estaciones_tratamiento, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -254,7 +254,7 @@ def read_SF(
         'dbo_por_m3_de_agua_residual_industrial_no_tratada'                  : models.RES_AGU_SF_dbo_por_m3_de_agua_residual_industrial_no_tratada,
         'generacion_de_ch4_por_kg_dbo_tratado'                               : models.RES_AGU_SF_generacion_de_ch4_por_kg_dbo_tratado,
         'generacion_de_ch4_por_kg_dbo_no_tratado'                            : models.RES_AGU_SF_generacion_de_ch4_por_kg_dbo_no_tratado,
-        'datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento' : models.RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento,
+        'datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento' : models.RES_AGU_SF_generacion_energetica_estaciones_tratamiento,
         'consumo_energetico_medio_por_tratamiento'                           : models.RES_AGU_SF_consumo_energetico_medio_por_tratamiento
         }
     
@@ -279,7 +279,7 @@ def delete_SF(
     prune(db=db, model=models.RES_AGU_SF_dbo_por_m3_de_agua_residual_industrial_no_tratada)
     prune(db=db, model=models.RES_AGU_SF_generacion_de_ch4_por_kg_dbo_tratado)
     prune(db=db, model=models.RES_AGU_SF_generacion_de_ch4_por_kg_dbo_no_tratado)
-    prune(db=db, model=models.RES_AGU_SF_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento)
+    prune(db=db, model=models.RES_AGU_SF_generacion_energetica_estaciones_tratamiento)
     prune(db=db, model=models.RES_AGU_SF_consumo_energetico_medio_por_tratamiento)
 
     return {'msg': 'Deleted SF successfully'}

@@ -59,7 +59,7 @@ class TRANS_AVI_SF_uso_de_combustible_para_aviacion_internacional(BaseModel):
     unidad      : str
 
 
-class TRANS_AVI_SF_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje(BaseModel):
+class TRANS_AVI_SF_prop_comb_utilizado_etapas_despegue_aterrizaje(BaseModel):
     """Supuestos Fijos proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje
     """
 
@@ -81,7 +81,7 @@ class SUPUESTOS_FIJOS(BaseModel):
     """
     
     uso_de_combustible_para_aviacion_internacional : list[TRANS_AVI_SF_uso_de_combustible_para_aviacion_internacional]
-    proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje : list[TRANS_AVI_SF_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje]
+    proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje : list[TRANS_AVI_SF_prop_comb_utilizado_etapas_despegue_aterrizaje]
     
     class ConfigDict:
         from_attributes = True

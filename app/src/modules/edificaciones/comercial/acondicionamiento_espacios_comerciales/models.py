@@ -7,8 +7,8 @@ from app.src.db.base_class import Base
 ####################################################################################
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
-
-class EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia(Base):
+      ###############################################################   
+class EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia(Base):
     """Supuestos de Trayectoria demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia
     """
 
@@ -26,8 +26,8 @@ class EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia(Base):
+      ###############################################################
+class EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia(Base):
     """Supuestos de Trayectoria demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia
     """
 

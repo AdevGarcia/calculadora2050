@@ -52,7 +52,7 @@ def create_ST(
             case 'reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica':
                 loader(
                     db=db,
-                    model=models.INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica, 
+                    model=models.INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -60,7 +60,7 @@ def create_ST(
             case 'eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras':
                 loader(
                     db=db, 
-                    model=models.INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras, 
+                    model=models.INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -68,7 +68,7 @@ def create_ST(
             case 'eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion':
                 loader(
                     db=db, 
-                    model=models.INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion, 
+                    model=models.INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -76,7 +76,7 @@ def create_ST(
             case 'eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras':
                 loader(
                     db=db, 
-                    model=models.INDU_ST_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras, 
+                    model=models.INDU_ST_efic_ener_autogeneracion_cogeneracion_ladrilleras, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -120,7 +120,7 @@ def read_ST_module(
         case schemas.ST_name.reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica:
             rd = downloader(
                 db=db, 
-                model=models.INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica,
+                model=models.INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica,
                 topic='reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica',
                 **filter
                 )
@@ -129,7 +129,7 @@ def read_ST_module(
         case schemas.ST_name.eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras:
             rd = downloader(
                 db=db, 
-                model=models.INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras,
+                model=models.INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras,
                 topic='eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras',
                 **filter
                 )
@@ -138,7 +138,7 @@ def read_ST_module(
         case schemas.ST_name.eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion:
             rd = downloader(
                 db=db, 
-                model=models.INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion,
+                model=models.INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion,
                 topic='eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion',
                 **filter
                 )
@@ -147,7 +147,7 @@ def read_ST_module(
         case schemas.ST_name.eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras:
             rd = downloader(
                 db=db, 
-                model=models.INDU_ST_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras,
+                model=models.INDU_ST_efic_ener_autogeneracion_cogeneracion_ladrilleras,
                 topic='eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras',
                 **filter
                 )
@@ -188,10 +188,10 @@ def delete_ST(
     """DELETE ALL
     """
     
-    prune(db=db, model=models.INDU_ST_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica)
-    prune(db=db, model=models.INDU_ST_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras)
-    prune(db=db, model=models.INDU_ST_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion)
-    prune(db=db, model=models.INDU_ST_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras)
+    prune(db=db, model=models.INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica)
+    prune(db=db, model=models.INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras)
+    prune(db=db, model=models.INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion)
+    prune(db=db, model=models.INDU_ST_efic_ener_autogeneracion_cogeneracion_ladrilleras)
     prune(db=db, model=models.INDU_ST_sustitucion_de_sao_y_hfc)
     prune(db=db, model=models.INDU_ST_procesos_productivos_sostenibles)
 
@@ -244,7 +244,7 @@ def create_SF(
                        filters=['topic', 'tipo', 'fuente'])
             
             case 'factor_de_utilizacion_de_autogeneracion_y_cogeneracion':
-                loader(db=db, model=models.INDU_SF_factor_de_utilizacion_de_autogeneracion_y_cogeneracion, obj_in=jdata[key], 
+                loader(db=db, model=models.INDU_SF_factor_utilizacion_autogeneracion_cogeneracion, obj_in=jdata[key], 
                        filters=['topic', 'tipo'])
                 
             case 'capacidad_instalada_de_autogeneracion':
@@ -291,7 +291,7 @@ def read_SF(
         'indice_de_consumo'                                      : models.INDU_SF_indice_de_consumo,
         'distribucion_segun_tipo_de_combustible_ladrilleras'     : models.INDU_SF_distribucion_segun_tipo_de_combustible_ladrilleras,
         'uso_energetico_por_combustible'                         : models.INDU_SF_uso_energetico_por_combustible,
-        'factor_de_utilizacion_de_autogeneracion_y_cogeneracion' : models.INDU_SF_factor_de_utilizacion_de_autogeneracion_y_cogeneracion,
+        'factor_de_utilizacion_de_autogeneracion_y_cogeneracion' : models.INDU_SF_factor_utilizacion_autogeneracion_cogeneracion,
         'capacidad_instalada_de_autogeneracion'                  : models.INDU_SF_capacidad_instalada_de_autogeneracion,
         'excedentes_de_autogeneracion'                           : models.INDU_SF_excedentes_de_autogeneracion,
         'capacidad_instalada_de_cogeneracion'                    : models.INDU_SF_capacidad_instalada_de_cogeneracion,
@@ -323,7 +323,7 @@ def delete_SF(
     prune(db=db, model=models.INDU_SF_indice_de_consumo)
     prune(db=db, model=models.INDU_SF_distribucion_segun_tipo_de_combustible_ladrilleras)
     prune(db=db, model=models.INDU_SF_uso_energetico_por_combustible)
-    prune(db=db, model=models.INDU_SF_factor_de_utilizacion_de_autogeneracion_y_cogeneracion)
+    prune(db=db, model=models.INDU_SF_factor_utilizacion_autogeneracion_cogeneracion)
     prune(db=db, model=models.INDU_SF_capacidad_instalada_de_autogeneracion)
     prune(db=db, model=models.INDU_SF_excedentes_de_autogeneracion)
     prune(db=db, model=models.INDU_SF_capacidad_instalada_de_cogeneracion)
@@ -363,10 +363,10 @@ def create_salida_energia_requerida_combustible(
 
 @router.post(
         path='/salidas/salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible', 
-        response_model=schemas.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion, 
+        response_model=schemas.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion, 
         status_code=status.HTTP_201_CREATED)
 def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible(
-    data: schemas.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion, 
+    data: schemas.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -377,7 +377,7 @@ def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_combustibl
 
     loader(
         db=db, 
-        model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion, 
+        model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion, 
         obj_in=jdata['salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible'],
         filters=['bloque', 'topic', 'tipo', 'medida_1']
     )
@@ -387,10 +387,10 @@ def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_combustibl
 
 @router.post(
         path='/salidas/salida_balance_total_de_la_energia_requerida_combustible', 
-        response_model=schemas.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida, 
+        response_model=schemas.INDU_SALIDAS_por_combustible_balance_total_energia_requerida, 
         status_code=status.HTTP_201_CREATED)
 def create_salida_balance_total_de_la_energia_requerida_combustible(
-    data: schemas.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida, 
+    data: schemas.INDU_SALIDAS_por_combustible_balance_total_energia_requerida, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -401,7 +401,7 @@ def create_salida_balance_total_de_la_energia_requerida_combustible(
 
     loader(
         db=db, 
-        model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida, 
+        model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida, 
         obj_in=jdata['salida_balance_total_de_la_energia_requerida_combustible'], 
         filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_4']
     )
@@ -435,10 +435,10 @@ def create_salida_energia_requerida_industria(
 
 @router.post(
         path='/salidas/salida_energia_producida_por_autogeneracion_y_cogeneracion_industria', 
-        response_model=schemas.INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion, 
+        response_model=schemas.INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac, 
         status_code=status.HTTP_201_CREATED)
 def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_industria(
-    data: schemas.INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion, 
+    data: schemas.INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -449,7 +449,7 @@ def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_industria(
 
     loader(
         db=db, 
-        model=models.INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion, 
+        model=models.INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac, 
         obj_in=jdata['salida_energia_producida_por_autogeneracion_y_cogeneracion_industria'],
         filters=['bloque', 'topic', 'tipo', 'medida_1']
     )
@@ -459,10 +459,10 @@ def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_industria(
 
 @router.post(
         path='/salidas/salida_balance_total_de_la_energia_requerida_industria', 
-        response_model=schemas.INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida, 
+        response_model=schemas.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida, 
         status_code=status.HTTP_201_CREATED)
 def create_salida_balance_total_de_la_energia_requerida_industria(
-    data: schemas.INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida, 
+    data: schemas.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -473,7 +473,7 @@ def create_salida_balance_total_de_la_energia_requerida_industria(
 
     loader(
         db=db, 
-        model=models.INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida, 
+        model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida, 
         obj_in=jdata['salida_balance_total_de_la_energia_requerida_industria'],
         filters=['bloque', 'topic', 'tipo', 'medida_1', 'medida_4']
     )
@@ -510,7 +510,7 @@ def read_Salidas_module(
             filter = {'medida_1' : medida_ind_1}
             rd = downloader(
                 db=db, 
-                model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
+                model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
                 topic='energia_producida_por_autogeneracion_y_cogeneracion',
                 **filter
                 )
@@ -520,7 +520,7 @@ def read_Salidas_module(
             filter = {'medida_1' : medida_ind_1, 'medida_4' : medida_ind_4}
             rd = downloader(
                 db=db, 
-                model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
+                model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
                 topic='balance_total_de_la_energia_requerida',
                 **filter
                 )
@@ -540,7 +540,7 @@ def read_Salidas_module(
             filter = {'medida_1' : medida_ind_1}
             rd = downloader(
                 db=db, 
-                model=models.INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion,
+                model=models.INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac,
                 topic='energia_producida_por_autogeneracion_y_cogeneracion',
                 **filter
                 )
@@ -550,7 +550,7 @@ def read_Salidas_module(
             filter = {'medida_1' : medida_ind_1, 'medida_4' : medida_ind_4}
             rd = downloader(
                 db=db, 
-                model=models.INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida,
+                model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
                 topic='balance_total_de_la_energia',
                 **filter
                 )
@@ -574,11 +574,11 @@ def delete_Salidas(
     """
     
     prune(db=db, model=models.INDU_SALIDAS_por_combustible_energia_requerida)
-    prune(db=db, model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion)
-    prune(db=db, model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida)
+    prune(db=db, model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion)
+    prune(db=db, model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida)
     prune(db=db, model=models.INDU_SALIDAS_por_tipo_de_industria_energia_requerida)
-    prune(db=db, model=models.INDU_SALIDAS_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion)
-    prune(db=db, model=models.INDU_SALIDAS_por_tipo_de_industria_balance_total_de_la_energia_requerida)
+    prune(db=db, model=models.INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac)
+    prune(db=db, model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida)
 
     return {'msg': 'Deleted Salidas successfully'}
 

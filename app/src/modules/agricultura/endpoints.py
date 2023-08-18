@@ -47,7 +47,7 @@ def create_ST(
             case 'mejores_practicas_agricolas_superficie_de_implementacion':
                 loader(
                     db=db,
-                    model=models.AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion, 
+                    model=models.AGRO_ST_mejores_practicas_agricolas_superficie_implementacion, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -55,7 +55,7 @@ def create_ST(
             case 'tierra_dedicada_para_biocombustibles_superficie_de_implementacion':
                 loader(
                     db=db, 
-                    model=models.AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion, 
+                    model=models.AGRO_ST_tierra_biocombustibles_superficie_implementacion, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -83,7 +83,7 @@ def read_ST_module(
         case schemas.ST_name.mejores_practicas_agricolas_superficie_de_implementacion:
             rd = downloader(
                 db=db, 
-                model=models.AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion,
+                model=models.AGRO_ST_mejores_practicas_agricolas_superficie_implementacion,
                 topic='mejores_practicas_agricolas_superficie_de_implementacion',
                 **filter
                 )
@@ -91,7 +91,7 @@ def read_ST_module(
         case schemas.ST_name.tierra_dedicada_para_biocombustibles_superficie_de_implementacion:
             rd = downloader(
                 db=db, 
-                model=models.AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion,
+                model=models.AGRO_ST_tierra_biocombustibles_superficie_implementacion,
                 topic='tierra_dedicada_para_biocombustibles_superficie_de_implementacion',
                 **filter
                 )
@@ -112,8 +112,8 @@ def delete_ST(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion)
-    prune(db=db, model=models.AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion)
+    prune(db=db, model=models.AGRO_ST_mejores_practicas_agricolas_superficie_implementacion)
+    prune(db=db, model=models.AGRO_ST_tierra_biocombustibles_superficie_implementacion)
 
     return {'msg': 'Deleted successfully'}
 
@@ -135,7 +135,7 @@ def create_SF(
     for key in keys:
         match key:
             case 'factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo':
-                loader(db=db, model=models.AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo, obj_in=jdata[key], 
+                loader(db=db, model=models.AGRO_SF_factor_produc_biocombustibles_por_ha_tipo_de_cultivo, obj_in=jdata[key], 
                        filters=['topic', 'tipo', 'unidad'])
                     
             case 'produccion_biocombustibles':
@@ -151,7 +151,7 @@ def create_SF(
                        filters=['topic', 'tipo'])
             
             case 'uso_actual_de_la_tierra_sector_agropecuario_en_colombia':
-                loader(db=db, model=models.AGRO_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia, obj_in=jdata[key], 
+                loader(db=db, model=models.AGRO_SF_uso_actual_tierra_sector_agropecuario_colombia, obj_in=jdata[key], 
                        filters=['topic', 'tipo', 'fuente', 'unidad'])
             
             case 'tasas_de_crecimiento_del_pib_sectorial_de_agricultura':
@@ -186,11 +186,11 @@ def read_SF(
     """READ ALL"""
     
     d = {
-        'factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo' : models.AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo,
+        'factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo' : models.AGRO_SF_factor_produc_biocombustibles_por_ha_tipo_de_cultivo,
         'produccion_biocombustibles'                                           : models.AGRO_SF_produccion_biocombustibles,
         'porcentaje_del_cultivo_usado_para_biocombustibles'                    : models.AGRO_SF_porcentaje_del_cultivo_usado_para_biocombustibles,
         'factor_de_emision_de_cultivo_usado_para_biocombustibles'              : models.AGRO_SF_factor_de_emision_de_cultivo_usado_para_biocombustibles,
-        'uso_actual_de_la_tierra_sector_agropecuario_en_colombia'              : models.AGRO_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia,
+        'uso_actual_de_la_tierra_sector_agropecuario_en_colombia'              : models.AGRO_SF_uso_actual_tierra_sector_agropecuario_colombia,
         'tasas_de_crecimiento_del_pib_sectorial_de_agricultura'                : models.AGRO_SF_tasas_de_crecimiento_del_pib_sectorial_de_agricultura,
         'areas_de_implementacion_de_mejores_practicas_agricolas'               : models.AGRO_SF_areas_de_implementacion_de_mejores_practicas_agricolas,
         'factor_de_produccion_biomasa_por_cultivo'                             : models.AGRO_SF_factor_de_produccion_biomasa_por_cultivo,
@@ -212,11 +212,11 @@ def delete_SF(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo)
+    prune(db=db, model=models.AGRO_SF_factor_produc_biocombustibles_por_ha_tipo_de_cultivo)
     prune(db=db, model=models.AGRO_SF_produccion_biocombustibles)
     prune(db=db, model=models.AGRO_SF_porcentaje_del_cultivo_usado_para_biocombustibles)
     prune(db=db, model=models.AGRO_SF_factor_de_emision_de_cultivo_usado_para_biocombustibles)
-    prune(db=db, model=models.AGRO_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia)
+    prune(db=db, model=models.AGRO_SF_uso_actual_tierra_sector_agropecuario_colombia)
     prune(db=db, model=models.AGRO_SF_tasas_de_crecimiento_del_pib_sectorial_de_agricultura)
     prune(db=db, model=models.AGRO_SF_areas_de_implementacion_de_mejores_practicas_agricolas)
     prune(db=db, model=models.AGRO_SF_factor_de_produccion_biomasa_por_cultivo)

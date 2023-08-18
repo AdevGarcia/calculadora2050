@@ -42,7 +42,7 @@ def create_ST(
     jdata = jsonable_encoder(data)
     loader(
         db=db,
-        model=models.ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo, 
+        model=models.ENER_CombFosil_ST_eficiencia_energetica_refinacion_de_crudo, 
         obj_in=jdata['eficiencia_energetica_en_la_refinacion_de_crudo'], 
         filters=['topic', 'trayectoria']
     )
@@ -64,7 +64,7 @@ def read_ST_module(
 
     rd = downloader(
         db=db, 
-        model=models.ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo,
+        model=models.ENER_CombFosil_ST_eficiencia_energetica_refinacion_de_crudo,
         topic='eficiencia_energetica_en_la_refinacion_de_crudo',
         **filter
         )
@@ -82,7 +82,7 @@ def delete_ST(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo)
+    prune(db=db, model=models.ENER_CombFosil_ST_eficiencia_energetica_refinacion_de_crudo)
 
     return {'msg': 'Deleted successfully'}
 
@@ -138,7 +138,7 @@ def create_SF(
             case 'datos_de_la_produccion_de_crudo_en_el_ano_base':
                 loader(
                     db=db, 
-                    model=models.ENER_CombFosil_SF_datos_de_la_produccion_de_crudo_en_el_ano_base, 
+                    model=models.ENER_CombFosil_SF_datos_produccion_crudo_ano_base, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'total_crudo', 'unidad']
                 )
@@ -146,7 +146,7 @@ def create_SF(
             case 'datos_de_la_produccion_de_gas_natural_en_el_ano_base':
                 loader(
                     db=db, 
-                    model=models.ENER_CombFosil_SF_datos_de_la_produccion_de_gas_natural_en_el_ano_base, 
+                    model=models.ENER_CombFosil_SF_datos_produccion_gas_natural_ano_base, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'total_crudo', 'unidad']
                 )
@@ -179,8 +179,8 @@ def read_SF(
         'produccion_de_carbon'                                 : models.ENER_CombFosil_SF_produccion_de_carbon,
         'factores_de_emision_carbon'                           : models.ENER_CombFosil_SF_factores_de_emision_carbon,
         'no_de_pozos'                                          : models.ENER_CombFosil_SF_no_de_pozos,
-        'datos_de_la_produccion_de_crudo_en_el_ano_base'       : models.ENER_CombFosil_SF_datos_de_la_produccion_de_crudo_en_el_ano_base,
-        'datos_de_la_produccion_de_gas_natural_en_el_ano_base' : models.ENER_CombFosil_SF_datos_de_la_produccion_de_gas_natural_en_el_ano_base,
+        'datos_de_la_produccion_de_crudo_en_el_ano_base'       : models.ENER_CombFosil_SF_datos_produccion_crudo_ano_base,
+        'datos_de_la_produccion_de_gas_natural_en_el_ano_base' : models.ENER_CombFosil_SF_datos_produccion_gas_natural_ano_base,
         'consumo_de_energeticos'                               : models.ENER_CombFosil_SF_consumo_de_energeticos
         }
     
@@ -203,8 +203,8 @@ def delete_SF(
     prune(db=db, model=models.ENER_CombFosil_SF_produccion_de_carbon)
     prune(db=db, model=models.ENER_CombFosil_SF_factores_de_emision_carbon)
     prune(db=db, model=models.ENER_CombFosil_SF_no_de_pozos)
-    prune(db=db, model=models.ENER_CombFosil_SF_datos_de_la_produccion_de_crudo_en_el_ano_base)
-    prune(db=db, model=models.ENER_CombFosil_SF_datos_de_la_produccion_de_gas_natural_en_el_ano_base)
+    prune(db=db, model=models.ENER_CombFosil_SF_datos_produccion_crudo_ano_base)
+    prune(db=db, model=models.ENER_CombFosil_SF_datos_produccion_gas_natural_ano_base)
     prune(db=db, model=models.ENER_CombFosil_SF_consumo_de_energeticos)
 
     return {'msg': 'Deleted SF successfully'}
@@ -238,10 +238,10 @@ def create_salidas_combustibles_fosiles_producidos(
 
 @router.post(
         path='/salidas_consumo_de_combustibles_fosiles_por_el_propio_sector', 
-        response_model=schemas.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector, 
+        response_model=schemas.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector, 
         status_code=status.HTTP_201_CREATED)
 def create_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector(
-    data: schemas.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector, 
+    data: schemas.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -251,7 +251,7 @@ def create_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector(
     
     loader(
         db=db, 
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector, 
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector, 
         obj_in=jdata['salidas_consumo_de_combustibles_fosiles_por_el_propio_sector'], 
         filters=['topic', 'tipo', 'medida_1']
     )
@@ -261,10 +261,10 @@ def create_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector(
 
 @router.post(
         path='/salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos', 
-        response_model=schemas.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos, 
+        response_model=schemas.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos, 
         status_code=status.HTTP_201_CREATED)
 def create_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos(
-    data: schemas.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos, 
+    data: schemas.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -274,7 +274,7 @@ def create_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos(
     
     loader(
         db=db, 
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos, 
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos, 
         obj_in=jdata['salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos'], 
         filters=['topic', 'tipo', 'medida_1']
     )
@@ -307,7 +307,7 @@ def read_salidas_module(
         case schemas.Salidas_name.salidas_consumo_de_combustibles_fosiles_por_el_propio_sector:
             rd = downloader(
                 db=db, 
-                model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+                model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
                 topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
                 **filter
                 )
@@ -315,7 +315,7 @@ def read_salidas_module(
         case schemas.Salidas_name.salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos:
             rd = downloader(
                 db=db, 
-                model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos,
+                model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos,
                 topic='consumo_de_combustibles_fosiles_por_sectores_ajenos',
                 **filter
                 )
@@ -337,8 +337,8 @@ def delete_Salidas(
     """DELETE ALL"""
     
     prune(db=db, model=models.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos)
-    prune(db=db, model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector)
-    prune(db=db, model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos)
+    prune(db=db, model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector)
+    prune(db=db, model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos)
 
     return {'msg': 'Deleted Salidas successfully'}
 

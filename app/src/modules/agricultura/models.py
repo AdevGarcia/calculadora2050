@@ -8,7 +8,7 @@ from app.src.db.base_class import Base
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
 
-class AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion(Base):
+class AGRO_ST_mejores_practicas_agricolas_superficie_implementacion(Base):
     """Supuestos de Trayectoria mejores_practicas_agricolas_superficie_de_implementacion
     """
 
@@ -27,7 +27,7 @@ class AGRO_ST_mejores_practicas_agricolas_superficie_de_implementacion(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion(Base):
+class AGRO_ST_tierra_biocombustibles_superficie_implementacion(Base):
     """Supuestos de Trayectoria tierra_dedicada_para_biocombustibles_superficie_de_implementacion
     """
 
@@ -50,7 +50,7 @@ class AGRO_ST_tierra_dedicada_para_biocombustibles_superficie_de_implementacion(
 #######                          Supuestos Fijos                             #######
 ####################################################################################
 
-class AGRO_SF_factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo(Base):
+class AGRO_SF_factor_produc_biocombustibles_por_ha_tipo_de_cultivo(Base):
     """Supuestos Fijos factor_de_produccion_de_biocombustibles_por_ha_segun_tipo_de_cultivo
     """
 
@@ -94,7 +94,7 @@ class AGRO_SF_factor_de_emision_de_cultivo_usado_para_biocombustibles(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class AGRO_SF_uso_actual_de_la_tierra_sector_agropecuario_en_colombia(Base):
+class AGRO_SF_uso_actual_tierra_sector_agropecuario_colombia(Base):
     """Supuestos Fijos uso_actual_de_la_tierra_sector_agropecuario_en_colombia
     """
 

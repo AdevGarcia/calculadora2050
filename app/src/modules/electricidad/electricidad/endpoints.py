@@ -195,10 +195,10 @@ def create_salidas_combustibels_fosiles(
 
 @router.post(
         path='/salidas_energias_renovables_no_convencionales',
-        response_model=schemas.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales, 
+        response_model=schemas.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales, 
         status_code=status.HTTP_201_CREATED)
 def create_salidas_energias_renovables_no_convencionales(
-    data: schemas.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales, 
+    data: schemas.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -207,7 +207,7 @@ def create_salidas_energias_renovables_no_convencionales(
     jdata = jsonable_encoder(data)
     loader(
         db=db, 
-        model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales, 
+        model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales, 
         obj_in=jdata['salidas_energias_renovables_no_convencionales'], 
         filters=['topic', 'tipo', 'medida_1']
     )
@@ -281,7 +281,7 @@ def read_salidas_module(
         case schemas.Salidas_name.salidas_energias_renovables_no_convencionales:
             rd = downloader(
                 db=db, 
-                model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
+                model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
                 topic='energias_renovables_no_convencionales',
                 **filter
                 )
@@ -319,7 +319,7 @@ def delete_Salidas(
     """DELETE ALL"""
     
     prune(db=db, model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles)
-    prune(db=db, model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales)
+    prune(db=db, model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales)
     prune(db=db, model=models.ELECT_Electricidad_SALIDAS_energia_demandada)
     prune(db=db, model=models.ELECT_Electricidad_SALIDAS_balance)
 
@@ -353,10 +353,10 @@ def create_emisiones_combustibles_fosiles(
 
 @router.post(
         path='/emisiones_energias_renovables_no_convencionales', 
-        response_model=schemas.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales, 
+        response_model=schemas.ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales, 
         status_code=status.HTTP_201_CREATED)
 def create_emisiones_energias_renovables_no_convencionales(
-    data: schemas.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales, 
+    data: schemas.ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales, 
     db: Session = Depends(deps.get_db),
     # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
@@ -366,7 +366,7 @@ def create_emisiones_energias_renovables_no_convencionales(
     jdata = jsonable_encoder(data)
     loader(
         db=db, 
-        model=models.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales, 
+        model=models.ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales, 
         obj_in=jdata['emisiones_energias_renovables_no_convencionales'], 
         filters=['topic', 'bloque', 'tipo', 'medida_1']
     )
@@ -399,7 +399,7 @@ def read_emisiones_module(
         case schemas.Emisiones_name.emisiones_energias_renovables_no_convencionales:
             rd = downloader(
                 db=db, 
-                model=models.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales,
+                model=models.ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales,
                 topic='emisiones_de_gases_de_efecto_invernadero_gei',
                 **filter
                 )
@@ -421,6 +421,6 @@ def delete_Emisiones(
     """DELETE ALL"""
     
     prune(db=db, model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles)
-    prune(db=db, model=models.ELECT_Electricidad_EMISIONES_energias_renovables_no_convencionales)
+    prune(db=db, model=models.ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales)
 
     return {'msg': 'Deleted successfully'}

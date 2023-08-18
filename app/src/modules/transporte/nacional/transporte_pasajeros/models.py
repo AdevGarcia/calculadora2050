@@ -27,7 +27,7 @@ class TRANS_PAS_ST_transporte_urbano_distribucion_modal(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_ST_transporte_urbano_distancia_promedio_por_viaje_por_modo(Base):
+class TRANS_PAS_ST_transp_urbano_dist_promedio_viaje_modo(Base):
     """Supuestos de Trayectoria transporte_urbano_distancia_promedio_por_viaje_por_modo"""
     
     id          = Column(Integer, primary_key=True, index=True)
@@ -95,8 +95,8 @@ class TRANS_PAS_SF_uso_de_combustibles_fosiles_en_vehiculos_hibridos(Base):
     value       = Column(name='value', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     
-
-class TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos(Base):
+      ###############################################################
+class TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_nuevos(Base):
     """Supuestos Fijos rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -113,8 +113,8 @@ class TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevo
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes(Base):
+      ############################################################### 
+class TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_existentes(Base):
     """Supuestos Fijos rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -150,7 +150,7 @@ class TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_urbano_electrico(Base):
+class TRANS_PAS_SF_rend_modo_tec_transp_urbano_electrico(Base):
     """Supuestos Fijos rendimiento_modo_tecnologia_transporte_urbano_electrico"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -206,7 +206,7 @@ class TRANS_PAS_SF_porcentaje_de_vehiculos_nuevos_transporte_urbano(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_SF_kilometros_totales_modo_carretero_transporte_interurbano(Base):
+class TRANS_PAS_SF_km_tot_modo_carretero_transp_interurbano(Base):
     """Supuestos Fijos kilometros_totales_modo_carretero_transporte_interurbano"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -223,7 +223,7 @@ class TRANS_PAS_SF_kilometros_totales_modo_carretero_transporte_interurbano(Base
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_SF_demanda_de_energia_otros_modos_transporte_interurbano(Base):
+class TRANS_PAS_SF_demanda_ener_otros_modos_transp_interurbano(Base):
     """Supuestos Fijos demanda_de_energia_otros_modos_transporte_interurbano"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -240,7 +240,7 @@ class TRANS_PAS_SF_demanda_de_energia_otros_modos_transporte_interurbano(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_SF_porcentaje_de_demanda_electrica_para_el_modo_ferreo(Base):
+class TRANS_PAS_SF_demanda_electrica_modo_ferreo(Base):
     """Supuestos Fijos porcentaje_de_demanda_electrica_para_el_modo_ferreo"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -257,7 +257,7 @@ class TRANS_PAS_SF_porcentaje_de_demanda_electrica_para_el_modo_ferreo(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_SF_distribucion_por_modo_carretero_transporte_interurbano(Base):
+class TRANS_PAS_SF_distr_modo_carretero_trans_interurbano(Base):
     """Supuestos Fijos distribucion_por_modo_carretero_transporte_interurbano"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -273,8 +273,8 @@ class TRANS_PAS_SF_distribucion_por_modo_carretero_transporte_interurbano(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-
-class TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes(Base):
+      ###############################################################
+class TRANS_PAS_SF_rend_modo_tec_trans_interurbano_vehic_existentes(Base):
     """Supuestos Fijos rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes
     """
 
@@ -293,7 +293,7 @@ class TRANS_PAS_SF_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_SF_porcentaje_de_vehiculos_nuevos_transporte_interurbano(Base):
+class TRANS_PAS_SF_vehiculos_nuevos_transp_interurbano(Base):
     """Supuestos Fijos porcentaje_de_vehiculos_nuevos_transporte_interurbano
     """
 
@@ -311,7 +311,7 @@ class TRANS_PAS_SF_porcentaje_de_vehiculos_nuevos_transporte_interurbano(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_urbano(Base):
+class TRANS_PAS_SF_dist_tip_viajada_por_modo_transp_urbano(Base):
     """Supuestos Fijos distancia_tipica_viajada_por_modo_transporte_urbano"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -328,7 +328,7 @@ class TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_urbano(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class TRANS_PAS_SF_distancia_tipica_viajada_por_modo_transporte_interurbano(Base):
+class TRANS_PAS_SF_dist_tip_viajada_modo_transp_interurbano(Base):
     """Supuestos Fijos distancia_tipica_viajada_por_modo_transporte_interurbano"""
 
     id          = Column(Integer, primary_key=True, index=True)

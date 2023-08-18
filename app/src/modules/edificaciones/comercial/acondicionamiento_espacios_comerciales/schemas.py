@@ -21,7 +21,7 @@ class ST_name(str, Enum):
     demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia          = 'demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia'
 
 
-class EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia(BaseModel):
+class EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia(BaseModel):
     """Supuestos de Trayectoria demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia
     """
 
@@ -39,7 +39,7 @@ class EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios
     unidad      : str
 
 
-class EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia(BaseModel):
+class EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia(BaseModel):
     """Supuestos de Trayectoria demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia
     """
 
@@ -61,8 +61,8 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """Supuestos de trayectoria con todos los topics
     """
     
-    demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia : list[EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia]
-    demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia          : list[EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia]
+    demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia : list[EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia]
+    demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia          : list[EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia]
     
     class ConfigDict:
         from_attributes = True

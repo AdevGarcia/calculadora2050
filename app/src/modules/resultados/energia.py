@@ -166,7 +166,8 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  gas_natural ############## TWh
     filter={"tipo": "gas_natural", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
     gas_natural = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -179,7 +180,8 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  petroleo ############## TWh
     filter={"tipo": "petroleo", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
     petroleo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -192,7 +194,8 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  diesel ############## TWh
     filter={"tipo": "diesel", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
     diesel = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -205,7 +208,8 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  fuel_oil ############## TWh
     filter={"tipo": "fuel_oil", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
     fuel_oil = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -218,7 +222,8 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  glp ############## TWh
     filter={"tipo": "glp", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
     glp = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -231,7 +236,8 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  gasolina_para_motores ############## TWh
     filter={"tipo": "gasolina_para_motores", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
     gasolina_para_motores = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -244,7 +250,8 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  queroseno ############## TWh
     filter={"tipo": "queroseno", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
+        model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
     queroseno = db_to_df(rd=rd).to_dict(orient='records')[0]

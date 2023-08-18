@@ -13,7 +13,7 @@ from db import deps
 
 from app.src.modules.user import models as models_user
 
-from .util.util import db_to_df, db_to_dict, get_item, set_zeros, set_suma_total, not_negative
+from .util.util import db_to_df
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -58,4 +58,3 @@ def read_entradas_produccion(
         logger.info(f'Read Data: {jsonable_encoder(resultado)}')
 
     return jsonable_encoder(resultado)
-

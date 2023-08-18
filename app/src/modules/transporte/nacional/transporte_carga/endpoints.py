@@ -47,7 +47,7 @@ def create_ST(
             case 'uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano':
                 loader(
                     db=db,
-                    model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano, 
+                    model=models.TRANS_CAR_ST_uso_ener_trans_ferreo_transp_carga_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -63,7 +63,7 @@ def create_ST(
             case 'distancia_para_el_transporte_carretero_transporte_de_carga_interurbano':
                 loader(
                     db=db,
-                    model=models.TRANS_CAR_ST_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano, 
+                    model=models.TRANS_CAR_ST_dist_trans_carretero_transp_carga_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -71,7 +71,7 @@ def create_ST(
             case 'uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano':
                 loader(
                     db=db,
-                    model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano, 
+                    model=models.TRANS_CAR_ST_uso_ener_trans_fluvial_transp_carga_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -79,7 +79,7 @@ def create_ST(
             case 'uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano':
                 loader(
                     db=db,
-                    model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano, 
+                    model=models.TRANS_CAR_ST_uso_de_ener_trans_aereo_trans_carga_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'trayectoria']
                 )
@@ -87,7 +87,7 @@ def create_ST(
             case 'carga_sustituida_por_modo_transporte_de_carga_interurbano':
                 loader(
                     db=db,
-                    model=models.TRANS_CAR_ST_carga_sustituida_por_modo_transporte_de_carga_interurbano, 
+                    model=models.TRANS_CAR_ST_carga_sustituida_modo_trans_carga_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -95,7 +95,7 @@ def create_ST(
             case 'distribucion_por_tecnologia_transporte_de_carga_urbano':
                 loader(
                     db=db,
-                    model=models.TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano, 
+                    model=models.TRANS_CAR_ST_distr_tecnologia_transporte_carga_urbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -103,7 +103,7 @@ def create_ST(
             case 'distribucion_por_tecnologia_transporte_de_carga_interurbano':
                 loader(
                     db=db,
-                    model=models.TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_interurbano, 
+                    model=models.TRANS_CAR_ST_dist_tecn_transporte_carga_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'bloque', 'tipo', 'trayectoria']
                 )
@@ -131,7 +131,7 @@ def read_ST_module(
         case schemas.ST_name.uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano:
             rd = downloader(
                 db=db, 
-                model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano,
+                model=models.TRANS_CAR_ST_uso_ener_trans_ferreo_transp_carga_interurbano,
                 topic='uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano',
                 **filter
                 )
@@ -147,7 +147,7 @@ def read_ST_module(
         case schemas.ST_name.distancia_para_el_transporte_carretero_transporte_de_carga_interurbano:
             rd = downloader(
                 db=db, 
-                model=models.TRANS_CAR_ST_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano,
+                model=models.TRANS_CAR_ST_dist_trans_carretero_transp_carga_interurbano,
                 topic='distancia_para_el_transporte_carretero_transporte_de_carga_interurbano',
                 **filter
                 )
@@ -155,7 +155,7 @@ def read_ST_module(
         case schemas.ST_name.uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano:
             rd = downloader(
                 db=db, 
-                model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano,
+                model=models.TRANS_CAR_ST_uso_ener_trans_fluvial_transp_carga_interurbano,
                 topic='uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano',
                 **filter
                 )
@@ -163,7 +163,7 @@ def read_ST_module(
         case schemas.ST_name.uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano:
             rd = downloader(
                 db=db, 
-                model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano,
+                model=models.TRANS_CAR_ST_uso_de_ener_trans_aereo_trans_carga_interurbano,
                 topic='uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano',
                 **filter
                 )
@@ -171,7 +171,7 @@ def read_ST_module(
         case schemas.ST_name.carga_sustituida_por_modo_transporte_de_carga_interurbano:
             rd = downloader(
                 db=db, 
-                model=models.TRANS_CAR_ST_carga_sustituida_por_modo_transporte_de_carga_interurbano,
+                model=models.TRANS_CAR_ST_carga_sustituida_modo_trans_carga_interurbano,
                 topic='carga_sustituida_por_modo_transporte_de_carga_interurbano',
                 **filter
                 )
@@ -179,7 +179,7 @@ def read_ST_module(
         case schemas.ST_name.distribucion_por_tecnologia_transporte_de_carga_urbano:
             rd = downloader(
                 db=db, 
-                model=models.TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano,
+                model=models.TRANS_CAR_ST_distr_tecnologia_transporte_carga_urbano,
                 topic='distribucion_por_tecnologia_transporte_de_carga_urbano',
                 **filter
                 )
@@ -187,7 +187,7 @@ def read_ST_module(
         case schemas.ST_name.distribucion_por_tecnologia_transporte_de_carga_interurbano:
             rd = downloader(
                 db=db, 
-                model=models.TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_interurbano,
+                model=models.TRANS_CAR_ST_dist_tecn_transporte_carga_interurbano,
                 topic='distribucion_por_tecnologia_transporte_de_carga_interurbano',
                 **filter
                 )
@@ -208,14 +208,14 @@ def delete_ST(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano)
+    prune(db=db, model=models.TRANS_CAR_ST_uso_ener_trans_ferreo_transp_carga_interurbano)
     prune(db=db, model=models.TRANS_CAR_ST_distancia_modo_ferreo)
-    prune(db=db, model=models.TRANS_CAR_ST_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano)
-    prune(db=db, model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano)
-    prune(db=db, model=models.TRANS_CAR_ST_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano)
-    prune(db=db, model=models.TRANS_CAR_ST_carga_sustituida_por_modo_transporte_de_carga_interurbano)
-    prune(db=db, model=models.TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_urbano)
-    prune(db=db, model=models.TRANS_CAR_ST_distribucion_por_tecnologia_transporte_de_carga_interurbano)
+    prune(db=db, model=models.TRANS_CAR_ST_dist_trans_carretero_transp_carga_interurbano)
+    prune(db=db, model=models.TRANS_CAR_ST_uso_ener_trans_fluvial_transp_carga_interurbano)
+    prune(db=db, model=models.TRANS_CAR_ST_uso_de_ener_trans_aereo_trans_carga_interurbano)
+    prune(db=db, model=models.TRANS_CAR_ST_carga_sustituida_modo_trans_carga_interurbano)
+    prune(db=db, model=models.TRANS_CAR_ST_distr_tecnologia_transporte_carga_urbano)
+    prune(db=db, model=models.TRANS_CAR_ST_dist_tecn_transporte_carga_interurbano)
 
     return {'msg': 'Deleted successfully'}
 
@@ -279,7 +279,7 @@ def create_SF(
             case 'numero_de_vehiculos_transporte_de_carga_interurbano':
                 loader(
                     db=db, 
-                    model=models.TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_interurbano, 
+                    model=models.TRANS_CAR_SF_num_vehiculos_transporte_carga_interurbano, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo']
                 )
@@ -305,7 +305,7 @@ def read_SF(
         'distancia_tipica_por_modo'                           : models.TRANS_CAR_SF_distancia_tipica_por_modo,
         'vida_util'                                           : models.TRANS_CAR_SF_vida_util,
         'numero_de_vehiculos_transporte_de_carga_urbano'      : models.TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_urbano,
-        'numero_de_vehiculos_transporte_de_carga_interurbano' : models.TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_interurbano
+        'numero_de_vehiculos_transporte_de_carga_interurbano' : models.TRANS_CAR_SF_num_vehiculos_transporte_carga_interurbano
         }
     
     rd = downloader_batch(db=db, **d)
@@ -328,7 +328,7 @@ def delete_SF(
     prune(db=db, model=models.TRANS_CAR_SF_distancia_tipica_por_modo)
     prune(db=db, model=models.TRANS_CAR_SF_vida_util)
     prune(db=db, model=models.TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_urbano)
-    prune(db=db, model=models.TRANS_CAR_SF_numero_de_vehiculos_transporte_de_carga_interurbano)
+    prune(db=db, model=models.TRANS_CAR_SF_num_vehiculos_transporte_carga_interurbano)
 
     return {'msg': 'Deleted SF successfully'}
 

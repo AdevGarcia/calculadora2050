@@ -8,7 +8,7 @@ from app.src.db.base_class import Base
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
 
-class ENER_CombFosil_ST_eficiencia_energetica_en_la_refinacion_de_crudo(Base):
+class ENER_CombFosil_ST_eficiencia_energetica_refinacion_de_crudo(Base):
     """Supuestos de Trayectoria Eficiencia energética en la refinación de crudo"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -88,7 +88,7 @@ class ENER_CombFosil_SF_no_de_pozos(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class ENER_CombFosil_SF_datos_de_la_produccion_de_crudo_en_el_ano_base(Base):
+class ENER_CombFosil_SF_datos_produccion_crudo_ano_base(Base):
     """Supuestos Fijos datos_de_la_produccion_de_crudo_en_el_ano_base
     """
 
@@ -100,7 +100,7 @@ class ENER_CombFosil_SF_datos_de_la_produccion_de_crudo_en_el_ano_base(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-class ENER_CombFosil_SF_datos_de_la_produccion_de_gas_natural_en_el_ano_base(Base):
+class ENER_CombFosil_SF_datos_produccion_gas_natural_ano_base(Base):
     """Supuestos Fijos datos_de_la_produccion_de_gas_natural_en_el_ano_base
     """
 
@@ -144,8 +144,8 @@ class ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(Base):
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
 
-
-class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector(Base):
+      ############################################################### 
+class ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector(Base):
     """salidas_consumo_de_combustibles_fosiles_por_el_propio_sector"""
 
     id          = Column(Integer, primary_key=True, index=True)
@@ -162,8 +162,8 @@ class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_secto
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
 
-
-class ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_sectores_ajenos(Base):
+      ############################################################### 
+class ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos(Base):
     """salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos"""
 
     id          = Column(Integer, primary_key=True, index=True)

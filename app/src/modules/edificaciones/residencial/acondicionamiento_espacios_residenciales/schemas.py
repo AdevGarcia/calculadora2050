@@ -23,7 +23,7 @@ class ST_name(str, Enum):
     equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia = 'equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia'
 
 
-class EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia(BaseModel):
+class EDIF_RES_ACOND_ST_demanda_acond_espacios_diseno_eficiencia(BaseModel):
     """Supuestos de Trayectoria demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia
     """
 
@@ -42,7 +42,7 @@ class EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_diseno_y_efic
     unidad      : str
 
 
-class EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_solo_eficiencia(BaseModel):
+class EDIF_RES_ACOND_ST_demanda_acond_espacios_solo_eficiencia(BaseModel):
     """Supuestos de Trayectoria demanda_para_acondicionamiento_de_espacios_solo_eficiencia
     """
 
@@ -80,7 +80,7 @@ class EDIF_RES_ACOND_ST_implementacion(BaseModel):
     unidad      : str
 
 
-class EDIF_RES_ACOND_ST_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia(BaseModel):
+class EDIF_RES_ACOND_ST_equipos_acond_espacios_alta_eficiencia(BaseModel):
     """Supuestos de Trayectoria equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia
     """
 
@@ -103,10 +103,10 @@ class SUPUESTOS_TRAYECTORIA(BaseModel):
     """Supuestos de trayectoria con todos los topics
     """
     
-    demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia   : list[EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia]
-    demanda_para_acondicionamiento_de_espacios_solo_eficiencia       : list[EDIF_RES_ACOND_ST_demanda_para_acondicionamiento_de_espacios_solo_eficiencia]
+    demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia   : list[EDIF_RES_ACOND_ST_demanda_acond_espacios_diseno_eficiencia]
+    demanda_para_acondicionamiento_de_espacios_solo_eficiencia       : list[EDIF_RES_ACOND_ST_demanda_acond_espacios_solo_eficiencia]
     implementacion                                                   : list[EDIF_RES_ACOND_ST_implementacion]
-    equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia : list[EDIF_RES_ACOND_ST_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia]
+    equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia : list[EDIF_RES_ACOND_ST_equipos_acond_espacios_alta_eficiencia]
 
     class ConfigDict:
         from_attributes = True

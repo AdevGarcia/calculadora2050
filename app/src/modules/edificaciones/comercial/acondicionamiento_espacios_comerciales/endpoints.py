@@ -47,7 +47,7 @@ def create_ST(
             case 'demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia':
                 loader(
                     db=db,
-                    model=models.EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia, 
+                    model=models.EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -55,7 +55,7 @@ def create_ST(
             case 'demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia':
                 loader(
                     db=db,
-                    model=models.EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia, 
+                    model=models.EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia, 
                     obj_in=jdata[key], 
                     filters=['topic', 'tipo', 'trayectoria']
                 )
@@ -83,7 +83,7 @@ def read_ST_module(
         case schemas.ST_name.demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia,
+                model=models.EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia,
                 topic='demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia',
                 **filter
                 )
@@ -91,7 +91,7 @@ def read_ST_module(
         case schemas.ST_name.demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia:
             rd = downloader(
                 db=db, 
-                model=models.EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia,
+                model=models.EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia,
                 topic='demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia',
                 **filter
                 )
@@ -112,8 +112,8 @@ def delete_ST(
     ) -> Any:
     """DELETE ALL"""
     
-    prune(db=db, model=models.EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia)
-    prune(db=db, model=models.EDIF_COM_ACOND_ST_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia)
+    prune(db=db, model=models.EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia)
+    prune(db=db, model=models.EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia)
 
     return {'msg': 'Deleted successfully'}
 
