@@ -30,8 +30,8 @@ router = APIRouter()
 @router.get('/energia_inyectada_a_red')
 def read_entradas_energia_inyectada_a_red(
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
+    # medida_ind_2: schemas.Trayectoria=1,
+    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_res_sol_1: schemas.Trayectoria=1,
     medida_res_agu_1: schemas.Trayectoria=1,

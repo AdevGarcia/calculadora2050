@@ -18,8 +18,8 @@ echo "The POSTGRES_PASSWORD is : $POSTGRES_PASSWORD" # Check
 echo "The POSTGRES_DB is       : $POSTGRES_DB"       # Check
 
 # Let the DB start
-echo "### Let the DB start - sleep 5s"
-sleep 5;
+echo "### Let the DB start - sleep 3s"
+sleep 3;
 
 cd ./app
 # Run migrations
