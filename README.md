@@ -4,6 +4,7 @@
 # TODO
 
 - Limpiar codigo
+- Usuario con formulario inicio
 - Autenticacion
 - https
 - pasar a produccion
