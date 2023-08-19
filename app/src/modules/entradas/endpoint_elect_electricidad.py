@@ -53,7 +53,7 @@ def read_entradas_energia_inyectada_a_red(
     """READ"""
 
     ##########   industria   ##############
-    filter={"tipo": "total_inyectado_a_red", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "total_inyectado_a_red", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
