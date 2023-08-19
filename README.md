@@ -1,6 +1,17 @@
 # Calculadora Colombiana CO2 2050
 
 
+# TODO
+
+- Limpiar codigo
+- Autenticacion
+- https
+- pasar a produccion
+
+otros
+- interfaz excel
+
+
 
 ### Operacion en segundo plano
 ```bash
