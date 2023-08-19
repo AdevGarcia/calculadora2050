@@ -296,9 +296,9 @@ def resultados_evolucion_generacion_energetica_nacional(
     medida_ener_1: schemas.Trayectoria=1,
     medida_elect_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
-    medida_ind_4: schemas.Trayectoria=1,
+    # medida_ind_2: schemas.Trayectoria=1,
+    # medida_ind_3: schemas.Trayectoria=1,
+    # medida_ind_4: schemas.Trayectoria=1,
     medida_res_sol_1: schemas.Trayectoria=1,
     medida_res_agu_1: schemas.Trayectoria=1,
     medida_res_agu_2: schemas.Trayectoria=1,
@@ -353,7 +353,7 @@ def resultados_evolucion_generacion_energetica_nacional(
     electricidad["unidad"]   = "TWh"
 
     ##########  industria ############## TWh
-    filter={"bloque": "por_combustible", "tipo": "total", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"bloque": "por_combustible", "tipo": "total", 'medida_1': medida_ind_1}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
         # model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
         model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
@@ -490,8 +490,8 @@ def resultados_evolucion_generacion_energetica_nacional(
 def resultados_evolucion_demanda_energetica_nacional(
     medida_ener_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
+    # medida_ind_2: schemas.Trayectoria=1,
+    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_res_sol_1: schemas.Trayectoria=1,
     medida_res_agu_1: schemas.Trayectoria=1,
@@ -546,7 +546,7 @@ def resultados_evolucion_demanda_energetica_nacional(
         }
 
     ##########  industria ############## TWh
-    filter={"bloque": "por_combustible", "tipo": "total_combustibles_fosiles", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"bloque": "por_combustible", "tipo": "total_combustibles_fosiles", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -785,8 +785,8 @@ def resultados_consumo_combustibles_por_sector(
     medida_ener_1: schemas.Trayectoria=1,
     medida_elect_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
+    # medida_ind_2: schemas.Trayectoria=1,
+    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_edi_res_irco_1: schemas.Trayectoria=1,
     medida_edi_res_irco_2: schemas.Trayectoria=1,
@@ -832,7 +832,7 @@ def resultados_consumo_combustibles_por_sector(
     electricidad["unidad"]   = "TWh"
 
     ##########  industria ############## TWh
-    filter={"bloque": "por_combustible", "tipo": "total_combustibles_fosiles", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"bloque": "por_combustible", "tipo": "total_combustibles_fosiles", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1056,8 +1056,8 @@ def resultados_consumo_combustibles_por_sector(
 def resultados_consumo_por_tipo_de_combustible(
     medida_ener_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
+    # medida_ind_2: schemas.Trayectoria=1,
+    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_edi_res_irco_1: schemas.Trayectoria=1,
     medida_edi_res_irco_2: schemas.Trayectoria=1,
@@ -1096,7 +1096,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df2 = db_to_df(rd=rd)
 
     # ind 660
-    filter={"tipo": "gasolina", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "gasolina", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1139,7 +1139,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df4 = db_to_df(rd=rd)
 
     # ind 661
-    filter={"tipo": "diesel", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "diesel", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1203,7 +1203,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df5 = db_to_df(rd=rd)
 
     # ind 656
-    filter={"tipo": "gas_natural", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "gas_natural", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1254,7 +1254,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df5 = db_to_df(rd=rd)
 
     # ind 665
-    filter={"tipo": "glp", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "glp", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1276,7 +1276,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df1 = db_to_df(rd=rd)
 
     # ind 664
-    filter={"tipo": "fuel_oil", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "fuel_oil", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1298,7 +1298,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df1 = db_to_df(rd=rd)
 
     # ind 658
-    filter={"tipo": "petroleo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "petroleo", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1328,7 +1328,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df2 = db_to_df(rd=rd)
 
     # ind 669
-    filter={"tipo": "hidrogeno_verde", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "hidrogeno_verde", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1372,7 +1372,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df4 = db_to_df(rd=rd)
 
     # ind 666
-    filter={"tipo": "queroseno", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "queroseno", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1395,7 +1395,7 @@ def resultados_consumo_por_tipo_de_combustible(
     df1 = db_to_df(rd=rd)
 
     # ind 657
-    filter={"tipo": "lena", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "lena", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1411,14 +1411,14 @@ def resultados_consumo_por_tipo_de_combustible(
 
     ##########  bagazo ############## TWh
     # ind 610
-    filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_energia_requerida,
         **filter)
     df1 = db_to_df(rd=rd)
     
     # ind 632
-    filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "bagazo", 'medida_1': medida_ind_1}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
         # model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
         model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
@@ -1444,7 +1444,7 @@ def resultados_consumo_por_tipo_de_combustible(
 
     ##########  carbon_mineral ############## TWh
     # ind 655
-    filter={"tipo": "carbon_mineral", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "carbon_mineral", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1459,7 +1459,7 @@ def resultados_consumo_por_tipo_de_combustible(
 
     ##########  carbon_lena ############## TWh
     # ind 652
-    filter={"tipo": "carbon_de_lena", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "carbon_de_lena", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1474,7 +1474,7 @@ def resultados_consumo_por_tipo_de_combustible(
 
     ##########  coque ############## TWh
     # ind 663
-    filter={"tipo": "coque", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "coque", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
@@ -1516,8 +1516,8 @@ def resultados_consumo_por_tipo_de_combustible(
 @router.get('/consumo_electricidad_por_sector')
 def resultados_consumo_electricidad_por_sector(
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
+    # medida_ind_2: schemas.Trayectoria=1,
+    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_edi_res_aer_1 : schemas.Trayectoria=1,
     medida_edi_res_irco_1: schemas.Trayectoria=1,
@@ -1570,7 +1570,7 @@ def resultados_consumo_electricidad_por_sector(
         }
 
     ##########  industria ############## TWh
-    filter={"bloque": "por_combustible", "tipo": "total_electricidad", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"bloque": "por_combustible", "tipo": "total_electricidad", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,

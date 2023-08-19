@@ -21,6 +21,7 @@ if settings.API_ENV == 'production':
     # PRODUCTION
     logger.info(f"ENV: {settings.API_ENV} postgresql")
     # SQLALCHEMY_DATABASE_URI = "postgresql://user:password@postgresserver/db"
+    
     engine = create_engine(settings.SQLALCHEMY_DATABASE_URI)
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

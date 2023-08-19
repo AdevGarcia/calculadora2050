@@ -17,8 +17,10 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
-# COPY . .
 COPY . /api
+
+# Export ports
+# EXPOSE 8000
 
 # RUN ./install.sh
 

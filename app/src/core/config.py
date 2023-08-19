@@ -37,24 +37,27 @@ class Settings(BaseSettings):
     
     if API_ENV == 'production':
 
-        POSTGRES_SERVER: str = os.getenv('POSTGRES_SERVER')
-        POSTGRES_USER: str = os.getenv('POSTGRES_USER')
+        POSTGRES_SERVER: str   = os.getenv('POSTGRES_SERVER')
+        POSTGRES_PORT: str     = os.getenv('POSTGRES_PORT')
+        POSTGRES_USER: str     = os.getenv('POSTGRES_USER')
         POSTGRES_PASSWORD: str = os.getenv('POSTGRES_PASSWORD')
-        POSTGRES_DB: str = os.getenv('POSTGRES_DB')
-        SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
+        POSTGRES_DB: str       = os.getenv('POSTGRES_DB')
+        # SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
+        SQLALCHEMY_DATABASE_URI : str = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}"
         
-        @validator("SQLALCHEMY_DATABASE_URI", pre=True)
-        def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
-            if isinstance(v, str):
-                return v
-            return PostgresDsn.build(
-                scheme="postgresql",
-                user=values.get("POSTGRES_USER"),
-                password=values.get("POSTGRES_PASSWORD"),
-                host=values.get("POSTGRES_SERVER"),
-                path=f"/{values.get('POSTGRES_DB') or ''}",
-            )
-
+        # @validator("SQLALCHEMY_DATABASE_URI", pre=True)
+        # def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
+        #     if isinstance(v, str):
+        #         return v
+            
+        #     return PostgresDsn.build(
+        #         scheme="postgresql",
+        #         user=values.get("POSTGRES_USER"),
+        #         password=values.get("POSTGRES_PASSWORD"),
+        #         host=values.get("POSTGRES_SERVER"),
+        #         path=f"/{values.get('POSTGRES_DB') or ''}",
+        #     )
+    
     class Config:
         case_sensitive = True
 

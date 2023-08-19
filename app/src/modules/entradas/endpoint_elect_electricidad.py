@@ -206,8 +206,8 @@ def read_entradas_energia_inyectada_a_red(
 @router.get('/demanda')
 def read_entradas_demanda(
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
+    # medida_ind_2: schemas.Trayectoria=1,
+    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_res_sol_1: schemas.Trayectoria=1,
     medida_res_agu_1: schemas.Trayectoria=1,
@@ -231,7 +231,7 @@ def read_entradas_demanda(
     """READ"""
 
     ##########   industria   ##############
-    filter={"tipo": "total_electricidad", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
+    filter={"tipo": "total_electricidad", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
         # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,

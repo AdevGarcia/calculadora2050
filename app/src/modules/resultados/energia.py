@@ -285,8 +285,8 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
 def resultados_evolucion_excedentes_energeticos(
     medida_ener_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
+    # medida_ind_2: schemas.Trayectoria=1,
+    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
@@ -308,8 +308,8 @@ def resultados_evolucion_excedentes_energeticos(
     entrada = read_entradas_requerimientos_energeticos(
         medida_ener_1=medida_ener_1,
         medida_ind_1 =medida_ind_1,
-        medida_ind_2 =medida_ind_2,
-        medida_ind_3 =medida_ind_3,
+        # medida_ind_2 =medida_ind_2,
+        # medida_ind_3 =medida_ind_3,
         medida_ind_4 =medida_ind_4,
         medida_trans_car_1 =medida_trans_car_1,
         medida_trans_car_2 =medida_trans_car_2,
@@ -381,8 +381,8 @@ def resultados_evolucion_requerimientos_energeticos(
     entrada = read_entradas_excedentes_energeticos(
         medida_ener_1=medida_ener_1,
         medida_ind_1 =medida_ind_1,
-        medida_ind_2 =medida_ind_2,
-        medida_ind_3 =medida_ind_3,
+        # medida_ind_2 =medida_ind_2,
+        # medida_ind_3 =medida_ind_3,
         medida_ind_4 =medida_ind_4,
         medida_trans_car_1 =medida_trans_car_1,
         medida_trans_car_2 =medida_trans_car_2,

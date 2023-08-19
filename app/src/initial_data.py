@@ -13,10 +13,10 @@ def init() -> None:
     init_db(db)
 
 
-def main() -> None:
-    # logger.info("Init SessionLocal")
-    init()
+# def main() -> None:
+#     # logger.info("Init SessionLocal")
+#     init()
 
 
 if __name__ == "__main__":
-    main()
+    init()

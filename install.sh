@@ -29,17 +29,16 @@ else
 fi
 
 cd ./app
-echo "Alembic INIT"
+echo "### Alembic INIT"
 alembic init alembic
 
 cd ..
-echo "Alembic env copy"
+echo "### Alembic env copy"
 cp alembic_env.py app/alembic/env.py
 
-
 cd ./app
-echo "Alembic autogenerate"
+echo "### Alembic autogenerate"
 alembic revision --autogenerate -m "init"
 
+echo "### Alembic upgrade head"
 alembic -c ./alembic.ini upgrade head
-echo "Done"
