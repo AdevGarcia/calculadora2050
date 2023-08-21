@@ -31,7 +31,7 @@ sudo nohup ./start_dev.sh > logs.out 2> logs.err < /dev/null &
 # Installation
 ```bash
 pip install fastapi alembic uvicorn psycopg2-binary httpx pandas 
-pip install python-dotenv python-jose pydantic-settings email-validator passlib
+pip install python-dotenv python-jose pydantic-settings email-validator passlib bcrypt
 ```
 
 

@@ -1,19 +1,21 @@
 """init
 
-Revision ID: f0e3ded27334
+Revision ID: d025b0f2b738
 Revises: 
-Create Date: 2023-08-18 13:43:32.500967
+Create Date: 2023-08-21 11:13:24.832440
 
 """
+from typing import Sequence, Union
+
 from alembic import op
 import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f0e3ded27334'
-down_revision = None
-branch_labels = None
-depends_on = None
+revision: str = 'd025b0f2b738'
+down_revision: Union[str, None] = None
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
@@ -344,23 +346,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_bosq_sf_factor_de_conversion_de_biomasa_por_deforestacion_id'), 'bosq_sf_factor_de_conversion_de_biomasa_por_deforestacion', ['id'], unique=False)
-    op.create_table('bosq_st_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('trayectoria', sa.Integer(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_bosq_st_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales_id'), 'bosq_st_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales', ['id'], unique=False)
     op.create_table('bosq_st_escenarios_de_deforestacion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -378,6 +363,23 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_bosq_st_escenarios_de_deforestacion_id'), 'bosq_st_escenarios_de_deforestacion', ['id'], unique=False)
+    op.create_table('bosq_st_plantaciones_forestales_con_fines_comerciales',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('trayectoria', sa.Integer(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_bosq_st_plantaciones_forestales_con_fines_comerciales_id'), 'bosq_st_plantaciones_forestales_con_fines_comerciales', ['id'], unique=False)
     op.create_table('edif_com_acond_emisiones',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -412,7 +414,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_com_acond_salidas_id'), 'edif_com_acond_salidas', ['id'], unique=False)
-    op.create_table('edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia',
+    op.create_table('edif_com_acond_st_demanda_ener_acond_esp_diseno_eficiencia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -428,8 +430,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia_id'), 'edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia', ['id'], unique=False)
-    op.create_table('edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia',
+    op.create_index(op.f('ix_edif_com_acond_st_demanda_ener_acond_esp_diseno_eficiencia_id'), 'edif_com_acond_st_demanda_ener_acond_esp_diseno_eficiencia', ['id'], unique=False)
+    op.create_table('edif_com_acond_st_demanda_ener_acond_espacios_eficiencia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -445,7 +447,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia_id'), 'edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia', ['id'], unique=False)
+    op.create_index(op.f('ix_edif_com_acond_st_demanda_ener_acond_espacios_eficiencia_id'), 'edif_com_acond_st_demanda_ener_acond_espacios_eficiencia', ['id'], unique=False)
     op.create_table('edif_com_usos_term_equip_emisiones',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -497,7 +499,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_com_usos_term_equip_sf_consumo_total_de_energia_por_uso_id'), 'edif_com_usos_term_equip_sf_consumo_total_de_energia_por_uso', ['id'], unique=False)
-    op.create_table('edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_equipamiento',
+    op.create_table('edif_com_usos_term_equip_sf_part_energeticos_usos_termicos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -513,8 +515,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_equipamiento_id'), 'edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_equipamiento', ['id'], unique=False)
-    op.create_table('edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_los_usos_termicos',
+    op.create_index(op.f('ix_edif_com_usos_term_equip_sf_part_energeticos_usos_termicos_id'), 'edif_com_usos_term_equip_sf_part_energeticos_usos_termicos', ['id'], unique=False)
+    op.create_table('edif_com_usos_term_equip_sf_participacion_energ_equipamiento',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -530,7 +532,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_los_usos_termicos_id'), 'edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_los_usos_termicos', ['id'], unique=False)
+    op.create_index(op.f('ix_edif_com_usos_term_equip_sf_participacion_energ_equipamiento_id'), 'edif_com_usos_term_equip_sf_participacion_energ_equipamiento', ['id'], unique=False)
     op.create_table('edif_com_usos_term_equip_sf_participacion_usos_en_equipamiento',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -548,7 +550,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_com_usos_term_equip_sf_participacion_usos_en_equipamiento_id'), 'edif_com_usos_term_equip_sf_participacion_usos_en_equipamiento', ['id'], unique=False)
-    op.create_table('edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_la_iluminacion',
+    op.create_table('edif_com_usos_term_equip_st_reduccion_eficiencia_iluminacion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -564,8 +566,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_la_iluminacion_id'), 'edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_la_iluminacion', ['id'], unique=False)
-    op.create_table('edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_refrigeracion',
+    op.create_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_eficiencia_iluminacion_id'), 'edif_com_usos_term_equip_st_reduccion_eficiencia_iluminacion', ['id'], unique=False)
+    op.create_table('edif_com_usos_term_equip_st_reduccion_eficiencia_refrigeracion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -581,8 +583,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_refrigeracion_id'), 'edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_refrigeracion', ['id'], unique=False)
-    op.create_table('edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_usos_termicos',
+    op.create_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_eficiencia_refrigeracion_id'), 'edif_com_usos_term_equip_st_reduccion_eficiencia_refrigeracion', ['id'], unique=False)
+    op.create_table('edif_com_usos_term_equip_st_reduccion_eficiencia_usos_termicos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -598,7 +600,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_usos_termicos_id'), 'edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_usos_termicos', ['id'], unique=False)
+    op.create_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_eficiencia_usos_termicos_id'), 'edif_com_usos_term_equip_st_reduccion_eficiencia_usos_termicos', ['id'], unique=False)
     op.create_table('edif_res_acond_emisiones',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -649,7 +651,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_acond_sf_tenencia_id'), 'edif_res_acond_sf_tenencia', ['id'], unique=False)
-    op.create_table('edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia',
+    op.create_table('edif_res_acond_st_demanda_acond_espacios_diseno_eficiencia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -666,8 +668,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia_id'), 'edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia', ['id'], unique=False)
-    op.create_table('edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_solo_eficiencia',
+    op.create_index(op.f('ix_edif_res_acond_st_demanda_acond_espacios_diseno_eficiencia_id'), 'edif_res_acond_st_demanda_acond_espacios_diseno_eficiencia', ['id'], unique=False)
+    op.create_table('edif_res_acond_st_demanda_acond_espacios_solo_eficiencia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -684,8 +686,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_solo_eficiencia_id'), 'edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_solo_eficiencia', ['id'], unique=False)
-    op.create_table('edif_res_acond_st_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia',
+    op.create_index(op.f('ix_edif_res_acond_st_demanda_acond_espacios_solo_eficiencia_id'), 'edif_res_acond_st_demanda_acond_espacios_solo_eficiencia', ['id'], unique=False)
+    op.create_table('edif_res_acond_st_equipos_acond_espacios_alta_eficiencia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -702,7 +704,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_res_acond_st_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia_id'), 'edif_res_acond_st_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia', ['id'], unique=False)
+    op.create_index(op.f('ix_edif_res_acond_st_equipos_acond_espacios_alta_eficiencia_id'), 'edif_res_acond_st_equipos_acond_espacios_alta_eficiencia', ['id'], unique=False)
     op.create_table('edif_res_acond_st_implementacion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -740,7 +742,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_emisiones_id'), 'edif_res_ilu_ref_coc_otr_emisiones', ['id'], unique=False)
-    op.create_table('edif_res_ilu_ref_coc_otr_metodologia_generacion_solar_fotovoltaica',
+    op.create_table('edif_res_ilu_ref_coc_otr_metod_generacion_solar_fotovoltaica',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -758,7 +760,7 @@ def upgrade() -> None:
     sa.Column('medida_3', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_metodologia_generacion_solar_fotovoltaica_id'), 'edif_res_ilu_ref_coc_otr_metodologia_generacion_solar_fotovoltaica', ['id'], unique=False)
+    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_metod_generacion_solar_fotovoltaica_id'), 'edif_res_ilu_ref_coc_otr_metod_generacion_solar_fotovoltaica', ['id'], unique=False)
     op.create_table('edif_res_ilu_ref_coc_otr_salidas',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -830,7 +832,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_demanda_glp_por_uso_id'), 'edif_res_ilu_ref_coc_otr_sf_demanda_glp_por_uso', ['id'], unique=False)
-    op.create_table('edif_res_ilu_ref_coc_otr_sf_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica',
+    op.create_table('edif_res_ilu_ref_coc_otr_sf_hr_ope_autogeneracion_fotovoltaica',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -845,7 +847,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica_id'), 'edif_res_ilu_ref_coc_otr_sf_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica', ['id'], unique=False)
+    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_hr_ope_autogeneracion_fotovoltaica_id'), 'edif_res_ilu_ref_coc_otr_sf_hr_ope_autogeneracion_fotovoltaica', ['id'], unique=False)
     op.create_table('edif_res_ilu_ref_coc_otr_sf_numero_de_bombillos_por_hogar',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -863,22 +865,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_numero_de_bombillos_por_hogar_id'), 'edif_res_ilu_ref_coc_otr_sf_numero_de_bombillos_por_hogar', ['id'], unique=False)
-    op.create_table('edif_res_ilu_ref_coc_otr_sf_porcentaje_de_tenencia_refrigeradores',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_porcentaje_de_tenencia_refrigeradores_id'), 'edif_res_ilu_ref_coc_otr_sf_porcentaje_de_tenencia_refrigeradores', ['id'], unique=False)
     op.create_table('edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_energia_electrica',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -930,6 +916,22 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_glp_id'), 'edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_glp', ['id'], unique=False)
+    op.create_table('edif_res_ilu_ref_coc_otr_sf_tenencia_refrigeradores',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_tenencia_refrigeradores_id'), 'edif_res_ilu_ref_coc_otr_sf_tenencia_refrigeradores', ['id'], unique=False)
     op.create_table('edif_res_ilu_ref_coc_otr_st_demanda_coccion_con_gas_natural',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -998,7 +1000,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_demanda_total_por_refrigeracion_id'), 'edif_res_ilu_ref_coc_otr_st_demanda_total_por_refrigeracion', ['id'], unique=False)
-    op.create_table('edif_res_ilu_ref_coc_otr_st_porcentaje_de_estufas_con_eficiencia_mejorada',
+    op.create_table('edif_res_ilu_ref_coc_otr_st_estufas_eficiencia_mejorada',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -1013,8 +1015,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_porcentaje_de_estufas_con_eficiencia_mejorada_id'), 'edif_res_ilu_ref_coc_otr_st_porcentaje_de_estufas_con_eficiencia_mejorada', ['id'], unique=False)
-    op.create_table('edif_res_ilu_ref_coc_otr_st_porcentaje_de_neveras_mas_eficientes',
+    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_estufas_eficiencia_mejorada_id'), 'edif_res_ilu_ref_coc_otr_st_estufas_eficiencia_mejorada', ['id'], unique=False)
+    op.create_table('edif_res_ilu_ref_coc_otr_st_neveras_mas_eficientes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1030,8 +1032,41 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_porcentaje_de_neveras_mas_eficientes_id'), 'edif_res_ilu_ref_coc_otr_st_porcentaje_de_neveras_mas_eficientes', ['id'], unique=False)
-    op.create_table('edif_res_ilu_ref_coc_otr_st_porcentaje_tecnologia_para_iluminacion',
+    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_neveras_mas_eficientes_id'), 'edif_res_ilu_ref_coc_otr_st_neveras_mas_eficientes', ['id'], unique=False)
+    op.create_table('edif_res_ilu_ref_coc_otr_st_pot_inst_autogeneracion_fotovolt',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('trayectoria', sa.Integer(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_pot_inst_autogeneracion_fotovolt_id'), 'edif_res_ilu_ref_coc_otr_st_pot_inst_autogeneracion_fotovolt', ['id'], unique=False)
+    op.create_table('edif_res_ilu_ref_coc_otr_st_reduccion_demanda_electrica',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('trayectoria', sa.Integer(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_reduccion_demanda_electrica_id'), 'edif_res_ilu_ref_coc_otr_st_reduccion_demanda_electrica', ['id'], unique=False)
+    op.create_table('edif_res_ilu_ref_coc_otr_st_tecnologia_iluminacion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -1048,40 +1083,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_porcentaje_tecnologia_para_iluminacion_id'), 'edif_res_ilu_ref_coc_otr_st_porcentaje_tecnologia_para_iluminacion', ['id'], unique=False)
-    op.create_table('edif_res_ilu_ref_coc_otr_st_potencia_instalada_para_autogeneracion_solar_fotovoltaica',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('trayectoria', sa.Integer(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_potencia_instalada_para_autogeneracion_solar_fotovoltaica_id'), 'edif_res_ilu_ref_coc_otr_st_potencia_instalada_para_autogeneracion_solar_fotovoltaica', ['id'], unique=False)
-    op.create_table('edif_res_ilu_ref_coc_otr_st_reduccion_total_de_la_demanda_de_energia_electrica',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('trayectoria', sa.Integer(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_reduccion_total_de_la_demanda_de_energia_electrica_id'), 'edif_res_ilu_ref_coc_otr_st_reduccion_total_de_la_demanda_de_energia_electrica', ['id'], unique=False)
+    op.create_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_tecnologia_iluminacion_id'), 'edif_res_ilu_ref_coc_otr_st_tecnologia_iluminacion', ['id'], unique=False)
     op.create_table('edif_res_rural_emisiones',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1182,7 +1184,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_elect_electricidad_emisiones_combustibles_fosiles_id'), 'elect_electricidad_emisiones_combustibles_fosiles', ['id'], unique=False)
-    op.create_table('elect_electricidad_emisiones_energias_renovables_no_convencionales',
+    op.create_table('elect_electricidad_emisiones_ener_renov_no_convencionales',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -1199,7 +1201,7 @@ def upgrade() -> None:
     sa.Column('medida_1', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_elect_electricidad_emisiones_energias_renovables_no_convencionales_id'), 'elect_electricidad_emisiones_energias_renovables_no_convencionales', ['id'], unique=False)
+    op.create_index(op.f('ix_elect_electricidad_emisiones_ener_renov_no_convencionales_id'), 'elect_electricidad_emisiones_ener_renov_no_convencionales', ['id'], unique=False)
     op.create_table('elect_electricidad_salidas_balance',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1234,6 +1236,23 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_elect_electricidad_salidas_combustibles_fosiles_id'), 'elect_electricidad_salidas_combustibles_fosiles', ['id'], unique=False)
+    op.create_table('elect_electricidad_salidas_ener_renov_no_convencionales',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_elect_electricidad_salidas_ener_renov_no_convencionales_id'), 'elect_electricidad_salidas_ener_renov_no_convencionales', ['id'], unique=False)
     op.create_table('elect_electricidad_salidas_energia_demandada',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1251,23 +1270,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_elect_electricidad_salidas_energia_demandada_id'), 'elect_electricidad_salidas_energia_demandada', ['id'], unique=False)
-    op.create_table('elect_electricidad_salidas_energias_renovables_no_convencionales',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_elect_electricidad_salidas_energias_renovables_no_convencionales_id'), 'elect_electricidad_salidas_energias_renovables_no_convencionales', ['id'], unique=False)
     op.create_table('elect_electricidad_sf_factor_de_carga',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1363,7 +1365,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_ener_combfosil_salidas_combustibles_fosiles_producidos_id'), 'ener_combfosil_salidas_combustibles_fosiles_producidos', ['id'], unique=False)
-    op.create_table('ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector',
+    op.create_table('ener_combfosil_salidas_consumo_comb_fosiles_propio_sector',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1379,8 +1381,8 @@ def upgrade() -> None:
     sa.Column('medida_1', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector_id'), 'ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector', ['id'], unique=False)
-    op.create_table('ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos',
+    op.create_index(op.f('ix_ener_combfosil_salidas_consumo_comb_fosiles_propio_sector_id'), 'ener_combfosil_salidas_consumo_comb_fosiles_propio_sector', ['id'], unique=False)
+    op.create_table('ener_combfosil_salidas_consumo_comb_fosiles_sectores_ajenos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1396,7 +1398,7 @@ def upgrade() -> None:
     sa.Column('medida_1', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos_id'), 'ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos', ['id'], unique=False)
+    op.create_index(op.f('ix_ener_combfosil_salidas_consumo_comb_fosiles_sectores_ajenos_id'), 'ener_combfosil_salidas_consumo_comb_fosiles_sectores_ajenos', ['id'], unique=False)
     op.create_table('ener_combfosil_sf_consumo_de_energeticos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1406,7 +1408,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_ener_combfosil_sf_consumo_de_energeticos_id'), 'ener_combfosil_sf_consumo_de_energeticos', ['id'], unique=False)
-    op.create_table('ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base',
+    op.create_table('ener_combfosil_sf_datos_produccion_crudo_ano_base',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1415,8 +1417,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base_id'), 'ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base', ['id'], unique=False)
-    op.create_table('ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base',
+    op.create_index(op.f('ix_ener_combfosil_sf_datos_produccion_crudo_ano_base_id'), 'ener_combfosil_sf_datos_produccion_crudo_ano_base', ['id'], unique=False)
+    op.create_table('ener_combfosil_sf_datos_produccion_gas_natural_ano_base',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1425,7 +1427,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base_id'), 'ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base', ['id'], unique=False)
+    op.create_index(op.f('ix_ener_combfosil_sf_datos_produccion_gas_natural_ano_base_id'), 'ener_combfosil_sf_datos_produccion_gas_natural_ano_base', ['id'], unique=False)
     op.create_table('ener_combfosil_sf_factores_de_emision_carbon',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1477,7 +1479,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_ener_combfosil_sf_produccion_de_hidrocarburos_id'), 'ener_combfosil_sf_produccion_de_hidrocarburos', ['id'], unique=False)
-    op.create_table('ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo',
+    op.create_table('ener_combfosil_st_eficiencia_energetica_refinacion_de_crudo',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -1492,7 +1494,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo_id'), 'ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo', ['id'], unique=False)
+    op.create_index(op.f('ix_ener_combfosil_st_eficiencia_energetica_refinacion_de_crudo_id'), 'ener_combfosil_st_eficiencia_energetica_refinacion_de_crudo', ['id'], unique=False)
     op.create_table('gana_emisiones',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1531,7 +1533,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_gana_salidas_id'), 'gana_salidas', ['id'], unique=False)
-    op.create_table('gana_sf_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos',
+    op.create_table('gana_sf_areas_ini_implem_pract_sostenibles_suelos_ganaderos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1539,8 +1541,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_gana_sf_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos_id'), 'gana_sf_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos', ['id'], unique=False)
-    op.create_table('gana_sf_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual',
+    op.create_index(op.f('ix_gana_sf_areas_ini_implem_pract_sostenibles_suelos_ganaderos_id'), 'gana_sf_areas_ini_implem_pract_sostenibles_suelos_ganaderos', ['id'], unique=False)
+    op.create_table('gana_sf_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1549,7 +1551,16 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_gana_sf_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual_id'), 'gana_sf_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual', ['id'], unique=False)
+    op.create_index(op.f('ix_gana_sf_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual_id'), 'gana_sf_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual', ['id'], unique=False)
+    op.create_table('gana_sf_fact_prod_estiercol_por_cabeza_ganado_y_emisiones',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('fuente', sa.String(), nullable=True),
+    sa.Column('valor', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_gana_sf_fact_prod_estiercol_por_cabeza_ganado_y_emisiones_id'), 'gana_sf_fact_prod_estiercol_por_cabeza_ganado_y_emisiones', ['id'], unique=False)
     op.create_table('gana_sf_factor_de_emision_de_metano_ch4_por_genero',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1559,15 +1570,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_gana_sf_factor_de_emision_de_metano_ch4_por_genero_id'), 'gana_sf_factor_de_emision_de_metano_ch4_por_genero', ['id'], unique=False)
-    op.create_table('gana_sf_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('fuente', sa.String(), nullable=True),
-    sa.Column('valor', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_gana_sf_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones_id'), 'gana_sf_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones', ['id'], unique=False)
     op.create_table('gana_sf_hato_ganadero_colombiano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1584,7 +1586,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_gana_sf_hato_ganadero_colombiano_id'), 'gana_sf_hato_ganadero_colombiano', ['id'], unique=False)
-    op.create_table('gana_sf_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias',
+    op.create_table('gana_sf_pot_reduc_emisiones_practicas_sost_suelos_ganaderos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1599,8 +1601,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_gana_sf_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias_id'), 'gana_sf_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias', ['id'], unique=False)
-    op.create_table('gana_sf_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos',
+    op.create_index(op.f('ix_gana_sf_pot_reduc_emisiones_practicas_sost_suelos_ganaderos_id'), 'gana_sf_pot_reduc_emisiones_practicas_sost_suelos_ganaderos', ['id'], unique=False)
+    op.create_table('gana_sf_pot_reduccion_emisiones_mejores_practicas_pecuarias',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1615,7 +1617,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_gana_sf_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos_id'), 'gana_sf_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos', ['id'], unique=False)
+    op.create_index(op.f('ix_gana_sf_pot_reduccion_emisiones_mejores_practicas_pecuarias_id'), 'gana_sf_pot_reduccion_emisiones_mejores_practicas_pecuarias', ['id'], unique=False)
     op.create_table('gana_sf_potencial_energetico_del_estiercol',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1625,7 +1627,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_gana_sf_potencial_energetico_del_estiercol_id'), 'gana_sf_potencial_energetico_del_estiercol', ['id'], unique=False)
-    op.create_table('gana_sf_uso_actual_de_la_tierra_sector_agropecuario_en_colombia',
+    op.create_table('gana_sf_uso_actual_tierra_sector_agropecuario_colombia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1634,8 +1636,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_gana_sf_uso_actual_de_la_tierra_sector_agropecuario_en_colombia_id'), 'gana_sf_uso_actual_de_la_tierra_sector_agropecuario_en_colombia', ['id'], unique=False)
-    op.create_table('gana_st_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado',
+    op.create_index(op.f('ix_gana_sf_uso_actual_tierra_sector_agropecuario_colombia_id'), 'gana_sf_uso_actual_tierra_sector_agropecuario_colombia', ['id'], unique=False)
+    op.create_table('gana_st_mejores_pract_pecuarias_cabezas_ganado',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1651,8 +1653,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_gana_st_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado_id'), 'gana_st_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado', ['id'], unique=False)
-    op.create_table('gana_st_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies',
+    op.create_index(op.f('ix_gana_st_mejores_pract_pecuarias_cabezas_ganado_id'), 'gana_st_mejores_pract_pecuarias_cabezas_ganado', ['id'], unique=False)
+    op.create_table('gana_st_pract_sost_suelos_ganaderos_crecimiento_estimado_sup',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1668,7 +1670,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_gana_st_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies_id'), 'gana_st_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies', ['id'], unique=False)
+    op.create_index(op.f('ix_gana_st_pract_sost_suelos_ganaderos_crecimiento_estimado_sup_id'), 'gana_st_pract_sost_suelos_ganaderos_crecimiento_estimado_sup', ['id'], unique=False)
     op.create_table('gana_st_produccion_de_estiercol_para_bioenergia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1743,7 +1745,25 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_emisiones_sao_id'), 'indu_emisiones_sao', ['id'], unique=False)
-    op.create_table('indu_salidas_por_combustible_balance_total_de_la_energia_requerida',
+    op.create_table('indu_salidas_por_comb_ener_prod_autogeneracion_cogeneracion',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_indu_salidas_por_comb_ener_prod_autogeneracion_cogeneracion_id'), 'indu_salidas_por_comb_ener_prod_autogeneracion_cogeneracion', ['id'], unique=False)
+    op.create_table('indu_salidas_por_combustible_balance_total_energia_requerida',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('bloque', sa.String(), nullable=True),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1761,25 +1781,7 @@ def upgrade() -> None:
     sa.Column('medida_4', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_indu_salidas_por_combustible_balance_total_de_la_energia_requerida_id'), 'indu_salidas_por_combustible_balance_total_de_la_energia_requerida', ['id'], unique=False)
-    op.create_table('indu_salidas_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_indu_salidas_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion_id'), 'indu_salidas_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion', ['id'], unique=False)
+    op.create_index(op.f('ix_indu_salidas_por_combustible_balance_total_energia_requerida_id'), 'indu_salidas_por_combustible_balance_total_energia_requerida', ['id'], unique=False)
     op.create_table('indu_salidas_por_combustible_energia_requerida',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -1799,43 +1801,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_salidas_por_combustible_energia_requerida_id'), 'indu_salidas_por_combustible_energia_requerida', ['id'], unique=False)
-    op.create_table('indu_salidas_por_tipo_de_industria_balance_total_de_la_energia_requerida',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.Column('medida_4', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_indu_salidas_por_tipo_de_industria_balance_total_de_la_energia_requerida_id'), 'indu_salidas_por_tipo_de_industria_balance_total_de_la_energia_requerida', ['id'], unique=False)
-    op.create_table('indu_salidas_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.Column('medida_1', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_indu_salidas_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion_id'), 'indu_salidas_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion', ['id'], unique=False)
     op.create_table('indu_salidas_por_tipo_de_industria_energia_requerida',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -1855,6 +1820,43 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_salidas_por_tipo_de_industria_energia_requerida_id'), 'indu_salidas_por_tipo_de_industria_energia_requerida', ['id'], unique=False)
+    op.create_table('indu_salidas_por_tipo_ind_balance_total_ener_requerida',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.Column('medida_4', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_indu_salidas_por_tipo_ind_balance_total_ener_requerida_id'), 'indu_salidas_por_tipo_ind_balance_total_ener_requerida', ['id'], unique=False)
+    op.create_table('indu_salidas_por_tipo_ind_ener_prod_autogener_cogenerac',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.Column('medida_1', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_indu_salidas_por_tipo_ind_ener_prod_autogener_cogenerac_id'), 'indu_salidas_por_tipo_ind_ener_prod_autogener_cogenerac', ['id'], unique=False)
     op.create_table('indu_sf_capacidad_instalada_de_autogeneracion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -1920,7 +1922,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_sf_excedentes_de_cogeneracion_id'), 'indu_sf_excedentes_de_cogeneracion', ['id'], unique=False)
-    op.create_table('indu_sf_factor_de_utilizacion_de_autogeneracion_y_cogeneracion',
+    op.create_table('indu_sf_factor_utilizacion_autogeneracion_cogeneracion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -1928,7 +1930,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_indu_sf_factor_de_utilizacion_de_autogeneracion_y_cogeneracion_id'), 'indu_sf_factor_de_utilizacion_de_autogeneracion_y_cogeneracion', ['id'], unique=False)
+    op.create_index(op.f('ix_indu_sf_factor_utilizacion_autogeneracion_cogeneracion_id'), 'indu_sf_factor_utilizacion_autogeneracion_cogeneracion', ['id'], unique=False)
     op.create_table('indu_sf_indice_de_consumo',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2005,23 +2007,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_sf_uso_energetico_por_combustible_id'), 'indu_sf_uso_energetico_por_combustible', ['id'], unique=False)
-    op.create_table('indu_st_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('trayectoria', sa.Integer(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_indu_st_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras_id'), 'indu_st_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras', ['id'], unique=False)
-    op.create_table('indu_st_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion',
+    op.create_table('indu_st_efi_ener_crecimiento_autogeneracion_cogeneracion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2037,8 +2023,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_indu_st_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion_id'), 'indu_st_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion', ['id'], unique=False)
-    op.create_table('indu_st_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras',
+    op.create_index(op.f('ix_indu_st_efi_ener_crecimiento_autogeneracion_cogeneracion_id'), 'indu_st_efi_ener_crecimiento_autogeneracion_cogeneracion', ['id'], unique=False)
+    op.create_table('indu_st_efi_ener_reduccion_consumo_energ_ladrilleras',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -2053,7 +2039,23 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_indu_st_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras_id'), 'indu_st_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras', ['id'], unique=False)
+    op.create_index(op.f('ix_indu_st_efi_ener_reduccion_consumo_energ_ladrilleras_id'), 'indu_st_efi_ener_reduccion_consumo_energ_ladrilleras', ['id'], unique=False)
+    op.create_table('indu_st_efic_ener_autogeneracion_cogeneracion_ladrilleras',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('trayectoria', sa.Integer(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_indu_st_efic_ener_autogeneracion_cogeneracion_ladrilleras_id'), 'indu_st_efic_ener_autogeneracion_cogeneracion_ladrilleras', ['id'], unique=False)
     op.create_table('indu_st_procesos_productivos_sostenibles',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2071,7 +2073,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_indu_st_procesos_productivos_sostenibles_id'), 'indu_st_procesos_productivos_sostenibles', ['id'], unique=False)
-    op.create_table('indu_st_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica',
+    op.create_table('indu_st_reduccion_consumo_ener_aumento_eficiencia_energetica',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2087,7 +2089,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_indu_st_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica_id'), 'indu_st_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica', ['id'], unique=False)
+    op.create_index(op.f('ix_indu_st_reduccion_consumo_ener_aumento_eficiencia_energetica_id'), 'indu_st_reduccion_consumo_ener_aumento_eficiencia_energetica', ['id'], unique=False)
     op.create_table('indu_st_sustitucion_de_sao_y_hfc',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2169,15 +2171,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_agu_sf_consumo_energetico_medio_por_tratamiento_id'), 'res_agu_sf_consumo_energetico_medio_por_tratamiento', ['id'], unique=False)
-    op.create_table('res_agu_sf_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('value', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_res_agu_sf_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento_id'), 'res_agu_sf_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento', ['id'], unique=False)
     op.create_table('res_agu_sf_dbo_por_m3_de_agua_residual_domestica_no_tratada',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2232,6 +2225,15 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_agu_sf_generacion_de_ch4_por_kg_dbo_tratado_id'), 'res_agu_sf_generacion_de_ch4_por_kg_dbo_tratado', ['id'], unique=False)
+    op.create_table('res_agu_sf_generacion_energetica_estaciones_tratamiento',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('value', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_res_agu_sf_generacion_energetica_estaciones_tratamiento_id'), 'res_agu_sf_generacion_energetica_estaciones_tratamiento', ['id'], unique=False)
     op.create_table('res_agu_st_cantidad_de_aguas_residuales_domesticas',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2266,7 +2268,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_agu_st_cantidad_de_aguas_residuales_industriales_id'), 'res_agu_st_cantidad_de_aguas_residuales_industriales', ['id'], unique=False)
-    op.create_table('res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas',
+    op.create_table('res_agu_st_est_tratam_aguas_res_municipales_extraccion_biogas',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -2281,8 +2283,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas_id'), 'res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas', ['id'], unique=False)
-    op.create_table('res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas',
+    op.create_index(op.f('ix_res_agu_st_est_tratam_aguas_res_municipales_extraccion_biogas_id'), 'res_agu_st_est_tratam_aguas_res_municipales_extraccion_biogas', ['id'], unique=False)
+    op.create_table('res_agu_st_est_tratamiento_aguas_res_ind_extraccion_biogas',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -2297,7 +2299,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas_id'), 'res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas', ['id'], unique=False)
+    op.create_index(op.f('ix_res_agu_st_est_tratamiento_aguas_res_ind_extraccion_biogas_id'), 'res_agu_st_est_tratamiento_aguas_res_ind_extraccion_biogas', ['id'], unique=False)
     op.create_table('res_sol_emisiones',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2378,25 +2380,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_sol_sf_consumo_energetico_medio_por_tratamiento_id'), 'res_sol_sf_consumo_energetico_medio_por_tratamiento', ['id'], unique=False)
-    op.create_table('res_sol_sf_datos_de_la_generacion_energetica_mediante_incineracion',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('value', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_res_sol_sf_datos_de_la_generacion_energetica_mediante_incineracion_id'), 'res_sol_sf_datos_de_la_generacion_energetica_mediante_incineracion', ['id'], unique=False)
-    op.create_table('res_sol_sf_datos_para_la_estimacion_de_las_emisiones_de_incineracion',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('value', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_res_sol_sf_datos_para_la_estimacion_de_las_emisiones_de_incineracion_id'), 'res_sol_sf_datos_para_la_estimacion_de_las_emisiones_de_incineracion', ['id'], unique=False)
     op.create_table('res_sol_sf_distribucion_de_los_residuos_por_zona_climatica',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2406,6 +2389,16 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_sol_sf_distribucion_de_los_residuos_por_zona_climatica_id'), 'res_sol_sf_distribucion_de_los_residuos_por_zona_climatica', ['id'], unique=False)
+    op.create_table('res_sol_sf_estimacion_emisiones_incineracion',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('value', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_res_sol_sf_estimacion_emisiones_incineracion_id'), 'res_sol_sf_estimacion_emisiones_incineracion', ['id'], unique=False)
     op.create_table('res_sol_sf_generacion_de_metano_por_tipologia_de_residuo',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2415,6 +2408,15 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_sol_sf_generacion_de_metano_por_tipologia_de_residuo_id'), 'res_sol_sf_generacion_de_metano_por_tipologia_de_residuo', ['id'], unique=False)
+    op.create_table('res_sol_sf_generacion_energetica_mediante_incineracion',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('value', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_res_sol_sf_generacion_energetica_mediante_incineracion_id'), 'res_sol_sf_generacion_energetica_mediante_incineracion', ['id'], unique=False)
     op.create_table('res_sol_sf_rellenos_sanitarios_con_captacion_aprovechamiento',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2448,7 +2450,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_res_sol_st_cantidad_de_residuos_generada_anual_id'), 'res_sol_st_cantidad_de_residuos_generada_anual', ['id'], unique=False)
-    op.create_table('res_sol_st_capacidad_instalada_para_los_sistemas_de_incineracion',
+    op.create_table('res_sol_st_cap_inst_sist_recup_aprov_biogas_rellenos_sanit',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -2463,8 +2465,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_res_sol_st_capacidad_instalada_para_los_sistemas_de_incineracion_id'), 'res_sol_st_capacidad_instalada_para_los_sistemas_de_incineracion', ['id'], unique=False)
-    op.create_table('res_sol_st_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios',
+    op.create_index(op.f('ix_res_sol_st_cap_inst_sist_recup_aprov_biogas_rellenos_sanit_id'), 'res_sol_st_cap_inst_sist_recup_aprov_biogas_rellenos_sanit', ['id'], unique=False)
+    op.create_table('res_sol_st_capacidad_instalada_sistemas_incineracion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -2479,7 +2481,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_res_sol_st_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios_id'), 'res_sol_st_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios', ['id'], unique=False)
+    op.create_index(op.f('ix_res_sol_st_capacidad_instalada_sistemas_incineracion_id'), 'res_sol_st_capacidad_instalada_sistemas_incineracion', ['id'], unique=False)
     op.create_table('res_sol_st_tipo_de_gestion',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2531,7 +2533,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_avi_salidas_energia_requerida_id'), 'trans_avi_salidas_energia_requerida', ['id'], unique=False)
-    op.create_table('trans_avi_sf_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje',
+    op.create_table('trans_avi_sf_prop_comb_utilizado_etapas_despegue_aterrizaje',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2546,7 +2548,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_avi_sf_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje_id'), 'trans_avi_sf_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje', ['id'], unique=False)
+    op.create_index(op.f('ix_trans_avi_sf_prop_comb_utilizado_etapas_despegue_aterrizaje_id'), 'trans_avi_sf_prop_comb_utilizado_etapas_despegue_aterrizaje', ['id'], unique=False)
     op.create_table('trans_avi_sf_uso_de_combustible_para_aviacion_internacional',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2640,7 +2642,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_car_sf_factor_de_actividad_transporte_de_carga_urbano_id'), 'trans_car_sf_factor_de_actividad_transporte_de_carga_urbano', ['id'], unique=False)
-    op.create_table('trans_car_sf_numero_de_vehiculos_transporte_de_carga_interurbano',
+    op.create_table('trans_car_sf_num_vehiculos_transporte_carga_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2655,7 +2657,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_car_sf_numero_de_vehiculos_transporte_de_carga_interurbano_id'), 'trans_car_sf_numero_de_vehiculos_transporte_de_carga_interurbano', ['id'], unique=False)
+    op.create_index(op.f('ix_trans_car_sf_num_vehiculos_transporte_carga_interurbano_id'), 'trans_car_sf_num_vehiculos_transporte_carga_interurbano', ['id'], unique=False)
     op.create_table('trans_car_sf_numero_de_vehiculos_transporte_de_carga_urbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2698,7 +2700,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_car_sf_vida_util_id'), 'trans_car_sf_vida_util', ['id'], unique=False)
-    op.create_table('trans_car_st_carga_sustituida_por_modo_transporte_de_carga_interurbano',
+    op.create_table('trans_car_st_carga_sustituida_modo_trans_carga_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2714,40 +2716,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_car_st_carga_sustituida_por_modo_transporte_de_carga_interurbano_id'), 'trans_car_st_carga_sustituida_por_modo_transporte_de_carga_interurbano', ['id'], unique=False)
-    op.create_table('trans_car_st_distancia_modo_ferreo',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('trayectoria', sa.Integer(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_trans_car_st_distancia_modo_ferreo_id'), 'trans_car_st_distancia_modo_ferreo', ['id'], unique=False)
-    op.create_table('trans_car_st_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('trayectoria', sa.Integer(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_trans_car_st_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano_id'), 'trans_car_st_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano', ['id'], unique=False)
-    op.create_table('trans_car_st_distribucion_por_tecnologia_transporte_de_carga_interurbano',
+    op.create_index(op.f('ix_trans_car_st_carga_sustituida_modo_trans_carga_interurbano_id'), 'trans_car_st_carga_sustituida_modo_trans_carga_interurbano', ['id'], unique=False)
+    op.create_table('trans_car_st_dist_tecn_transporte_carga_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -2764,8 +2734,40 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_car_st_distribucion_por_tecnologia_transporte_de_carga_interurbano_id'), 'trans_car_st_distribucion_por_tecnologia_transporte_de_carga_interurbano', ['id'], unique=False)
-    op.create_table('trans_car_st_distribucion_por_tecnologia_transporte_de_carga_urbano',
+    op.create_index(op.f('ix_trans_car_st_dist_tecn_transporte_carga_interurbano_id'), 'trans_car_st_dist_tecn_transporte_carga_interurbano', ['id'], unique=False)
+    op.create_table('trans_car_st_dist_trans_carretero_transp_carga_interurbano',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('trayectoria', sa.Integer(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_trans_car_st_dist_trans_carretero_transp_carga_interurbano_id'), 'trans_car_st_dist_trans_carretero_transp_carga_interurbano', ['id'], unique=False)
+    op.create_table('trans_car_st_distancia_modo_ferreo',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('trayectoria', sa.Integer(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_trans_car_st_distancia_modo_ferreo_id'), 'trans_car_st_distancia_modo_ferreo', ['id'], unique=False)
+    op.create_table('trans_car_st_distr_tecnologia_transporte_carga_urbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2781,8 +2783,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_car_st_distribucion_por_tecnologia_transporte_de_carga_urbano_id'), 'trans_car_st_distribucion_por_tecnologia_transporte_de_carga_urbano', ['id'], unique=False)
-    op.create_table('trans_car_st_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano',
+    op.create_index(op.f('ix_trans_car_st_distr_tecnologia_transporte_carga_urbano_id'), 'trans_car_st_distr_tecnologia_transporte_carga_urbano', ['id'], unique=False)
+    op.create_table('trans_car_st_uso_de_ener_trans_aereo_trans_carga_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -2797,8 +2799,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_car_st_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano_id'), 'trans_car_st_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano', ['id'], unique=False)
-    op.create_table('trans_car_st_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano',
+    op.create_index(op.f('ix_trans_car_st_uso_de_ener_trans_aereo_trans_carga_interurbano_id'), 'trans_car_st_uso_de_ener_trans_aereo_trans_carga_interurbano', ['id'], unique=False)
+    op.create_table('trans_car_st_uso_ener_trans_ferreo_transp_carga_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -2813,8 +2815,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_car_st_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano_id'), 'trans_car_st_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano', ['id'], unique=False)
-    op.create_table('trans_car_st_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano',
+    op.create_index(op.f('ix_trans_car_st_uso_ener_trans_ferreo_transp_carga_interurbano_id'), 'trans_car_st_uso_ener_trans_ferreo_transp_carga_interurbano', ['id'], unique=False)
+    op.create_table('trans_car_st_uso_ener_trans_fluvial_transp_carga_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('trayectoria', sa.Integer(), nullable=True),
@@ -2829,7 +2831,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_car_st_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano_id'), 'trans_car_st_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano', ['id'], unique=False)
+    op.create_index(op.f('ix_trans_car_st_uso_ener_trans_fluvial_transp_carga_interurbano_id'), 'trans_car_st_uso_ener_trans_fluvial_transp_carga_interurbano', ['id'], unique=False)
     op.create_table('trans_nav_emisiones',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2916,7 +2918,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_pas_salidas_energia_requerida_transporte_pasajeros_id'), 'trans_pas_salidas_energia_requerida_transporte_pasajeros', ['id'], unique=False)
-    op.create_table('trans_pas_sf_demanda_de_energia_otros_modos_transporte_interurbano',
+    op.create_table('trans_pas_sf_demanda_electrica_modo_ferreo',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2931,8 +2933,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_pas_sf_demanda_de_energia_otros_modos_transporte_interurbano_id'), 'trans_pas_sf_demanda_de_energia_otros_modos_transporte_interurbano', ['id'], unique=False)
-    op.create_table('trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_interurbano',
+    op.create_index(op.f('ix_trans_pas_sf_demanda_electrica_modo_ferreo_id'), 'trans_pas_sf_demanda_electrica_modo_ferreo', ['id'], unique=False)
+    op.create_table('trans_pas_sf_demanda_ener_otros_modos_transp_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2947,8 +2949,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_interurbano_id'), 'trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_interurbano', ['id'], unique=False)
-    op.create_table('trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_urbano',
+    op.create_index(op.f('ix_trans_pas_sf_demanda_ener_otros_modos_transp_interurbano_id'), 'trans_pas_sf_demanda_ener_otros_modos_transp_interurbano', ['id'], unique=False)
+    op.create_table('trans_pas_sf_dist_tip_viajada_modo_transp_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2963,8 +2965,8 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_urbano_id'), 'trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_urbano', ['id'], unique=False)
-    op.create_table('trans_pas_sf_distribucion_por_modo_carretero_transporte_interurbano',
+    op.create_index(op.f('ix_trans_pas_sf_dist_tip_viajada_modo_transp_interurbano_id'), 'trans_pas_sf_dist_tip_viajada_modo_transp_interurbano', ['id'], unique=False)
+    op.create_table('trans_pas_sf_dist_tip_viajada_por_modo_transp_urbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -2979,7 +2981,23 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_pas_sf_distribucion_por_modo_carretero_transporte_interurbano_id'), 'trans_pas_sf_distribucion_por_modo_carretero_transporte_interurbano', ['id'], unique=False)
+    op.create_index(op.f('ix_trans_pas_sf_dist_tip_viajada_por_modo_transp_urbano_id'), 'trans_pas_sf_dist_tip_viajada_por_modo_transp_urbano', ['id'], unique=False)
+    op.create_table('trans_pas_sf_distr_modo_carretero_trans_interurbano',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_trans_pas_sf_distr_modo_carretero_trans_interurbano_id'), 'trans_pas_sf_distr_modo_carretero_trans_interurbano', ['id'], unique=False)
     op.create_table('trans_pas_sf_gas_natural_vehicular',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -2997,7 +3015,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_pas_sf_gas_natural_vehicular_id'), 'trans_pas_sf_gas_natural_vehicular', ['id'], unique=False)
-    op.create_table('trans_pas_sf_kilometros_totales_modo_carretero_transporte_interurbano',
+    op.create_table('trans_pas_sf_km_tot_modo_carretero_transp_interurbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -3012,7 +3030,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_pas_sf_kilometros_totales_modo_carretero_transporte_interurbano_id'), 'trans_pas_sf_kilometros_totales_modo_carretero_transporte_interurbano', ['id'], unique=False)
+    op.create_index(op.f('ix_trans_pas_sf_km_tot_modo_carretero_transp_interurbano_id'), 'trans_pas_sf_km_tot_modo_carretero_transp_interurbano', ['id'], unique=False)
     op.create_table('trans_pas_sf_n_viajes_por_habitante_por_dia',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -3062,38 +3080,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_pas_sf_numero_de_vehiculos_transporte_urbano_id'), 'trans_pas_sf_numero_de_vehiculos_transporte_urbano', ['id'], unique=False)
-    op.create_table('trans_pas_sf_porcentaje_de_demanda_electrica_para_el_modo_ferreo',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_trans_pas_sf_porcentaje_de_demanda_electrica_para_el_modo_ferreo_id'), 'trans_pas_sf_porcentaje_de_demanda_electrica_para_el_modo_ferreo', ['id'], unique=False)
-    op.create_table('trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_interurbano',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_interurbano_id'), 'trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_interurbano', ['id'], unique=False)
     op.create_table('trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_urbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -3111,7 +3097,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_urbano_id'), 'trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_urbano', ['id'], unique=False)
-    op.create_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes',
+    op.create_table('trans_pas_sf_rend_modo_tec_trans_interurbano_vehic_existentes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('bloque', sa.String(), nullable=True),
@@ -3127,7 +3113,58 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes_id'), 'trans_pas_sf_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes', ['id'], unique=False)
+    op.create_index(op.f('ix_trans_pas_sf_rend_modo_tec_trans_interurbano_vehic_existentes_id'), 'trans_pas_sf_rend_modo_tec_trans_interurbano_vehic_existentes', ['id'], unique=False)
+    op.create_table('trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_existentes',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_existentes_id'), 'trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_existentes', ['id'], unique=False)
+    op.create_table('trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_nuevos',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_nuevos_id'), 'trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_nuevos', ['id'], unique=False)
+    op.create_table('trans_pas_sf_rend_modo_tec_transp_urbano_electrico',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('bloque', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_trans_pas_sf_rend_modo_tec_transp_urbano_electrico_id'), 'trans_pas_sf_rend_modo_tec_transp_urbano_electrico', ['id'], unique=False)
     op.create_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -3145,57 +3182,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_id'), 'trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano', ['id'], unique=False)
-    op.create_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_electrico',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_electrico_id'), 'trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_electrico', ['id'], unique=False)
-    op.create_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes_id'), 'trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes', ['id'], unique=False)
-    op.create_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('topic', sa.String(), nullable=True),
-    sa.Column('bloque', sa.String(), nullable=True),
-    sa.Column('tipo', sa.String(), nullable=True),
-    sa.Column('2018', sa.Float(), nullable=True),
-    sa.Column('2020', sa.Float(), nullable=True),
-    sa.Column('2025', sa.Float(), nullable=True),
-    sa.Column('2030', sa.Float(), nullable=True),
-    sa.Column('2035', sa.Float(), nullable=True),
-    sa.Column('2040', sa.Float(), nullable=True),
-    sa.Column('2045', sa.Float(), nullable=True),
-    sa.Column('2050', sa.Float(), nullable=True),
-    sa.Column('unidad', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos_id'), 'trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos', ['id'], unique=False)
     op.create_table('trans_pas_sf_total_viajes_anuales',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -3221,6 +3207,22 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_pas_sf_uso_de_combustibles_fosiles_en_vehiculos_hibridos_id'), 'trans_pas_sf_uso_de_combustibles_fosiles_en_vehiculos_hibridos', ['id'], unique=False)
+    op.create_table('trans_pas_sf_vehiculos_nuevos_transp_interurbano',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('tipo', sa.String(), nullable=True),
+    sa.Column('2018', sa.Float(), nullable=True),
+    sa.Column('2020', sa.Float(), nullable=True),
+    sa.Column('2025', sa.Float(), nullable=True),
+    sa.Column('2030', sa.Float(), nullable=True),
+    sa.Column('2035', sa.Float(), nullable=True),
+    sa.Column('2040', sa.Float(), nullable=True),
+    sa.Column('2045', sa.Float(), nullable=True),
+    sa.Column('2050', sa.Float(), nullable=True),
+    sa.Column('unidad', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_trans_pas_sf_vehiculos_nuevos_transp_interurbano_id'), 'trans_pas_sf_vehiculos_nuevos_transp_interurbano', ['id'], unique=False)
     op.create_table('trans_pas_sf_vida_util',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -3231,7 +3233,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_trans_pas_sf_vida_util_id'), 'trans_pas_sf_vida_util', ['id'], unique=False)
-    op.create_table('trans_pas_st_transporte_urbano_distancia_promedio_por_viaje_por_modo',
+    op.create_table('trans_pas_st_transp_urbano_dist_promedio_viaje_modo',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
     sa.Column('tipo', sa.String(), nullable=True),
@@ -3247,7 +3249,7 @@ def upgrade() -> None:
     sa.Column('unidad', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_trans_pas_st_transporte_urbano_distancia_promedio_por_viaje_por_modo_id'), 'trans_pas_st_transporte_urbano_distancia_promedio_por_viaje_por_modo', ['id'], unique=False)
+    op.create_index(op.f('ix_trans_pas_st_transp_urbano_dist_promedio_viaje_modo_id'), 'trans_pas_st_transp_urbano_dist_promedio_viaje_modo', ['id'], unique=False)
     op.create_table('trans_pas_st_transporte_urbano_distribucion_modal',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('topic', sa.String(), nullable=True),
@@ -3308,48 +3310,48 @@ def downgrade() -> None:
     op.drop_table('trans_pas_st_transporte_urbano_distribucion_por_tecnologia')
     op.drop_index(op.f('ix_trans_pas_st_transporte_urbano_distribucion_modal_id'), table_name='trans_pas_st_transporte_urbano_distribucion_modal')
     op.drop_table('trans_pas_st_transporte_urbano_distribucion_modal')
-    op.drop_index(op.f('ix_trans_pas_st_transporte_urbano_distancia_promedio_por_viaje_por_modo_id'), table_name='trans_pas_st_transporte_urbano_distancia_promedio_por_viaje_por_modo')
-    op.drop_table('trans_pas_st_transporte_urbano_distancia_promedio_por_viaje_por_modo')
+    op.drop_index(op.f('ix_trans_pas_st_transp_urbano_dist_promedio_viaje_modo_id'), table_name='trans_pas_st_transp_urbano_dist_promedio_viaje_modo')
+    op.drop_table('trans_pas_st_transp_urbano_dist_promedio_viaje_modo')
     op.drop_index(op.f('ix_trans_pas_sf_vida_util_id'), table_name='trans_pas_sf_vida_util')
     op.drop_table('trans_pas_sf_vida_util')
+    op.drop_index(op.f('ix_trans_pas_sf_vehiculos_nuevos_transp_interurbano_id'), table_name='trans_pas_sf_vehiculos_nuevos_transp_interurbano')
+    op.drop_table('trans_pas_sf_vehiculos_nuevos_transp_interurbano')
     op.drop_index(op.f('ix_trans_pas_sf_uso_de_combustibles_fosiles_en_vehiculos_hibridos_id'), table_name='trans_pas_sf_uso_de_combustibles_fosiles_en_vehiculos_hibridos')
     op.drop_table('trans_pas_sf_uso_de_combustibles_fosiles_en_vehiculos_hibridos')
     op.drop_index(op.f('ix_trans_pas_sf_total_viajes_anuales_id'), table_name='trans_pas_sf_total_viajes_anuales')
     op.drop_table('trans_pas_sf_total_viajes_anuales')
-    op.drop_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos_id'), table_name='trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos')
-    op.drop_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos')
-    op.drop_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes_id'), table_name='trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes')
-    op.drop_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes')
-    op.drop_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_electrico_id'), table_name='trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_electrico')
-    op.drop_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_electrico')
     op.drop_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano_id'), table_name='trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano')
     op.drop_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_urbano')
-    op.drop_index(op.f('ix_trans_pas_sf_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes_id'), table_name='trans_pas_sf_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes')
-    op.drop_table('trans_pas_sf_rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes')
+    op.drop_index(op.f('ix_trans_pas_sf_rend_modo_tec_transp_urbano_electrico_id'), table_name='trans_pas_sf_rend_modo_tec_transp_urbano_electrico')
+    op.drop_table('trans_pas_sf_rend_modo_tec_transp_urbano_electrico')
+    op.drop_index(op.f('ix_trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_nuevos_id'), table_name='trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_nuevos')
+    op.drop_table('trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_nuevos')
+    op.drop_index(op.f('ix_trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_existentes_id'), table_name='trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_existentes')
+    op.drop_table('trans_pas_sf_rend_modo_tec_trans_urbano_vehiculos_existentes')
+    op.drop_index(op.f('ix_trans_pas_sf_rend_modo_tec_trans_interurbano_vehic_existentes_id'), table_name='trans_pas_sf_rend_modo_tec_trans_interurbano_vehic_existentes')
+    op.drop_table('trans_pas_sf_rend_modo_tec_trans_interurbano_vehic_existentes')
     op.drop_index(op.f('ix_trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_urbano_id'), table_name='trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_urbano')
     op.drop_table('trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_urbano')
-    op.drop_index(op.f('ix_trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_interurbano_id'), table_name='trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_interurbano')
-    op.drop_table('trans_pas_sf_porcentaje_de_vehiculos_nuevos_transporte_interurbano')
-    op.drop_index(op.f('ix_trans_pas_sf_porcentaje_de_demanda_electrica_para_el_modo_ferreo_id'), table_name='trans_pas_sf_porcentaje_de_demanda_electrica_para_el_modo_ferreo')
-    op.drop_table('trans_pas_sf_porcentaje_de_demanda_electrica_para_el_modo_ferreo')
     op.drop_index(op.f('ix_trans_pas_sf_numero_de_vehiculos_transporte_urbano_id'), table_name='trans_pas_sf_numero_de_vehiculos_transporte_urbano')
     op.drop_table('trans_pas_sf_numero_de_vehiculos_transporte_urbano')
     op.drop_index(op.f('ix_trans_pas_sf_numero_de_vehiculos_transporte_interurbano_id'), table_name='trans_pas_sf_numero_de_vehiculos_transporte_interurbano')
     op.drop_table('trans_pas_sf_numero_de_vehiculos_transporte_interurbano')
     op.drop_index(op.f('ix_trans_pas_sf_n_viajes_por_habitante_por_dia_id'), table_name='trans_pas_sf_n_viajes_por_habitante_por_dia')
     op.drop_table('trans_pas_sf_n_viajes_por_habitante_por_dia')
-    op.drop_index(op.f('ix_trans_pas_sf_kilometros_totales_modo_carretero_transporte_interurbano_id'), table_name='trans_pas_sf_kilometros_totales_modo_carretero_transporte_interurbano')
-    op.drop_table('trans_pas_sf_kilometros_totales_modo_carretero_transporte_interurbano')
+    op.drop_index(op.f('ix_trans_pas_sf_km_tot_modo_carretero_transp_interurbano_id'), table_name='trans_pas_sf_km_tot_modo_carretero_transp_interurbano')
+    op.drop_table('trans_pas_sf_km_tot_modo_carretero_transp_interurbano')
     op.drop_index(op.f('ix_trans_pas_sf_gas_natural_vehicular_id'), table_name='trans_pas_sf_gas_natural_vehicular')
     op.drop_table('trans_pas_sf_gas_natural_vehicular')
-    op.drop_index(op.f('ix_trans_pas_sf_distribucion_por_modo_carretero_transporte_interurbano_id'), table_name='trans_pas_sf_distribucion_por_modo_carretero_transporte_interurbano')
-    op.drop_table('trans_pas_sf_distribucion_por_modo_carretero_transporte_interurbano')
-    op.drop_index(op.f('ix_trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_urbano_id'), table_name='trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_urbano')
-    op.drop_table('trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_urbano')
-    op.drop_index(op.f('ix_trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_interurbano_id'), table_name='trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_interurbano')
-    op.drop_table('trans_pas_sf_distancia_tipica_viajada_por_modo_transporte_interurbano')
-    op.drop_index(op.f('ix_trans_pas_sf_demanda_de_energia_otros_modos_transporte_interurbano_id'), table_name='trans_pas_sf_demanda_de_energia_otros_modos_transporte_interurbano')
-    op.drop_table('trans_pas_sf_demanda_de_energia_otros_modos_transporte_interurbano')
+    op.drop_index(op.f('ix_trans_pas_sf_distr_modo_carretero_trans_interurbano_id'), table_name='trans_pas_sf_distr_modo_carretero_trans_interurbano')
+    op.drop_table('trans_pas_sf_distr_modo_carretero_trans_interurbano')
+    op.drop_index(op.f('ix_trans_pas_sf_dist_tip_viajada_por_modo_transp_urbano_id'), table_name='trans_pas_sf_dist_tip_viajada_por_modo_transp_urbano')
+    op.drop_table('trans_pas_sf_dist_tip_viajada_por_modo_transp_urbano')
+    op.drop_index(op.f('ix_trans_pas_sf_dist_tip_viajada_modo_transp_interurbano_id'), table_name='trans_pas_sf_dist_tip_viajada_modo_transp_interurbano')
+    op.drop_table('trans_pas_sf_dist_tip_viajada_modo_transp_interurbano')
+    op.drop_index(op.f('ix_trans_pas_sf_demanda_ener_otros_modos_transp_interurbano_id'), table_name='trans_pas_sf_demanda_ener_otros_modos_transp_interurbano')
+    op.drop_table('trans_pas_sf_demanda_ener_otros_modos_transp_interurbano')
+    op.drop_index(op.f('ix_trans_pas_sf_demanda_electrica_modo_ferreo_id'), table_name='trans_pas_sf_demanda_electrica_modo_ferreo')
+    op.drop_table('trans_pas_sf_demanda_electrica_modo_ferreo')
     op.drop_index(op.f('ix_trans_pas_salidas_energia_requerida_transporte_pasajeros_id'), table_name='trans_pas_salidas_energia_requerida_transporte_pasajeros')
     op.drop_table('trans_pas_salidas_energia_requerida_transporte_pasajeros')
     op.drop_index(op.f('ix_trans_pas_emisiones_de_gases_efecto_invernadero_id'), table_name='trans_pas_emisiones_de_gases_efecto_invernadero')
@@ -3360,30 +3362,30 @@ def downgrade() -> None:
     op.drop_table('trans_nav_salidas_energia_requerida')
     op.drop_index(op.f('ix_trans_nav_emisiones_id'), table_name='trans_nav_emisiones')
     op.drop_table('trans_nav_emisiones')
-    op.drop_index(op.f('ix_trans_car_st_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano_id'), table_name='trans_car_st_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano')
-    op.drop_table('trans_car_st_uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano')
-    op.drop_index(op.f('ix_trans_car_st_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano_id'), table_name='trans_car_st_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano')
-    op.drop_table('trans_car_st_uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano')
-    op.drop_index(op.f('ix_trans_car_st_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano_id'), table_name='trans_car_st_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano')
-    op.drop_table('trans_car_st_uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano')
-    op.drop_index(op.f('ix_trans_car_st_distribucion_por_tecnologia_transporte_de_carga_urbano_id'), table_name='trans_car_st_distribucion_por_tecnologia_transporte_de_carga_urbano')
-    op.drop_table('trans_car_st_distribucion_por_tecnologia_transporte_de_carga_urbano')
-    op.drop_index(op.f('ix_trans_car_st_distribucion_por_tecnologia_transporte_de_carga_interurbano_id'), table_name='trans_car_st_distribucion_por_tecnologia_transporte_de_carga_interurbano')
-    op.drop_table('trans_car_st_distribucion_por_tecnologia_transporte_de_carga_interurbano')
-    op.drop_index(op.f('ix_trans_car_st_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano_id'), table_name='trans_car_st_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano')
-    op.drop_table('trans_car_st_distancia_para_el_transporte_carretero_transporte_de_carga_interurbano')
+    op.drop_index(op.f('ix_trans_car_st_uso_ener_trans_fluvial_transp_carga_interurbano_id'), table_name='trans_car_st_uso_ener_trans_fluvial_transp_carga_interurbano')
+    op.drop_table('trans_car_st_uso_ener_trans_fluvial_transp_carga_interurbano')
+    op.drop_index(op.f('ix_trans_car_st_uso_ener_trans_ferreo_transp_carga_interurbano_id'), table_name='trans_car_st_uso_ener_trans_ferreo_transp_carga_interurbano')
+    op.drop_table('trans_car_st_uso_ener_trans_ferreo_transp_carga_interurbano')
+    op.drop_index(op.f('ix_trans_car_st_uso_de_ener_trans_aereo_trans_carga_interurbano_id'), table_name='trans_car_st_uso_de_ener_trans_aereo_trans_carga_interurbano')
+    op.drop_table('trans_car_st_uso_de_ener_trans_aereo_trans_carga_interurbano')
+    op.drop_index(op.f('ix_trans_car_st_distr_tecnologia_transporte_carga_urbano_id'), table_name='trans_car_st_distr_tecnologia_transporte_carga_urbano')
+    op.drop_table('trans_car_st_distr_tecnologia_transporte_carga_urbano')
     op.drop_index(op.f('ix_trans_car_st_distancia_modo_ferreo_id'), table_name='trans_car_st_distancia_modo_ferreo')
     op.drop_table('trans_car_st_distancia_modo_ferreo')
-    op.drop_index(op.f('ix_trans_car_st_carga_sustituida_por_modo_transporte_de_carga_interurbano_id'), table_name='trans_car_st_carga_sustituida_por_modo_transporte_de_carga_interurbano')
-    op.drop_table('trans_car_st_carga_sustituida_por_modo_transporte_de_carga_interurbano')
+    op.drop_index(op.f('ix_trans_car_st_dist_trans_carretero_transp_carga_interurbano_id'), table_name='trans_car_st_dist_trans_carretero_transp_carga_interurbano')
+    op.drop_table('trans_car_st_dist_trans_carretero_transp_carga_interurbano')
+    op.drop_index(op.f('ix_trans_car_st_dist_tecn_transporte_carga_interurbano_id'), table_name='trans_car_st_dist_tecn_transporte_carga_interurbano')
+    op.drop_table('trans_car_st_dist_tecn_transporte_carga_interurbano')
+    op.drop_index(op.f('ix_trans_car_st_carga_sustituida_modo_trans_carga_interurbano_id'), table_name='trans_car_st_carga_sustituida_modo_trans_carga_interurbano')
+    op.drop_table('trans_car_st_carga_sustituida_modo_trans_carga_interurbano')
     op.drop_index(op.f('ix_trans_car_sf_vida_util_id'), table_name='trans_car_sf_vida_util')
     op.drop_table('trans_car_sf_vida_util')
     op.drop_index(op.f('ix_trans_car_sf_rendimiento_modo_carretero_id'), table_name='trans_car_sf_rendimiento_modo_carretero')
     op.drop_table('trans_car_sf_rendimiento_modo_carretero')
     op.drop_index(op.f('ix_trans_car_sf_numero_de_vehiculos_transporte_de_carga_urbano_id'), table_name='trans_car_sf_numero_de_vehiculos_transporte_de_carga_urbano')
     op.drop_table('trans_car_sf_numero_de_vehiculos_transporte_de_carga_urbano')
-    op.drop_index(op.f('ix_trans_car_sf_numero_de_vehiculos_transporte_de_carga_interurbano_id'), table_name='trans_car_sf_numero_de_vehiculos_transporte_de_carga_interurbano')
-    op.drop_table('trans_car_sf_numero_de_vehiculos_transporte_de_carga_interurbano')
+    op.drop_index(op.f('ix_trans_car_sf_num_vehiculos_transporte_carga_interurbano_id'), table_name='trans_car_sf_num_vehiculos_transporte_carga_interurbano')
+    op.drop_table('trans_car_sf_num_vehiculos_transporte_carga_interurbano')
     op.drop_index(op.f('ix_trans_car_sf_factor_de_actividad_transporte_de_carga_urbano_id'), table_name='trans_car_sf_factor_de_actividad_transporte_de_carga_urbano')
     op.drop_table('trans_car_sf_factor_de_actividad_transporte_de_carga_urbano')
     op.drop_index(op.f('ix_trans_car_sf_distancia_tipica_por_modo_id'), table_name='trans_car_sf_distancia_tipica_por_modo')
@@ -3396,30 +3398,30 @@ def downgrade() -> None:
     op.drop_table('trans_avi_st_uso_de_combustible_para_aviacion_internacional')
     op.drop_index(op.f('ix_trans_avi_sf_uso_de_combustible_para_aviacion_internacional_id'), table_name='trans_avi_sf_uso_de_combustible_para_aviacion_internacional')
     op.drop_table('trans_avi_sf_uso_de_combustible_para_aviacion_internacional')
-    op.drop_index(op.f('ix_trans_avi_sf_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje_id'), table_name='trans_avi_sf_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje')
-    op.drop_table('trans_avi_sf_proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje')
+    op.drop_index(op.f('ix_trans_avi_sf_prop_comb_utilizado_etapas_despegue_aterrizaje_id'), table_name='trans_avi_sf_prop_comb_utilizado_etapas_despegue_aterrizaje')
+    op.drop_table('trans_avi_sf_prop_comb_utilizado_etapas_despegue_aterrizaje')
     op.drop_index(op.f('ix_trans_avi_salidas_energia_requerida_id'), table_name='trans_avi_salidas_energia_requerida')
     op.drop_table('trans_avi_salidas_energia_requerida')
     op.drop_index(op.f('ix_trans_avi_emisiones_aviacion_y_navegacion_internacional_id'), table_name='trans_avi_emisiones_aviacion_y_navegacion_internacional')
     op.drop_table('trans_avi_emisiones_aviacion_y_navegacion_internacional')
     op.drop_index(op.f('ix_res_sol_st_tipo_de_gestion_id'), table_name='res_sol_st_tipo_de_gestion')
     op.drop_table('res_sol_st_tipo_de_gestion')
-    op.drop_index(op.f('ix_res_sol_st_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios_id'), table_name='res_sol_st_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios')
-    op.drop_table('res_sol_st_capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios')
-    op.drop_index(op.f('ix_res_sol_st_capacidad_instalada_para_los_sistemas_de_incineracion_id'), table_name='res_sol_st_capacidad_instalada_para_los_sistemas_de_incineracion')
-    op.drop_table('res_sol_st_capacidad_instalada_para_los_sistemas_de_incineracion')
+    op.drop_index(op.f('ix_res_sol_st_capacidad_instalada_sistemas_incineracion_id'), table_name='res_sol_st_capacidad_instalada_sistemas_incineracion')
+    op.drop_table('res_sol_st_capacidad_instalada_sistemas_incineracion')
+    op.drop_index(op.f('ix_res_sol_st_cap_inst_sist_recup_aprov_biogas_rellenos_sanit_id'), table_name='res_sol_st_cap_inst_sist_recup_aprov_biogas_rellenos_sanit')
+    op.drop_table('res_sol_st_cap_inst_sist_recup_aprov_biogas_rellenos_sanit')
     op.drop_index(op.f('ix_res_sol_st_cantidad_de_residuos_generada_anual_id'), table_name='res_sol_st_cantidad_de_residuos_generada_anual')
     op.drop_table('res_sol_st_cantidad_de_residuos_generada_anual')
     op.drop_index(op.f('ix_res_sol_sf_rellenos_sanitarios_con_captacion_aprovechamiento_id'), table_name='res_sol_sf_rellenos_sanitarios_con_captacion_aprovechamiento')
     op.drop_table('res_sol_sf_rellenos_sanitarios_con_captacion_aprovechamiento')
+    op.drop_index(op.f('ix_res_sol_sf_generacion_energetica_mediante_incineracion_id'), table_name='res_sol_sf_generacion_energetica_mediante_incineracion')
+    op.drop_table('res_sol_sf_generacion_energetica_mediante_incineracion')
     op.drop_index(op.f('ix_res_sol_sf_generacion_de_metano_por_tipologia_de_residuo_id'), table_name='res_sol_sf_generacion_de_metano_por_tipologia_de_residuo')
     op.drop_table('res_sol_sf_generacion_de_metano_por_tipologia_de_residuo')
+    op.drop_index(op.f('ix_res_sol_sf_estimacion_emisiones_incineracion_id'), table_name='res_sol_sf_estimacion_emisiones_incineracion')
+    op.drop_table('res_sol_sf_estimacion_emisiones_incineracion')
     op.drop_index(op.f('ix_res_sol_sf_distribucion_de_los_residuos_por_zona_climatica_id'), table_name='res_sol_sf_distribucion_de_los_residuos_por_zona_climatica')
     op.drop_table('res_sol_sf_distribucion_de_los_residuos_por_zona_climatica')
-    op.drop_index(op.f('ix_res_sol_sf_datos_para_la_estimacion_de_las_emisiones_de_incineracion_id'), table_name='res_sol_sf_datos_para_la_estimacion_de_las_emisiones_de_incineracion')
-    op.drop_table('res_sol_sf_datos_para_la_estimacion_de_las_emisiones_de_incineracion')
-    op.drop_index(op.f('ix_res_sol_sf_datos_de_la_generacion_energetica_mediante_incineracion_id'), table_name='res_sol_sf_datos_de_la_generacion_energetica_mediante_incineracion')
-    op.drop_table('res_sol_sf_datos_de_la_generacion_energetica_mediante_incineracion')
     op.drop_index(op.f('ix_res_sol_sf_consumo_energetico_medio_por_tratamiento_id'), table_name='res_sol_sf_consumo_energetico_medio_por_tratamiento')
     op.drop_table('res_sol_sf_consumo_energetico_medio_por_tratamiento')
     op.drop_index(op.f('ix_res_sol_sf_caracterizacion_por_tipo_de_residuos_generados_id'), table_name='res_sol_sf_caracterizacion_por_tipo_de_residuos_generados')
@@ -3430,14 +3432,16 @@ def downgrade() -> None:
     op.drop_table('res_sol_salidas_energia_consumida')
     op.drop_index(op.f('ix_res_sol_emisiones_id'), table_name='res_sol_emisiones')
     op.drop_table('res_sol_emisiones')
-    op.drop_index(op.f('ix_res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas_id'), table_name='res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas')
-    op.drop_table('res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_municipales_con_extraccion_de_biogas')
-    op.drop_index(op.f('ix_res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas_id'), table_name='res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas')
-    op.drop_table('res_agu_st_estaciones_de_tratamiento_de_aguas_residuales_industriales_con_extraccion_de_biogas')
+    op.drop_index(op.f('ix_res_agu_st_est_tratamiento_aguas_res_ind_extraccion_biogas_id'), table_name='res_agu_st_est_tratamiento_aguas_res_ind_extraccion_biogas')
+    op.drop_table('res_agu_st_est_tratamiento_aguas_res_ind_extraccion_biogas')
+    op.drop_index(op.f('ix_res_agu_st_est_tratam_aguas_res_municipales_extraccion_biogas_id'), table_name='res_agu_st_est_tratam_aguas_res_municipales_extraccion_biogas')
+    op.drop_table('res_agu_st_est_tratam_aguas_res_municipales_extraccion_biogas')
     op.drop_index(op.f('ix_res_agu_st_cantidad_de_aguas_residuales_industriales_id'), table_name='res_agu_st_cantidad_de_aguas_residuales_industriales')
     op.drop_table('res_agu_st_cantidad_de_aguas_residuales_industriales')
     op.drop_index(op.f('ix_res_agu_st_cantidad_de_aguas_residuales_domesticas_id'), table_name='res_agu_st_cantidad_de_aguas_residuales_domesticas')
     op.drop_table('res_agu_st_cantidad_de_aguas_residuales_domesticas')
+    op.drop_index(op.f('ix_res_agu_sf_generacion_energetica_estaciones_tratamiento_id'), table_name='res_agu_sf_generacion_energetica_estaciones_tratamiento')
+    op.drop_table('res_agu_sf_generacion_energetica_estaciones_tratamiento')
     op.drop_index(op.f('ix_res_agu_sf_generacion_de_ch4_por_kg_dbo_tratado_id'), table_name='res_agu_sf_generacion_de_ch4_por_kg_dbo_tratado')
     op.drop_table('res_agu_sf_generacion_de_ch4_por_kg_dbo_tratado')
     op.drop_index(op.f('ix_res_agu_sf_generacion_de_ch4_por_kg_dbo_no_tratado_id'), table_name='res_agu_sf_generacion_de_ch4_por_kg_dbo_no_tratado')
@@ -3450,8 +3454,6 @@ def downgrade() -> None:
     op.drop_table('res_agu_sf_dbo_por_m3_de_agua_residual_domestica_tratada')
     op.drop_index(op.f('ix_res_agu_sf_dbo_por_m3_de_agua_residual_domestica_no_tratada_id'), table_name='res_agu_sf_dbo_por_m3_de_agua_residual_domestica_no_tratada')
     op.drop_table('res_agu_sf_dbo_por_m3_de_agua_residual_domestica_no_tratada')
-    op.drop_index(op.f('ix_res_agu_sf_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento_id'), table_name='res_agu_sf_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento')
-    op.drop_table('res_agu_sf_datos_de_la_generacion_energetica_de_las_estaciones_de_tratamiento')
     op.drop_index(op.f('ix_res_agu_sf_consumo_energetico_medio_por_tratamiento_id'), table_name='res_agu_sf_consumo_energetico_medio_por_tratamiento')
     op.drop_table('res_agu_sf_consumo_energetico_medio_por_tratamiento')
     op.drop_index(op.f('ix_res_agu_salidas_energia_producida_id'), table_name='res_agu_salidas_energia_producida')
@@ -3462,16 +3464,16 @@ def downgrade() -> None:
     op.drop_table('res_agu_emisiones')
     op.drop_index(op.f('ix_indu_st_sustitucion_de_sao_y_hfc_id'), table_name='indu_st_sustitucion_de_sao_y_hfc')
     op.drop_table('indu_st_sustitucion_de_sao_y_hfc')
-    op.drop_index(op.f('ix_indu_st_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica_id'), table_name='indu_st_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica')
-    op.drop_table('indu_st_reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica')
+    op.drop_index(op.f('ix_indu_st_reduccion_consumo_ener_aumento_eficiencia_energetica_id'), table_name='indu_st_reduccion_consumo_ener_aumento_eficiencia_energetica')
+    op.drop_table('indu_st_reduccion_consumo_ener_aumento_eficiencia_energetica')
     op.drop_index(op.f('ix_indu_st_procesos_productivos_sostenibles_id'), table_name='indu_st_procesos_productivos_sostenibles')
     op.drop_table('indu_st_procesos_productivos_sostenibles')
-    op.drop_index(op.f('ix_indu_st_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras_id'), table_name='indu_st_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras')
-    op.drop_table('indu_st_eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras')
-    op.drop_index(op.f('ix_indu_st_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion_id'), table_name='indu_st_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion')
-    op.drop_table('indu_st_eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion')
-    op.drop_index(op.f('ix_indu_st_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras_id'), table_name='indu_st_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras')
-    op.drop_table('indu_st_eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras')
+    op.drop_index(op.f('ix_indu_st_efic_ener_autogeneracion_cogeneracion_ladrilleras_id'), table_name='indu_st_efic_ener_autogeneracion_cogeneracion_ladrilleras')
+    op.drop_table('indu_st_efic_ener_autogeneracion_cogeneracion_ladrilleras')
+    op.drop_index(op.f('ix_indu_st_efi_ener_reduccion_consumo_energ_ladrilleras_id'), table_name='indu_st_efi_ener_reduccion_consumo_energ_ladrilleras')
+    op.drop_table('indu_st_efi_ener_reduccion_consumo_energ_ladrilleras')
+    op.drop_index(op.f('ix_indu_st_efi_ener_crecimiento_autogeneracion_cogeneracion_id'), table_name='indu_st_efi_ener_crecimiento_autogeneracion_cogeneracion')
+    op.drop_table('indu_st_efi_ener_crecimiento_autogeneracion_cogeneracion')
     op.drop_index(op.f('ix_indu_sf_uso_energetico_por_combustible_id'), table_name='indu_sf_uso_energetico_por_combustible')
     op.drop_table('indu_sf_uso_energetico_por_combustible')
     op.drop_index(op.f('ix_indu_sf_produccion_de_cemento_id'), table_name='indu_sf_produccion_de_cemento')
@@ -3484,8 +3486,8 @@ def downgrade() -> None:
     op.drop_table('indu_sf_produccion_anual_de_ladrillos')
     op.drop_index(op.f('ix_indu_sf_indice_de_consumo_id'), table_name='indu_sf_indice_de_consumo')
     op.drop_table('indu_sf_indice_de_consumo')
-    op.drop_index(op.f('ix_indu_sf_factor_de_utilizacion_de_autogeneracion_y_cogeneracion_id'), table_name='indu_sf_factor_de_utilizacion_de_autogeneracion_y_cogeneracion')
-    op.drop_table('indu_sf_factor_de_utilizacion_de_autogeneracion_y_cogeneracion')
+    op.drop_index(op.f('ix_indu_sf_factor_utilizacion_autogeneracion_cogeneracion_id'), table_name='indu_sf_factor_utilizacion_autogeneracion_cogeneracion')
+    op.drop_table('indu_sf_factor_utilizacion_autogeneracion_cogeneracion')
     op.drop_index(op.f('ix_indu_sf_excedentes_de_cogeneracion_id'), table_name='indu_sf_excedentes_de_cogeneracion')
     op.drop_table('indu_sf_excedentes_de_cogeneracion')
     op.drop_index(op.f('ix_indu_sf_excedentes_de_autogeneracion_id'), table_name='indu_sf_excedentes_de_autogeneracion')
@@ -3498,18 +3500,18 @@ def downgrade() -> None:
     op.drop_table('indu_sf_capacidad_instalada_de_cogeneracion')
     op.drop_index(op.f('ix_indu_sf_capacidad_instalada_de_autogeneracion_id'), table_name='indu_sf_capacidad_instalada_de_autogeneracion')
     op.drop_table('indu_sf_capacidad_instalada_de_autogeneracion')
+    op.drop_index(op.f('ix_indu_salidas_por_tipo_ind_ener_prod_autogener_cogenerac_id'), table_name='indu_salidas_por_tipo_ind_ener_prod_autogener_cogenerac')
+    op.drop_table('indu_salidas_por_tipo_ind_ener_prod_autogener_cogenerac')
+    op.drop_index(op.f('ix_indu_salidas_por_tipo_ind_balance_total_ener_requerida_id'), table_name='indu_salidas_por_tipo_ind_balance_total_ener_requerida')
+    op.drop_table('indu_salidas_por_tipo_ind_balance_total_ener_requerida')
     op.drop_index(op.f('ix_indu_salidas_por_tipo_de_industria_energia_requerida_id'), table_name='indu_salidas_por_tipo_de_industria_energia_requerida')
     op.drop_table('indu_salidas_por_tipo_de_industria_energia_requerida')
-    op.drop_index(op.f('ix_indu_salidas_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion_id'), table_name='indu_salidas_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion')
-    op.drop_table('indu_salidas_por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion')
-    op.drop_index(op.f('ix_indu_salidas_por_tipo_de_industria_balance_total_de_la_energia_requerida_id'), table_name='indu_salidas_por_tipo_de_industria_balance_total_de_la_energia_requerida')
-    op.drop_table('indu_salidas_por_tipo_de_industria_balance_total_de_la_energia_requerida')
     op.drop_index(op.f('ix_indu_salidas_por_combustible_energia_requerida_id'), table_name='indu_salidas_por_combustible_energia_requerida')
     op.drop_table('indu_salidas_por_combustible_energia_requerida')
-    op.drop_index(op.f('ix_indu_salidas_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion_id'), table_name='indu_salidas_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion')
-    op.drop_table('indu_salidas_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion')
-    op.drop_index(op.f('ix_indu_salidas_por_combustible_balance_total_de_la_energia_requerida_id'), table_name='indu_salidas_por_combustible_balance_total_de_la_energia_requerida')
-    op.drop_table('indu_salidas_por_combustible_balance_total_de_la_energia_requerida')
+    op.drop_index(op.f('ix_indu_salidas_por_combustible_balance_total_energia_requerida_id'), table_name='indu_salidas_por_combustible_balance_total_energia_requerida')
+    op.drop_table('indu_salidas_por_combustible_balance_total_energia_requerida')
+    op.drop_index(op.f('ix_indu_salidas_por_comb_ener_prod_autogeneracion_cogeneracion_id'), table_name='indu_salidas_por_comb_ener_prod_autogeneracion_cogeneracion')
+    op.drop_table('indu_salidas_por_comb_ener_prod_autogeneracion_cogeneracion')
     op.drop_index(op.f('ix_indu_emisiones_sao_id'), table_name='indu_emisiones_sao')
     op.drop_table('indu_emisiones_sao')
     op.drop_index(op.f('ix_indu_emisiones_por_el_consumo_de_bagazo_y_otros_id'), table_name='indu_emisiones_por_el_consumo_de_bagazo_y_otros')
@@ -3518,34 +3520,34 @@ def downgrade() -> None:
     op.drop_table('indu_emisiones_gases_efecto_invernadero')
     op.drop_index(op.f('ix_gana_st_produccion_de_estiercol_para_bioenergia_id'), table_name='gana_st_produccion_de_estiercol_para_bioenergia')
     op.drop_table('gana_st_produccion_de_estiercol_para_bioenergia')
-    op.drop_index(op.f('ix_gana_st_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies_id'), table_name='gana_st_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies')
-    op.drop_table('gana_st_practicas_sostenibles_en_suelos_ganaderos_crecimiento_estimado_de_superficies')
-    op.drop_index(op.f('ix_gana_st_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado_id'), table_name='gana_st_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado')
-    op.drop_table('gana_st_mejores_practicas_pecuarias_porcentaje_de_cabezas_de_ganado')
-    op.drop_index(op.f('ix_gana_sf_uso_actual_de_la_tierra_sector_agropecuario_en_colombia_id'), table_name='gana_sf_uso_actual_de_la_tierra_sector_agropecuario_en_colombia')
-    op.drop_table('gana_sf_uso_actual_de_la_tierra_sector_agropecuario_en_colombia')
+    op.drop_index(op.f('ix_gana_st_pract_sost_suelos_ganaderos_crecimiento_estimado_sup_id'), table_name='gana_st_pract_sost_suelos_ganaderos_crecimiento_estimado_sup')
+    op.drop_table('gana_st_pract_sost_suelos_ganaderos_crecimiento_estimado_sup')
+    op.drop_index(op.f('ix_gana_st_mejores_pract_pecuarias_cabezas_ganado_id'), table_name='gana_st_mejores_pract_pecuarias_cabezas_ganado')
+    op.drop_table('gana_st_mejores_pract_pecuarias_cabezas_ganado')
+    op.drop_index(op.f('ix_gana_sf_uso_actual_tierra_sector_agropecuario_colombia_id'), table_name='gana_sf_uso_actual_tierra_sector_agropecuario_colombia')
+    op.drop_table('gana_sf_uso_actual_tierra_sector_agropecuario_colombia')
     op.drop_index(op.f('ix_gana_sf_potencial_energetico_del_estiercol_id'), table_name='gana_sf_potencial_energetico_del_estiercol')
     op.drop_table('gana_sf_potencial_energetico_del_estiercol')
-    op.drop_index(op.f('ix_gana_sf_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos_id'), table_name='gana_sf_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos')
-    op.drop_table('gana_sf_potencial_de_reduccion_de_emisiones_practicas_sostenibles_en_suelos_ganaderos')
-    op.drop_index(op.f('ix_gana_sf_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias_id'), table_name='gana_sf_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias')
-    op.drop_table('gana_sf_potencial_de_reduccion_de_emisiones_de_mejores_practicas_pecuarias')
+    op.drop_index(op.f('ix_gana_sf_pot_reduccion_emisiones_mejores_practicas_pecuarias_id'), table_name='gana_sf_pot_reduccion_emisiones_mejores_practicas_pecuarias')
+    op.drop_table('gana_sf_pot_reduccion_emisiones_mejores_practicas_pecuarias')
+    op.drop_index(op.f('ix_gana_sf_pot_reduc_emisiones_practicas_sost_suelos_ganaderos_id'), table_name='gana_sf_pot_reduc_emisiones_practicas_sost_suelos_ganaderos')
+    op.drop_table('gana_sf_pot_reduc_emisiones_practicas_sost_suelos_ganaderos')
     op.drop_index(op.f('ix_gana_sf_hato_ganadero_colombiano_id'), table_name='gana_sf_hato_ganadero_colombiano')
     op.drop_table('gana_sf_hato_ganadero_colombiano')
-    op.drop_index(op.f('ix_gana_sf_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones_id'), table_name='gana_sf_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones')
-    op.drop_table('gana_sf_factor_produccion_de_estiercol_por_cabeza_de_ganado_y_emisiones')
     op.drop_index(op.f('ix_gana_sf_factor_de_emision_de_metano_ch4_por_genero_id'), table_name='gana_sf_factor_de_emision_de_metano_ch4_por_genero')
     op.drop_table('gana_sf_factor_de_emision_de_metano_ch4_por_genero')
-    op.drop_index(op.f('ix_gana_sf_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual_id'), table_name='gana_sf_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual')
-    op.drop_table('gana_sf_coeficiente_de_remocion_de_carbono_para_los_distintos_usos_de_suelo_y_ecorregion_anual')
-    op.drop_index(op.f('ix_gana_sf_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos_id'), table_name='gana_sf_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos')
-    op.drop_table('gana_sf_areas_iniciales_de_implementacion_para_practicas_sostenibles_en_suelos_ganaderos')
+    op.drop_index(op.f('ix_gana_sf_fact_prod_estiercol_por_cabeza_ganado_y_emisiones_id'), table_name='gana_sf_fact_prod_estiercol_por_cabeza_ganado_y_emisiones')
+    op.drop_table('gana_sf_fact_prod_estiercol_por_cabeza_ganado_y_emisiones')
+    op.drop_index(op.f('ix_gana_sf_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual_id'), table_name='gana_sf_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual')
+    op.drop_table('gana_sf_coef_remocion_carbono_dist_usos_suelo_ecorregion_anual')
+    op.drop_index(op.f('ix_gana_sf_areas_ini_implem_pract_sostenibles_suelos_ganaderos_id'), table_name='gana_sf_areas_ini_implem_pract_sostenibles_suelos_ganaderos')
+    op.drop_table('gana_sf_areas_ini_implem_pract_sostenibles_suelos_ganaderos')
     op.drop_index(op.f('ix_gana_salidas_id'), table_name='gana_salidas')
     op.drop_table('gana_salidas')
     op.drop_index(op.f('ix_gana_emisiones_id'), table_name='gana_emisiones')
     op.drop_table('gana_emisiones')
-    op.drop_index(op.f('ix_ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo_id'), table_name='ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo')
-    op.drop_table('ener_combfosil_st_eficiencia_energetica_en_la_refinacion_de_crudo')
+    op.drop_index(op.f('ix_ener_combfosil_st_eficiencia_energetica_refinacion_de_crudo_id'), table_name='ener_combfosil_st_eficiencia_energetica_refinacion_de_crudo')
+    op.drop_table('ener_combfosil_st_eficiencia_energetica_refinacion_de_crudo')
     op.drop_index(op.f('ix_ener_combfosil_sf_produccion_de_hidrocarburos_id'), table_name='ener_combfosil_sf_produccion_de_hidrocarburos')
     op.drop_table('ener_combfosil_sf_produccion_de_hidrocarburos')
     op.drop_index(op.f('ix_ener_combfosil_sf_produccion_de_carbon_id'), table_name='ener_combfosil_sf_produccion_de_carbon')
@@ -3554,16 +3556,16 @@ def downgrade() -> None:
     op.drop_table('ener_combfosil_sf_no_de_pozos')
     op.drop_index(op.f('ix_ener_combfosil_sf_factores_de_emision_carbon_id'), table_name='ener_combfosil_sf_factores_de_emision_carbon')
     op.drop_table('ener_combfosil_sf_factores_de_emision_carbon')
-    op.drop_index(op.f('ix_ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base_id'), table_name='ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base')
-    op.drop_table('ener_combfosil_sf_datos_de_la_produccion_de_gas_natural_en_el_ano_base')
-    op.drop_index(op.f('ix_ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base_id'), table_name='ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base')
-    op.drop_table('ener_combfosil_sf_datos_de_la_produccion_de_crudo_en_el_ano_base')
+    op.drop_index(op.f('ix_ener_combfosil_sf_datos_produccion_gas_natural_ano_base_id'), table_name='ener_combfosil_sf_datos_produccion_gas_natural_ano_base')
+    op.drop_table('ener_combfosil_sf_datos_produccion_gas_natural_ano_base')
+    op.drop_index(op.f('ix_ener_combfosil_sf_datos_produccion_crudo_ano_base_id'), table_name='ener_combfosil_sf_datos_produccion_crudo_ano_base')
+    op.drop_table('ener_combfosil_sf_datos_produccion_crudo_ano_base')
     op.drop_index(op.f('ix_ener_combfosil_sf_consumo_de_energeticos_id'), table_name='ener_combfosil_sf_consumo_de_energeticos')
     op.drop_table('ener_combfosil_sf_consumo_de_energeticos')
-    op.drop_index(op.f('ix_ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos_id'), table_name='ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos')
-    op.drop_table('ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos')
-    op.drop_index(op.f('ix_ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector_id'), table_name='ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector')
-    op.drop_table('ener_combfosil_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector')
+    op.drop_index(op.f('ix_ener_combfosil_salidas_consumo_comb_fosiles_sectores_ajenos_id'), table_name='ener_combfosil_salidas_consumo_comb_fosiles_sectores_ajenos')
+    op.drop_table('ener_combfosil_salidas_consumo_comb_fosiles_sectores_ajenos')
+    op.drop_index(op.f('ix_ener_combfosil_salidas_consumo_comb_fosiles_propio_sector_id'), table_name='ener_combfosil_salidas_consumo_comb_fosiles_propio_sector')
+    op.drop_table('ener_combfosil_salidas_consumo_comb_fosiles_propio_sector')
     op.drop_index(op.f('ix_ener_combfosil_salidas_combustibles_fosiles_producidos_id'), table_name='ener_combfosil_salidas_combustibles_fosiles_producidos')
     op.drop_table('ener_combfosil_salidas_combustibles_fosiles_producidos')
     op.drop_index(op.f('ix_ener_combfosil_emisiones_produccion_id'), table_name='ener_combfosil_emisiones_produccion')
@@ -3576,16 +3578,16 @@ def downgrade() -> None:
     op.drop_table('elect_electricidad_sf_horas_de_operacion_ano')
     op.drop_index(op.f('ix_elect_electricidad_sf_factor_de_carga_id'), table_name='elect_electricidad_sf_factor_de_carga')
     op.drop_table('elect_electricidad_sf_factor_de_carga')
-    op.drop_index(op.f('ix_elect_electricidad_salidas_energias_renovables_no_convencionales_id'), table_name='elect_electricidad_salidas_energias_renovables_no_convencionales')
-    op.drop_table('elect_electricidad_salidas_energias_renovables_no_convencionales')
     op.drop_index(op.f('ix_elect_electricidad_salidas_energia_demandada_id'), table_name='elect_electricidad_salidas_energia_demandada')
     op.drop_table('elect_electricidad_salidas_energia_demandada')
+    op.drop_index(op.f('ix_elect_electricidad_salidas_ener_renov_no_convencionales_id'), table_name='elect_electricidad_salidas_ener_renov_no_convencionales')
+    op.drop_table('elect_electricidad_salidas_ener_renov_no_convencionales')
     op.drop_index(op.f('ix_elect_electricidad_salidas_combustibles_fosiles_id'), table_name='elect_electricidad_salidas_combustibles_fosiles')
     op.drop_table('elect_electricidad_salidas_combustibles_fosiles')
     op.drop_index(op.f('ix_elect_electricidad_salidas_balance_id'), table_name='elect_electricidad_salidas_balance')
     op.drop_table('elect_electricidad_salidas_balance')
-    op.drop_index(op.f('ix_elect_electricidad_emisiones_energias_renovables_no_convencionales_id'), table_name='elect_electricidad_emisiones_energias_renovables_no_convencionales')
-    op.drop_table('elect_electricidad_emisiones_energias_renovables_no_convencionales')
+    op.drop_index(op.f('ix_elect_electricidad_emisiones_ener_renov_no_convencionales_id'), table_name='elect_electricidad_emisiones_ener_renov_no_convencionales')
+    op.drop_table('elect_electricidad_emisiones_ener_renov_no_convencionales')
     op.drop_index(op.f('ix_elect_electricidad_emisiones_combustibles_fosiles_id'), table_name='elect_electricidad_emisiones_combustibles_fosiles')
     op.drop_table('elect_electricidad_emisiones_combustibles_fosiles')
     op.drop_index(op.f('ix_edif_res_rural_st_demanda_de_lena_id'), table_name='edif_res_rural_st_demanda_de_lena')
@@ -3598,16 +3600,16 @@ def downgrade() -> None:
     op.drop_table('edif_res_rural_salidas')
     op.drop_index(op.f('ix_edif_res_rural_emisiones_id'), table_name='edif_res_rural_emisiones')
     op.drop_table('edif_res_rural_emisiones')
-    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_reduccion_total_de_la_demanda_de_energia_electrica_id'), table_name='edif_res_ilu_ref_coc_otr_st_reduccion_total_de_la_demanda_de_energia_electrica')
-    op.drop_table('edif_res_ilu_ref_coc_otr_st_reduccion_total_de_la_demanda_de_energia_electrica')
-    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_potencia_instalada_para_autogeneracion_solar_fotovoltaica_id'), table_name='edif_res_ilu_ref_coc_otr_st_potencia_instalada_para_autogeneracion_solar_fotovoltaica')
-    op.drop_table('edif_res_ilu_ref_coc_otr_st_potencia_instalada_para_autogeneracion_solar_fotovoltaica')
-    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_porcentaje_tecnologia_para_iluminacion_id'), table_name='edif_res_ilu_ref_coc_otr_st_porcentaje_tecnologia_para_iluminacion')
-    op.drop_table('edif_res_ilu_ref_coc_otr_st_porcentaje_tecnologia_para_iluminacion')
-    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_porcentaje_de_neveras_mas_eficientes_id'), table_name='edif_res_ilu_ref_coc_otr_st_porcentaje_de_neveras_mas_eficientes')
-    op.drop_table('edif_res_ilu_ref_coc_otr_st_porcentaje_de_neveras_mas_eficientes')
-    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_porcentaje_de_estufas_con_eficiencia_mejorada_id'), table_name='edif_res_ilu_ref_coc_otr_st_porcentaje_de_estufas_con_eficiencia_mejorada')
-    op.drop_table('edif_res_ilu_ref_coc_otr_st_porcentaje_de_estufas_con_eficiencia_mejorada')
+    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_tecnologia_iluminacion_id'), table_name='edif_res_ilu_ref_coc_otr_st_tecnologia_iluminacion')
+    op.drop_table('edif_res_ilu_ref_coc_otr_st_tecnologia_iluminacion')
+    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_reduccion_demanda_electrica_id'), table_name='edif_res_ilu_ref_coc_otr_st_reduccion_demanda_electrica')
+    op.drop_table('edif_res_ilu_ref_coc_otr_st_reduccion_demanda_electrica')
+    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_pot_inst_autogeneracion_fotovolt_id'), table_name='edif_res_ilu_ref_coc_otr_st_pot_inst_autogeneracion_fotovolt')
+    op.drop_table('edif_res_ilu_ref_coc_otr_st_pot_inst_autogeneracion_fotovolt')
+    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_neveras_mas_eficientes_id'), table_name='edif_res_ilu_ref_coc_otr_st_neveras_mas_eficientes')
+    op.drop_table('edif_res_ilu_ref_coc_otr_st_neveras_mas_eficientes')
+    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_estufas_eficiencia_mejorada_id'), table_name='edif_res_ilu_ref_coc_otr_st_estufas_eficiencia_mejorada')
+    op.drop_table('edif_res_ilu_ref_coc_otr_st_estufas_eficiencia_mejorada')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_demanda_total_por_refrigeracion_id'), table_name='edif_res_ilu_ref_coc_otr_st_demanda_total_por_refrigeracion')
     op.drop_table('edif_res_ilu_ref_coc_otr_st_demanda_total_por_refrigeracion')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_demanda_para_coccion_con_glp_id'), table_name='edif_res_ilu_ref_coc_otr_st_demanda_para_coccion_con_glp')
@@ -3616,18 +3618,18 @@ def downgrade() -> None:
     op.drop_table('edif_res_ilu_ref_coc_otr_st_demanda_iluminacion')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_st_demanda_coccion_con_gas_natural_id'), table_name='edif_res_ilu_ref_coc_otr_st_demanda_coccion_con_gas_natural')
     op.drop_table('edif_res_ilu_ref_coc_otr_st_demanda_coccion_con_gas_natural')
+    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_tenencia_refrigeradores_id'), table_name='edif_res_ilu_ref_coc_otr_sf_tenencia_refrigeradores')
+    op.drop_table('edif_res_ilu_ref_coc_otr_sf_tenencia_refrigeradores')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_glp_id'), table_name='edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_glp')
     op.drop_table('edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_glp')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_gas_natural_id'), table_name='edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_gas_natural')
     op.drop_table('edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_gas_natural')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_energia_electrica_id'), table_name='edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_energia_electrica')
     op.drop_table('edif_res_ilu_ref_coc_otr_sf_tenencia_por_uso_energia_electrica')
-    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_porcentaje_de_tenencia_refrigeradores_id'), table_name='edif_res_ilu_ref_coc_otr_sf_porcentaje_de_tenencia_refrigeradores')
-    op.drop_table('edif_res_ilu_ref_coc_otr_sf_porcentaje_de_tenencia_refrigeradores')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_numero_de_bombillos_por_hogar_id'), table_name='edif_res_ilu_ref_coc_otr_sf_numero_de_bombillos_por_hogar')
     op.drop_table('edif_res_ilu_ref_coc_otr_sf_numero_de_bombillos_por_hogar')
-    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica_id'), table_name='edif_res_ilu_ref_coc_otr_sf_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica')
-    op.drop_table('edif_res_ilu_ref_coc_otr_sf_horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica')
+    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_hr_ope_autogeneracion_fotovoltaica_id'), table_name='edif_res_ilu_ref_coc_otr_sf_hr_ope_autogeneracion_fotovoltaica')
+    op.drop_table('edif_res_ilu_ref_coc_otr_sf_hr_ope_autogeneracion_fotovoltaica')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_demanda_glp_por_uso_id'), table_name='edif_res_ilu_ref_coc_otr_sf_demanda_glp_por_uso')
     op.drop_table('edif_res_ilu_ref_coc_otr_sf_demanda_glp_por_uso')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_sf_demanda_gas_natural_por_uso_id'), table_name='edif_res_ilu_ref_coc_otr_sf_demanda_gas_natural_por_uso')
@@ -3636,54 +3638,54 @@ def downgrade() -> None:
     op.drop_table('edif_res_ilu_ref_coc_otr_sf_demanda_energia_electrica_por_uso')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_salidas_id'), table_name='edif_res_ilu_ref_coc_otr_salidas')
     op.drop_table('edif_res_ilu_ref_coc_otr_salidas')
-    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_metodologia_generacion_solar_fotovoltaica_id'), table_name='edif_res_ilu_ref_coc_otr_metodologia_generacion_solar_fotovoltaica')
-    op.drop_table('edif_res_ilu_ref_coc_otr_metodologia_generacion_solar_fotovoltaica')
+    op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_metod_generacion_solar_fotovoltaica_id'), table_name='edif_res_ilu_ref_coc_otr_metod_generacion_solar_fotovoltaica')
+    op.drop_table('edif_res_ilu_ref_coc_otr_metod_generacion_solar_fotovoltaica')
     op.drop_index(op.f('ix_edif_res_ilu_ref_coc_otr_emisiones_id'), table_name='edif_res_ilu_ref_coc_otr_emisiones')
     op.drop_table('edif_res_ilu_ref_coc_otr_emisiones')
     op.drop_index(op.f('ix_edif_res_acond_st_implementacion_id'), table_name='edif_res_acond_st_implementacion')
     op.drop_table('edif_res_acond_st_implementacion')
-    op.drop_index(op.f('ix_edif_res_acond_st_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia_id'), table_name='edif_res_acond_st_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia')
-    op.drop_table('edif_res_acond_st_equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia')
-    op.drop_index(op.f('ix_edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_solo_eficiencia_id'), table_name='edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_solo_eficiencia')
-    op.drop_table('edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_solo_eficiencia')
-    op.drop_index(op.f('ix_edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia_id'), table_name='edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia')
-    op.drop_table('edif_res_acond_st_demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia')
+    op.drop_index(op.f('ix_edif_res_acond_st_equipos_acond_espacios_alta_eficiencia_id'), table_name='edif_res_acond_st_equipos_acond_espacios_alta_eficiencia')
+    op.drop_table('edif_res_acond_st_equipos_acond_espacios_alta_eficiencia')
+    op.drop_index(op.f('ix_edif_res_acond_st_demanda_acond_espacios_solo_eficiencia_id'), table_name='edif_res_acond_st_demanda_acond_espacios_solo_eficiencia')
+    op.drop_table('edif_res_acond_st_demanda_acond_espacios_solo_eficiencia')
+    op.drop_index(op.f('ix_edif_res_acond_st_demanda_acond_espacios_diseno_eficiencia_id'), table_name='edif_res_acond_st_demanda_acond_espacios_diseno_eficiencia')
+    op.drop_table('edif_res_acond_st_demanda_acond_espacios_diseno_eficiencia')
     op.drop_index(op.f('ix_edif_res_acond_sf_tenencia_id'), table_name='edif_res_acond_sf_tenencia')
     op.drop_table('edif_res_acond_sf_tenencia')
     op.drop_index(op.f('ix_edif_res_acond_salidas_id'), table_name='edif_res_acond_salidas')
     op.drop_table('edif_res_acond_salidas')
     op.drop_index(op.f('ix_edif_res_acond_emisiones_id'), table_name='edif_res_acond_emisiones')
     op.drop_table('edif_res_acond_emisiones')
-    op.drop_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_usos_termicos_id'), table_name='edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_usos_termicos')
-    op.drop_table('edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_usos_termicos')
-    op.drop_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_refrigeracion_id'), table_name='edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_refrigeracion')
-    op.drop_table('edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_refrigeracion')
-    op.drop_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_la_iluminacion_id'), table_name='edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_la_iluminacion')
-    op.drop_table('edif_com_usos_term_equip_st_reduccion_por_eficiencia_en_la_iluminacion')
+    op.drop_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_eficiencia_usos_termicos_id'), table_name='edif_com_usos_term_equip_st_reduccion_eficiencia_usos_termicos')
+    op.drop_table('edif_com_usos_term_equip_st_reduccion_eficiencia_usos_termicos')
+    op.drop_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_eficiencia_refrigeracion_id'), table_name='edif_com_usos_term_equip_st_reduccion_eficiencia_refrigeracion')
+    op.drop_table('edif_com_usos_term_equip_st_reduccion_eficiencia_refrigeracion')
+    op.drop_index(op.f('ix_edif_com_usos_term_equip_st_reduccion_eficiencia_iluminacion_id'), table_name='edif_com_usos_term_equip_st_reduccion_eficiencia_iluminacion')
+    op.drop_table('edif_com_usos_term_equip_st_reduccion_eficiencia_iluminacion')
     op.drop_index(op.f('ix_edif_com_usos_term_equip_sf_participacion_usos_en_equipamiento_id'), table_name='edif_com_usos_term_equip_sf_participacion_usos_en_equipamiento')
     op.drop_table('edif_com_usos_term_equip_sf_participacion_usos_en_equipamiento')
-    op.drop_index(op.f('ix_edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_los_usos_termicos_id'), table_name='edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_los_usos_termicos')
-    op.drop_table('edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_los_usos_termicos')
-    op.drop_index(op.f('ix_edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_equipamiento_id'), table_name='edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_equipamiento')
-    op.drop_table('edif_com_usos_term_equip_sf_participacion_de_los_energeticos_en_equipamiento')
+    op.drop_index(op.f('ix_edif_com_usos_term_equip_sf_participacion_energ_equipamiento_id'), table_name='edif_com_usos_term_equip_sf_participacion_energ_equipamiento')
+    op.drop_table('edif_com_usos_term_equip_sf_participacion_energ_equipamiento')
+    op.drop_index(op.f('ix_edif_com_usos_term_equip_sf_part_energeticos_usos_termicos_id'), table_name='edif_com_usos_term_equip_sf_part_energeticos_usos_termicos')
+    op.drop_table('edif_com_usos_term_equip_sf_part_energeticos_usos_termicos')
     op.drop_index(op.f('ix_edif_com_usos_term_equip_sf_consumo_total_de_energia_por_uso_id'), table_name='edif_com_usos_term_equip_sf_consumo_total_de_energia_por_uso')
     op.drop_table('edif_com_usos_term_equip_sf_consumo_total_de_energia_por_uso')
     op.drop_index(op.f('ix_edif_com_usos_term_equip_salidas_id'), table_name='edif_com_usos_term_equip_salidas')
     op.drop_table('edif_com_usos_term_equip_salidas')
     op.drop_index(op.f('ix_edif_com_usos_term_equip_emisiones_id'), table_name='edif_com_usos_term_equip_emisiones')
     op.drop_table('edif_com_usos_term_equip_emisiones')
-    op.drop_index(op.f('ix_edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia_id'), table_name='edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia')
-    op.drop_table('edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia')
-    op.drop_index(op.f('ix_edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia_id'), table_name='edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia')
-    op.drop_table('edif_com_acond_st_demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia')
+    op.drop_index(op.f('ix_edif_com_acond_st_demanda_ener_acond_espacios_eficiencia_id'), table_name='edif_com_acond_st_demanda_ener_acond_espacios_eficiencia')
+    op.drop_table('edif_com_acond_st_demanda_ener_acond_espacios_eficiencia')
+    op.drop_index(op.f('ix_edif_com_acond_st_demanda_ener_acond_esp_diseno_eficiencia_id'), table_name='edif_com_acond_st_demanda_ener_acond_esp_diseno_eficiencia')
+    op.drop_table('edif_com_acond_st_demanda_ener_acond_esp_diseno_eficiencia')
     op.drop_index(op.f('ix_edif_com_acond_salidas_id'), table_name='edif_com_acond_salidas')
     op.drop_table('edif_com_acond_salidas')
     op.drop_index(op.f('ix_edif_com_acond_emisiones_id'), table_name='edif_com_acond_emisiones')
     op.drop_table('edif_com_acond_emisiones')
+    op.drop_index(op.f('ix_bosq_st_plantaciones_forestales_con_fines_comerciales_id'), table_name='bosq_st_plantaciones_forestales_con_fines_comerciales')
+    op.drop_table('bosq_st_plantaciones_forestales_con_fines_comerciales')
     op.drop_index(op.f('ix_bosq_st_escenarios_de_deforestacion_id'), table_name='bosq_st_escenarios_de_deforestacion')
     op.drop_table('bosq_st_escenarios_de_deforestacion')
-    op.drop_index(op.f('ix_bosq_st_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales_id'), table_name='bosq_st_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales')
-    op.drop_table('bosq_st_desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales')
     op.drop_index(op.f('ix_bosq_sf_factor_de_conversion_de_biomasa_por_deforestacion_id'), table_name='bosq_sf_factor_de_conversion_de_biomasa_por_deforestacion')
     op.drop_table('bosq_sf_factor_de_conversion_de_biomasa_por_deforestacion')
     op.drop_index(op.f('ix_bosq_sf_descuentos_aplicables_a_reforestacion_comercial_id'), table_name='bosq_sf_descuentos_aplicables_a_reforestacion_comercial')

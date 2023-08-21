@@ -13,7 +13,7 @@ docker-compose up -d
 
 echo "load data start in 30 seconds"
 
-for i in {1..30}
+for i in {1..50}
 do
    echo "Wait $i/30 times"
    sleep 1
