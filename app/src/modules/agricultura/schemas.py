@@ -317,7 +317,6 @@ class SALIDAS(BaseModel):
 ####################################################################################
 
 class Emisiones_name(str, Enum):
-    # emisiones = 'emisiones'
     emisiones_cultivo_biocombustibles = 'emisiones_cultivo_biocombustibles',
     implementacion_de_mejores_practicas_agricolas = 'implementacion_de_mejores_practicas_agricolas',
     emisiones_a_industria = 'emisiones_a_industria'

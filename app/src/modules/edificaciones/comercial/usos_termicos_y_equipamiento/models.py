@@ -7,7 +7,7 @@ from app.src.db.base_class import Base
 ####################################################################################
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
-      ############################################################### 
+
 class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_iluminacion(Base):
     """Supuestos de Trayectoria reduccion_por_eficiencia_en_la_iluminacion
     """
@@ -26,7 +26,7 @@ class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_iluminacion(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_refrigeracion(Base):
     """Supuestos de Trayectoria reduccion_por_eficiencia_en_refrigeracion
     """
@@ -45,7 +45,7 @@ class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_refrigeracion(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_COM_USOS_TERM_EQUIP_ST_reduccion_eficiencia_usos_termicos(Base):
     """Supuestos de Trayectoria reduccion_por_eficiencia_en_usos_termicos
     """
@@ -106,7 +106,7 @@ class EDIF_COM_USOS_TERM_EQUIP_SF_participacion_usos_en_equipamiento(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_COM_USOS_TERM_EQUIP_SF_part_energeticos_usos_termicos(Base):
     """Supuestos Fijos participacion_de_los_energeticos_en_los_usos_termicos
     """
@@ -125,7 +125,7 @@ class EDIF_COM_USOS_TERM_EQUIP_SF_part_energeticos_usos_termicos(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_COM_USOS_TERM_EQUIP_SF_participacion_energ_equipamiento(Base):
     """Supuestos Fijos participacion_de_los_energeticos_en_equipamiento
     """
@@ -145,9 +145,9 @@ class EDIF_COM_USOS_TERM_EQUIP_SF_participacion_energ_equipamiento(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class EDIF_COM_USOS_TERM_EQUIP_SALIDAS(Base):
     """energia_producida_y_requerida"""
@@ -187,4 +187,3 @@ class EDIF_COM_USOS_TERM_EQUIP_EMISIONES(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-

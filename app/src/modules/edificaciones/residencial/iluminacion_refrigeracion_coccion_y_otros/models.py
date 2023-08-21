@@ -103,7 +103,7 @@ class EDIF_RES_ILU_REF_COC_OTR_ST_demanda_coccion_con_gas_natural(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_RES_ILU_REF_COC_OTR_ST_estufas_eficiencia_mejorada(Base):
     """Supuestos de Trayectoria porcentaje_de_estufas_con_eficiencia_mejorada
     """
@@ -140,7 +140,7 @@ class EDIF_RES_ILU_REF_COC_OTR_ST_demanda_para_coccion_con_glp(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_demanda_electrica(Base):
     """Supuestos de Trayectoria reduccion_total_de_la_demanda_de_energia_electrica
     """
@@ -159,7 +159,7 @@ class EDIF_RES_ILU_REF_COC_OTR_ST_reduccion_demanda_electrica(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_RES_ILU_REF_COC_OTR_ST_pot_inst_autogeneracion_fotovolt(Base):
     """Supuestos de Trayectoria potencia_instalada_para_autogeneracion_solar_fotovoltaica
     """
@@ -306,7 +306,7 @@ class EDIF_RES_ILU_REF_COC_OTR_SF_numero_de_bombillos_por_hogar(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_refrigeradores(Base):
     """Supuestos Fijos porcentaje_de_tenencia_refrigeradores"""
 
@@ -323,7 +323,7 @@ class EDIF_RES_ILU_REF_COC_OTR_SF_tenencia_refrigeradores(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_RES_ILU_REF_COC_OTR_SF_hr_ope_autogeneracion_fotovoltaica(Base):
     """Supuestos Fijos horas_utiles_de_operacion_de_la_autogeneracion_solar_fotovoltaica"""
 
@@ -344,7 +344,7 @@ class EDIF_RES_ILU_REF_COC_OTR_SF_hr_ope_autogeneracion_fotovoltaica(Base):
 ####################################################################################
 #######                           Metodologia                                #######
 ####################################################################################
-      ############################################################### 
+
 class EDIF_RES_ILU_REF_COC_OTR_Metod_generacion_solar_fotovoltaica(Base):
     """Metodologia_generacion_solar_fotovoltaica"""
 

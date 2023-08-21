@@ -7,7 +7,7 @@ from app.src.db.base_class import Base
 ####################################################################################
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
-      ############################################################### 
+
 class EDIF_RES_ACOND_ST_demanda_acond_espacios_diseno_eficiencia(Base):
     """Supuestos de Trayectoria demanda_para_acondicionamiento_de_espacios_diseno_y_eficiencia
     """
@@ -27,7 +27,7 @@ class EDIF_RES_ACOND_ST_demanda_acond_espacios_diseno_eficiencia(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_RES_ACOND_ST_demanda_acond_espacios_solo_eficiencia(Base):
     """Supuestos de Trayectoria demanda_para_acondicionamiento_de_espacios_solo_eficiencia
     """
@@ -67,7 +67,7 @@ class EDIF_RES_ACOND_ST_implementacion(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class EDIF_RES_ACOND_ST_equipos_acond_espacios_alta_eficiencia(Base):
     """Supuestos de Trayectoria equipos_para_el_acondicionamiento_de_espacios_de_alta_eficiencia
     """
@@ -110,9 +110,9 @@ class EDIF_RES_ACOND_SF_tenencia(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class EDIF_RES_ACOND_SALIDAS(Base):
     """energia_producida_y_requerida"""
@@ -152,4 +152,3 @@ class EDIF_RES_ACOND_EMISIONES(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-

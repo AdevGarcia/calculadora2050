@@ -171,8 +171,8 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    skip: int = 0, 
-    limit: int = 100,
+    # skip: int = 0, 
+    # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
@@ -302,7 +302,6 @@ def create_emisiones(
 
 @router.get('/emisiones')
 def read_emisiones_module(
-    # module: schemas.Emisiones_name,
     medida_bosq_1: schemas.Trayectoria,
     medida_bosq_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 

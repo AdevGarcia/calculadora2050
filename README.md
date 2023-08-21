@@ -18,8 +18,9 @@ otros
 ```bash
 # como root
 cp .env.sample .env
-virtualenv venv
+virtualenv venv -p python3.10
 source ./venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
 
 ./install.sh
@@ -29,7 +30,8 @@ sudo nohup ./start_dev.sh > logs.out 2> logs.err < /dev/null &
 
 # Installation
 ```bash
-pip install httpx
+pip install fastapi alembic uvicorn psycopg2-binary httpx pandas 
+pip install python-dotenv python-jose pydantic-settings email-validator passlib
 ```
 
 

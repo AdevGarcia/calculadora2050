@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, status
 from fastapi.encoders import jsonable_encoder
 import logging
 
-from app.src.crud.base import loader, prune, downloader, downloader_batch
+from app.src.crud.base import loader, prune, downloader
 from . import models, schemas
 from db import deps
 
@@ -14,12 +14,10 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 URI_ST = '/supuestos_trayectoria'
-URI_SF = '/supuestos_fijos'
 URI_SALIDAS   = '/salidas'
 URI_EMISIONES = '/emisiones'
 
 SCHEMAS_ST  = schemas.SUPUESTOS_TRAYECTORIA
-# SCHEMAS_SF  = schemas.SUPUESTOS_FIJOS
 SCHEMAS_SALIDAS    = schemas.SALIDAS
 SCHEMAS_EMISIONES  = schemas.EMISIONES
 

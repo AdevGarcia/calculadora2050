@@ -7,7 +7,7 @@ from app.src.db.base_class import Base
 ####################################################################################
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
-      ###############################################################   
+
 class EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia(Base):
     """Supuestos de Trayectoria demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia
     """
@@ -26,7 +26,7 @@ class EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ###############################################################
+
 class EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia(Base):
     """Supuestos de Trayectoria demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia
     """
@@ -52,9 +52,9 @@ class EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia(Base):
 
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class EDIF_COM_ACOND_SALIDAS(Base):
     """energia_producida_y_requerida"""
@@ -94,4 +94,3 @@ class EDIF_COM_ACOND_EMISIONES(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-
