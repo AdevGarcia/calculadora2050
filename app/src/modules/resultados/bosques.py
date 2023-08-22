@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status
 from fastapi.encoders import jsonable_encoder
 
-import pandas as pd
 import logging
 
 from app.src.crud.base import downloader

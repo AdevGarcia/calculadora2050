@@ -334,9 +334,9 @@ class SUPUESTOS_FIJOS(BaseModel):
         from_attributes = True
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class Salidas_name(str, Enum):
     salida_energia_requerida_combustible = 'salida_energia_requerida_combustible'
@@ -346,7 +346,7 @@ class Salidas_name(str, Enum):
     salida_energia_producida_por_autogeneracion_y_cogeneracion_industria = 'salida_energia_producida_por_autogeneracion_y_cogeneracion_industria'
     salida_balance_total_de_la_energia_requerida_industria = 'salida_balance_total_de_la_energia_requerida_industria'
 
-# # Por combustible
+# Por combustible
 
 class _INDU_SALIDAS_por_combustible_energia_requerida(BaseModel):
     """Salidas - por_combustible_energia_requerida
@@ -365,8 +365,6 @@ class _INDU_SALIDAS_por_combustible_energia_requerida(BaseModel):
     y2050       : float | None
     unidad      : str
     medida_1    : float | None
-    # medida_2    : float | None
-    # medida_3    : float | None
     medida_4    : float | None
 
 class INDU_SALIDAS_por_combustible_energia_requerida(BaseModel):
@@ -396,9 +394,6 @@ class _INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion(BaseModel):
     y2050       : float | None
     unidad      : str
     medida_1    : float | None
-    # medida_2    : float | None
-    # medida_3    : float | None
-    # medida_4    : float | None
 
 class INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion(BaseModel):
     """Salidas - por_combustible_energia_producida_por_autogeneracion_y_cogeneracion
@@ -427,8 +422,6 @@ class _INDU_SALIDAS_por_combustible_balance_total_energia_requerida(BaseModel):
     y2050       : float | None
     unidad      : str
     medida_1    : float | None
-    # medida_2    : float | None
-    # medida_3    : float | None
     medida_4    : float | None
 
 class INDU_SALIDAS_por_combustible_balance_total_energia_requerida(BaseModel):
@@ -441,7 +434,7 @@ class INDU_SALIDAS_por_combustible_balance_total_energia_requerida(BaseModel):
         from_attributes = True
 
 
-# # POR TIPO DE INDUSTRIA
+# POR TIPO DE INDUSTRIA
 
 class _INDU_SALIDAS_por_tipo_de_industria_energia_requerida(BaseModel):
     """Salidas - por_tipo_de_industria_energia_requerida
@@ -460,8 +453,6 @@ class _INDU_SALIDAS_por_tipo_de_industria_energia_requerida(BaseModel):
     y2050       : float | None
     unidad      : str
     medida_1    : float | None
-    # medida_2    : float | None
-    # medida_3    : float | None
     medida_4    : float | None
 
 class INDU_SALIDAS_por_tipo_de_industria_energia_requerida(BaseModel):
@@ -491,9 +482,6 @@ class _INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac(BaseModel):
     y2050       : float | None
     unidad      : str
     medida_1    : float | None
-    # medida_2    : float | None
-    # medida_3    : float | None
-    # medida_4    : float | None
 
 class INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac(BaseModel):
     """Salidas - por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion
@@ -522,8 +510,6 @@ class _INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida(BaseModel):
     y2050       : float | None
     unidad      : str
     medida_1    : float | None
-    # medida_2    : float | None
-    # medida_3    : float | None
     medida_4    : float | None
 
 class INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida(BaseModel):
@@ -577,7 +563,6 @@ class _INDU_emisiones_gases_efecto_invernadero(BaseModel):
     unidad      : str
     medida_1    : float | None
     medida_2    : float | None
-    # medida_3    : float | None
     medida_4    : float | None
 
 class INDU_emisiones_gases_efecto_invernadero(BaseModel):
@@ -604,10 +589,8 @@ class _INDU_emisiones_por_el_consumo_de_bagazo_y_otros(BaseModel):
     y2045       : float | None
     y2050       : float | None
     unidad      : str
-    # medida_1    : float | None
     medida_2    : float | None
     medida_3    : float | None
-    # medida_4    : float | None
 
 
 class INDU_emisiones_por_el_consumo_de_bagazo_y_otros(BaseModel):

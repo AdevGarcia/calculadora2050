@@ -211,9 +211,9 @@ class SUPUESTOS_FIJOS(BaseModel):
         from_attributes = True
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class Salidas_name(str, Enum):
     salida_energia_consumida = 'salida_energia_consumida'
@@ -299,46 +299,6 @@ class Emisiones_emisiones(str, Enum):
     emisiones = 'emisiones'
 
 
-# class RES_SOL_emisiones_de_gases_de_efecto_invernadero_residuos(BaseModel):
-#     """Emisiones - emisiones_de_gases_de_efecto_invernadero_residuos
-#     """
-
-#     topic       : str
-#     bloque      : str
-#     grupo       : str
-#     tipo        : str
-#     y2018       : float | None
-#     y2020       : float | None
-#     y2025       : float | None
-#     y2030       : float | None
-#     y2035       : float | None
-#     y2040       : float | None
-#     y2045       : float | None
-#     y2050       : float | None
-#     unidad      : str
-#     medida_1    : float
-
-
-# class RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia(BaseModel):
-#     """Emisiones - emisiones_de_gases_de_efecto_invernadero_energia
-#     """
-
-#     topic       : str
-#     bloque      : str
-#     grupo       : str
-#     tipo        : str
-#     y2018       : float | None
-#     y2020       : float | None
-#     y2025       : float | None
-#     y2030       : float | None
-#     y2035       : float | None
-#     y2040       : float | None
-#     y2045       : float | None
-#     y2050       : float | None
-#     unidad      : str
-#     medida_1    : float
-
-
 class RES_SOL_emisiones(BaseModel):
     """Emisiones - emisiones"""
 
@@ -361,8 +321,7 @@ class RES_SOL_emisiones(BaseModel):
 class EMISIONES(BaseModel):
     """Emisiones - emisiones_gases_efecto_invernadero
     """
-    # emisiones_de_gases_de_efecto_invernadero_residuos : list[RES_SOL_emisiones_de_gases_de_efecto_invernadero_residuos]
-    # emisiones_de_gases_de_efecto_invernadero_energia  : list[RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia]
+
     emisiones : list[RES_SOL_emisiones]
 
     class ConfigDict:

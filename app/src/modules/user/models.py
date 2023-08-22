@@ -4,7 +4,6 @@ from app.src.db.base_class import Base
 
 
 class User(Base):
-    # __tablename__ = "USER"
     
     id              = Column(Integer, primary_key=True, index=True)
     full_name       = Column(String, index=True)

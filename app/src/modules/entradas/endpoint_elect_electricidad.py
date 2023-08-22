@@ -30,8 +30,6 @@ router = APIRouter()
 @router.get('/energia_inyectada_a_red')
 def read_entradas_energia_inyectada_a_red(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_res_sol_1: schemas.Trayectoria=1,
     medida_res_agu_1: schemas.Trayectoria=1,
@@ -56,7 +54,6 @@ def read_entradas_energia_inyectada_a_red(
     filter={"tipo": "total_inyectado_a_red", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -64,9 +61,7 @@ def read_entradas_energia_inyectada_a_red(
         bloque="energia_inyectada_a_red",
         tipo='industria',
         unidad="TWh")
-    
-    # print('\n industria\n', industria)
-    
+        
     ##########   residuos   ##############
     ### residuos solidos
     filter={"tipo": "total_consumido", 'medida_1': medida_res_sol_1}
@@ -112,8 +107,6 @@ def read_entradas_energia_inyectada_a_red(
     residuos["tipo"]     = "residuos"
     residuos["unidad"]   = "TWh"
 
-    # print('\n residuos\n', residuos)
-
     ##########   edificaciones   ##############    
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_res_irco_1, 'medida_2': medida_res_irco_2, 'medida_3': medida_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
@@ -138,8 +131,6 @@ def read_entradas_energia_inyectada_a_red(
     edificaciones["tipo"]     = "edificaciones"
     edificaciones["unidad"]   = "TWh"
 
-    # print('\n edificaciones\n', edificaciones)
-
     ##########   agricultura   ##############
     filter={'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
@@ -152,8 +143,6 @@ def read_entradas_energia_inyectada_a_red(
     agricultura["tipo"]     = "agricultura"
     agricultura["unidad"]   = "TWh"
     
-    # print('\n agricultura\n', agricultura)
-
     ##########   ganaderia   ##############
     filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     ganaderia = get_item(db=db, 
@@ -165,16 +154,9 @@ def read_entradas_energia_inyectada_a_red(
         tipo='ganaderia',
         unidad='TWh')
     
-    # print('\n ganaderia\n', ganaderia)
-
     ##############################
     combustibles_fosiles = set_zeros(topic_item='entradas', bloque='energia_inyectada_a_red', tipo='combustibles_fosiles', unidad='TWh')
-    # industria            = set_zeros(topic_item='entradas', bloque='energia_inyectada_a_red', tipo='industria',            unidad='TWh')
-    # residuos             = set_zeros(topic_item='entradas', bloque='energia_inyectada_a_red', tipo='residuos',             unidad='TWh')
-    # edificaciones        = set_zeros(topic_item='entradas', bloque='energia_inyectada_a_red', tipo='edificaciones',        unidad='TWh')
     transporte           = set_zeros(topic_item='entradas', bloque='energia_inyectada_a_red', tipo='transporte',           unidad='TWh')
-    # agricultura          = set_zeros(topic_item='entradas', bloque='energia_inyectada_a_red', tipo='agricultura',          unidad='TWh')
-    # ganaderia            = set_zeros(topic_item='entradas', bloque='energia_inyectada_a_red', tipo='ganaderia',            unidad='TWh')
     bosques              = set_zeros(topic_item='entradas', bloque='energia_inyectada_a_red', tipo='bosques',              unidad='TWh')
 
     total = set_suma_total(items=[combustibles_fosiles, industria, residuos, edificaciones, transporte, agricultura, ganaderia, bosques],
@@ -206,8 +188,6 @@ def read_entradas_energia_inyectada_a_red(
 @router.get('/demanda')
 def read_entradas_demanda(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_res_sol_1: schemas.Trayectoria=1,
     medida_res_agu_1: schemas.Trayectoria=1,
@@ -234,7 +214,6 @@ def read_entradas_demanda(
     filter={"tipo": "total_electricidad", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -242,9 +221,7 @@ def read_entradas_demanda(
         bloque="demanda",
         tipo='industria',
         unidad="TWh")
-    
-    # print('\n industria\n', industria)
-    
+        
     ##########   residuos   ##############
     ### residuos solidos
     filter={"tipo": "total_consumido", 'medida_1': medida_res_sol_1}
@@ -294,8 +271,6 @@ def read_entradas_demanda(
     residuos["tipo"]     = "residuos"
     residuos["unidad"]   = "TWh"
 
-    # print('\n residuos\n', residuos)
-
     ##########   edificaciones   ##############    
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_res_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
@@ -342,8 +317,6 @@ def read_entradas_demanda(
     edificaciones["tipo"]     = "edificaciones"
     edificaciones["unidad"]   = "TWh"
 
-    # print('\n edificaciones\n', edificaciones)
-
     ##########   transporte   ##############
     filter={'tipo': 'electrico', 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
@@ -363,14 +336,8 @@ def read_entradas_demanda(
     transporte["tipo"]     = "transporte"
     transporte["unidad"]   = "TWh"
     
-    # print('\n transporte\n', transporte)
-
     ##############################
     combustibles_fosiles = set_zeros(topic_item='entradas', bloque='demanda', tipo='combustibles_fosiles', unidad='TWh')
-    # industria            = set_zeros(topic_item='entradas', bloque='demanda', tipo='industria',            unidad='TWh')
-    # residuos             = set_zeros(topic_item='entradas', bloque='demanda', tipo='residuos',             unidad='TWh')
-    # edificaciones        = set_zeros(topic_item='entradas', bloque='demanda', tipo='edificaciones',        unidad='TWh')
-    # transporte           = set_zeros(topic_item='entradas', bloque='demanda', tipo='transporte',           unidad='TWh')
     agricultura          = set_zeros(topic_item='entradas', bloque='demanda', tipo='agricultura',          unidad='TWh')
     ganaderia            = set_zeros(topic_item='entradas', bloque='demanda', tipo='ganaderia',            unidad='TWh')
     bosques              = set_zeros(topic_item='entradas', bloque='demanda', tipo='bosques',              unidad='TWh')
@@ -422,7 +389,6 @@ def read_entradas_emisiones_derivadas_de_la_autogeneracion(
 
     filter={"grupo": "incineracion", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
-        # model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia,
         model=models.RES_SOL_emisiones,
         **filter)
 
@@ -434,12 +400,9 @@ def read_entradas_emisiones_derivadas_de_la_autogeneracion(
     residuos["tipo"]     = "residuos"
     residuos["unidad"]   = "TWh"
 
-    # print('\n residuos\n', residuos)
-
     ##############################
     combustibles_fosiles = set_zeros(topic_item='entradas', bloque='emisiones_derivadas_de_la_autogeneracion', tipo='combustibles_fosiles', unidad='TWh')
     industria            = set_zeros(topic_item='entradas', bloque='emisiones_derivadas_de_la_autogeneracion', tipo='industria',            unidad='TWh')
-    # residuos             = set_zeros(topic_item='entradas', bloque='emisiones_derivadas_de_la_autogeneracion', tipo='residuos',             unidad='TWh')
     edificaciones        = set_zeros(topic_item='entradas', bloque='emisiones_derivadas_de_la_autogeneracion', tipo='edificaciones',        unidad='TWh')
     transporte           = set_zeros(topic_item='entradas', bloque='emisiones_derivadas_de_la_autogeneracion', tipo='transporte',           unidad='TWh')
     agricultura          = set_zeros(topic_item='entradas', bloque='emisiones_derivadas_de_la_autogeneracion', tipo='agricultura',          unidad='TWh')
@@ -466,5 +429,3 @@ def read_entradas_emisiones_derivadas_de_la_autogeneracion(
         logger.info(f'Read Data: {jsonable_encoder(resultado)}')
 
     return jsonable_encoder(resultado)
-
-

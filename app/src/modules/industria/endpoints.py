@@ -3,15 +3,12 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status
 from fastapi.encoders import jsonable_encoder
 import logging
-import pandas as pd
+
 from app.src.crud.base import loader, prune, downloader, downloader_batch
 from . import models, schemas
 from db import deps
 
 from app.src.modules.user import models as models_user
-# from app.src.modules.agricultura.models import AGRO_SALIDAS_cultivos
-# from app.src.modules.agricultura.endpoints import read_salidas_module
-# from app.src.modules.entradas.endpoint_ind import read_entradas_produccion
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -103,7 +100,7 @@ def create_ST(
     return jdata
 
 
-@router.get('/supuestos_trayectoria/{module}')#, response_model=SCHEMAS_ST)
+@router.get('/supuestos_trayectoria/{module}')
 def read_ST_module(
     module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
@@ -276,8 +273,8 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    skip: int = 0, 
-    limit: int = 100,
+    # skip: int = 0, 
+    # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
@@ -481,7 +478,7 @@ def create_salida_balance_total_de_la_energia_requerida_industria(
     return jdata
 
 
-@router.get('/salidas/{module}')#, response_model=SCHEMAS_SALIDAS)
+@router.get('/salidas/{module}')
 def read_Salidas_module(
     module: schemas.Salidas_name,
     medida_ind_1: schemas.Trayectoria=1,
@@ -493,7 +490,6 @@ def read_Salidas_module(
     ) -> Any:
     """READ ALL
     """
-    # filter = {'medida_1' : medida_ind_1, 'medida_2' : medida_ind_2, 'medida_3' : medida_ind_3, 'medida_4' : medida_ind_4}
 
     match module:
         case schemas.Salidas_name.salida_energia_requerida_combustible:
@@ -658,7 +654,7 @@ def create_emisiones_sao(
     return jdata
 
 
-@router.get('/emisiones/{module}')#, response_model=SCHEMAS_SALIDAS)
+@router.get('/emisiones/{module}')
 def read_Emisiones_module(
     module: schemas.Emisiones_name,
     medida_ind_1: schemas.Trayectoria=1,

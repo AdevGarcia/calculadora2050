@@ -6,8 +6,6 @@ from fastapi.encoders import jsonable_encoder
 import pandas as pd
 import logging
 
-from app.src.crud.base import downloader
-
 from . import models, schemas
 from db import deps
 
@@ -38,8 +36,6 @@ router = APIRouter()
 def read_entradas_requerimientos_energeticos(
     medida_ener_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
@@ -65,8 +61,6 @@ def read_entradas_requerimientos_energeticos(
     gasolina = read_entradas_energia_combustibles_fosiles_gasolina(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_trans_car_1=medida_trans_car_1,
         medida_trans_car_2=medida_trans_car_2,
@@ -77,8 +71,6 @@ def read_entradas_requerimientos_energeticos(
     diesel = read_entradas_energia_combustibles_fosiles_diesel(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_trans_car_1=medida_trans_car_1,
         medida_trans_car_2=medida_trans_car_2,
@@ -91,8 +83,6 @@ def read_entradas_requerimientos_energeticos(
     fuel_oil = read_entradas_energia_combustibles_fosiles_fuel_oil(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_edi_com_ute_1=medida_edi_com_ute_1
     )
@@ -100,8 +90,6 @@ def read_entradas_requerimientos_energeticos(
     glp = read_entradas_energia_combustibles_fosiles_glp(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_edi_com_ute_1=medida_edi_com_ute_1,
         medida_edi_res_irco_1=medida_edi_res_irco_1,
@@ -113,8 +101,6 @@ def read_entradas_requerimientos_energeticos(
     queroseno = read_entradas_energia_combustibles_fosiles_queroseno(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_edi_com_ute_1=medida_edi_com_ute_1
     )
@@ -146,8 +132,6 @@ def read_entradas_requerimientos_energeticos(
 
     gas_natural = read_entradas_energia_combustibles_fosiles_gas_natural(db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_trans_car_1=medida_trans_car_1,
         medida_trans_car_2=medida_trans_car_2,
@@ -176,8 +160,6 @@ def read_entradas_requerimientos_energeticos(
 
     carbon_mineral = read_entradas_energia_combustibles_fosiles_carbon(db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4
     )
 
@@ -220,8 +202,6 @@ def read_entradas_requerimientos_energeticos(
 def read_entradas_excedentes_energeticos(
     medida_ener_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
@@ -247,8 +227,6 @@ def read_entradas_excedentes_energeticos(
     gasolina = read_entradas_energia_combustibles_fosiles_gasolina(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_trans_car_1=medida_trans_car_1,
         medida_trans_car_2=medida_trans_car_2,
@@ -259,8 +237,6 @@ def read_entradas_excedentes_energeticos(
     diesel = read_entradas_energia_combustibles_fosiles_diesel(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_trans_car_1=medida_trans_car_1,
         medida_trans_car_2=medida_trans_car_2,
@@ -273,8 +249,6 @@ def read_entradas_excedentes_energeticos(
     fuel_oil = read_entradas_energia_combustibles_fosiles_fuel_oil(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_edi_com_ute_1=medida_edi_com_ute_1
     )
@@ -282,8 +256,6 @@ def read_entradas_excedentes_energeticos(
     glp = read_entradas_energia_combustibles_fosiles_glp(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_edi_com_ute_1=medida_edi_com_ute_1,
         medida_edi_res_irco_1=medida_edi_res_irco_1,
@@ -295,8 +267,6 @@ def read_entradas_excedentes_energeticos(
     queroseno = read_entradas_energia_combustibles_fosiles_queroseno(
         db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_edi_com_ute_1=medida_edi_com_ute_1
     )
@@ -329,8 +299,6 @@ def read_entradas_excedentes_energeticos(
 
     gas_natural = read_entradas_energia_combustibles_fosiles_gas_natural(db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4,
         medida_trans_car_1=medida_trans_car_1,
         medida_trans_car_2=medida_trans_car_2,
@@ -359,8 +327,6 @@ def read_entradas_excedentes_energeticos(
 
     carbon_mineral = read_entradas_energia_combustibles_fosiles_carbon(db=db,
         medida_ind_1=medida_ind_1,
-        # medida_ind_2=medida_ind_2,
-        # medida_ind_3=medida_ind_3,
         medida_ind_4=medida_ind_4
     )
 

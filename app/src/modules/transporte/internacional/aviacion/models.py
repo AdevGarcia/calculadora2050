@@ -40,7 +40,7 @@ class TRANS_AVI_SF_uso_de_combustible_para_aviacion_internacional(Base):
     value       = Column(name='value', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ###############################################################   
+ 
 class TRANS_AVI_SF_prop_comb_utilizado_etapas_despegue_aterrizaje(Base):
     """Supuestos Fijos proporcion_de_combustible_utilizado_en_etapas_de_despegue_y_aterrizaje
     """
@@ -59,9 +59,9 @@ class TRANS_AVI_SF_prop_comb_utilizado_etapas_despegue_aterrizaje(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class TRANS_AVI_SALIDAS_energia_requerida(Base):
     """Salidas - energia_requerida

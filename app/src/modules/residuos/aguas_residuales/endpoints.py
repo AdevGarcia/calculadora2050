@@ -241,8 +241,8 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    skip: int = 0, 
-    limit: int = 100,
+    # skip: int = 0, 
+    # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
@@ -387,6 +387,7 @@ def delete_Salidas(
 
     return {'msg': 'Deleted Salidas successfully'}
 
+
 ####################################################################################
 #######                               Emisiones                              #######
 ####################################################################################
@@ -414,7 +415,6 @@ def create_emisiones(
 @router.get('/emisiones')
 def read_Emisiones_module(
     module: schemas.Emisiones_name,
-    # bloque: schemas.Emisiones_bloque,
     medida_res_agu_1: schemas.Trayectoria,
     medida_res_agu_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 

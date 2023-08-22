@@ -136,8 +136,8 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    skip: int = 0, 
-    limit: int = 100,
+    # skip: int = 0, 
+    # limit: int = 100,
     # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""

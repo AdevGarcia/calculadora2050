@@ -59,9 +59,9 @@ class ELECT_Electricidad_SF_factor_de_carga(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class ELECT_Electricidad_SALIDAS_combustibles_fosiles(Base):
     """salidas_combustibels_fosiles"""
@@ -157,7 +157,7 @@ class ELECT_Electricidad_EMISIONES_combustibles_fosiles(Base):
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
 
-      ############################################################### 
+
 class ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales(Base):
     """emisiones_energias_renovables_no_convencionales"""
 

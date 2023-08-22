@@ -30,8 +30,6 @@ router = APIRouter()
 @router.get('/energia_combustibles_fosiles/gasolina')
 def read_entradas_energia_combustibles_fosiles_gasolina(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
@@ -45,11 +43,9 @@ def read_entradas_energia_combustibles_fosiles_gasolina(
     """READ"""
 
     ##########   industria   ##############
-    # filter={"tipo": "gasolina", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     filter={"tipo": "gasolina", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -115,8 +111,6 @@ def read_entradas_energia_combustibles_fosiles_gasolina(
 @router.get('/energia_combustibles_fosiles/diesel')
 def read_entradas_energia_combustibles_fosiles_diesel(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
@@ -135,7 +129,6 @@ def read_entradas_energia_combustibles_fosiles_diesel(
     filter={"tipo": "diesel", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
      
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -220,8 +213,6 @@ def read_entradas_energia_combustibles_fosiles_diesel(
 @router.get('/energia_combustibles_fosiles/fuel_oil')
 def read_entradas_energia_combustibles_fosiles_fuel_oil(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
@@ -235,7 +226,6 @@ def read_entradas_energia_combustibles_fosiles_fuel_oil(
     filter={"tipo": "fuel_oil", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -290,8 +280,6 @@ def read_entradas_energia_combustibles_fosiles_fuel_oil(
 @router.get('/energia_combustibles_fosiles/gas_natural')
 def read_entradas_energia_combustibles_fosiles_gas_natural(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
@@ -312,7 +300,6 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
     filter={"tipo": "gas_natural", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -408,8 +395,6 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
 @router.get('/energia_combustibles_fosiles/glp')
 def read_entradas_energia_combustibles_fosiles_glp(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     medida_edi_res_irco_1: schemas.Trayectoria=1,
@@ -427,7 +412,6 @@ def read_entradas_energia_combustibles_fosiles_glp(
     filter={"tipo": "glp", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -501,8 +485,6 @@ def read_entradas_energia_combustibles_fosiles_glp(
 @router.get('/energia_combustibles_fosiles/carbon')
 def read_entradas_energia_combustibles_fosiles_carbon(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
@@ -515,7 +497,6 @@ def read_entradas_energia_combustibles_fosiles_carbon(
     filter={"tipo": "carbon_mineral", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -559,8 +540,6 @@ def read_entradas_energia_combustibles_fosiles_carbon(
 @router.get('/energia_combustibles_fosiles/queroseno')
 def read_entradas_energia_combustibles_fosiles_queroseno(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
@@ -574,7 +553,6 @@ def read_entradas_energia_combustibles_fosiles_queroseno(
     filter={"tipo": "queroseno", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,
@@ -629,8 +607,6 @@ def read_entradas_energia_combustibles_fosiles_queroseno(
 @router.get('/energia_combustibles_fosiles/coque')
 def read_entradas_energia_combustibles_fosiles_coque(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
@@ -643,7 +619,6 @@ def read_entradas_energia_combustibles_fosiles_coque(
     filter={"tipo": "coque", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     
     industria = get_item(db=db, 
-        # model=models.INDU_SALIDAS_por_combustible_balance_total_de_la_energia_requerida,
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
         topic='balance_total_de_la_energia_requerida',
         filter=filter,

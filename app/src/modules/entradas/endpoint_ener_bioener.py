@@ -6,7 +6,7 @@ from fastapi.encoders import jsonable_encoder
 import pandas as pd
 import logging
 
-from app.src.crud.base import loader, prune, downloader, downloader_batch
+from app.src.crud.base import downloader
 
 from . import models, schemas
 from db import deps
@@ -68,7 +68,6 @@ def read_entradas_energia_bioenergia(
     residuos             = set_zeros(topic_item='produccion', tipo='residuos',             unidad='TWh')
     edificaciones        = set_zeros(topic_item='produccion', tipo='edificaciones',        unidad='TWh')
     transporte           = set_zeros(topic_item='produccion', tipo='transporte',           unidad='TWh')
-    # agricultura          = set_zeros(topic_item='produccion', tipo='agricultura',          unidad='TWh')
     ganaderia            = set_zeros(topic_item='produccion', tipo='ganaderia',            unidad='TWh')
     bosques              = set_zeros(topic_item='produccion', tipo='bosques',              unidad='TWh')
 

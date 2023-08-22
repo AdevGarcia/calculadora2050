@@ -123,9 +123,9 @@ class ENER_CombFosil_SF_consumo_de_energeticos(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(Base):
     """salidas_combustibles_fosiles_producidos"""
@@ -144,7 +144,7 @@ class ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos(Base):
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
 
-      ############################################################### 
+
 class ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector(Base):
     """salidas_consumo_de_combustibles_fosiles_por_el_propio_sector"""
 
@@ -162,7 +162,7 @@ class ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector(Base):
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
 
-      ############################################################### 
+
 class ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos(Base):
     """salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos"""
 

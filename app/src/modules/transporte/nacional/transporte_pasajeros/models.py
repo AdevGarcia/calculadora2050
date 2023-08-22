@@ -95,7 +95,7 @@ class TRANS_PAS_SF_uso_de_combustibles_fosiles_en_vehiculos_hibridos(Base):
     value       = Column(name='value', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     
-      ###############################################################
+
 class TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_nuevos(Base):
     """Supuestos Fijos rendimiento_modo_tecnologia_transporte_urbano_vehiculos_nuevos"""
 
@@ -113,7 +113,7 @@ class TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_nuevos(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class TRANS_PAS_SF_rend_modo_tec_trans_urbano_vehiculos_existentes(Base):
     """Supuestos Fijos rendimiento_modo_tecnologia_transporte_urbano_vehiculos_existentes"""
 
@@ -273,7 +273,7 @@ class TRANS_PAS_SF_distr_modo_carretero_trans_interurbano(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ###############################################################
+
 class TRANS_PAS_SF_rend_modo_tec_trans_interurbano_vehic_existentes(Base):
     """Supuestos Fijos rendimiento_modo_tecnologia_transporte_interurbano_vehiculos_existentes
     """
@@ -410,9 +410,9 @@ class TRANS_PAS_SF_numero_de_vehiculos_transporte_interurbano(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
 class TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros(Base):
     """Salidas - energia_requerida_transporte_pasajeros

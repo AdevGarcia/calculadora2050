@@ -154,7 +154,6 @@ def resultados_evolucion_generacion_energetica_del_sector_energia_por_combustibl
 ####################################################################################
 @router.get('/evolucion_consumo_energetico_comb_fosiles')
 def resultados_evolucion_consumo_energetico_comb_fosiles(
-    # medida_elect_1: schemas.Trayectoria=1,
     medida_ener_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
     # skip: int = 0, 
@@ -166,7 +165,6 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  gas_natural ############## TWh
     filter={"tipo": "gas_natural", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
@@ -180,7 +178,6 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  petroleo ############## TWh
     filter={"tipo": "petroleo", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
@@ -194,7 +191,6 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  diesel ############## TWh
     filter={"tipo": "diesel", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
@@ -208,7 +204,6 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  fuel_oil ############## TWh
     filter={"tipo": "fuel_oil", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
@@ -222,7 +217,6 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  glp ############## TWh
     filter={"tipo": "glp", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
@@ -236,7 +230,6 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  gasolina_para_motores ############## TWh
     filter={"tipo": "gasolina_para_motores", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
@@ -250,7 +243,6 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     ##########  queroseno ############## TWh
     filter={"tipo": "queroseno", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
-        # model=models.ENER_CombFosil_SALIDAS_consumo_de_combustibles_fosiles_por_el_propio_sector,
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
         **filter)
         
@@ -285,8 +277,6 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
 def resultados_evolucion_excedentes_energeticos(
     medida_ener_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
@@ -308,8 +298,6 @@ def resultados_evolucion_excedentes_energeticos(
     entrada = read_entradas_requerimientos_energeticos(
         medida_ener_1=medida_ener_1,
         medida_ind_1 =medida_ind_1,
-        # medida_ind_2 =medida_ind_2,
-        # medida_ind_3 =medida_ind_3,
         medida_ind_4 =medida_ind_4,
         medida_trans_car_1 =medida_trans_car_1,
         medida_trans_car_2 =medida_trans_car_2,
@@ -357,8 +345,6 @@ def resultados_evolucion_excedentes_energeticos(
 def resultados_evolucion_requerimientos_energeticos(
     medida_ener_1: schemas.Trayectoria=1,
     medida_ind_1: schemas.Trayectoria=1,
-    medida_ind_2: schemas.Trayectoria=1,
-    medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
@@ -381,8 +367,6 @@ def resultados_evolucion_requerimientos_energeticos(
     entrada = read_entradas_excedentes_energeticos(
         medida_ener_1=medida_ener_1,
         medida_ind_1 =medida_ind_1,
-        # medida_ind_2 =medida_ind_2,
-        # medida_ind_3 =medida_ind_3,
         medida_ind_4 =medida_ind_4,
         medida_trans_car_1 =medida_trans_car_1,
         medida_trans_car_2 =medida_trans_car_2,

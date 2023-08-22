@@ -309,7 +309,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  10 grandes_centrales_hidroelectricas  ############## TWh
     filter={"tipo": "grandes_centrales_hidroelectricas", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -322,7 +321,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  11 pequenas_centrales_hidroelectricas  ############## TWh
     filter={"tipo": "pequenas_centrales_hidroelectricas", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -335,7 +333,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  12 solar_termica  ############## TWh
     filter={"tipo": "solar_distribuida_terciario", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -348,7 +345,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  13 solar_fotovoltaica  ############## TWh
     filter={"tipo": "solar_fotovoltaica", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -361,7 +357,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  14 eolica_costa_adentro_parque_jepirachi  ############## TWh
     filter={"tipo": "eolica_costa_adentro_parque_jepirachi", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -374,7 +369,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  15 eolica_costa_adentro_resto_pais  ############## TWh
     filter={"tipo": "eolica_costa_adentro_resto_del_pais", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -387,7 +381,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  16 eolica_costa_afuera  ############## TWh
     filter={"tipo": "eolica_costa_afuera", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -400,7 +393,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  17 hidrogeno_verde  ############## TWh
     filter={"tipo": "hidrogeno_verde", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -413,7 +405,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  18 biomasa  ############## TWh
     filter={"tipo": "biomasa", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         
@@ -426,7 +417,6 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     ##########  19 bagazo  ############## TWh
     filter={"tipo": "bagazo", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
-        # model=models.ELECT_Electricidad_SALIDAS_energias_renovables_no_convencionales,
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
         **filter)
         

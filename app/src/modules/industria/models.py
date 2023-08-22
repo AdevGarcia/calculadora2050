@@ -7,7 +7,7 @@ from app.src.db.base_class import Base
 ####################################################################################
 #######                      Supuestos de Trayectoria                        #######
 ####################################################################################
-      ############################################################### 
+
 class INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica(Base):
     """Supuestos de Trayectoria reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica
     """
@@ -26,7 +26,7 @@ class INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras(Base):
     """Supuestos de Trayectoria eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras
     """
@@ -44,7 +44,7 @@ class INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ###############################################################    
+ 
 class INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion(Base):
     """Supuestos de Trayectoria eficiencia_energetica_%_crecimiento_de_autogeneracion_y_cogeneracion
     """
@@ -63,7 +63,7 @@ class INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
 
-      ############################################################### 
+
 class INDU_ST_efic_ener_autogeneracion_cogeneracion_ladrilleras(Base):
     """Supuestos de Trayectoria eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras
     """
@@ -300,11 +300,11 @@ class INDU_SF_emision_de_sao(Base):
     unidad      = Column(name='unidad', type_=String)
 
 
-# ####################################################################################
-# #######                               Salidas                                #######
-# ####################################################################################
+####################################################################################
+#######                               Salidas                                #######
+####################################################################################
 
-# # Por combustible
+# Por combustible
 
 class INDU_SALIDAS_por_combustible_energia_requerida(Base):
     """Salidas - por_combustible_energia_requerida
@@ -324,11 +324,9 @@ class INDU_SALIDAS_por_combustible_energia_requerida(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    # medida_2    = Column(name='medida_2', type_=Integer)
-    # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
-      ############################################################### 
+
 class INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion(Base):
     """Salidas - por_combustible_energia_producida_por_autogeneracion_y_cogeneracion
     """
@@ -347,11 +345,8 @@ class INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    # medida_2    = Column(name='medida_2', type_=Integer)
-    # medida_3    = Column(name='medida_3', type_=Integer)
-    # medida_4    = Column(name='medida_4', type_=Integer)
 
-      ############################################################### 
+
 class INDU_SALIDAS_por_combustible_balance_total_energia_requerida(Base):
     """Salidas - por_combustible_balance_total_de_la_energia_requerida
     """
@@ -370,12 +365,10 @@ class INDU_SALIDAS_por_combustible_balance_total_energia_requerida(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    # medida_2    = Column(name='medida_2', type_=Integer)
-    # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
 
-# # POR TIPO DE INDUSTRIA
+# POR TIPO DE INDUSTRIA
 
 class INDU_SALIDAS_por_tipo_de_industria_energia_requerida(Base):
     """Salidas - por_tipo_de_industria_energia_requerida
@@ -395,11 +388,9 @@ class INDU_SALIDAS_por_tipo_de_industria_energia_requerida(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    # medida_2    = Column(name='medida_2', type_=Integer)
-    # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
-      ############################################################### 
+
 class INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac(Base):
     """Salidas - por_tipo_de_industria_energia_producida_por_autogeneracion_y_cogeneracion
     """
@@ -418,9 +409,6 @@ class INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    # medida_2    = Column(name='medida_2', type_=Integer)
-    # medida_3    = Column(name='medida_3', type_=Integer)
-    # medida_4    = Column(name='medida_4', type_=Integer)
 
 
 class INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida(Base):
@@ -441,8 +429,6 @@ class INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida(Base):
     y2050       = Column(name='2050', type_=Float)
     unidad      = Column(name='unidad', type_=String)
     medida_1    = Column(name='medida_1', type_=Integer)
-    # medida_2    = Column(name='medida_2', type_=Integer)
-    # medida_3    = Column(name='medida_3', type_=Integer)
     medida_4    = Column(name='medida_4', type_=Integer)
 
 
@@ -468,7 +454,6 @@ class INDU_emisiones_gases_efecto_invernadero(Base):
     unidad   = Column(name='unidad', type_=String)
     medida_1 = Column(name='medida_1', type_=Integer)
     medida_2 = Column(name='medida_2', type_=Integer)
-    # medida_3 = Column(name='medida_3', type_=Integer)
     medida_4 = Column(name='medida_4', type_=Integer)
 
 
@@ -488,10 +473,8 @@ class INDU_emisiones_por_el_consumo_de_bagazo_y_otros(Base):
     y2045    = Column(name='2045', type_=Float)
     y2050    = Column(name='2050', type_=Float)
     unidad   = Column(name='unidad', type_=String)
-    # medida_1 = Column(name='medida_1', type_=Integer)
     medida_2 = Column(name='medida_2', type_=Integer)
     medida_3 = Column(name='medida_3', type_=Integer)
-    # medida_4 = Column(name='medida_4', type_=Integer)
 
 
 class INDU_emisiones_sao(Base):

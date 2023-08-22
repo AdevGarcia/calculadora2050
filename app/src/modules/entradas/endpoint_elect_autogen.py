@@ -30,9 +30,6 @@ router = APIRouter()
 @router.get('/autogeneracion/produccion')
 def read_entradas_produccion(
     medida_ind_1: schemas.Trayectoria=1,
-    # medida_ind_2: schemas.Trayectoria=1,
-    # medida_ind_3: schemas.Trayectoria=1,
-    # medida_ind_4: schemas.Trayectoria=1,
     medida_res_sol_1: schemas.Trayectoria=1,
     medida_res_agu_1: schemas.Trayectoria=1,
     medida_res_agu_2: schemas.Trayectoria=1,
@@ -53,10 +50,8 @@ def read_entradas_produccion(
     """READ"""
 
     ##########   industria   ##############
-    # filter={'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     filter={'medida_1': medida_ind_1}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
-        # model=models.INDU_SALIDAS_por_combustible_energia_producida_por_autogeneracion_y_cogeneracion,
         model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
         **filter)
 
@@ -126,12 +121,7 @@ def read_entradas_produccion(
 
     ##############################
     combustibles_fosiles = set_zeros(topic_item='entradas', bloque='produccion', tipo='combustibles_fosiles', unidad='TWh')
-    # industria            = set_zeros(topic_item='entradas', bloque='produccion', tipo='industria',            unidad='TWh')
-    # residuos             = set_zeros(topic_item='entradas', bloque='produccion', tipo='residuos',             unidad='TWh')
-    # edificaciones        = set_zeros(topic_item='entradas', bloque='produccion', tipo='edificaciones',        unidad='TWh')
     transporte           = set_zeros(topic_item='entradas', bloque='produccion', tipo='transporte',           unidad='TWh')
-    # agricultura          = set_zeros(topic_item='entradas', bloque='produccion', tipo='agricultura',          unidad='TWh')
-    # ganaderia            = set_zeros(topic_item='entradas', bloque='produccion', tipo='ganaderia',            unidad='TWh')
     bosques              = set_zeros(topic_item='entradas', bloque='produccion', tipo='bosques',              unidad='TWh')
 
     total = set_suma_total(items=[combustibles_fosiles, industria, residuos, edificaciones, transporte, agricultura, ganaderia, bosques],
@@ -154,4 +144,3 @@ def read_entradas_produccion(
         logger.info(f'Read Data: {jsonable_encoder(resultado)}')
 
     return jsonable_encoder(resultado)
-
