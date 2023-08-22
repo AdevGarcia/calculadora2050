@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 from loader.util import Upload
 
 
-
-
 if __name__ == "__main__":
     
     load_dotenv()
@@ -16,8 +14,6 @@ if __name__ == "__main__":
     # password  = os.getenv('FIRST_SUPERUSER_PASSWORD')
 
     url = host + api
-
-    url='http://localhost:8000/api/v1'
 
     time0 = time.time()
 
