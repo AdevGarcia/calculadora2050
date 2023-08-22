@@ -10,9 +10,12 @@ from loader.util import Upload
 if __name__ == "__main__":
     
     load_dotenv()
-    url       = os.getenv("URL")
+    host      = os.getenv("SERVER_HOST") 
+    api       = os.getenv("API_V1_STR")
     # user      = os.getenv('FIRST_SUPERUSER')
     # password  = os.getenv('FIRST_SUPERUSER_PASSWORD')
+
+    url = host + api
 
     time0 = time.time()
 
