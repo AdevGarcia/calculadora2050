@@ -8,6 +8,18 @@ import httpx
 from .constants import FOLDER_PATH, SECTORES, INDICE
 
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+
 def get_file_path() -> list[str]:
     l=[]
     for directory in FOLDER_PATH:
@@ -24,6 +36,43 @@ def read_json(file: str) -> dict:
         return data
 
 #######  Read Endpoints APIRest #######
+
+def _level0(sector: dict)-> list[dict]:
+    l=[]
+
+    for j in range(len(sector['item'])):
+        bloque = sector['item'][j]
+
+        d={
+            'sector'    : 'entradas',
+            'path'      : bloque['request']['url']['path'],
+            'method'    : bloque['request']['method'],
+            'url'       : bloque['request']['url']['raw'].replace('{{url_prefix}}', '')
+        }
+
+        print(d)
+        l.append(d)
+    return l
+
+def _level00(sector: dict)-> list[dict]:
+    l=[]
+
+    for j in range(len(sector['item'])):
+        bloque = sector['item'][j]
+
+        for k in range(len(bloque['item'])):
+            uri = bloque['item'][k]['request']
+
+            d={
+                'sector'    : sector['name'].lower(),
+                'path'      : uri['url']['path'],
+                'method'    : uri['method'],
+                'url'       : uri['url']['raw'].replace('{{url_prefix}}', '')
+            }
+            
+            l.append(d)
+    return l
+
 
 def _level1(sector: dict)-> list[dict]:
     l=[]
@@ -42,7 +91,7 @@ def _level1(sector: dict)-> list[dict]:
                 'method'    : uri['method'],
                 'url'       : uri['url']['raw'].replace('{{url_prefix}}', '')
             }
-            # print(d)
+            
             l.append(d)
     return l
 
@@ -67,7 +116,7 @@ def _level2(sector: dict)-> list[dict]:
                     'method'    : subbloq['request']['method'],
                     'url'       : subbloq['request']['url']['raw'].replace('{{url_prefix}}', '')
                 }
-                # print(d)
+                
                 l.append(d)
     return l
 
@@ -96,7 +145,7 @@ def _level3(sector: dict):
                         'method'    : subbloq3['request']['method'],
                         'url'       : subbloq3['request']['url']['raw'].replace('{{url_prefix}}', '')
                     }
-                    # print(d)
+                    
                     l.append(d)
     return l
 
@@ -118,6 +167,12 @@ def _get_collection(file: str)-> pd.DataFrame:
 
         if sector['name'].lower() in ['edificaciones', 'transporte']:
             d[sector['name'].lower()] = _level3(sector=sector)
+        
+        if sector['name'].lower() in ['entradas']:
+            d[sector['name'].lower()] = _level0(sector=sector)
+        
+        if sector['name'].lower() in ['resultados']:
+            d[sector['name'].lower()] = _level00(sector=sector)
 
     for key in d.keys():
         l.append(pd.json_normalize(d[key]))
@@ -251,22 +306,22 @@ class Upload():
         
         match r.status_code:
             case 200:
-                print(f'[OK] {f[method]}', r.status_code, uri, f'time : {r.elapsed.total_seconds():.2f} s')
+                print(f'{bcolors.OKGREEN}[OK] {f[method]} {r.status_code} {bcolors.ENDC}', uri, f'time : {r.elapsed.total_seconds():.2f} s')
             
             case 201:
-                print(f'[OK] {f[method]}', r.status_code, uri, f'time : {r.elapsed.total_seconds():.2f} s')
+                print(f'{bcolors.OKGREEN}[OK] {f[method]} {r.status_code }{bcolors.ENDC}', uri, f'time : {r.elapsed.total_seconds():.2f} s')
             
             case 400:
-                print(f'[WARNING] {f[method]}', r.status_code, uri, f'time : {r.elapsed.total_seconds():.2f} s')
+                print(f'{bcolors.WARNING}[WARNING] {f[method]} {r.status_code} {bcolors.ENDC}', uri, f'time : {r.elapsed.total_seconds():.2f} s')
                 print(r.json())
             
             case 405:
                 # El servidor reconoce la solicitud, pero no esta implementada
-                print(f'[WARNING] {f[method]}', r.status_code, uri, f'time : {r.elapsed.total_seconds():.2f} s')
+                print(f'{bcolors.WARNING}[WARNING] {f[method]} {r.status_code} {bcolors.ENDC}', uri, f'time : {r.elapsed.total_seconds():.2f} s')
                 print(r.json())
 
             case _:
-                print(f'[ERROR] {f[method]}', r.status_code, uri, f'time : {r.elapsed.total_seconds():.2f} s')
+                print(f'{bcolors.FAIL}[ERROR] {f[method]} {r.status_code} {bcolors.ENDC}', uri, f'time : {r.elapsed.total_seconds():.2f} s')
                 print(r.json())
     
 
@@ -435,6 +490,34 @@ class Upload():
                         self.delete(uri=r.url.to_list()[k])
 
 
+    # def get_all(self) -> None:
+    #     """ get de toda la DDBB - En localhost 4m 30s"""
+
+    #     d = self.indice
+
+    #     for sector in SECTORES:
+    #         for i in range(len(d[sector])):
+    #             item = d[sector][i]
+    #             if self.debug:
+    #                 print('-----------------------------------')
+    #                 print('-> sector: ', item['sector'], '| subsector: ', item['subsector'], '| clase: ', item['clase'])
+                
+    #             df = collection(
+    #                 df        = self.collection, 
+    #                 sector    = item['sector'],
+    #                 subsector = item['subsector'],
+    #                 clase     = item['clase'],
+    #                 method    = 'GET')
+                
+    #             ltipo = [t for t in set(item['tipo'])]
+                
+    #             for j in range(len(ltipo)):
+    #                 r = df[df.tipo.str.contains(ltipo[j])]
+
+    #                 for k in range(len(r.url.to_list())):
+    #                     self.get(uri=r.url.to_list()[k])
+    
+
     def get_all(self) -> None:
         """ get de toda la DDBB - En localhost 4m 30s"""
 
@@ -461,3 +544,27 @@ class Upload():
 
                     for k in range(len(r.url.to_list())):
                         self.get(uri=r.url.to_list()[k])
+        
+        #########
+        print('-----------------------------------')
+        print('-> sector: Entradas')
+            
+        df = collection(
+            df        = self.collection, 
+            sector    = 'entradas',
+            method    = 'GET')
+
+        for url in df.url.to_list():
+            self.get(uri=url)
+        
+        print('-----------------------------------')
+        print('-> sector: Resultados')
+        
+        df = collection(
+            df        = self.collection, 
+            sector    = 'resultados',
+            method    = 'GET')
+
+        for url in df.url.to_list():
+            self.get(uri=url)
+            

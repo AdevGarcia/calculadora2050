@@ -13,22 +13,24 @@ then
     echo "########  init INSTALL.sh  ########"
     ./install.sh
     echo "########  end INSTALL.sh  ########"
+    export $(grep POSTGRES_SERVER .env)
+    export $(grep POSTGRES_PORT .env)
+    export $(grep POSTGRES_USER .env)
+    export $(grep POSTGRES_PASSWORD .env)
+    export $(grep POSTGRES_DB .env)
+
+    echo "The PYTHONPATH is        : $PYTHONPATH"        # Check
+    echo "The POSTGRES_SERVER is   : $POSTGRES_SERVER"   # Check
+    echo "The POSTGRES_PORT is     : $POSTGRES_PORT"     # Check
+    echo "The POSTGRES_USER is     : $POSTGRES_USER"     # Check
+    echo "The POSTGRES_PASSWORD is : $POSTGRES_PASSWORD" # Check
+    echo "The POSTGRES_DB is       : $POSTGRES_DB"       # Check
+    
 else
     echo "Estamos en ${API_ENV}"
 fi
 
-export $(grep POSTGRES_SERVER .env)
-export $(grep POSTGRES_PORT .env)
-export $(grep POSTGRES_USER .env)
-export $(grep POSTGRES_PASSWORD .env)
-export $(grep POSTGRES_DB .env)
 
-echo "The PYTHONPATH is        : $PYTHONPATH"        # Check
-echo "The POSTGRES_SERVER is   : $POSTGRES_SERVER"   # Check
-echo "The POSTGRES_PORT is     : $POSTGRES_PORT"     # Check
-echo "The POSTGRES_USER is     : $POSTGRES_USER"     # Check
-echo "The POSTGRES_PASSWORD is : $POSTGRES_PASSWORD" # Check
-echo "The POSTGRES_DB is       : $POSTGRES_DB"       # Check
 
 # Let the DB start
 echo "### Let the DB start - sleep 5s"

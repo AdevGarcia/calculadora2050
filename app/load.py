@@ -17,6 +17,8 @@ if __name__ == "__main__":
 
     url = host + api
 
+    url='http://localhost:8000/api/v1'
+
     time0 = time.time()
 
     collection_path = 'app/loader/Calculadora2050.postman_collection.json'
