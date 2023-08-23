@@ -31,7 +31,6 @@ else
 fi
 
 
-
 # Let the DB start
 echo "### Let the DB start - sleep 5s"
 sleep 5;
