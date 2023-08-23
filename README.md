@@ -24,7 +24,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 ./install.sh
-sudo nohup ./start_dev.sh > logs.out 2> logs.err < /dev/null &
+sudo nohup ./start.sh > logs.out 2> logs.err < /dev/null &
 # sudo para usar el puerto 80
 ```
 

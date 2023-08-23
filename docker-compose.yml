@@ -42,6 +42,17 @@ services:
         # networks:
         #     - db_network
     
+    # Gets and installs letsencrypt certificates
+    letsencrypt:
+        image: geonode/letsencrypt:latest
+        build: ./scripts/docker/letsencrypt/
+        container_name: letsencrypt
+        env_file:
+            - .env
+        volumes:
+            - nginx-certificates:/geonode-certificates
+        restart: unless-stopped
+    
     pgadmin:
         image: dpage/pgadmin4
         # networks:
