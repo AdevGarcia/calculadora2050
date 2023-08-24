@@ -7,74 +7,44 @@ services:
         build: .
         volumes:
             - api-data:/api
+        # expose:
+        #     - 8000
         # ports:
-        #   - "8000:8000"
-        depends_on:
-            - db
-        # networks:
-        #     - db_network
-        #     - web_network
+        #     - 8000:8000
+        # depends_on:
+        #     - db
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.app.rule=Host(`app.localhost`)"
+            # - "traefik.http.routers.app.loadbalancer.server.port=8000"
         command: ./start.sh
     
-    nginx:
-        container_name: nginx
+    traefik:
+        container_name: traefik
         restart: unless-stopped
-        build: ./nginx
+        image: traefik:v2.10.4
         ports:
-            - "80:80"
+            - 8008:8000
+            # - 8000:8000
+            - 8080:8080
         depends_on:
             - app
         volumes:
-            - nginx-data:/etc/nginx/conf.d/
-        # networks:
-        #     - web_network
+            - "./traefik.dev.toml:/etc/traefik/traefik.toml"
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
-    db:
-        container_name: db
-        restart: unless-stopped
-        image: postgres:11.2
-        volumes:
-            - app-db-data:/var/lib/postgresql/data/pgdata
-        env_file:
-            - .env
-        environment:
-            - PGDATA=/var/lib/postgresql/data/pgdata
-        # networks:
-        #     - db_network
-    
-    # Gets and installs letsencrypt certificates
-    letsencrypt:
-        image: geonode/letsencrypt:latest
-        build: ./scripts/docker/letsencrypt/
-        container_name: letsencrypt
-        env_file:
-            - .env
-        volumes:
-            - nginx-certificates:/geonode-certificates
-        restart: unless-stopped
-    
-    pgadmin:
-        image: dpage/pgadmin4
-        # networks:
-        #     - db_network
-        #     - web_network
-        ports:
-          - "5050:5050"
-        depends_on:
-            - db
-        env_file:
-            - .env
-        volumes:
-            - pgadmin-data:/var/lib/pgadmin
-
-# networks:
-#     db_network:
-#         driver: bridge
-#     web_network:
-#         driver: bridge
+    # db:
+    #     container_name: db
+    #     restart: unless-stopped
+    #     image: postgres:11.2
+    #     volumes:
+    #         - app-db-data:/var/lib/postgresql/data/pgdata
+    #     env_file:
+    #         - .env
+    #     environment:
+    #         - PGDATA=/var/lib/postgresql/data/pgdata
+        
 
 volumes:
-    app-db-data:
+    # app-db-data:
     api-data:
-    pgadmin-data:
-    nginx-data:

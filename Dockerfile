@@ -19,11 +19,4 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 COPY . /api
 
-# Export ports
-# EXPOSE 8000
-
-# RUN ./install.sh
-
-# gunicorn
-# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
-# CMD ["./start.sh"]
+EXPOSE 8000
