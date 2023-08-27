@@ -19,4 +19,4 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 COPY . /api
 
-EXPOSE 8000
+# EXPOSE 8000

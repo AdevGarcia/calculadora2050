@@ -7,8 +7,8 @@ services:
         build: .
         volumes:
             - api-data:/api
-        # expose:
-        #     - 8000
+        expose:
+            - 8000
         # ports:
         #     - 8000:8000
         # depends_on:
@@ -24,7 +24,7 @@ services:
         restart: unless-stopped
         image: traefik:v2.10.4
         ports:
-            - 8008:8000
+            - 8008:80
             # - 8000:8000
             - 8080:8080
         depends_on:

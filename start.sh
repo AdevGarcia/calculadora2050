@@ -45,8 +45,8 @@ echo "########  run uvicorn  ########"
 
 if [ "$API_ENV" == 'production' ]
 then
-   uvicorn main:app --host 0.0.0.0 --port 8000
+   uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers
 else
-   uvicorn main:app --host 0.0.0.0 --port 8000 #--reload
+   uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers #--reload
 fi
 
