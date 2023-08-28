@@ -7,10 +7,10 @@ services:
       dockerfile: Dockerfile.prod
     container_name: app
     restart: always
-    environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/api
-    depends_on:
-      - db
+    # environment:
+    #   - DATABASE_URL=postgresql://postgres:password@db:5432/api
+    # depends_on:
+    #   - db
     labels:
       # Enable Traefik for this specific "backend" service
       - traefik.enable=true
@@ -70,7 +70,7 @@ services:
   #     - "traefik.http.middlewares.auth.basicauth.users=testuser:$$apr1$$jIKW.bdS$$eKXe4Lxjgy/rH65wP1iQe1"
 
 volumes:
-  postgres_data_prod:
+  # postgres_data_prod:
   traefik-public-certificates:
 
 networks:
