@@ -1,50 +1,80 @@
 version: '3.8'
 
 services:
-  web:
+  app:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    expose:
-      - 80
+    container_name: app
+    restart: always
     environment:
-      - DATABASE_URL=postgresql://fastapi_traefik_prod:fastapi_traefik_prod@db:5432/fastapi_traefik_prod
+      - DATABASE_URL=postgresql://postgres:password@db:5432/api
     depends_on:
       - db
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.fastapi.rule=Host(`fastapi-traefik.aqidom.com`)"
-      - "traefik.http.routers.fastapi.tls=true"
-      - "traefik.http.routers.fastapi.tls.certresolver=letsencrypt"
-  db:
-    image: postgres:15-alpine
-    volumes:
-      - postgres_data_prod:/var/lib/postgresql/data/
-    expose:
-      - 5432
-    environment:
-      - POSTGRES_USER=fastapi_traefik_prod
-      - POSTGRES_PASSWORD=fastapi_traefik_prod
-      - POSTGRES_DB=fastapi_traefik_prod
-  traefik:
-    build:
-      context: .
-      dockerfile: Dockerfile.traefik
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./traefik-public-certificates:/certificates"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dashboard.rule=Host(`dashboard-fastapi-traefik.aqidom.com`) && (PathPrefix(`/`)"
-      - "traefik.http.routers.dashboard.tls=true"
-      - "traefik.http.routers.dashboard.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.dashboard.service=api@internal"
-      - "traefik.http.routers.dashboard.middlewares=auth"
-      - "traefik.http.middlewares.auth.basicauth.users=testuser:$$apr1$$jIKW.bdS$$eKXe4Lxjgy/rH65wP1iQe1"
+      # Enable Traefik for this specific "backend" service
+      - traefik.enable=true
+      # Our service listens on 8082 labels:
+      - --port=80
+      # Define the port inside of the Docker service to use
+      - traefik.http.services.app.loadbalancer.server.port=80
+      # Make Traefik use this domain in HTTP
+      - traefik.http.routers.app-http.entrypoints=http
+      - traefik.http.routers.app-http.rule=Host(`api.geoidom.com`)
+      # Use the traefik-public network (declared below)
+      - traefik.docker.network=traefik-public
+      # Make Traefik use this domain in HTTPS
+      - traefik.http.routers.app-https.entrypoints=https
+      - traefik.http.routers.app-https.rule=Host(`api.geoidom.com`)
+      - traefik.http.routers.app-https.tls=true
+      # Use the "le" (Let's Encrypt) resolver
+      - traefik.http.routers.app-https.tls.certresolver=le
+      # https-redirect middleware to redirect HTTP to HTTPS
+      - traefik.http.middlewares.https-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.https-redirect.redirectscheme.permanent=true
+      # Middleware to redirect HTTP to HTTPS
+      - traefik.http.routers.app-http.middlewares=https-redirect
+    networks:
+      # Use the public network created to be shared between Traefik and
+      # any other service that needs to be publicly available with HTTPS
+      - traefik-public   
+
+  # db:
+  #   image: postgres:15-alpine
+  #   volumes:
+  #     - postgres_data_prod:/var/lib/postgresql/data/
+  #   expose:
+  #     - 5432
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=api
+
+  # traefik:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.traefik
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - "/var/run/docker.sock:/var/run/docker.sock:ro"
+  #     - "./traefik-public-certificates:/certificates"
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.dashboard.rule=Host(`dashboard.aqidom.com`) && (PathPrefix(`/`)"
+  #     - "traefik.http.routers.dashboard.tls=true"
+  #     - "traefik.http.routers.dashboard.tls.certresolver=letsencrypt"
+  #     - "traefik.http.routers.dashboard.service=api@internal"
+  #     - "traefik.http.routers.dashboard.middlewares=auth"
+  #     - "traefik.http.middlewares.auth.basicauth.users=testuser:$$apr1$$jIKW.bdS$$eKXe4Lxjgy/rH65wP1iQe1"
 
 volumes:
   postgres_data_prod:
   traefik-public-certificates:
+
+networks:
+  # Use the previously created public network "traefik-public", shared with other
+  # services taht need to be publicly available via this Traefik
+  traefik-public:
+    external: true

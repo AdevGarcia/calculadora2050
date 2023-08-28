@@ -7,31 +7,38 @@ services:
         build: .
         volumes:
             - api-data:/api
-        expose:
-            - 8000
-        # ports:
-        #     - 8000:8000
         # depends_on:
         #     - db
         labels:
-            - "traefik.enable=true"
-            - "traefik.http.routers.app.rule=Host(`app.localhost`)"
-            # - "traefik.http.routers.app.loadbalancer.server.port=8000"
+            # Enable Traefik for this specific "backend" service
+            - traefik.enable=true
+            # Our service listens on 8000 labels:
+            - --port=8000
+            # Define the port inside of the Docker service to use
+            - traefik.http.services.app.loadbalancer.server.port=8000
+            # Make Traefik use this domain in HTTP
+            - traefik.http.routers.app-http.entrypoints=http
+            - traefik.http.routers.app-http.rule=Host(`localhost`)
+            # Use the traefik-public network (declared below)
+            - traefik.docker.network=traefik-public
         command: ./start.sh
+        networks:
+        # Use the public network created to be shared between Traefik and
+        # any other service that needs to be publicly available with HTTPS
+        - traefik-public  
     
-    traefik:
-        container_name: traefik
-        restart: unless-stopped
-        image: traefik:v2.10.4
-        ports:
-            - 8008:80
-            # - 8000:8000
-            - 8080:8080
-        depends_on:
-            - app
-        volumes:
-            - "./traefik.dev.toml:/etc/traefik/traefik.toml"
-            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    # traefik:
+    #     container_name: traefik
+    #     restart: unless-stopped
+    #     image: traefik:v2.10.4
+    #     ports:
+    #         - 80:80
+    #         - 8080:8080
+    #     depends_on:
+    #         - app
+    #     volumes:
+    #         - "./traefik.dev.toml:/etc/traefik/traefik.toml"
+    #         - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
     # db:
     #     container_name: db
@@ -48,3 +55,9 @@ services:
 volumes:
     # app-db-data:
     api-data:
+
+networks:
+  # Use the previously created public network "traefik-public", shared with other
+  # services taht need to be publicly available via this Traefik
+  traefik-public:
+    external: true
