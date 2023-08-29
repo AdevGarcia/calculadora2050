@@ -119,5 +119,6 @@ volumes:
     # Traefik is always deployed to the same Docker node with the same volume containing
     # the HTTPS-certificates
     traefik-public-certificates:
+    api-data:
     app-db-data:
     pgadmin-data:
