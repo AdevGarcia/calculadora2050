@@ -13,38 +13,41 @@ services:
         volumes:
             # Add Docker as a mounted volume, so that Traefik can read the labels of other services
             - /var/run/docker.sock:/var/run/docker.sock:ro
-        command: 
+        command:
             # Enable Docker in Traefik, so that it reads labels from Doker services
-            - --providers.docker
+            - "--providers.docker=true"
             # Do not expose all Docker services, only the ones explicitly exposed
-            - --providers.docker.exposedbydefault=false
+            - "--providers.docker.exposedbydefault=false"
             # Create a entrypoint "http" listening on port 80
-            - --entrypoints.http.address=:80
+            - "--entrypoints.web.address=:80"
             # Enable the access log, with HTTP requests
-            - --accesslog
+            - "--accesslog"
             # Enable the Traefik log, for configurations and errors
-            - --log
+            - "--log"
             # Dashboard
-            - --api.insecure # Don't do that in production#
+            - "--api.insecure" # Don't do that in production#
 
     app:
         container_name: app
+        hostname: app
         restart: unless-stopped
         build:
             context: .
             dockerfile: Dockerfile.dev
+        expose:
+            - "8000"
         env_file:
             - .env.dev
         volumes:
             - api-data:/api
         labels:
             # Enable Traefik for this specific "backend" service
-            - traefik.enable=true
-            - traefik.http.routers.app.rule=Host(`api.geoidom.com`)
+            - "traefik.enable=true"
+            - "traefik.http.routers.app.rule=Host(`api.geoidom.com`)"
             # Define the port inside of the Docker service to use
-            - traefik.http.services.app.loadbalancer.server.port=8000
+            - "traefik.http.services.app.loadbalancer.server.port=8000"
             # Make Traefik use this domain in HTTP
-            - traefik.http.routers.app.entrypoints=web
+            # - "traefik.http.routers.app.entrypoints=web"
         command: ./start.dev.sh
 
 volumes:
