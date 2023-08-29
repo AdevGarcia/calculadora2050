@@ -1,12 +1,10 @@
-import secrets
-from typing import Any, Dict, List, Optional, Union
-
-from pydantic import AnyHttpUrl, EmailStr, PostgresDsn, validator
-from pydantic_settings import BaseSettings # NEW
-
 import os
+import secrets
 from dotenv import load_dotenv
+from typing import List, Union
 
+from pydantic import AnyHttpUrl, EmailStr, validator
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -40,7 +38,6 @@ class Settings(BaseSettings):
         POSTGRES_USER: str     = os.getenv('POSTGRES_USER', 'postgres')
         POSTGRES_PASSWORD: str = os.getenv('POSTGRES_PASSWORD', 'password')
         POSTGRES_DB: str       = os.getenv('POSTGRES_DB', 'api')
-        # SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
         SQLALCHEMY_DATABASE_URI : str = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}"
 
     

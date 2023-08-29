@@ -43,15 +43,3 @@ from app.src.modules.transporte.internacional.aviacion.models import *  # noqa
 from app.src.modules.transporte.internacional.navegacion.models import *  # noqa
 from app.src.modules.transporte.nacional.transporte_carga.models import *  # noqa
 from app.src.modules.transporte.nacional.transporte_pasajeros.models import *  # noqa
-
-# # Resultados
-# from app.src.modules.resultados.agricultura.models import *  # noqa
-# from app.src.modules.resultados.bosques.models import *  # noqa
-# from app.src.modules.resultados.edificaciones.models import *  # noqa
-# from app.src.modules.resultados.electricidad.models import *  # noqa
-# from app.src.modules.resultados.energia.models import *  # noqa
-# from app.src.modules.resultados.ganaderia.models import *  # noqa
-# from app.src.modules.resultados.general.models import *  # noqa
-# from app.src.modules.resultados.industria.models import *  # noqa
-# from app.src.modules.resultados.residuos.models import *  # noqa
-# from app.src.modules.resultados.transporte.models import *  # noqa

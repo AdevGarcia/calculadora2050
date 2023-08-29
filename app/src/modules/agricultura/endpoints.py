@@ -35,7 +35,7 @@ router = APIRouter()
 def create_ST(
     data: SCHEMAS_ST, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -71,9 +71,9 @@ def read_ST_module(
     module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -85,6 +85,7 @@ def read_ST_module(
                 db=db, 
                 model=models.AGRO_ST_mejores_practicas_agricolas_superficie_implementacion,
                 topic='mejores_practicas_agricolas_superficie_de_implementacion',
+                skip=skip, limit=limit,
                 **filter
                 )
                 
@@ -93,6 +94,7 @@ def read_ST_module(
                 db=db, 
                 model=models.AGRO_ST_tierra_biocombustibles_superficie_implementacion,
                 topic='tierra_dedicada_para_biocombustibles_superficie_de_implementacion',
+                skip=skip, limit=limit,
                 **filter
                 )
 
@@ -108,7 +110,7 @@ def read_ST_module(
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
 def delete_ST(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -125,7 +127,7 @@ def delete_ST(
 def create_SF(
     data: SCHEMAS_SF, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -179,9 +181,9 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
     
@@ -197,7 +199,7 @@ def read_SF(
         'potencial_energetico_por_unidad_de_biomasa'                           : models.AGRO_SF_potencial_energetico_por_unidad_de_biomasa
         }
     
-    rd = downloader_batch(db=db, **d)
+    rd = downloader_batch(db=db, skip=skip, limit=limit, **d)
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')
@@ -208,7 +210,7 @@ def read_SF(
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
 def delete_SF(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -236,7 +238,7 @@ def delete_SF(
 def create_metodologia_tierra_dedicada_para_biocombustibles(
     data: schemas.METODOLOGIA, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -256,9 +258,9 @@ def read_Metodologia(
     medida_agro_2: schemas.Trayectoria,
     medida_agro_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -268,6 +270,7 @@ def read_Metodologia(
             db=db, 
             model=models.AGRO_Metodologia_tierra_dedicada_para_biocombustibles,
             topic='tierra_dedicada_para_biocombustibles',
+            skip=skip, limit=limit,
             **filter
             )
     
@@ -280,7 +283,7 @@ def read_Metodologia(
 @router.delete('/metodologia', status_code=status.HTTP_200_OK)
 def delete_Metodologia(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -300,7 +303,7 @@ def delete_Metodologia(
 def create_salidas_cultivos(
     data: schemas.AGRO_SALIDAS_cultivos, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -321,7 +324,7 @@ def create_salidas_cultivos(
 def create_salidas_biocombustibles(
     data: schemas.AGRO_SALIDAS_biocombustibles, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -342,9 +345,9 @@ def read_salidas_module(
     medida_agro_2: schemas.Trayectoria,
     medida_agro_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -356,6 +359,7 @@ def read_salidas_module(
                 db=db, 
                 model=models.AGRO_SALIDAS_cultivos,
                 topic='cultivos',
+                skip=skip, limit=limit,
                 **filter
                 )
                 
@@ -364,6 +368,7 @@ def read_salidas_module(
                 db=db, 
                 model=models.AGRO_SALIDAS_biocombustibles,
                 topic='biocombustibles',
+                skip=skip, limit=limit,
                 **filter
                 )
 
@@ -379,7 +384,7 @@ def read_salidas_module(
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
 def delete_Salidas(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -399,7 +404,7 @@ def delete_Salidas(
 def create_emisiones(
     data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -420,9 +425,9 @@ def read_Emisiones_module(
     medida_agro_2: schemas.Trayectoria,
     medida_agro_3: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -434,6 +439,7 @@ def read_Emisiones_module(
                 db=db, 
                 model=models.AGRO_EMISIONES,
                 topic='emisiones_cultivo_biocombustibles',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -442,6 +448,7 @@ def read_Emisiones_module(
                 db=db, 
                 model=models.AGRO_EMISIONES,
                 topic='implementacion_de_mejores_practicas_agricolas',
+                skip=skip, limit=limit,
                 **filter
                 )
             
@@ -450,6 +457,7 @@ def read_Emisiones_module(
                 db=db, 
                 model=models.AGRO_EMISIONES,
                 topic='emisiones_a_industria',
+                skip=skip, limit=limit,
                 **filter
                 )
 
@@ -465,7 +473,7 @@ def read_Emisiones_module(
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
 def delete_Emisiones(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     

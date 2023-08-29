@@ -9,14 +9,14 @@ from .constants import FOLDER_PATH, SECTORES, INDICE
 
 
 class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
+    HEADER    = '\033[95m'
+    OKBLUE    = '\033[94m'
+    OKCYAN    = '\033[96m'
+    OKGREEN   = '\033[92m'
+    WARNING   = '\033[93m'
+    FAIL      = '\033[91m'
+    ENDC      = '\033[0m'
+    BOLD      = '\033[1m'
     UNDERLINE = '\033[4m'
 
 
@@ -50,7 +50,6 @@ def _level0(sector: dict)-> list[dict]:
             'url'       : bloque['request']['url']['raw'].replace('{{url_prefix}}', '')
         }
 
-        print(d)
         l.append(d)
     return l
 
@@ -334,7 +333,7 @@ class Upload():
             )
         token = r.json()
 
-        print('[ACCESS TOKEN]', r.status_code) # print(token)
+        print('[ACCESS TOKEN]', r.status_code)
         auth_header = {"Authorization": f'{token["token_type"]} {token["access_token"]}'}
 
         return auth_header
@@ -488,34 +487,6 @@ class Upload():
 
                     for k in range(len(r.url.to_list())):
                         self.delete(uri=r.url.to_list()[k])
-
-
-    # def get_all(self) -> None:
-    #     """ get de toda la DDBB - En localhost 4m 30s"""
-
-    #     d = self.indice
-
-    #     for sector in SECTORES:
-    #         for i in range(len(d[sector])):
-    #             item = d[sector][i]
-    #             if self.debug:
-    #                 print('-----------------------------------')
-    #                 print('-> sector: ', item['sector'], '| subsector: ', item['subsector'], '| clase: ', item['clase'])
-                
-    #             df = collection(
-    #                 df        = self.collection, 
-    #                 sector    = item['sector'],
-    #                 subsector = item['subsector'],
-    #                 clase     = item['clase'],
-    #                 method    = 'GET')
-                
-    #             ltipo = [t for t in set(item['tipo'])]
-                
-    #             for j in range(len(ltipo)):
-    #                 r = df[df.tipo.str.contains(ltipo[j])]
-
-    #                 for k in range(len(r.url.to_list())):
-    #                     self.get(uri=r.url.to_list()[k])
     
 
     def get_all(self) -> None:
@@ -545,7 +516,6 @@ class Upload():
                     for k in range(len(r.url.to_list())):
                         self.get(uri=r.url.to_list()[k])
         
-        #########
         print('-----------------------------------')
         print('-> sector: Entradas')
             
@@ -567,4 +537,3 @@ class Upload():
 
         for url in df.url.to_list():
             self.get(uri=url)
-            

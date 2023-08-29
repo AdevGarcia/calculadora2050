@@ -10,8 +10,6 @@ services:
             - 80:80
             # Listen on port 443, default for HTTPS
             - 443:443
-            # Listen on port 8080, insecure Dashboard
-            - 8080:8080
         volumes:
             # Add Docker as a mounted volume, so that Traefik can read the labels of other services
             - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -26,13 +24,9 @@ services:
             - "--entrypoints.web.address=:80"
             # Create a entrypoint "https" listening on port 443
             - "--entrypoints.websecure.address=:443"
-
             - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
             - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
             - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
-
-
-
             # Create the certificate resolver "le" for Let's Encrypt, uses the environment variable EMAIL
             - "--certificatesresolvers.le.acme.email=angelgarcia@idom.com"
             # Store the Let's Encrypt certificates in the mounted volume
@@ -43,8 +37,6 @@ services:
             - "--accesslog"
             # Enable the Traefik log, for configurations and errors
             - "--log"
-            # Dashboard
-            - "--api.insecure" # Don't do that in production# 
 
     app:
         container_name: app
@@ -68,13 +60,10 @@ services:
             - "traefik.http.routers.app.rule=Host(`api.geoidom.com`)"
             # Define the port inside of the Docker service to use
             - "traefik.http.services.app.loadbalancer.server.port=8000"
-
             - "traefik.http.routers.app.entrypoints=websecure"
-            
             # Use the "le" (Let's Encrypt) resolver
             - "traefik.http.routers.app.tls=true"
             - "traefik.http.routers.app.tls.certresolver=le"
-            
         command: ./start.sh
 
     db:
@@ -98,15 +87,28 @@ services:
     
     # pgadmin:
     #     image: dpage/pgadmin4
+    #     hostname: pgadmin
     #     container_name: pgadmin
     #     restart: always
     #     env_file:
     #         - .env
-    #     ports:
-    #         - 5050:5050
+    #     # ports:
+    #     #     - 5050:5050
+    #     expose:
+    #         - "5050"
     #     depends_on:
     #         db:
     #             condition: service_healthy
+    #     labels:
+    #         # Enable Traefik for this specific "backend" service
+    #         - "traefik.enable=true"
+    #         - "traefik.http.routers.pgadmin.rule=Host(`pgadmin.geoidom.com`)"
+    #         # Define the port inside of the Docker service to use
+    #         - "traefik.http.services.pgadmin.loadbalancer.server.port=5050"
+    #         - "traefik.http.routers.pgadmin.entrypoints=websecure"
+    #         # Use the "le" (Let's Encrypt) resolver
+    #         - "traefik.http.routers.pgadmin.tls=true"
+    #         - "traefik.http.routers.pgadmin.tls.certresolver=le"
     #     environment:
     #         - PGDATA=/var/lib/postgresql/data/pgdata
     #     volumes:

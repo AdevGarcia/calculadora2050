@@ -1,4 +1,4 @@
-from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
+from typing import Dict, Generic, List, Optional, Type, TypeVar
 from fastapi import HTTPException
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
@@ -10,7 +10,7 @@ from app.src.db.base_class import Base
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-ModelType = TypeVar("ModelType", bound=Base)
+ModelType  = TypeVar("ModelType",  bound=Base)
 SchemaType = TypeVar("SchemaType", bound=BaseModel)
 
 
@@ -38,14 +38,12 @@ class CRUD(Generic[ModelType, SchemaType]):
         filters = []
         for key, value in kwargs.items():
             filters.append(getattr(self.model, key) == value)
-        # print('kwargs: ', kwargs, '-> filters: ', filters)
         return self.db.query(self.model).filter(*filters).first()
 
     def get_multi(self, skip: int = 0, limit: int = 100, **kwargs) -> List[ModelType]:
         filters = []
         for key, value in kwargs.items():
             filters.append(getattr(self.model, key) == value)
-        # print('kwargs: ', kwargs, '-> filters: ', filters)
         return self.db.query(self.model).filter(*filters).offset(skip).limit(limit).all()
 
     # CREATE

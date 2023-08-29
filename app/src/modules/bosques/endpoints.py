@@ -35,7 +35,7 @@ router = APIRouter()
 def create_ST(
     data: SCHEMAS_ST, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -71,9 +71,9 @@ def read_ST_module(
     module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -85,6 +85,7 @@ def read_ST_module(
                 db=db, 
                 model=models.BOSQ_ST_escenarios_de_deforestacion,
                 topic='escenarios_de_deforestacion',
+                skip=skip, limit=limit,
                 **filter
                 )
                 
@@ -93,6 +94,7 @@ def read_ST_module(
                 db=db, 
                 model=models.BOSQ_ST_plantaciones_forestales_con_fines_comerciales,
                 topic='desarrollo_y_consolidacion_de_la_cadena_productiva_de_las_plantaciones_forestales_con_fines_comerciales',
+                skip=skip, limit=limit,
                 **filter
                 )
 
@@ -108,7 +110,7 @@ def read_ST_module(
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
 def delete_ST(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -125,7 +127,7 @@ def delete_ST(
 def create_SF(
     data: SCHEMAS_SF, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -171,9 +173,9 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
     
@@ -187,7 +189,7 @@ def read_SF(
         'descuentos_aplicables_a_reforestacion_comercial'   : models.BOSQ_SF_descuentos_aplicables_a_reforestacion_comercial
         }
     
-    rd = downloader_batch(db=db, **d)
+    rd = downloader_batch(db=db, skip=skip, limit=limit, **d)
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')
@@ -224,7 +226,7 @@ def delete_SF(
 def create_total_areas_reforestadas(
     data: schemas.SALIDAS, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -243,9 +245,9 @@ def read_salidas_module(
     medida_bosq_1: schemas.Trayectoria,
     medida_bosq_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -255,6 +257,7 @@ def read_salidas_module(
         db=db, 
         model=models.BOSQ_SALIDAS,
         topic='total_areas_reforestadas',
+        skip=skip, limit=limit,
         **filter
         )
     
@@ -267,7 +270,7 @@ def read_salidas_module(
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
 def delete_Salidas(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -286,7 +289,7 @@ def delete_Salidas(
 def create_emisiones(
     data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -305,9 +308,9 @@ def read_emisiones_module(
     medida_bosq_1: schemas.Trayectoria,
     medida_bosq_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -317,6 +320,7 @@ def read_emisiones_module(
         db=db, 
         model=models.BOSQ_EMISIONES,
         topic='total_emisiones',
+        skip=skip, limit=limit,
         **filter
         )
     
@@ -329,7 +333,7 @@ def read_emisiones_module(
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
 def delete_Emisiones(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
