@@ -1,10 +1,20 @@
 FROM tiangolo/uvicorn-gunicorn:python3.11-slim
 
-# RUN apt-get update && apt-get install -y netcat
-# RUN apt-get update && apt-get install -y netcat-traditional
-# RUN apt-get update && apt-get install -y netcat-openbsd
+LABEL maintainer="Angel A. Garcia Gonzalez <angelgarcia@idom.com>"
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONPATH $PWD
 
-COPY . .
+WORKDIR /api
+
+RUN apt-get update && apt-get install -y python3-psycopg2
+
+COPY requirements.txt /tmp/requirements.txt
+
+# install python dependencies
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+COPY . /api
