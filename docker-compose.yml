@@ -46,7 +46,7 @@ services:
             - traefik.http.services.app.loadbalancer.server.port=8000
             # Make Traefik use this domain in HTTP
             - traefik.http.routers.app.entrypoints=http
-            - traefik.http.routers.app.rule=Host(`localhost`)
+            - traefik.http.routers.app.rule=Host(`api.geoidom.com`)
             # Use the traefik-public network (declared below)
             - traefik.docker.network=traefik-public
         command: ./start.dev.sh
