@@ -5,10 +5,6 @@ export PYTHONPATH=$PWD
 export $(grep API_ENV .env)
 export $(grep DEBUG .env)
 
-echo "The PYTHONPATH is: $PYTHONPATH" # Check
-echo "API_ENV          : $API_ENV" 
-echo "DEBUG            : $DEBUG" 
-
 DIRECTORIO=app/alembic
 SQLITE=app/app.sqlite
 
@@ -29,16 +25,11 @@ else
 fi
 
 cd ./app
-echo "### Alembic INIT"
 alembic init alembic
 
 cd ..
-echo "### Alembic env copy"
 cp alembic_env.py app/alembic/env.py
 
 cd ./app
-echo "### Alembic autogenerate"
 alembic revision --autogenerate -m "init"
-
-echo "### Alembic upgrade head"
 alembic -c ./alembic.ini upgrade head
