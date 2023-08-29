@@ -6,23 +6,23 @@
 - Limpiar codigo
 - Usuario con formulario inicio
 - Autenticacion
-- https
-- pasar a produccion
 
 otros
 - interfaz excel
 
 
 ```sh
-$ docker network create traefik-public
-$ docker-compose -f docker-compose.traefik.yml up -d
 # dev
 $ docker-compose -f docker-compose.yml up -d
 
 # prod
-$ docker network create traefik-public
-$ docker-compose -f docker-compose.traefik.prod.yml up -d
 $ docker-compose -f docker-compose.prod.yml up -d
+```
+
+```sh
+# Para cargar los datos en la base de datos
+$ docker exec -it app /bin/bash
+root@app:/api# python ./app/load.py
 ```
 
 

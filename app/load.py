@@ -8,12 +8,13 @@ from loader.util import Upload
 if __name__ == "__main__":
     
     load_dotenv()
-    host      = os.getenv("SERVER_HOST") 
-    api       = os.getenv("API_V1_STR")
-    # user      = os.getenv('FIRST_SUPERUSER')
-    # password  = os.getenv('FIRST_SUPERUSER_PASSWORD')
+    host      = os.getenv("SERVER_HOST", "http://localhost")
+    port      = os.getenv("SERVER_PORT", 8000)
+    api       = os.getenv("API_V1_STR", "/api/v1")
+    # user      = os.getenv('ADMIN', 'admin@calculadora2050.com')
+    # password  = os.getenv('ADMIN_PASSWORD', 'password')
 
-    url = host + api
+    url = f'{host}:{port}{api}'
 
     time0 = time.time()
 
