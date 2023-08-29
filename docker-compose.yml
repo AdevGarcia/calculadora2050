@@ -45,8 +45,8 @@ services:
             # Define the port inside of the Docker service to use
             - traefik.http.services.app.loadbalancer.server.port=8000
             # Make Traefik use this domain in HTTP
-            - traefik.http.routers.app-http.entrypoints=http
-            - traefik.http.routers.app-http.rule=Host(`localhost`)
+            - traefik.http.routers.app.entrypoints=http
+            - traefik.http.routers.app.rule=Host(`localhost`)
             # Use the traefik-public network (declared below)
             - traefik.docker.network=traefik-public
         command: ./start.dev.sh
