@@ -43,7 +43,7 @@ services:
         labels:
             # Enable Traefik for this specific "backend" service
             - "traefik.enable=true"
-            - "traefik.http.routers.app.rule=Host(`api.geoidom.com`)"
+            - "traefik.http.routers.app.rule=Host(`localhost`)"
             # Define the port inside of the Docker service to use
             - "traefik.http.services.app.loadbalancer.server.port=8000"
             # Make Traefik use this domain in HTTP

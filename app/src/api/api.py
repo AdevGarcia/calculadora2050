@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-# from api.endpoints import login
+from api.endpoints import login
 from api.endpoints import utils
 from modules.excel import download_excel
 
@@ -67,8 +67,7 @@ from modules.resultados import general as general_result  # noqa
 
 
 api_router = APIRouter()
-# api_router.include_router(login.router, tags=["login"])
-# api_router.include_router(utils.router, prefix="/utils", tags=["utils"])
+api_router.include_router(login.router, tags=["login"])
 api_router.include_router(utils.router, tags=["test"])
 
 api_router.include_router(download_excel.router, prefix="/download", tags=["Download Excel"])
