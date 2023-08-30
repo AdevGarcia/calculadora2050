@@ -33,9 +33,9 @@ def read_entradas_energia_bioenergia(
     medida_agro_2: schemas.Trayectoria=1,
     medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -43,6 +43,7 @@ def read_entradas_energia_bioenergia(
     filter={"tipo": "biodiesel_palma_de_aceite", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='biocombustibles',
         model=models.AGRO_SALIDAS_biocombustibles,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -51,6 +52,7 @@ def read_entradas_energia_bioenergia(
     filter={"tipo": "bioetanol_cana_de_azucar", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='biocombustibles',
         model=models.AGRO_SALIDAS_biocombustibles,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)

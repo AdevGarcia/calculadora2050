@@ -31,9 +31,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_bosques(
     medida_bosq_1: schemas.Trayectoria=1,
     medida_bosq_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -41,6 +41,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_bosques(
     filter={"tipo": "absorciones_por_plantaciones_comerciales", 'medida_1': medida_bosq_1, 'medida_2': medida_bosq_2}
     rd = downloader(db=db, topic='total_emisiones',
         model=models.BOSQ_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     absorciones_por_plantaciones_comerciales = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -53,6 +54,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_bosques(
     filter={"tipo": "emisiones_por_deforestacion", 'medida_1': medida_bosq_1, 'medida_2': medida_bosq_2}
     rd = downloader(db=db, topic='total_emisiones',
         model=models.BOSQ_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     emisiones_por_deforestacion = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -77,9 +79,9 @@ def resultados_evolucion_de_las_hectareas_de_bosque(
     medida_bosq_1: schemas.Trayectoria=1,
     medida_bosq_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -87,6 +89,7 @@ def resultados_evolucion_de_las_hectareas_de_bosque(
     filter={"tipo": "total_deforestada_acumulada",'medida_1': medida_bosq_1, 'medida_2': medida_bosq_2}
     rd = downloader(db=db, topic='total_areas_reforestadas',
         model=models.BOSQ_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     superficie_total_deforestacion_acumulada = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -99,6 +102,7 @@ def resultados_evolucion_de_las_hectareas_de_bosque(
     filter={"tipo": "reforestacion_comercial_acumulada",'medida_1': medida_bosq_1, 'medida_2': medida_bosq_2}
     rd = downloader(db=db, topic='total_areas_reforestadas',
         model=models.BOSQ_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     superficie_reforestacion_comercial_acumulada = db_to_df(rd=rd).to_dict(orient='records')[0]

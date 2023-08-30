@@ -36,9 +36,9 @@ def read_entradas_energia_combustibles_fosiles_gasolina(
     medida_trans_pas_1: schemas.Trayectoria=1,
     medida_trans_pas_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -59,6 +59,7 @@ def read_entradas_energia_combustibles_fosiles_gasolina(
     filter={"tipo": "gasolina", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -67,6 +68,7 @@ def read_entradas_energia_combustibles_fosiles_gasolina(
     filter={"tipo": "gasolina", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -119,9 +121,9 @@ def read_entradas_energia_combustibles_fosiles_diesel(
     medida_trans_nav_1: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -141,6 +143,7 @@ def read_entradas_energia_combustibles_fosiles_diesel(
     filter={"tipo": "diesel", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     edificaciones = set_item(rd=rd, 
@@ -154,6 +157,7 @@ def read_entradas_energia_combustibles_fosiles_diesel(
     filter={"tipo": "diesel", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -162,6 +166,7 @@ def read_entradas_energia_combustibles_fosiles_diesel(
     filter={"tipo": "diesel", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -170,6 +175,7 @@ def read_entradas_energia_combustibles_fosiles_diesel(
     filter={"tipo": "diesel", 'medida_1': medida_trans_nav_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_NAV_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
 
     df3 = db_to_df(rd=rd)
@@ -216,9 +222,9 @@ def read_entradas_energia_combustibles_fosiles_fuel_oil(
     medida_ind_4: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -238,6 +244,7 @@ def read_entradas_energia_combustibles_fosiles_fuel_oil(
     filter={"tipo": "fuel_oil", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     edificaciones = set_item(rd=rd, 
@@ -290,9 +297,9 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
     medida_edi_res_irco_2: schemas.Trayectoria=1,
     medida_edi_res_irco_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -313,6 +320,7 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
     filter={"tipo": "gas_natural", "bloque": "demanda", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -321,6 +329,7 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
     filter={"tipo": "gas_natural", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -336,6 +345,7 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
     filter={"tipo": "gas_gnc", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -344,6 +354,7 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
     filter={"tipo": "gas_gnl", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -352,6 +363,7 @@ def read_entradas_energia_combustibles_fosiles_gas_natural(
     filter={"tipo": "gas_natural", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
 
     df3 = db_to_df(rd=rd)
@@ -402,9 +414,9 @@ def read_entradas_energia_combustibles_fosiles_glp(
     medida_edi_res_irco_3: schemas.Trayectoria=1,
     medida_edi_res_rural_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -425,6 +437,7 @@ def read_entradas_energia_combustibles_fosiles_glp(
     filter={"tipo": "glp", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -433,6 +446,7 @@ def read_entradas_energia_combustibles_fosiles_glp(
     filter={"tipo": "hidrocarburos_gaseosos_glp", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -441,6 +455,7 @@ def read_entradas_energia_combustibles_fosiles_glp(
     filter={"tipo": "glp", "bloque": "demanda", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df3 = db_to_df(rd=rd)
@@ -487,9 +502,9 @@ def read_entradas_energia_combustibles_fosiles_carbon(
     medida_ind_1: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -543,9 +558,9 @@ def read_entradas_energia_combustibles_fosiles_queroseno(
     medida_ind_4: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -565,6 +580,7 @@ def read_entradas_energia_combustibles_fosiles_queroseno(
     filter={"tipo": "queroseno", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     edificaciones = set_item(rd=rd, 
@@ -609,9 +625,9 @@ def read_entradas_energia_combustibles_fosiles_coque(
     medida_ind_1: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 

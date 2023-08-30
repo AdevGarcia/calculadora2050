@@ -35,7 +35,7 @@ router = APIRouter()
 def create_ST(
     data: SCHEMAS_ST, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -88,9 +88,9 @@ def read_ST_module(
     module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
     """
@@ -102,6 +102,7 @@ def read_ST_module(
                 db=db, 
                 model=models.RES_SOL_ST_cantidad_de_residuos_generada_anual,
                 topic='cantidad_de_residuos_generada_anual',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -111,6 +112,7 @@ def read_ST_module(
                 db=db, 
                 model=models.RES_SOL_ST_tipo_de_gestion,
                 topic='tipo_de_gestion',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -120,6 +122,7 @@ def read_ST_module(
                 db=db, 
                 model=models.RES_SOL_ST_cap_inst_sist_recup_aprov_biogas_rellenos_sanit,
                 topic='capacidad_instalada_para_los_sistemas_de_recuperacion_y_aprovechamiento_del_biogas_en_rellenos_sanitarios',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -129,6 +132,7 @@ def read_ST_module(
                 db=db, 
                 model=models.RES_SOL_ST_capacidad_instalada_sistemas_incineracion,
                 topic='capacidad_instalada_para_los_sistemas_de_incineracion',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -145,7 +149,7 @@ def read_ST_module(
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
 def delete_ST(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL
     """
@@ -165,7 +169,7 @@ def delete_ST(
 def create_SF(
     data: SCHEMAS_SF, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -212,9 +216,9 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
     """
@@ -229,7 +233,7 @@ def read_SF(
         'datos_para_la_estimacion_de_las_emisiones_de_incineracion' : models.RES_SOL_SF_estimacion_emisiones_incineracion
         }
     
-    rd = downloader_batch(db=db, **d)
+    rd = downloader_batch(db=db, skip=skip, limit=limit, **d)
     result = jsonable_encoder(rd)
     
     if DEBUG:
@@ -241,7 +245,7 @@ def read_SF(
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
 def delete_SF(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL
     """
@@ -268,7 +272,7 @@ def delete_SF(
 def create_salida_energia_consumida(
     data: schemas.RES_SOL_SALIDAS_energia_consumida, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -292,7 +296,7 @@ def create_salida_energia_consumida(
 def create_salida_energia_producida(
     data: schemas.RES_SOL_SALIDAS_energia_producida, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -314,9 +318,9 @@ def read_salidas_module(
     module: schemas.Salidas_name,
     medida_res_sol_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
     """
@@ -328,6 +332,7 @@ def read_salidas_module(
                 db=db, 
                 model=models.RES_SOL_SALIDAS_energia_consumida,
                 topic='energia_producida_y_requerida',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -337,6 +342,7 @@ def read_salidas_module(
                 db=db, 
                 model=models.RES_SOL_SALIDAS_energia_producida,
                 topic='energia_producida_y_requerida',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -353,7 +359,7 @@ def read_salidas_module(
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
 def delete_Salidas(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL
     """
@@ -374,7 +380,7 @@ def delete_Salidas(
 def create_emisiones(
     data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -393,9 +399,9 @@ def read_Emisiones_module(
     module: schemas.Emisiones_name,
     medida_res_sol_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
     """
@@ -407,6 +413,7 @@ def read_Emisiones_module(
                 db=db, 
                 model=models.RES_SOL_emisiones,
                 topic='emisiones_de_gases_de_efecto_invernadero_residuos',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -416,6 +423,7 @@ def read_Emisiones_module(
                 db=db, 
                 model=models.RES_SOL_emisiones,
                 topic='emisiones_de_gases_de_efecto_invernadero_energia',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -432,7 +440,7 @@ def read_Emisiones_module(
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
 def delete_Emisiones(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL
     """

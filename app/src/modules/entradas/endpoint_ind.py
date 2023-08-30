@@ -32,9 +32,9 @@ def read_entradas_produccion(
     medida_agro_2: schemas.Trayectoria=1,
     medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -42,6 +42,7 @@ def read_entradas_produccion(
     filter={'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
+        skip=skip, limit=limit,
         **filter)
     
     agricultura = db_to_df(rd=rd).sum().to_dict()
@@ -49,7 +50,6 @@ def read_entradas_produccion(
     agricultura["bloque"]   = "cultivos"
     agricultura["tipo"]     = "bagazo_y_otros"
     agricultura["unidad"]   = "TWh"
-
 
     resultado = {"entradas": [agricultura]}
 

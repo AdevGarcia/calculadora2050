@@ -44,9 +44,9 @@ def read_entradas_energia_inyectada_a_red(
     medida_gana_2: schemas.Trayectoria=1,
     medida_gana_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -67,6 +67,7 @@ def read_entradas_energia_inyectada_a_red(
     filter={"tipo": "total_consumido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -74,6 +75,7 @@ def read_entradas_energia_inyectada_a_red(
     filter={"tipo": "total_producido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -85,6 +87,7 @@ def read_entradas_energia_inyectada_a_red(
     filter={"tipo": "total_consumo", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -92,6 +95,7 @@ def read_entradas_energia_inyectada_a_red(
     filter={"tipo": "total_generacion", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -111,6 +115,7 @@ def read_entradas_energia_inyectada_a_red(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_res_irco_1, 'medida_2': medida_res_irco_2, 'medida_3': medida_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -118,6 +123,7 @@ def read_entradas_energia_inyectada_a_red(
     filter={"tipo": "solar_fotovoltaica", 'medida_1': medida_res_irco_1, 'medida_2': medida_res_irco_2, 'medida_3': medida_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -135,6 +141,7 @@ def read_entradas_energia_inyectada_a_red(
     filter={'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
+        skip=skip, limit=limit,
         **filter)
     
     agricultura = db_to_df(rd=rd).sum().to_dict()
@@ -204,9 +211,9 @@ def read_entradas_demanda(
     medida_trans_car_1: schemas.Trayectoria=1,
     medida_trans_car_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -227,6 +234,7 @@ def read_entradas_demanda(
     filter={"tipo": "total_consumido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -234,6 +242,7 @@ def read_entradas_demanda(
     filter={"tipo": "total_producido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -247,6 +256,7 @@ def read_entradas_demanda(
     filter={"tipo": "total_consumo", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -254,6 +264,7 @@ def read_entradas_demanda(
     filter={"tipo": "total_generacion", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -275,6 +286,7 @@ def read_entradas_demanda(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_res_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -283,6 +295,7 @@ def read_entradas_demanda(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_res_irco_1, 'medida_2': medida_res_irco_2, 'medida_3': medida_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -291,6 +304,7 @@ def read_entradas_demanda(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df3 = db_to_df(rd=rd)
@@ -299,6 +313,7 @@ def read_entradas_demanda(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_com_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df4 = db_to_df(rd=rd)
@@ -307,6 +322,7 @@ def read_entradas_demanda(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     df5 = db_to_df(rd=rd)
@@ -321,12 +337,14 @@ def read_entradas_demanda(
     filter={'tipo': 'electrico', 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
 
     filter={'tipo': 'electricidad', 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
     
@@ -371,9 +389,9 @@ def read_entradas_demanda(
 def read_entradas_emisiones_derivadas_de_la_autogeneracion(
     medida_res_sol_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
     
@@ -381,8 +399,8 @@ def read_entradas_emisiones_derivadas_de_la_autogeneracion(
     ### residuos solidos
     filter={"grupo": "aprovechamiento_energetico_del_biogas", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
-        # model=models.RES_SOL_emisiones_de_gases_de_efecto_invernadero_energia,
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -390,6 +408,7 @@ def read_entradas_emisiones_derivadas_de_la_autogeneracion(
     filter={"grupo": "incineracion", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)

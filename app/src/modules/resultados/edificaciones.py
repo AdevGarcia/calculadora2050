@@ -37,9 +37,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     medida_edi_com_acond_1: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -47,6 +47,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_res_acond_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_RES_ACOND_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     diseno_y_eficiencia_energetica_para_el_acondicionamiento_de_espacios = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -60,6 +61,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_RES_ILU_REF_COC_OTR_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     eficiencia_energetica_y_equipos_eficientes_en_viviendas = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -73,6 +75,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_RES_RURAL_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     eficiencia_energetica_para_viviendas_rurales = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -86,6 +89,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_com_acond_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_COM_ACOND_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     acondicionamiento_de_espacios_comerciales_y_de_servicio = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -98,6 +102,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_edificaciones(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_COM_USOS_TERM_EQUIP_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     usos_termicos_y_equipamiento_comercial_y_de_servicio = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -135,9 +140,9 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     medida_edi_com_acond_1: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -146,6 +151,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_res_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_res_urb_aer = db_to_df(rd=rd)
 
@@ -153,6 +159,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_res_urb_irco = db_to_df(rd=rd)
 
@@ -160,6 +167,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_res_rural = db_to_df(rd=rd)
 
@@ -167,6 +175,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_com_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_com_aec = db_to_df(rd=rd)
 
@@ -174,6 +183,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_com_ute = db_to_df(rd=rd)
 
@@ -191,6 +201,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "gas_natural", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_res_urb_irco = db_to_df(rd=rd)
 
@@ -198,6 +209,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "gas_natural", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_com_ute = db_to_df(rd=rd)
 
@@ -214,6 +226,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "glp", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_com_ute = db_to_df(rd=rd)
 
@@ -221,6 +234,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "glp", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_res_urb_irco = db_to_df(rd=rd)
 
@@ -228,6 +242,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "hidrocarburos_gaseosos_glp", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_res_rural = db_to_df(rd=rd)
 
@@ -242,6 +257,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "petroleo", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     petroleo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -255,6 +271,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "queroseno", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     queroseno = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -268,6 +285,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "diesel", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     diesel = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -281,6 +299,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "fuel_oil", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     fuel_oil = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -294,6 +313,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "biomasa_seca_y_residuos_lena", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     biomansa_seca_y_residuos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -334,9 +354,9 @@ def resultados_evolucion_consumo_energetico_por_sector(
     medida_edi_com_acond_1: schemas.Trayectoria=1,
     medida_edi_com_ute_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -345,6 +365,7 @@ def resultados_evolucion_consumo_energetico_por_sector(
     filter={"tipo": "acondicionamiento_de_espacios", 'medida_1': medida_edi_res_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_res_urb_aer = db_to_df(rd=rd)
 
@@ -352,6 +373,7 @@ def resultados_evolucion_consumo_energetico_por_sector(
     filter={"tipo": "iluminacion_y_otros_usos", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_res_urb_irco = db_to_df(rd=rd)
 
@@ -366,7 +388,9 @@ def resultados_evolucion_consumo_energetico_por_sector(
     filter={"tipo": "demanda_edificaciones_rurales", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
+    
     edificaciones_residenciales_rurales = db_to_df(rd=rd).to_dict(orient='records')[0]
     edificaciones_residenciales_rurales["topic"]    = "resultados"
     edificaciones_residenciales_rurales["bloque"]   = "edificaciones"
@@ -378,6 +402,7 @@ def resultados_evolucion_consumo_energetico_por_sector(
     filter={"tipo": "acondicionamiento_de_espacios", 'medida_1': medida_edi_com_acond_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_com_aec = db_to_df(rd=rd)
 
@@ -385,6 +410,7 @@ def resultados_evolucion_consumo_energetico_por_sector(
     filter={"tipo": "usos_termicos_y_equipamiento", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     edi_com_ute = db_to_df(rd=rd)
 
@@ -416,9 +442,9 @@ def resultados_evolucion_generacion_energetica_sector_edificaciones(
     medida_edi_res_irco_2: schemas.Trayectoria=1,
     medida_edi_res_irco_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""    
     
@@ -426,6 +452,7 @@ def resultados_evolucion_generacion_energetica_sector_edificaciones(
     rd = downloader(db=db, topic='generacion_solar_fotovoltaica',
         # model=models.EDIF_RES_ILU_REF_COC_OTR_Metodologia_generacion_solar_fotovoltaica,
         model=models.EDIF_RES_ILU_REF_COC_OTR_Metod_generacion_solar_fotovoltaica,
+        skip=skip, limit=limit,
         **filter)
 
     edificaciones_residenciales_urbanas = db_to_df(rd=rd).to_dict(orient='records')[0]

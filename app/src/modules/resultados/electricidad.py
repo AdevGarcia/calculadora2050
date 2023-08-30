@@ -34,9 +34,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     medida_res_agu_1: schemas.Trayectoria=1,
     medida_res_agu_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -44,6 +44,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"tipo": "termoelectrica_gas_natural", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     termoelectrica_gas_natural = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -56,6 +57,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"tipo": "termoelectrica_carbon", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     termoelectrica_carbon = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -68,6 +70,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"tipo": "diesel", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     diesel = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -80,6 +83,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"tipo": "fuel_oil", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     fuel_oil = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -92,6 +96,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"tipo": "petroleo", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
     
     petroleo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -105,6 +110,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"tipo": "gas_lp", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     glp = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -117,6 +123,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"tipo": "termoelectrica_gas_natural_ccus", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     termoelectrica_gas_natural_ccus = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -130,6 +137,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"tipo": "termoelectrica_carbon_ccus", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     termoelectrica_carbon_ccus = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -144,6 +152,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"bloque": "total_emisiones_gei_energia", "tipo": "total_emisiones_gei_energia", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
         model=models.RES_AGU_emisiones,
+        skip=skip, limit=limit,
         **filter)
     res_agu = db_to_df(rd=rd)
 
@@ -151,6 +160,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_electricidad(
     filter={"bloque": "total", "grupo": "total", "tipo": "total_co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
     res_sol = db_to_df(rd=rd)
     
@@ -189,9 +199,9 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     medida_elect_1: schemas.Trayectoria=1,
     medida_res_sol_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -199,6 +209,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "termoelectrica_gas_natural", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     termoelectrica_gas_natural = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -211,6 +222,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "termoelectrica_carbon", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     termoelectrica_carbon = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -223,6 +235,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "diesel", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     diesel = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -235,6 +248,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "fuel_oil", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     fuel_oil = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -247,6 +261,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "petroleo", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
     
     petroleo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -260,6 +275,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "gas_lp", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     glp = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -272,6 +288,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "termoelectrica_gas_natural_ccus", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     termoelectrica_gas_natural_ccus = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -285,6 +302,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "termoelectrica_carbon_ccus", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     termoelectrica_carbon_ccus = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -298,6 +316,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"bloque": "total", "grupo": "total", "tipo": "total_co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_energia',
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     autogeneracion_residuos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -310,6 +329,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "grandes_centrales_hidroelectricas", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     grandes_centrales_hidroelectricas = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -322,6 +342,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "pequenas_centrales_hidroelectricas", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     pequenas_centrales_hidroelectricas = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -334,6 +355,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "solar_distribuida_terciario", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     solar_termica = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -346,6 +368,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "solar_fotovoltaica", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     solar_fotovoltaica = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -358,6 +381,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "eolica_costa_adentro_parque_jepirachi", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     eolica_costa_adentro_parque_jepirachi = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -370,6 +394,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "eolica_costa_adentro_resto_del_pais", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     eolica_costa_adentro_resto_pais = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -382,6 +407,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "eolica_costa_afuera", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     eolica_costa_afuera = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -394,6 +420,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "hidrogeno_verde", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     hidrogeno_verde = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -406,6 +433,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "biomasa", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     biomasa = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -418,6 +446,7 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
     filter={"tipo": "bagazo", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     bagazo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -462,13 +491,13 @@ def resultados_evolucion_generacion_electrica_del_sector_electricidad(
 def resultados_evolucion_requerimientos_energeticos(
     medida_elect_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
-    entrada = read_entradas_requerimientos_energeticos(medida_elect_1=medida_elect_1, db=db)
+    entrada = read_entradas_requerimientos_energeticos(medida_elect_1=medida_elect_1, db=db, skip=skip, limit=limit)
     requerimientos_energeticos = entrada['requerimientos_energeticos'][0]
     requerimientos_energeticos["topic"]    = "resultados"
     requerimientos_energeticos["bloque"]   = "electricidad"
@@ -490,14 +519,14 @@ def resultados_evolucion_requerimientos_energeticos(
 def resultados_evolucion_excedentes_energeticos(
     medida_elect_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
     ##########   excedentes_energeticos  ############## TWh
-    entrada = read_entradas_excedentes_energeticos(medida_elect_1=medida_elect_1, db=db)
+    entrada = read_entradas_excedentes_energeticos(medida_elect_1=medida_elect_1, db=db, skip=skip, limit=limit)
 
     excedentes_energeticos = entrada['excedentes_energeticos'][0]
     excedentes_energeticos["topic"]    = "resultados"

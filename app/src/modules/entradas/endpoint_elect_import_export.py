@@ -27,15 +27,16 @@ router = APIRouter()
 def read_entradas_requerimientos_energeticos(
     medida_elect_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
     
     filter={"tipo": "balance_total", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='balance',
         model=models.ELECT_Electricidad_SALIDAS_balance,
+        skip=skip, limit=limit,
         **filter)
 
     df = db_to_df(rd=rd)
@@ -64,15 +65,16 @@ def read_entradas_requerimientos_energeticos(
 def read_entradas_excedentes_energeticos(
     medida_elect_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
     
     filter={"tipo": "balance_total", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='balance',
         model=models.ELECT_Electricidad_SALIDAS_balance,
+        skip=skip, limit=limit,
         **filter)
 
     df = db_to_df(rd=rd)

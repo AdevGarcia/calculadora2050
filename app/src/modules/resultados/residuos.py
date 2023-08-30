@@ -31,9 +31,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     medida_res_agu_1: schemas.Trayectoria=1,
     medida_res_agu_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -41,6 +41,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     filter={"bloque": "relleno_sanitario_controlados", "grupo": "sin_captacion", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     relleno_sanitario_controlados_sin_captacion = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -53,6 +54,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     filter={"bloque": "relleno_sanitario_controlados", "grupo": "quema_en_antorcha", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     relleno_sanitario_controlados_quema_antorcha = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -65,6 +67,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     filter={"bloque": "relleno_sanitario_controlados", "grupo": "celda_de_contingencia", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     celda_de_contingencia = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -77,6 +80,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     filter={"bloque": "planta_de_tratamiento", "grupo": "tratamiento_mecanico_biologico_tmbcompostaje", "tipo": "co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     tratamiento_mecanico_biologico_compostaje = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -89,6 +93,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     filter={"bloque": "aguas_residuales_domesticas", "tipo": "total_co2_e_ard", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
         model=models.RES_AGU_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     aguas_residuales_domesticas = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -102,6 +107,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_residuos(
     filter={"bloque": "aguas_residuales_industriales", "tipo": "total_co2_e_ari", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
         model=models.RES_AGU_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     aguas_residuales_industriales = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -135,9 +141,9 @@ def resultados_residuos(
     medida_res_agu_1: schemas.Trayectoria=1,
     medida_res_agu_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -145,6 +151,7 @@ def resultados_residuos(
     filter={"bloque": "energia_consumida", "tipo": "total_consumido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
 
     reduccion_y_mejora_de_la_gestion_de_residuos_solidos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -158,6 +165,7 @@ def resultados_residuos(
     filter={"tipo": "total_consumo", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
 
     aprovechamiento_del_biogas_de_las_aguas_residuales = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -187,9 +195,9 @@ def resultados_evolucion_generacion_energetica_sector_residuos(
     medida_res_agu_1: schemas.Trayectoria=1,
     medida_res_agu_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -197,6 +205,7 @@ def resultados_evolucion_generacion_energetica_sector_residuos(
     filter={"bloque": "energia_producida", "tipo": "total_producido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
 
     reduccion_y_mejora_de_gestion_de_residuos_solidos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -210,6 +219,7 @@ def resultados_evolucion_generacion_energetica_sector_residuos(
     filter={"tipo": "total_generacion", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
     
     aprovechamiento_biogás_de_aguas_residuales = db_to_df(rd=rd).to_dict(orient='records')[0]

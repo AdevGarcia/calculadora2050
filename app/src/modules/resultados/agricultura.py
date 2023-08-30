@@ -31,9 +31,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_agricultura(
     medida_agro_2: schemas.Trayectoria=1,
     medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -41,6 +41,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_agricultura(
     filter={"bloque": "cultivo", "tipo": "total", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='emisiones_cultivo_biocombustibles',
         model=models.AGRO_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
     
     cultivo_de_biocombustible = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -53,6 +54,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_agricultura(
     filter={"tipo": "potencial_de_reduccion_de_emisiones_de_las_medidas", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='implementacion_de_mejores_practicas_agricolas',
         model=models.AGRO_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
 
     mejores_practicas = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -80,9 +82,9 @@ def resultados_evolucion_del_potencial_energetico_para_aprovechamiento_de_residu
     medida_agro_2: schemas.Trayectoria=1,
     medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -90,6 +92,7 @@ def resultados_evolucion_del_potencial_energetico_para_aprovechamiento_de_residu
     filter={"bloque": "total_cultivos", "tipo": "total_cultivos", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
+        skip=skip, limit=limit,
         **filter)
     
     cultivos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -102,6 +105,7 @@ def resultados_evolucion_del_potencial_energetico_para_aprovechamiento_de_residu
     filter={"tipo": "total", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='biocombustibles',
         model=models.AGRO_SALIDAS_biocombustibles,
+        skip=skip, limit=limit,
         **filter)
     
     biocombustibles = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -128,14 +132,15 @@ def resultados_tierras_dedicada_a_biocombustibles(
     medida_agro_2: schemas.Trayectoria=1,
     medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     
     filter={"tipo": "palma_de_aceite",'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='tierra_dedicada_para_biocombustibles',
         model=models.AGRO_Metodologia_tierra_dedicada_para_biocombustibles,
+        skip=skip, limit=limit,
         **filter)
     
     palma_de_aceite = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -148,6 +153,7 @@ def resultados_tierras_dedicada_a_biocombustibles(
     filter={"tipo": "cana_de_azucar",'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='tierra_dedicada_para_biocombustibles',
         model=models.AGRO_Metodologia_tierra_dedicada_para_biocombustibles,
+        skip=skip, limit=limit,
         **filter)
     
     cana_de_azucar = db_to_df(rd=rd).to_dict(orient='records')[0]

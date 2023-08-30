@@ -31,9 +31,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_ganaderia(
     medida_gana_2: schemas.Trayectoria=1,
     medida_gana_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -41,6 +41,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_ganaderia(
     filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='emisiones_de_hato_ganadero',
         model=models.GANA_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     hato_ganadero = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -53,6 +54,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_ganaderia(
     filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='practicas_sostenibles_en_suelos_ganaderos',
         model=models.GANA_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     practicas_sostenibles = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -66,6 +68,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_ganaderia(
     filter={"tipo": "reduccion_por_la_implementacion_de_la_medida", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='mejores_practicas_pecuarias',
         model=models.GANA_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     mejores_practicas_pecuarias = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -79,6 +82,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_ganaderia(
     filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='manejo_de_estiercol',
         model=models.GANA_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     manejo_de_estiercol = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -106,9 +110,9 @@ def resultados_evolucion_de_produccion_bioenergia_por_estiercol(
     medida_gana_2: schemas.Trayectoria=1,
     medida_gana_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -116,6 +120,7 @@ def resultados_evolucion_de_produccion_bioenergia_por_estiercol(
     filter={"tipo": "hembras_vacas",'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='produccion_de_estiercol_para_bioenergia',
         model=models.GANA_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     hembras = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -128,6 +133,7 @@ def resultados_evolucion_de_produccion_bioenergia_por_estiercol(
     filter={"tipo": "machos_reses",'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='produccion_de_estiercol_para_bioenergia',
         model=models.GANA_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     machos = db_to_df(rd=rd).to_dict(orient='records')[0]

@@ -36,7 +36,7 @@ router = APIRouter()
 def create_ST(
     data: SCHEMAS_ST, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -105,9 +105,9 @@ def read_ST_module(
     module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
     """
@@ -119,6 +119,7 @@ def read_ST_module(
                 db=db, 
                 model=models.INDU_ST_reduccion_consumo_ener_aumento_eficiencia_energetica,
                 topic='reduccion_de_consumo_energetico_por_aumento_en_la_eficiencia_energetica',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -128,6 +129,7 @@ def read_ST_module(
                 db=db, 
                 model=models.INDU_ST_efi_ener_reduccion_consumo_energ_ladrilleras,
                 topic='eficiencia_energetica_reduccion_de_consumo_energetico_ladrilleras',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -137,6 +139,7 @@ def read_ST_module(
                 db=db, 
                 model=models.INDU_ST_efi_ener_crecimiento_autogeneracion_cogeneracion,
                 topic='eficiencia_energetica_crecimiento_de_autogeneracion_y_cogeneracion',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -146,6 +149,7 @@ def read_ST_module(
                 db=db, 
                 model=models.INDU_ST_efic_ener_autogeneracion_cogeneracion_ladrilleras,
                 topic='eficiencia_energetica_autogeneracion_y_cogeneracion_ladrilleras',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -155,6 +159,7 @@ def read_ST_module(
                 db=db, 
                 model=models.INDU_ST_sustitucion_de_sao_y_hfc,
                 topic='sustitucion_de_sao_y_hfc',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -164,6 +169,7 @@ def read_ST_module(
                 db=db, 
                 model=models.INDU_ST_procesos_productivos_sostenibles,
                 topic='procesos_productivos_sostenibles',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -180,7 +186,7 @@ def read_ST_module(
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
 def delete_ST(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL
     """
@@ -202,7 +208,7 @@ def delete_ST(
 def create_SF(
     data: SCHEMAS_SF, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -273,9 +279,9 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
     """
@@ -296,7 +302,7 @@ def read_SF(
         'emision_de_sao'                                         : models.INDU_SF_emision_de_sao
         }
     
-    rd = downloader_batch(db=db, **d)
+    rd = downloader_batch(db=db, skip=skip, limit=limit, **d)
     result = jsonable_encoder(rd)
     
     if DEBUG:
@@ -308,7 +314,7 @@ def read_SF(
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
 def delete_SF(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL
     """
@@ -341,7 +347,7 @@ def delete_SF(
 def create_salida_energia_requerida_combustible(
     data: schemas.INDU_SALIDAS_por_combustible_energia_requerida, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -365,7 +371,7 @@ def create_salida_energia_requerida_combustible(
 def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_combustible(
     data: schemas.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -389,7 +395,7 @@ def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_combustibl
 def create_salida_balance_total_de_la_energia_requerida_combustible(
     data: schemas.INDU_SALIDAS_por_combustible_balance_total_energia_requerida, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -413,7 +419,7 @@ def create_salida_balance_total_de_la_energia_requerida_combustible(
 def create_salida_energia_requerida_industria(
     data: schemas.INDU_SALIDAS_por_tipo_de_industria_energia_requerida, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -437,7 +443,7 @@ def create_salida_energia_requerida_industria(
 def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_industria(
     data: schemas.INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -461,7 +467,7 @@ def create_salida_energia_producida_por_autogeneracion_y_cogeneracion_industria(
 def create_salida_balance_total_de_la_energia_requerida_industria(
     data: schemas.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -484,9 +490,9 @@ def read_Salidas_module(
     medida_ind_1: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
     """
@@ -498,6 +504,7 @@ def read_Salidas_module(
                 db=db, 
                 model=models.INDU_SALIDAS_por_combustible_energia_requerida,
                 topic='energia_requerida',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -508,6 +515,7 @@ def read_Salidas_module(
                 db=db, 
                 model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
                 topic='energia_producida_por_autogeneracion_y_cogeneracion',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -518,6 +526,7 @@ def read_Salidas_module(
                 db=db, 
                 model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
                 topic='balance_total_de_la_energia_requerida',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -528,6 +537,7 @@ def read_Salidas_module(
                 db=db, 
                 model=models.INDU_SALIDAS_por_tipo_de_industria_energia_requerida,
                 topic='energia_requerida',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -538,6 +548,7 @@ def read_Salidas_module(
                 db=db, 
                 model=models.INDU_SALIDAS_por_tipo_ind_ener_prod_autogener_cogenerac,
                 topic='energia_producida_por_autogeneracion_y_cogeneracion',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -548,6 +559,7 @@ def read_Salidas_module(
                 db=db, 
                 model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
                 topic='balance_total_de_la_energia',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -564,7 +576,7 @@ def read_Salidas_module(
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
 def delete_Salidas(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL
     """
@@ -589,7 +601,7 @@ def delete_Salidas(
 def create_emisiones_gases_efecto_invernadero(
     data: schemas.INDU_emisiones_gases_efecto_invernadero, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -613,7 +625,7 @@ def create_emisiones_gases_efecto_invernadero(
 def create_emisiones_por_el_consumo_de_bagazo_y_otros(
     data: schemas.INDU_emisiones_por_el_consumo_de_bagazo_y_otros, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -637,7 +649,7 @@ def create_emisiones_por_el_consumo_de_bagazo_y_otros(
 def create_emisiones_sao(
     data: schemas.INDU_emisiones_sao, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE
     """
@@ -664,9 +676,9 @@ def read_Emisiones_module(
     medida_agro_2: schemas.Trayectoria=1,
     medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL
     """
@@ -678,6 +690,7 @@ def read_Emisiones_module(
                 db=db, 
                 model=models.INDU_emisiones_gases_efecto_invernadero,
                 topic='gases_efecto_invernadero',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -688,6 +701,7 @@ def read_Emisiones_module(
                 db=db, 
                 model=models.INDU_emisiones_por_el_consumo_de_bagazo_y_otros,
                 topic='emisiones_por_el_consumo_de_bagazo_y_otros',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -698,6 +712,7 @@ def read_Emisiones_module(
                 db=db, 
                 model=models.INDU_emisiones_sao,
                 topic='gases_efecto_invernadero',
+                skip=skip, limit=limit,
                 **filter
                 )
             result = jsonable_encoder(rd)
@@ -714,7 +729,7 @@ def read_Emisiones_module(
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
 def delete_Emisiones(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL
     """

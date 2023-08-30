@@ -13,7 +13,7 @@ from db import deps
 
 from app.src.modules.user import models as models_user
 
-from .util.util import db_to_df, YEARS
+from .util.util import db_to_df
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -60,9 +60,9 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     medida_bosq_1: schemas.Trayectoria=1,
     medida_bosq_2: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -70,6 +70,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"bloque": "total", "tipo": "total_mt_co2_e", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ENER_CombFosil_EMISIONES_consumo,
+        skip=skip, limit=limit,
         **filter)
         
     energia = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -82,6 +83,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"bloque": "emisiones_totales_electricidad", "tipo": "emisiones_totales_electricidad", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ELECT_Electricidad_EMISIONES_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
         
     electricidad = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -95,6 +97,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_emisiones_industria", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='total_emisiones_industria',
         model=models.INDU_emisiones_sao,
+        skip=skip, limit=limit,
         **filter)
     
         
@@ -110,6 +113,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"bloque": "total", "grupo": "total", "tipo": "total_co2_e", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_residuos',
         model=models.RES_SOL_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     res_sol = db_to_df(rd=rd)
@@ -118,6 +122,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"bloque": "total_emisiones_gei_aguas_residuales", "tipo": "total_emisiones_gei_aguas_residuales", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_aguas_residuales',
         model=models.RES_AGU_emisiones,
+        skip=skip, limit=limit,
         **filter)
     
     res_agu = db_to_df(rd=rd)
@@ -134,6 +139,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_res_aer_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_RES_ACOND_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     edi_res_urb_aer = db_to_df(rd=rd)
@@ -142,6 +148,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_RES_ILU_REF_COC_OTR_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
     
     edi_res_urb_irco = db_to_df(rd=rd)
@@ -150,6 +157,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_RES_RURAL_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
     
     edi_res_urb_rural = db_to_df(rd=rd)
@@ -158,6 +166,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_com_aec_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_COM_ACOND_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
     
     edi_com_aec = db_to_df(rd=rd)
@@ -166,6 +175,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.EDIF_COM_USOS_TERM_EQUIP_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
     
     edi_com_ute = db_to_df(rd=rd)
@@ -189,6 +199,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.TRANS_PAS_emisiones_de_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     trans_pas = db_to_df(rd=rd)
@@ -197,6 +208,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.TRANS_CAR_emisiones_de_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
     
     trans_car = db_to_df(rd=rd)
@@ -205,6 +217,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_trans_avi_1}
     rd = downloader(db=db, topic='aviacion_y_navegacion_internacional',
         model=models.TRANS_AVI_emisiones_aviacion_y_navegacion_internacional,
+        skip=skip, limit=limit,
         **filter)
     
     trans_avi = db_to_df(rd=rd)
@@ -213,6 +226,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_co2_e", 'medida_1': medida_trans_nav_1}
     rd = downloader(db=db, topic='emisiones',
         model=models.TRANS_NAV_emisiones,
+        skip=skip, limit=limit,
         **filter)
     
     trans_nav = db_to_df(rd=rd)
@@ -234,6 +248,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"bloque": "total_agricultura", "tipo": "total_agricultura", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='total_agricultura',
         model=models.AGRO_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     agricultura = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -247,6 +262,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='total',
         model=models.GANA_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     ganaderia = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -260,6 +276,7 @@ def resultados_evolucion_de_las_emisiones_nivel_nacional(
     filter={"tipo": "total_de_emisiones", 'medida_1': medida_bosq_1, 'medida_2': medida_bosq_2}
     rd = downloader(db=db, topic='total_emisiones',
         model=models.BOSQ_EMISIONES,
+        skip=skip, limit=limit,
         **filter)
         
     bosques = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -308,9 +325,9 @@ def resultados_evolucion_generacion_energetica_nacional(
     medida_gana_2: schemas.Trayectoria=1,
     medida_gana_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -318,6 +335,7 @@ def resultados_evolucion_generacion_energetica_nacional(
     filter={"tipo": "total_combustibles_fosiles", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='combustibles_fosiles_producidos',
         model=models.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos,
+        skip=skip, limit=limit,
         **filter)
         
     energia = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -330,6 +348,7 @@ def resultados_evolucion_generacion_energetica_nacional(
     filter={"tipo": "total_combustibles_fosiles", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
     
     df1 = db_to_df(rd=rd)
@@ -337,6 +356,7 @@ def resultados_evolucion_generacion_energetica_nacional(
     filter={"tipo": "total_renovables", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='energias_renovables_no_convencionales',
         model=models.ELECT_Electricidad_SALIDAS_ener_renov_no_convencionales,
+        skip=skip, limit=limit,
         **filter)
     
     df2 = db_to_df(rd=rd)
@@ -351,6 +371,7 @@ def resultados_evolucion_generacion_energetica_nacional(
     filter={"bloque": "por_combustible", "tipo": "total", 'medida_1': medida_ind_1}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
         model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
+        skip=skip, limit=limit,
         **filter)
         
     industria = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -363,12 +384,14 @@ def resultados_evolucion_generacion_energetica_nacional(
     filter={"bloque": "energia_producida", "tipo": "total_producido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
     
     filter={"tipo": "total_generacion", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
         
@@ -383,6 +406,7 @@ def resultados_evolucion_generacion_energetica_nacional(
     filter={"bloque": "generacion", "tipo": "solar_fotovoltaica", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
         
     edificaciones = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -413,12 +437,14 @@ def resultados_evolucion_generacion_energetica_nacional(
     filter={"bloque": "total_cultivos", "tipo": "total_cultivos", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
     
     filter={"tipo": "total", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='biocombustibles',
         model=models.AGRO_SALIDAS_biocombustibles,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
         
@@ -433,6 +459,7 @@ def resultados_evolucion_generacion_energetica_nacional(
     filter={"tipo": "total", 'medida_1': medida_gana_1, 'medida_2': medida_gana_2, 'medida_3': medida_gana_3}
     rd = downloader(db=db, topic='produccion_de_estiercol_para_bioenergia',
         model=models.GANA_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
         
     ganaderia = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -502,9 +529,9 @@ def resultados_evolucion_demanda_energetica_nacional(
     medida_trans_avi_1 : schemas.Trayectoria=1,
     medida_trans_nav_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -512,6 +539,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "total_combustibles_fosiles", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     energia = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -540,6 +568,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"bloque": "por_combustible", "tipo": "total_combustibles_fosiles", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     industria = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -553,30 +582,35 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"bloque": "energia_consumida", "tipo": "celda_de_contingencia", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
 
     filter={"bloque": "energia_consumida", "tipo": "incineracion", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
 
     filter={"bloque": "energia_consumida", "tipo": "relleno_sanitario_controlados", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
     df3 = db_to_df(rd=rd)
 
     filter={"bloque": "energia_consumida", "tipo": "reciclado", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
     df4 = db_to_df(rd=rd)
 
     filter={"bloque": "energia_producida", "tipo": "tratamiento_mecanico_biologico_tmbcompostaje", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
     df5 = db_to_df(rd=rd)
 
@@ -585,6 +619,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "total_consumo", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_consumida,
+        skip=skip, limit=limit,
         **filter)
     df6 = db_to_df(rd=rd)
         
@@ -600,6 +635,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "acondicionamiento_de_espacios", 'medida_1': medida_edi_res_aer_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
         
     edi_res_urb_aer = db_to_df(rd=rd)
@@ -608,6 +644,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"bloque": "demanda", "tipo": "iluminacion_y_otros_usos", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     edi_res_urb_irco = db_to_df(rd=rd)
@@ -616,6 +653,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "demanda_edificaciones_rurales", 'medida_1': medida_edi_res_rural_1} 
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     edi_res_urb_rural = db_to_df(rd=rd)
@@ -624,6 +662,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "acondicionamiento_de_espacios", 'medida_1': medida_edi_com_aec_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     edi_com_aec = db_to_df(rd=rd)
@@ -632,6 +671,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "usos_termicos_y_equipamiento", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     edi_com_ute = db_to_df(rd=rd)
@@ -656,6 +696,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "total", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
         
     trans_pas = db_to_df(rd=rd)
@@ -664,6 +705,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "total", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2} 
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     trans_car = db_to_df(rd=rd)
@@ -672,6 +714,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "aviacion_internacional", 'medida_1': medida_trans_avi_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_AVI_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     trans_avi = db_to_df(rd=rd)
@@ -680,6 +723,7 @@ def resultados_evolucion_demanda_energetica_nacional(
     filter={"tipo": "diesel", 'medida_1': medida_trans_nav_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_NAV_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     trans_nav = db_to_df(rd=rd)
@@ -788,9 +832,9 @@ def resultados_consumo_combustibles_por_sector(
     medida_trans_avi_1 : schemas.Trayectoria=1,
     medida_trans_nav_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -798,6 +842,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "total_combustibles_fosiles", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     energia = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -810,6 +855,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "total_combustibles_fosiles", 'medida_1': medida_elect_1}
     rd = downloader(db=db, topic='combustibels_fosiles',
         model=models.ELECT_Electricidad_SALIDAS_combustibles_fosiles,
+        skip=skip, limit=limit,
         **filter)
         
     electricidad = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -822,6 +868,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"bloque": "por_combustible", "tipo": "total_combustibles_fosiles", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     industria = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -852,6 +899,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"bloque": "demanda", "tipo": "gas_natural", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df1 = db_to_df(rd=rd)
@@ -860,6 +908,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"bloque": "demanda", "tipo": "glp", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df2 = db_to_df(rd=rd)
@@ -868,6 +917,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "hidrocarburos_gaseosos_glp", 'medida_1': medida_edi_res_rural_1} 
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df3 = db_to_df(rd=rd)
@@ -876,6 +926,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "biomasa_seca_y_residuos_lena", 'medida_1': medida_edi_res_rural_1} 
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df4 = db_to_df(rd=rd)
@@ -884,6 +935,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "hidrocarburos", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df5 = db_to_df(rd=rd)
@@ -907,6 +959,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "total", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
         
     trans_pas_combustibles = db_to_df(rd=rd)
@@ -914,6 +967,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "electrico", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
         
     trans_pas_electrico = db_to_df(rd=rd)
@@ -924,6 +978,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "total", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2} 
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     trans_car_combustibles = db_to_df(rd=rd)
@@ -931,6 +986,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "electricidad", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2} 
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     trans_car_electricidad = db_to_df(rd=rd)
@@ -941,6 +997,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "queroseno", 'medida_1': medida_trans_avi_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_AVI_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     trans_avi = db_to_df(rd=rd)
@@ -949,6 +1006,7 @@ def resultados_consumo_combustibles_por_sector(
     filter={"tipo": "diesel", 'medida_1': medida_trans_nav_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_NAV_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     trans_nav = db_to_df(rd=rd)
@@ -1058,9 +1116,9 @@ def resultados_consumo_por_tipo_de_combustible(
     medida_agro_2: schemas.Trayectoria=1,
     medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -1069,6 +1127,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gasolina", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
     
@@ -1076,6 +1135,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gasolina", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
 
@@ -1083,6 +1143,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gasolina", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df3 = db_to_df(rd=rd)
         
@@ -1097,6 +1158,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "diesel", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
     
@@ -1104,6 +1166,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "diesel", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
 
@@ -1111,6 +1174,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "diesel", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     df3 = db_to_df(rd=rd)
 
@@ -1118,6 +1182,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "diesel", 'medida_1': medida_trans_nav_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_NAV_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df4 = db_to_df(rd=rd)
 
@@ -1125,6 +1190,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "diesel", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df5 = db_to_df(rd=rd)
         
@@ -1139,6 +1205,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gas_gnc", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
         
     gas_gnc = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -1152,6 +1219,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gas_natural", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
 
@@ -1159,6 +1227,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gas_natural", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
 
@@ -1166,6 +1235,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gas_natural", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df3 = db_to_df(rd=rd)
 
@@ -1173,6 +1243,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gas_natural", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     df4 = db_to_df(rd=rd)
 
@@ -1180,6 +1251,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gas_gnl", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     df5 = db_to_df(rd=rd)
 
@@ -1187,6 +1259,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "gas_natural", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df6 = db_to_df(rd=rd)
     
@@ -1202,6 +1275,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "glp", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
 
@@ -1209,6 +1283,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "hidrocarburos_gaseosos_glp", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
 
@@ -1216,6 +1291,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "glp", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df3 = db_to_df(rd=rd)
 
@@ -1223,6 +1299,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "glp", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     df4 = db_to_df(rd=rd)
 
@@ -1230,6 +1307,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "glp", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     df5 = db_to_df(rd=rd)
 
@@ -1237,6 +1315,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "glp", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df6 = db_to_df(rd=rd)
     
@@ -1251,6 +1330,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "fuel_oil", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
 
@@ -1258,6 +1338,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "fuel_oil", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
     
@@ -1272,6 +1353,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "petroleo", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
 
@@ -1279,6 +1361,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "petroleo", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
 
@@ -1294,6 +1377,7 @@ def resultados_consumo_por_tipo_de_combustible(
     # filter={"tipo": "vehiculo_de_hidrogeno", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     # rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
     #     model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+    #     skip=skip, limit=limit,
     #     **filter)
     # df1 = db_to_df(rd=rd)
 
@@ -1301,6 +1385,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "hidrogeno", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
 
@@ -1308,6 +1393,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "hidrogeno_verde", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df3 = db_to_df(rd=rd)
 
@@ -1323,6 +1409,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "queroseno", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
 
@@ -1330,6 +1417,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "queroseno_jet", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
 
@@ -1337,6 +1425,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "queroseno", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     df3 = db_to_df(rd=rd)
 
@@ -1344,6 +1433,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "queroseno", 'medida_1': medida_trans_avi_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_AVI_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df4 = db_to_df(rd=rd)
 
@@ -1351,6 +1441,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "queroseno", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df5 = db_to_df(rd=rd)
 
@@ -1366,6 +1457,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "biomasa_seca_y_residuos_lena", 'medida_1': medida_edi_res_rural_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
 
@@ -1373,6 +1465,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "lena", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
     
@@ -1388,6 +1481,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
     
@@ -1395,6 +1489,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "bagazo", 'medida_1': medida_ind_1}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
         model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
     
@@ -1402,6 +1497,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"bloque": "total_cultivos", "tipo": "total_cultivos", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
+        skip=skip, limit=limit,
         **filter)
     
     df3 = db_to_df(rd=rd)
@@ -1420,6 +1516,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "carbon_mineral", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
 
     carbon_mineral = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -1434,6 +1531,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "carbon_de_lena", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     carbon_lena = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -1448,6 +1546,7 @@ def resultados_consumo_por_tipo_de_combustible(
     filter={"tipo": "coque", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     coque = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -1499,9 +1598,9 @@ def resultados_consumo_electricidad_por_sector(
     medida_trans_car_1 : schemas.Trayectoria=1,
     medida_trans_car_2 : schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -1541,6 +1640,7 @@ def resultados_consumo_electricidad_por_sector(
     filter={"bloque": "por_combustible", "tipo": "total_electricidad", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     industria = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -1571,6 +1671,7 @@ def resultados_consumo_electricidad_por_sector(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_res_rural_1} 
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_RURAL_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df1 = db_to_df(rd=rd)
@@ -1579,6 +1680,7 @@ def resultados_consumo_electricidad_por_sector(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_com_aec_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df2 = db_to_df(rd=rd)
@@ -1587,6 +1689,7 @@ def resultados_consumo_electricidad_por_sector(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_com_ute_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_COM_USOS_TERM_EQUIP_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df3 = db_to_df(rd=rd)
@@ -1595,6 +1698,7 @@ def resultados_consumo_electricidad_por_sector(
     filter={"tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_res_aer_1} 
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ACOND_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df4 = db_to_df(rd=rd)
@@ -1603,6 +1707,7 @@ def resultados_consumo_electricidad_por_sector(
     filter={"bloque": "demanda","tipo": "electricidad_entregado_al_usuario_final", 'medida_1': medida_edi_res_irco_1, 'medida_2': medida_edi_res_irco_2, 'medida_3': medida_edi_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
     
     df5 = db_to_df(rd=rd)
@@ -1621,6 +1726,7 @@ def resultados_consumo_electricidad_por_sector(
     filter={"tipo": "electrico", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
         
     trans_pas = db_to_df(rd=rd)
@@ -1629,6 +1735,7 @@ def resultados_consumo_electricidad_por_sector(
     filter={"tipo": "electricidad", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2} 
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     trans_car = db_to_df(rd=rd)
@@ -1717,9 +1824,9 @@ def resultados_consumo_electricidad_por_sector(
 @router.get('/flujos_energia')
 def resultados_evolucion_excedentes_energeticos(
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 

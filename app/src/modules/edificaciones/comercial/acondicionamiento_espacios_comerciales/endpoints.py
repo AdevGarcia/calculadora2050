@@ -33,7 +33,7 @@ router = APIRouter()
 def create_ST(
     data: SCHEMAS_ST, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -69,9 +69,9 @@ def read_ST_module(
     module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -83,6 +83,7 @@ def read_ST_module(
                 db=db, 
                 model=models.EDIF_COM_ACOND_ST_demanda_ener_acond_esp_diseno_eficiencia,
                 topic='demanda_total_energia_para_acondicionamiento_de_espacios_diseno_y_eficiencia',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -91,6 +92,7 @@ def read_ST_module(
                 db=db, 
                 model=models.EDIF_COM_ACOND_ST_demanda_ener_acond_espacios_eficiencia,
                 topic='demanda_total_energia_para_acondicionamiento_de_espacios_eficiencia',
+                skip=skip, limit=limit,
                 **filter
                 )
 
@@ -106,7 +108,7 @@ def read_ST_module(
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
 def delete_ST(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -133,7 +135,7 @@ def delete_ST(
 def create_salidas(
     data: schemas.SALIDAS, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -151,9 +153,9 @@ def create_salidas(
 def read_salidas_module(
     medida_edi_com_aec_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -163,6 +165,7 @@ def read_salidas_module(
         db=db, 
         model=models.EDIF_COM_ACOND_SALIDAS,
         topic='energia_producida_y_requerida',
+        skip=skip, limit=limit,
         **filter
         )
     
@@ -175,7 +178,7 @@ def read_salidas_module(
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
 def delete_Salidas(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -194,7 +197,7 @@ def delete_Salidas(
 def create_emisiones(
     data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -212,9 +215,9 @@ def create_emisiones(
 def read_Emisiones_module(
     medida_edi_com_aec_1: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -224,6 +227,7 @@ def read_Emisiones_module(
             db=db, 
             model=models.EDIF_COM_ACOND_EMISIONES,
             topic='emisiones_de_gases_efecto_invernadero',
+            skip=skip, limit=limit,
             **filter
         )
     
@@ -236,7 +240,7 @@ def read_Emisiones_module(
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
 def delete_Emisiones(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     

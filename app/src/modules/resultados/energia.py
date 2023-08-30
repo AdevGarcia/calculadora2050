@@ -31,9 +31,9 @@ router = APIRouter()
 def resultados_evolucion_de_las_emisiones_del_sector_energia(
     medida_ener_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -41,6 +41,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_energia(
     filter={"bloque": "crudo", "tipo": "total_crudo", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ENER_CombFosil_EMISIONES_produccion,
+        skip=skip, limit=limit,
         **filter)
         
     crudo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -53,6 +54,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_energia(
     filter={"bloque": "gas natural", "tipo": "total_gas_natural", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ENER_CombFosil_EMISIONES_produccion,
+        skip=skip, limit=limit,
         **filter)
         
     gas_natural = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -65,6 +67,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_energia(
     filter={"bloque": "carbon", "tipo": "total_carbon", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='emisiones_de_gases_de_efecto_invernadero_gei',
         model=models.ENER_CombFosil_EMISIONES_produccion,
+        skip=skip, limit=limit,
         **filter)
         
     carbon = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -94,9 +97,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_energia(
 def resultados_evolucion_generacion_energetica_del_sector_energia_por_combustibles(
     medida_ener_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -104,6 +107,7 @@ def resultados_evolucion_generacion_energetica_del_sector_energia_por_combustibl
     filter={"tipo": "crudo", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='combustibles_fosiles_producidos',
         model=models.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos,
+        skip=skip, limit=limit,
         **filter)
         
     crudo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -116,6 +120,7 @@ def resultados_evolucion_generacion_energetica_del_sector_energia_por_combustibl
     filter={"tipo": "gas_natural", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='combustibles_fosiles_producidos',
         model=models.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos,
+        skip=skip, limit=limit,
         **filter)
         
     gas_natural = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -128,6 +133,7 @@ def resultados_evolucion_generacion_energetica_del_sector_energia_por_combustibl
     filter={"tipo": "carbon", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='combustibles_fosiles_producidos',
         model=models.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos,
+        skip=skip, limit=limit,
         **filter)
         
     carbon = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -156,9 +162,9 @@ def resultados_evolucion_generacion_energetica_del_sector_energia_por_combustibl
 def resultados_evolucion_consumo_energetico_comb_fosiles(
     medida_ener_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -166,6 +172,7 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     filter={"tipo": "gas_natural", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     gas_natural = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -179,6 +186,7 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     filter={"tipo": "petroleo", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     petroleo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -192,6 +200,7 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     filter={"tipo": "diesel", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     diesel = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -205,6 +214,7 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     filter={"tipo": "fuel_oil", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     fuel_oil = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -218,6 +228,7 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     filter={"tipo": "glp", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     glp = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -231,6 +242,7 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     filter={"tipo": "gasolina_para_motores", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     gasolina_para_motores = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -244,6 +256,7 @@ def resultados_evolucion_consumo_energetico_comb_fosiles(
     filter={"tipo": "queroseno", 'medida_1': medida_ener_1}
     rd = downloader(db=db, topic='consumo_de_combustibles_fosiles_por_el_propio_sector',
         model=models.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector,
+        skip=skip, limit=limit,
         **filter)
         
     queroseno = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -289,9 +302,9 @@ def resultados_evolucion_excedentes_energeticos(
     medida_edi_res_irco_3: schemas.Trayectoria=1,
     medida_edi_res_rural_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -309,7 +322,8 @@ def resultados_evolucion_excedentes_energeticos(
         medida_edi_res_irco_2 =medida_edi_res_irco_2,
         medida_edi_res_irco_3 =medida_edi_res_irco_3,
         medida_edi_res_rural_1=medida_edi_res_rural_1,
-        db=db
+        db=db,
+        skip=skip, limit=limit
         )
 
     crudo = entrada['requerimientos_energeticos'][0]
@@ -357,9 +371,9 @@ def resultados_evolucion_requerimientos_energeticos(
     medida_edi_res_irco_3: schemas.Trayectoria=1,
     medida_edi_res_rural_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -378,7 +392,7 @@ def resultados_evolucion_requerimientos_energeticos(
         medida_edi_res_irco_2 =medida_edi_res_irco_2,
         medida_edi_res_irco_3 =medida_edi_res_irco_3,
         medida_edi_res_rural_1=medida_edi_res_rural_1,
-        db=db
+        db=db, skip=skip, limit=limit
     )
 
     crudo = entrada['excedentes_energeticos'][0]

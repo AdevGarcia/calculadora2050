@@ -36,9 +36,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_transporte(
     medida_trans_avi_1: schemas.Trayectoria=1,
     medida_trans_nav_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -46,6 +46,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_transporte(
     filter={"tipo": "total_co2_e", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.TRANS_PAS_emisiones_de_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     transporte_de_pasajeros = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -58,6 +59,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_transporte(
     filter={"tipo": "total_co2_e", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='emisiones_de_gases_efecto_invernadero',
         model=models.TRANS_CAR_emisiones_de_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     transporte_de_carga = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -70,6 +72,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_transporte(
     filter={"tipo": "total_co2_e", 'medida_1': medida_trans_avi_1}
     rd = downloader(db=db, topic='aviacion_y_navegacion_internacional',
         model=models.TRANS_AVI_emisiones_aviacion_y_navegacion_internacional,
+        skip=skip, limit=limit,
         **filter)
         
     transporte_internacional_aviacion = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -82,6 +85,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_transporte(
     filter={"tipo": "total_co2_e", 'medida_1': medida_trans_nav_1}
     rd = downloader(db=db, topic='emisiones',
         model=models.TRANS_NAV_emisiones,
+        skip=skip, limit=limit,
         **filter)
         
     transporte_internacional_navegacion = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -117,9 +121,9 @@ def resultados_evolucion_demanda_energetica_por_modo_transporte(
     medida_trans_avi_1: schemas.Trayectoria=1,
     medida_trans_nav_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -127,6 +131,7 @@ def resultados_evolucion_demanda_energetica_por_modo_transporte(
     filter={"tipo": "total", 'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
         
     transporte_de_pasajeros = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -139,6 +144,7 @@ def resultados_evolucion_demanda_energetica_por_modo_transporte(
     filter={"tipo": "total", 'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
         
     transporte_de_carga = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -151,6 +157,7 @@ def resultados_evolucion_demanda_energetica_por_modo_transporte(
     filter={"tipo": "aviacion_internacional",'medida_1': medida_trans_avi_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_AVI_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     transporte_internacional_aviacion = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -163,6 +170,7 @@ def resultados_evolucion_demanda_energetica_por_modo_transporte(
     filter={"tipo": "diesel",'medida_1': medida_trans_nav_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_NAV_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     transporte_internacional_navegacion = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -198,9 +206,9 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     medida_trans_avi_1: schemas.Trayectoria=1,
     medida_trans_nav_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -208,6 +216,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "gasolina",'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     
     df1 = db_to_df(rd=rd)
@@ -215,6 +224,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "gasolina",'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     df2 = db_to_df(rd=rd)
@@ -229,6 +239,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "diesel",'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     
     df1 = db_to_df(rd=rd)
@@ -236,6 +247,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "diesel",'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     df2 = db_to_df(rd=rd)
@@ -243,6 +255,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "diesel",'medida_1': medida_trans_nav_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_NAV_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     df3 = db_to_df(rd=rd)
@@ -257,6 +270,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "electricidad",'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
         
     electrico = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -269,6 +283,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "gas_natural",'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     
     df1 = db_to_df(rd=rd)
@@ -276,6 +291,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "gas_gnc",'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     df2 = db_to_df(rd=rd)
@@ -283,6 +299,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "gas_gnl",'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     df3 = db_to_df(rd=rd)
@@ -297,6 +314,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "glp",'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     
     df1 = db_to_df(rd=rd)
@@ -304,6 +322,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "glp",'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     df2 = db_to_df(rd=rd)
@@ -318,6 +337,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "queroseno_jet",'medida_1': medida_trans_pas_1, 'medida_2': medida_trans_pas_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_pasajeros',
         model=models.TRANS_PAS_SALIDAS_energia_requerida_transporte_pasajeros,
+        skip=skip, limit=limit,
         **filter)
     
     df1 = db_to_df(rd=rd)
@@ -325,6 +345,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "queroseno",'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
     
     df2 = db_to_df(rd=rd)
@@ -332,6 +353,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "queroseno",'medida_1': medida_trans_avi_1}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.TRANS_AVI_SALIDAS_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     df3 = db_to_df(rd=rd)
@@ -346,6 +368,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     filter={"tipo": "hidrogeno",'medida_1': medida_trans_car_1, 'medida_2': medida_trans_car_2}
     rd = downloader(db=db, topic='energia_requerida_transporte_de_carretera',
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
+        skip=skip, limit=limit,
         **filter)
         
     vehiculo_hidrogeno = db_to_df(rd=rd).to_dict(orient='records')[0]

@@ -33,9 +33,9 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     medida_ind_3: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -43,6 +43,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "cemento", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     cemento = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -55,6 +56,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "hierro_y_no_ferrosos", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     hierro_y_no_ferrosos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -67,6 +69,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "papel", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     papel = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -79,6 +82,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "quimicos", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     quimicos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -91,6 +95,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "alimentos_y_bebidas", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
     
     alimentos_y_bebidas = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -104,6 +109,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "textil", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     textil = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -116,6 +122,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "ladrilleras", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     ladrilleras = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -129,6 +136,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "otros", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_gases_efecto_invernadero,
+        skip=skip, limit=limit,
         **filter)
         
     otros = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -142,6 +150,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_industria(
     filter={"tipo": "emisiones_sao", 'medida_1': medida_ind_1, 'medida_2': medida_ind_2, 'medida_3': medida_ind_3, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='gases_efecto_invernadero',
         model=models.INDU_emisiones_sao,
+        skip=skip, limit=limit,
         **filter)
         
     emisiones_sao = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -178,9 +187,9 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     medida_ind_1: schemas.Trayectoria=1,
     medida_ind_4: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -188,6 +197,7 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     filter={"tipo": "cemento", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia',
         model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     cemento = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -200,6 +210,7 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     filter={"tipo": "hierro_y_acero", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia',
         model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     hierro_y_no_ferrosos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -212,6 +223,7 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     filter={"tipo": "papel", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia',
         model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     papel = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -224,6 +236,7 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     filter={"tipo": "quimicos", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia',
         model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     quimicos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -236,6 +249,7 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     filter={"tipo": "alimentos_y_bebidas", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia',
         model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     alimentos_y_bebidas = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -249,6 +263,7 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     filter={"tipo": "textil", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia',
         model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     textil = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -261,6 +276,7 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     filter={"tipo": "ladrilleras", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia',
         model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     ladrilleras = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -274,6 +290,7 @@ def resultados_evolucion_demanda_energetica_por_tipo_industria(
     filter={"tipo": "otros", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia',
         model=models.INDU_SALIDAS_por_tipo_ind_balance_total_ener_requerida,
+        skip=skip, limit=limit,
         **filter)
         
     otros = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -312,9 +329,9 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     medida_agro_2: schemas.Trayectoria=1,
     medida_agro_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -323,6 +340,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "bagazo", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     df1 = db_to_df(rd=rd)
     
@@ -330,6 +348,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "bagazo", 'medida_1': medida_ind_1}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
         model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
+        skip=skip, limit=limit,
         **filter)
     df2 = db_to_df(rd=rd)
     
@@ -337,6 +356,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"bloque": "total_cultivos", "tipo": "total_cultivos", 'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
+        skip=skip, limit=limit,
         **filter)
     
     df3 = db_to_df(rd=rd)
@@ -354,6 +374,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "carbon_mineral", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     carbon_mineral = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -366,6 +387,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "gas_natural", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     gas_natural = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -379,6 +401,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "lena", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     lena = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -392,6 +415,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "petroleo", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     petroleo = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -405,6 +429,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "residuos", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     residuos = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -418,6 +443,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "gasolina", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     gasolina = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -431,6 +457,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "diesel", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     diesel = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -444,6 +471,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "carbon_de_lena", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     carbon_de_lena = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -457,6 +485,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "coque", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     coque = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -470,6 +499,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "fuel_oil", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     fuel_oil = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -483,6 +513,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "glp", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     glp = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -496,6 +527,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "queroseno", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     queroseno = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -509,6 +541,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "electricidad_sin", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     electricidad_sin = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -522,6 +555,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "hidrogeno_verde", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     hidrogeno_verde = db_to_df(rd=rd).to_dict(orient='records')[0]
@@ -535,6 +569,7 @@ def resultados_evolucion_demanda_energetica_por_combustibles(
     filter={"tipo": "hidrogeno_azul", 'medida_1': medida_ind_1, 'medida_4': medida_ind_4}
     rd = downloader(db=db, topic='balance_total_de_la_energia_requerida',
         model=models.INDU_SALIDAS_por_combustible_balance_total_energia_requerida,
+        skip=skip, limit=limit,
         **filter)
     
     hidrogeno_azul = db_to_df(rd=rd).to_dict(orient='records')[0]

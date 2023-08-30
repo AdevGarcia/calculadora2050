@@ -48,9 +48,9 @@ def read_entradas_requerimientos_energeticos(
     medida_edi_res_irco_3: schemas.Trayectoria=1,
     medida_edi_res_rural_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -65,7 +65,8 @@ def read_entradas_requerimientos_energeticos(
         medida_trans_car_1=medida_trans_car_1,
         medida_trans_car_2=medida_trans_car_2,
         medida_trans_pas_1=medida_trans_pas_1,
-        medida_trans_pas_2=medida_trans_pas_2
+        medida_trans_pas_2=medida_trans_pas_2,
+        skip=skip, limit=limit
         ) 
 
     diesel = read_entradas_energia_combustibles_fosiles_diesel(
@@ -77,14 +78,16 @@ def read_entradas_requerimientos_energeticos(
         medida_trans_pas_1=medida_trans_pas_1,
         medida_trans_pas_2=medida_trans_pas_2,
         medida_trans_nav_1=medida_trans_nav_1,
-        medida_edi_com_ute_1=medida_edi_com_ute_1
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        skip=skip, limit=limit
     )
 
     fuel_oil = read_entradas_energia_combustibles_fosiles_fuel_oil(
         db=db,
         medida_ind_1=medida_ind_1,
         medida_ind_4=medida_ind_4,
-        medida_edi_com_ute_1=medida_edi_com_ute_1
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        skip=skip, limit=limit
     )
 
     glp = read_entradas_energia_combustibles_fosiles_glp(
@@ -95,14 +98,16 @@ def read_entradas_requerimientos_energeticos(
         medida_edi_res_irco_1=medida_edi_res_irco_1,
         medida_edi_res_irco_2=medida_edi_res_irco_2,
         medida_edi_res_irco_3=medida_edi_res_irco_3,
-        medida_edi_res_rural_1=medida_edi_res_rural_1
+        medida_edi_res_rural_1=medida_edi_res_rural_1,
+        skip=skip, limit=limit
     )
 
     queroseno = read_entradas_energia_combustibles_fosiles_queroseno(
         db=db,
         medida_ind_1=medida_ind_1,
         medida_ind_4=medida_ind_4,
-        medida_edi_com_ute_1=medida_edi_com_ute_1
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        skip=skip, limit=limit
     )
 
     sum_combustibles = pd.concat(
@@ -140,7 +145,8 @@ def read_entradas_requerimientos_energeticos(
         medida_edi_com_ute_1=medida_edi_com_ute_1,
         medida_edi_res_irco_1=medida_edi_res_irco_1,
         medida_edi_res_irco_2=medida_edi_res_irco_2,
-        medida_edi_res_irco_3=medida_edi_res_irco_3
+        medida_edi_res_irco_3=medida_edi_res_irco_3,
+        skip=skip, limit=limit
     )
 
     gas = get_item(db=db, 
@@ -160,7 +166,8 @@ def read_entradas_requerimientos_energeticos(
 
     carbon_mineral = read_entradas_energia_combustibles_fosiles_carbon(db=db,
         medida_ind_1=medida_ind_1,
-        medida_ind_4=medida_ind_4
+        medida_ind_4=medida_ind_4,
+        skip=skip, limit=limit
     )
 
     carbon = get_item(db=db, 
@@ -214,9 +221,9 @@ def read_entradas_excedentes_energeticos(
     medida_edi_res_irco_3: schemas.Trayectoria=1,
     medida_edi_res_rural_1: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -231,7 +238,8 @@ def read_entradas_excedentes_energeticos(
         medida_trans_car_1=medida_trans_car_1,
         medida_trans_car_2=medida_trans_car_2,
         medida_trans_pas_1=medida_trans_pas_1,
-        medida_trans_pas_2=medida_trans_pas_2
+        medida_trans_pas_2=medida_trans_pas_2,
+        skip=skip, limit=limit
         ) 
 
     diesel = read_entradas_energia_combustibles_fosiles_diesel(
@@ -243,14 +251,16 @@ def read_entradas_excedentes_energeticos(
         medida_trans_pas_1=medida_trans_pas_1,
         medida_trans_pas_2=medida_trans_pas_2,
         medida_trans_nav_1=medida_trans_nav_1,
-        medida_edi_com_ute_1=medida_edi_com_ute_1
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        skip=skip, limit=limit
     )
 
     fuel_oil = read_entradas_energia_combustibles_fosiles_fuel_oil(
         db=db,
         medida_ind_1=medida_ind_1,
         medida_ind_4=medida_ind_4,
-        medida_edi_com_ute_1=medida_edi_com_ute_1
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        skip=skip, limit=limit
     )
 
     glp = read_entradas_energia_combustibles_fosiles_glp(
@@ -261,14 +271,16 @@ def read_entradas_excedentes_energeticos(
         medida_edi_res_irco_1=medida_edi_res_irco_1,
         medida_edi_res_irco_2=medida_edi_res_irco_2,
         medida_edi_res_irco_3=medida_edi_res_irco_3,
-        medida_edi_res_rural_1=medida_edi_res_rural_1
+        medida_edi_res_rural_1=medida_edi_res_rural_1,
+        skip=skip, limit=limit
     )
 
     queroseno = read_entradas_energia_combustibles_fosiles_queroseno(
         db=db,
         medida_ind_1=medida_ind_1,
         medida_ind_4=medida_ind_4,
-        medida_edi_com_ute_1=medida_edi_com_ute_1
+        medida_edi_com_ute_1=medida_edi_com_ute_1,
+        skip=skip, limit=limit
     )
 
     sum_combustibles = pd.concat(
@@ -307,7 +319,8 @@ def read_entradas_excedentes_energeticos(
         medida_edi_com_ute_1=medida_edi_com_ute_1,
         medida_edi_res_irco_1=medida_edi_res_irco_1,
         medida_edi_res_irco_2=medida_edi_res_irco_2,
-        medida_edi_res_irco_3=medida_edi_res_irco_3
+        medida_edi_res_irco_3=medida_edi_res_irco_3,
+        skip=skip, limit=limit
     )
 
     gas = get_item(db=db, 
@@ -327,7 +340,8 @@ def read_entradas_excedentes_energeticos(
 
     carbon_mineral = read_entradas_energia_combustibles_fosiles_carbon(db=db,
         medida_ind_1=medida_ind_1,
-        medida_ind_4=medida_ind_4
+        medida_ind_4=medida_ind_4,
+        skip=skip, limit=limit
     )
 
     carbon = get_item(db=db, 

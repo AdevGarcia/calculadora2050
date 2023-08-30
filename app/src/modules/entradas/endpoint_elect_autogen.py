@@ -43,9 +43,9 @@ def read_entradas_produccion(
     medida_gana_2: schemas.Trayectoria=1,
     medida_gana_3: schemas.Trayectoria=1,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -53,6 +53,7 @@ def read_entradas_produccion(
     filter={'medida_1': medida_ind_1}
     rd = downloader(db=db, topic='energia_producida_por_autogeneracion_y_cogeneracion',
         model=models.INDU_SALIDAS_por_comb_ener_prod_autogeneracion_cogeneracion,
+        skip=skip, limit=limit,
         **filter)
 
     industria = db_to_df(rd).sum().to_dict()
@@ -66,6 +67,7 @@ def read_entradas_produccion(
     filter={"tipo": "total_producido", 'medida_1': medida_res_sol_1}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_SOL_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
 
     df1 = db_to_df(rd=rd)
@@ -74,6 +76,7 @@ def read_entradas_produccion(
     filter={"tipo": "total_generacion", 'medida_1': medida_res_agu_1, 'medida_2': medida_res_agu_2}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.RES_AGU_SALIDAS_energia_producida,
+        skip=skip, limit=limit,
         **filter)
 
     df2 = db_to_df(rd=rd)
@@ -88,6 +91,7 @@ def read_entradas_produccion(
     filter={"tipo": "solar_fotovoltaica", 'medida_1': medida_res_irco_1, 'medida_2': medida_res_irco_2, 'medida_3': medida_res_irco_3}
     rd = downloader(db=db, topic='energia_producida_y_requerida',
         model=models.EDIF_RES_ILU_REF_COC_OTR_SALIDAS,
+        skip=skip, limit=limit,
         **filter)
 
     edificaciones = db_to_dict(rd=rd)
@@ -100,6 +104,7 @@ def read_entradas_produccion(
     filter={'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}
     rd = downloader(db=db, topic='cultivos',
         model=models.AGRO_SALIDAS_cultivos,
+        skip=skip, limit=limit,
         **filter)
     
     agricultura = db_to_df(rd=rd).sum().to_dict()

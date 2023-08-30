@@ -35,7 +35,7 @@ router = APIRouter()
 def create_ST(
     data: SCHEMAS_ST, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -119,9 +119,9 @@ def read_ST_module(
     module: schemas.ST_name,
     trayectoria: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -133,6 +133,7 @@ def read_ST_module(
                 db=db, 
                 model=models.TRANS_CAR_ST_uso_ener_trans_ferreo_transp_carga_interurbano,
                 topic='uso_de_energia_para_el_transporte_ferreo_transporte_de_carga_interurbano',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -141,6 +142,7 @@ def read_ST_module(
                 db=db, 
                 model=models.TRANS_CAR_ST_distancia_modo_ferreo,
                 topic='distancia_modo_ferreo',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -149,6 +151,7 @@ def read_ST_module(
                 db=db, 
                 model=models.TRANS_CAR_ST_dist_trans_carretero_transp_carga_interurbano,
                 topic='distancia_para_el_transporte_carretero_transporte_de_carga_interurbano',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -157,6 +160,7 @@ def read_ST_module(
                 db=db, 
                 model=models.TRANS_CAR_ST_uso_ener_trans_fluvial_transp_carga_interurbano,
                 topic='uso_de_energia_para_el_transporte_fluvial_transporte_de_carga_interurbano',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -165,6 +169,7 @@ def read_ST_module(
                 db=db, 
                 model=models.TRANS_CAR_ST_uso_de_ener_trans_aereo_trans_carga_interurbano,
                 topic='uso_de_energia_para_el_transporte_aereo_transporte_de_carga_interurbano',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -173,6 +178,7 @@ def read_ST_module(
                 db=db, 
                 model=models.TRANS_CAR_ST_carga_sustituida_modo_trans_carga_interurbano,
                 topic='carga_sustituida_por_modo_transporte_de_carga_interurbano',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -181,6 +187,7 @@ def read_ST_module(
                 db=db, 
                 model=models.TRANS_CAR_ST_distr_tecnologia_transporte_carga_urbano,
                 topic='distribucion_por_tecnologia_transporte_de_carga_urbano',
+                skip=skip, limit=limit,
                 **filter
                 )
         
@@ -189,6 +196,7 @@ def read_ST_module(
                 db=db, 
                 model=models.TRANS_CAR_ST_dist_tecn_transporte_carga_interurbano,
                 topic='distribucion_por_tecnologia_transporte_de_carga_interurbano',
+                skip=skip, limit=limit,
                 **filter
                 )
 
@@ -204,7 +212,7 @@ def read_ST_module(
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
 def delete_ST(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -227,7 +235,7 @@ def delete_ST(
 def create_SF(
     data: SCHEMAS_SF, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -293,9 +301,9 @@ def create_SF(
 @router.get(URI_SF, response_model=SCHEMAS_SF)
 def read_SF(
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
     
@@ -308,7 +316,7 @@ def read_SF(
         'numero_de_vehiculos_transporte_de_carga_interurbano' : models.TRANS_CAR_SF_num_vehiculos_transporte_carga_interurbano
         }
     
-    rd = downloader_batch(db=db, **d)
+    rd = downloader_batch(db=db, skip=skip, limit=limit, **d)
     
     if DEBUG:
         logger.info(f'Read Data: {jsonable_encoder(rd)}')
@@ -319,7 +327,7 @@ def read_SF(
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
 def delete_SF(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -344,7 +352,7 @@ def delete_SF(
 def create_salidas(
     data: schemas.SALIDAS, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -363,9 +371,9 @@ def read_salidas_module(
     medida_trans_car_1: schemas.Trayectoria,
     medida_trans_car_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -375,6 +383,7 @@ def read_salidas_module(
         db=db, 
         model=models.TRANS_CAR_SALIDAS_energia_requerida_transporte_de_carretera,
         topic='energia_requerida_transporte_de_carretera',
+        skip=skip, limit=limit,
         **filter
         )
     
@@ -387,7 +396,7 @@ def read_salidas_module(
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
 def delete_Salidas(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -406,7 +415,7 @@ def delete_Salidas(
 def create_emisiones(
     data: schemas.EMISIONES, 
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -425,9 +434,9 @@ def read_Emisiones_module(
     medida_trans_car_1: schemas.Trayectoria,
     medida_trans_car_2: schemas.Trayectoria,
     db: Session = Depends(deps.get_db), 
-    # skip: int = 0, 
-    # limit: int = 100,
-    # current_user: models_user.User = Depends(deps.get_current_active_user)
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -437,6 +446,7 @@ def read_Emisiones_module(
             db=db, 
             model=models.TRANS_CAR_emisiones_de_gases_efecto_invernadero,
             topic='emisiones_de_gases_efecto_invernadero',
+            skip=skip, limit=limit,
             **filter
         )
     
@@ -449,7 +459,7 @@ def read_Emisiones_module(
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
 def delete_Emisiones(
     db: Session = Depends(deps.get_db),
-    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
