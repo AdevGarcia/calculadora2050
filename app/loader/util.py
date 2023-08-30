@@ -373,8 +373,8 @@ class Upload():
 
         if self.debug:
             print('url:  ', url)
-            if self.user != None:
-                print('headers: ', headers)
+            # if self.user != None:
+            #     print('headers: ', headers)
 
         r = httpx.delete(url=url, headers=headers, timeout=None)
 
@@ -391,8 +391,8 @@ class Upload():
         if self.debug:
             print('url:  ', url[0])
             print('file: ', file)
-            if self.user != None:
-                print('headers: ', headers)
+            # if self.user != None:
+            #     print('headers: ', headers)
 
         r = httpx.post(url=url[0], data=data[0], headers=headers, timeout=None)
 
@@ -407,8 +407,8 @@ class Upload():
         
         if self.debug:
             print('url:  ', url[0])
-            if self.user != None:
-                print('headers: ', headers)
+            # if self.user != None:
+            #     print('headers: ', headers)
 
         r = httpx.get(url=url[0], headers=headers, timeout=None)
 
