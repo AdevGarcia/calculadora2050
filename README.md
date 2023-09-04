@@ -5,6 +5,7 @@
 ```sh
 # dev
 $ docker-compose -f docker-compose.yml up -d
+$ docker-compose -f docker-compose.prodlocal.yml up -d
 
 # prod
 $ docker-compose -f docker-compose.prod.yml up -d

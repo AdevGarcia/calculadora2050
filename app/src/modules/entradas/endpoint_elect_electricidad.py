@@ -46,7 +46,7 @@ def read_entradas_energia_inyectada_a_red(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -213,7 +213,7 @@ def read_entradas_demanda(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -391,7 +391,7 @@ def read_entradas_emisiones_derivadas_de_la_autogeneracion(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
     

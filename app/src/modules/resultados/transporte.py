@@ -38,7 +38,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_transporte(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -123,7 +123,7 @@ def resultados_evolucion_demanda_energetica_por_modo_transporte(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -208,7 +208,7 @@ def resultados_evolucion_demanda_energetica_por_combustible(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 

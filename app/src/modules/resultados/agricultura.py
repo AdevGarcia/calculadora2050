@@ -33,7 +33,7 @@ def resultados_evolucion_de_las_emisiones_del_sector_agricultura(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -84,7 +84,7 @@ def resultados_evolucion_del_potencial_energetico_para_aprovechamiento_de_residu
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ"""
 
@@ -134,7 +134,7 @@ def resultados_tierras_dedicada_a_biocombustibles(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     
     filter={"tipo": "palma_de_aceite",'medida_1': medida_agro_1, 'medida_2': medida_agro_2, 'medida_3': medida_agro_3}

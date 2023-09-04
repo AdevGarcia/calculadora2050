@@ -17,7 +17,7 @@ router = APIRouter()
 
 @router.get('/')
 def download(
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
 
     media_type = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'

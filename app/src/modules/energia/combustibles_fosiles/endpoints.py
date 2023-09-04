@@ -35,7 +35,7 @@ router = APIRouter()
 def create_ST(
     data: SCHEMAS_ST, 
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -56,7 +56,7 @@ def read_ST_module(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -79,7 +79,7 @@ def read_ST_module(
 @router.delete(URI_ST, status_code=status.HTTP_200_OK)
 def delete_ST(
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -95,7 +95,7 @@ def delete_ST(
 def create_SF(
     data: SCHEMAS_SF, 
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -171,7 +171,7 @@ def read_SF(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
     
@@ -196,7 +196,7 @@ def read_SF(
 @router.delete(URI_SF, status_code=status.HTTP_200_OK)
 def delete_SF(
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -222,7 +222,7 @@ def delete_SF(
 def create_salidas_combustibles_fosiles_producidos(
     data: schemas.ENER_CombFosil_SALIDAS_combustibles_fosiles_producidos, 
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -244,7 +244,7 @@ def create_salidas_combustibles_fosiles_producidos(
 def create_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector(
     data: schemas.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_propio_sector, 
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -267,7 +267,7 @@ def create_salidas_consumo_de_combustibles_fosiles_por_el_propio_sector(
 def create_salidas_consumo_de_combustibles_fosiles_por_sectores_ajenos(
     data: schemas.ENER_CombFosil_SALIDAS_consumo_comb_fosiles_sectores_ajenos, 
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -290,7 +290,7 @@ def read_salidas_module(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -336,7 +336,7 @@ def read_salidas_module(
 @router.delete(URI_SALIDAS, status_code=status.HTTP_200_OK)
 def delete_Salidas(
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
@@ -357,7 +357,7 @@ def delete_Salidas(
 def create_emisiones_produccion(
     data: schemas.ENER_CombFosil_EMISIONES_produccion, 
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -380,7 +380,7 @@ def create_emisiones_produccion(
 def create_emisiones_consumo(
     data: schemas.ENER_CombFosil_EMISIONES_consumo, 
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """CREATE"""
 
@@ -403,7 +403,7 @@ def read_emisiones_module(
     db: Session = Depends(deps.get_db), 
     skip: int = 0, 
     limit: int = 100,
-    current_user: models_user.User = Depends(deps.get_current_active_user)
+    # current_user: models_user.User = Depends(deps.get_current_active_user)
     ) -> Any:
     """READ ALL"""
 
@@ -440,7 +440,7 @@ def read_emisiones_module(
 @router.delete(URI_EMISIONES, status_code=status.HTTP_200_OK)
 def delete_Emisiones(
     db: Session = Depends(deps.get_db),
-    current_user: models_user.User = Depends(deps.get_current_active_superuser)
+    # current_user: models_user.User = Depends(deps.get_current_active_superuser)
     ) -> Any:
     """DELETE ALL"""
     
