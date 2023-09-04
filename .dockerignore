@@ -4,6 +4,6 @@ __pycache__
 *.pyo
 *.pyd
 notebooks/
-app/alembic/
+# app/alembic/
 app.sqlite
 venv/

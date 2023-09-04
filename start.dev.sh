@@ -3,9 +3,12 @@ set -e
 
 
 export PYTHONPATH=$PWD
-./install.sh
+# ./install.sh
 
-cd ./app/src
+cd ./app
+alembic -c ./alembic.ini upgrade head
+
+cd ./src
 python initial_data.py
 
 uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers #--reload

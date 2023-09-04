@@ -1,16 +1,14 @@
 #! /usr/bin/env bash
 set -e
 
+
 export PYTHONPATH=$PWD
 # ./install.sh
 
-
-
 cd ./app
-echo "$PWD"
 alembic -c ./alembic.ini upgrade head
 
-cd ./app/src/ 
+cd ./src
 python initial_data.py
 
 uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers
