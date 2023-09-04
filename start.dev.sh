@@ -3,6 +3,7 @@ set -e
 
 
 export PYTHONPATH=$PWD
+./install.sh
 
 cd ./app/src
 python initial_data.py
