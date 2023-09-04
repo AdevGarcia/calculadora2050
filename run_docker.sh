@@ -5,7 +5,7 @@ echo "killing old docker processes"
 docker-compose rm -fs
 
 echo "building docker containers"
-docker-compose build --no-cache
+# docker-compose build --no-cache
 
 echo "run docker containers"
 docker-compose -f docker-compose.prod.yml up -d
