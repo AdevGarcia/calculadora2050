@@ -2,7 +2,13 @@
 set -e
 
 export PYTHONPATH=$PWD
-./install.sh
+# ./install.sh
+
+
+
+cd ./app
+echo "$PWD"
+alembic -c ./alembic.ini upgrade head
 
 cd ./app/src/ 
 python initial_data.py
