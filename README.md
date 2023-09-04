@@ -17,6 +17,9 @@ $ docker-compose -f docker-compose.yml up -d
 
 # prod
 $ docker-compose -f docker-compose.prod.yml up -d
+
+# Better prod
+$ ./run_docker.sh
 ```
 
 ```sh

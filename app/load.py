@@ -9,8 +9,8 @@ if __name__ == "__main__":
     
     load_dotenv()
     env       = os.getenv("API_ENV")
-    host      = os.getenv("SERVER_HOST", "http://localhost")
-    port      = os.getenv("SERVER_PORT", 8000)
+    host      = os.getenv("SERVER_HOST_LOAD", "http://localhost")
+    port      = os.getenv("SERVER_PORT_LOAD", 80)
     api       = os.getenv("API_V1_STR", "/api/v1")
     user      = os.getenv('ADMIN', 'admin@calculadora2050.com')
     password  = os.getenv('ADMIN_PASSWORD', 'password')

@@ -8,14 +8,15 @@ echo "building docker containers"
 docker-compose build --no-cache
 
 echo "run docker containers"
-docker-compose up -d
+docker-compose -f docker-compose.prod.yml up -d
 
 
-x=300
-export $(grep SERVER_HOST .env)
+x=600
+export $(grep SERVER_HOST_LOAD .env)
+export $(grep SERVER_PORT_LOAD .env)
 export $(grep API_V1_STR .env)
 
-URL="$SERVER_HOST$API_V1_STR/test"
+URL="${SERVER_HOST_LOAD}:${SERVER_PORT_LOAD}${API_V1_STR//\"}/test"
 
 echo "URL $URL $x"
 
@@ -28,7 +29,7 @@ do
 
     if [[ $status_code -ge 200 && $status_code -le 299 ]];then
         echo -e "\x1B[32m✅ OK status code: $status_code for domain $URL  \x1B[0m"
-        ((x=0))
+        ((x=1))
     fi
 done
 
@@ -36,5 +37,5 @@ done
 echo "load data"
 export PYTHONPATH=$PWD
 
-python app/load.py
+python3 app/load.py
 echo "Ok all data update"
