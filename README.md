@@ -1,15 +1,6 @@
 # Calculadora Colombiana CO2 2050
 
 
-# TODO
-
-- Limpiar codigo
-- Usuario con formulario inicio
-- Autenticacion
-
-otros
-- interfaz excel
-
 
 ```sh
 # dev
