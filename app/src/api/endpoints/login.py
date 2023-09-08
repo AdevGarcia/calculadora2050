@@ -51,6 +51,8 @@ def create_user_profile(
     password: str = Body(...),
     email: EmailStr = Body(...),
     full_name: str = Body(None),
+    sector: str = Body(None),
+    subsector: str = Body(None),
 ) -> Any:
     """
     Create new user without the need to be logged in.
@@ -62,7 +64,7 @@ def create_user_profile(
             detail="This username is not available.",
         )
     # Create user auth
-    user_in = schemas_user.UserCreateUpdate(password=password, email=email, full_name=full_name)
+    user_in = schemas_user.UserCreateUpdate(password=password, email=email, full_name=full_name, sector=sector, subsector=subsector)
     user = crud_user.create(db, obj_in=user_in)
     return user
 
