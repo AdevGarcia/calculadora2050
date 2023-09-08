@@ -29,5 +29,7 @@ def init_db(db: Session) -> None:
             email=settings.ADMIN,
             password=settings.ADMIN_PASSWORD,
             is_superuser=True,
+            sector='admin',
+            subsector='admin'
         )
         user = crud_user.create(db, obj_in=user_in)  # noqa: F841
